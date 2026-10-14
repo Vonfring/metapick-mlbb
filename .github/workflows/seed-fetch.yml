@@ -74,6 +74,8 @@ jobs:
           pnpm seed:sql
 
       - name: Commit the results to this branch
+        env:
+          BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -84,5 +86,5 @@ jobs:
           fi
           git commit -m "Seed ${{ steps.request.outputs.mode }}: results of run ${{ github.run_id }}"
           # Someone may have pushed while this ran; replay our commit on top.
-          git pull --rebase origin "${{ github.ref_name }}"
-          git push origin "HEAD:${{ github.ref_name }}"
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:$BRANCH"

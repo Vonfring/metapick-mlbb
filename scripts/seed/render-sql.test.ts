@@ -129,4 +129,19 @@ describe("renderSeedSql", () => {
     expect(result.warnings).toContain('overrides/items.json: "no-such-item" matches no item, skipped');
     expect(result.sql).toContain("-- No item, emblem, talent or spell catalog yet");
   });
+
+  it("keeps header comments on one line whatever the metadata contains", () => {
+    const { sql } = renderSeedSql(
+      input({}, {
+        meta: {
+          fetched_at: "2026-10-14T03:00:00Z",
+          source: "wiki\ndrop table public.heroes; --",
+          license: "CC BY-SA 3.0",
+          revised_at: null,
+        },
+      }),
+    );
+    expect(sql).not.toMatch(/^drop table/m);
+    expect(sql).toContain("-- Items, emblems, talents and spells: wiki drop table public.heroes; --");
+  });
 });

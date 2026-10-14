@@ -18,7 +18,8 @@ const rate = z.number().min(0).max(1);
 const delta = z.number().min(-1).max(1);
 const level = z.number().int().min(0).max(3);
 const percent = z.number().int().min(0).max(100).nullable();
-const url = z.string().url().nullable();
+/** Image and page links: http(s) only, so a scraped value can never be a javascript: URL. */
+const url = z.url({ protocol: /^https?$/ }).nullable();
 const role = z.enum(HERO_ROLES);
 const lane = z.enum(HERO_LANES);
 const bracket = z.enum(RANK_BRACKETS);
