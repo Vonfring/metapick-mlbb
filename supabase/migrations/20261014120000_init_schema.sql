@@ -137,6 +137,7 @@ create table public.items (
   slug text not null unique check (slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
   name text not null,
   category public.item_category not null,
+  other_categories public.item_category[] not null default '{}',
   tier smallint check (tier between 1 and 3),
   price integer check (price >= 0),
   attributes jsonb not null default '[]' check (jsonb_typeof(attributes) = 'array'),
@@ -148,11 +149,15 @@ create table public.items (
   updated_at timestamptz not null default now()
 );
 
+comment on table public.items is
+  'Shop items from the Liquipedia Mobile Legends wiki (CC BY-SA 3.0). id is the wiki page ID.';
+comment on column public.items.other_categories is 'Further shop tabs that list the item, besides category.';
 comment on column public.items.attributes is 'Array of {"label": string, "value": string}.';
 comment on column public.items.passives is 'Array of {"name": string, "description": string}.';
 comment on column public.items.builds_into is 'Soft reference to items.id (no foreign key).';
 
 create index items_category_idx on public.items (category);
+create index items_other_categories_idx on public.items using gin (other_categories);
 create trigger items_set_updated_at before update on public.items
   for each row execute function public.set_updated_at();
 
@@ -168,7 +173,8 @@ create table public.emblems (
   updated_at timestamptz not null default now()
 );
 
-comment on table public.emblems is 'Emblem sets.';
+comment on table public.emblems is
+  'Emblem sets from the Liquipedia Mobile Legends wiki (CC BY-SA 3.0). id is a stable hash of the slug.';
 comment on column public.emblems.recommended_roles is 'Curated fallback when build data is missing.';
 
 create trigger emblems_set_updated_at before update on public.emblems
@@ -176,6 +182,7 @@ create trigger emblems_set_updated_at before update on public.emblems
 
 create table public.emblem_talents (
   id integer primary key,
+  emblem_id integer references public.emblems (id) on delete set null,
   name text not null,
   tier smallint not null check (tier between 1 and 3),
   description text not null,
@@ -186,8 +193,12 @@ create table public.emblem_talents (
 );
 
 comment on table public.emblem_talents is
-  'Talents are shared by every emblem set in the current game, so there is no foreign key to emblems.';
+  'Emblem talents from the Liquipedia Mobile Legends wiki (CC BY-SA 3.0). id is a stable hash of the slug.';
+comment on column public.emblem_talents.emblem_id is
+  'The set that offers the talent. Talents of the Basic Common set are offered by every set.';
+comment on column public.emblem_talents.tier is '1 and 2: standard talents (attribute, then effect); 3: core talent.';
 
+create index emblem_talents_emblem_id_idx on public.emblem_talents (emblem_id);
 create index emblem_talents_tier_idx on public.emblem_talents (tier);
 create trigger emblem_talents_set_updated_at before update on public.emblem_talents
   for each row execute function public.set_updated_at();

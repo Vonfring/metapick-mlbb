@@ -1,0 +1,2886 @@
+[
+ {
+  "id": 3948,
+  "slug": "power-potion",
+  "name": "Power Potion",
+  "category": "attack",
+  "other_categories": [],
+  "tier": null,
+  "price": 1500,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Increase Power",
+    "description": "Upon purchase, grants 30 Physical Attack and 15% Lifesteal for 120s"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3947,
+  "slug": "dagger",
+  "name": "Dagger",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 1,
+  "price": 250,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+15"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3942,
+   3941,
+   3940,
+   3938,
+   3937,
+   3930,
+   3922,
+   3934,
+   3932,
+   3920
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 11201,
+  "slug": "expert-gloves",
+  "name": "Expert Gloves",
+  "category": "attack",
+  "other_categories": [
+   "magic"
+  ],
+  "tier": 1,
+  "price": 500,
+  "attributes": [
+   {
+    "label": "Adaptive Attack",
+    "value": "+30"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   11200,
+   3974,
+   3951,
+   4215
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3943,
+  "slug": "iron-hunting-bow",
+  "name": "Iron Hunting Bow",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 1,
+  "price": 450,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+10"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+5"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3920,
+   3932,
+   8636
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3945,
+  "slug": "javelin",
+  "name": "Javelin",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 1,
+  "price": 320,
+  "attributes": [
+   {
+    "label": "Crit Chance",
+    "value": "+8"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3939,
+   3929,
+   8636
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3946,
+  "slug": "knife",
+  "name": "Knife",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 1,
+  "price": 280,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+10"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3942,
+   6075,
+   3939,
+   3936,
+   4003,
+   3927
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3944,
+  "slug": "vampire-mallet",
+  "name": "Vampire Mallet",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 1,
+  "price": 400,
+  "attributes": [
+   {
+    "label": "Lifesteal",
+    "value": "+8"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+8"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3930,
+   3928,
+   3936,
+   3933,
+   3918,
+   11198
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3938,
+  "slug": "fury-hammer",
+  "name": "Fury Hammer",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 830,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+35"
+   },
+   {
+    "label": "Physical Penetration (unique)",
+    "value": "+12"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3922,
+   3920
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3941,
+  "slug": "legion-sword",
+  "name": "Legion Sword",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 910,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+60"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3931,
+   3929,
+   8636,
+   3921,
+   703
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3937,
+  "slug": "magic-blade",
+  "name": "Magic Blade",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 1050,
+  "attributes": [
+   {
+    "label": "Lifesteal",
+    "value": "+10"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+35"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Lifeline",
+    "description": "When taking damage that reduces HP below 30%, gains a (+60*Hero Level) shield (increases with level) and 50% Movement Speed that rapidly decays over 3 seconds. This effect has a 60 seconds cooldown."
+   }
+  ],
+  "builds_into": [
+   3918
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3940,
+  "slug": "ogre-tomahawk",
+  "name": "Ogre Tomahawk",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 650,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+230"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+25"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3928,
+   3932,
+   3922
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3942,
+  "slug": "regular-spear",
+  "name": "Regular Spear",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 600,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+10"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+20"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3936,
+   3935,
+   3934,
+   3933,
+   703,
+   11198
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3939,
+  "slug": "rogue-meteor",
+  "name": "Rogue Meteor",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 900,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+15"
+   },
+   {
+    "label": "Crit Chance",
+    "value": "+10"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3927,
+   3930
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 6075,
+  "slug": "swift-crossbow",
+  "name": "Swift Crossbow",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 2,
+  "price": 1000,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Crossbow",
+    "description": "Each Basic Attack deals 40 extra Adaptive Damage."
+   },
+   {
+    "name": "Impulse",
+    "description": "Basic Attacks grant 3% extra Attack Speed for 3s, capped at 5 stacks."
+   }
+  ],
+  "builds_into": [
+   3935,
+   3973
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3929,
+  "slug": "berserker-s-fury",
+  "name": "Berserker's Fury",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2390,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+65"
+   },
+   {
+    "label": "Crit Chance",
+    "value": "+25"
+   },
+   {
+    "label": "Critical Damage (unique)",
+    "value": "+40%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Doom",
+    "description": "Critical strikes grant 5% extra Physical Attack for 2s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3921,
+  "slug": "blade-of-despair",
+  "name": "Blade of Despair",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 3010,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+160"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Despair",
+    "description": "Dealing damage to non-Minion enemies below 50% HP grants 25% extra Physical Attack for 2 seconds (takes effect before the damage is dealt)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3922,
+  "slug": "blade-of-the-heptaseas",
+  "name": "Blade of the Heptaseas",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1950,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+250"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+70"
+   },
+   {
+    "label": "Physical Penetration (unique)",
+    "value": "+15"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Ambush",
+    "description": "If no damage is taken or dealt within 5s, the next Basic Attack will deal extra Physical Damage equal to 160 plus 40% Physical Attack, and inflict 40% slow effects upon the target for 1.5s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3935,
+  "slug": "corrosion-scythe",
+  "name": "Corrosion Scythe",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2050,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+30"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+30"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Corrosion",
+    "description": "Basic Attacks gain 80 extra Physical Damage and slow the target by 8% (halved for ranged Basic Attacks) for 1.5s. Stacks up to 5 times."
+   },
+   {
+    "name": "Impulse",
+    "description": "Basic Attacks grant 6% extra Attack Speed for 3s, capped at 5 stacks."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3936,
+  "slug": "demon-hunter-sword",
+  "name": "Demon Hunter Sword",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2180,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+35"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Devour",
+    "description": "Basic attacks deal 8% of the target's current HP as extra physical damage (capped at 60 against minions)."
+   },
+   {
+    "name": "Devour",
+    "description": "Each Basic Attack recovers (20+4* Hero Level) HP, and counts as an Attack Effect"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3928,
+  "slug": "endless-battle",
+  "name": "Endless Battle",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2330,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+250"
+   },
+   {
+    "label": "Mana Regen",
+    "value": "+5"
+   },
+   {
+    "label": "Hybrid Lifesteal",
+    "value": "+8"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+60"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Divine Justice",
+    "description": "After casting a skill, the next Basic Attack within 3 seconds deals 60% Physical Attack as extra True Damage (1.5 seconds cooldown)."
+   },
+   {
+    "name": "Chase Fate",
+    "description": "Triggering Divine Justice grants 10% extra Movement Speed."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3951,
+  "slug": "fleeting-time",
+  "name": "Fleeting Time",
+  "category": "attack",
+  "other_categories": [
+   "magic",
+   "defense"
+  ],
+  "tier": 3,
+  "price": 2050,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+600"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+30"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+15"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Timestream",
+    "description": "Hero kills or assists reduce the Ultimate's current cooldown by 30%."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3934,
+  "slug": "golden-staff",
+  "name": "Golden Staff",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2000,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+15"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+55"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Swift",
+    "description": "Every 1% of critical chance gained will increase attack speed by 1%."
+   },
+   {
+    "name": "Endless Strike",
+    "description": "After every 2 non-critical Basic Attacks. the Attack Speed of the next Basic Attack is increased by 80% (and Attack Speed cap is increased to 500%) and triggers Attack Effects an additional 2 time(s)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 8636,
+  "slug": "great-dragon-spear",
+  "name": "Great Dragon Spear",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2140,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+70"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   },
+   {
+    "label": "Crit Chance",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Supreme Warrior",
+    "description": "After casting an Ultimate, increase Movement Speed by 30% for 7.5s. This effect has a 15s cooldown."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3930,
+  "slug": "haas-s-claws",
+  "name": "Haas's Claws",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2020,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+15"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+40"
+   },
+   {
+    "label": "Crit Chance",
+    "value": "+20"
+   },
+   {
+    "label": "Lifesteal (unique)",
+    "value": "+20%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Frenzy",
+    "description": "Critical strikes grant 20% extra Attack Speed for 2 seconds."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3920,
+  "slug": "hunter-strike",
+  "name": "Hunter Strike",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2010,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+80"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   },
+   {
+    "label": "Physical Penetration (unique)",
+    "value": "+15"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Retribution",
+    "description": "Dealing damage to an enemy hero or Creep for 5 times in a row and grants 50% extra Movement Speed that decays rapidly over 3s. This effect has 8s cooldown."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 11198,
+  "slug": "malefic-gun",
+  "name": "Malefic Gun",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2120,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Armor Buster",
+    "description": "Increase Physical Penetration by 30%"
+   },
+   {
+    "name": "Malefic Energy",
+    "description": "Increases Basic Attack range by 12%. When hitting a target, gains 10% Movement Speed for 0.5 seconds."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3931,
+  "slug": "malefic-roar",
+  "name": "Malefic Roar",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2060,
+  "attributes": [
+   {
+    "label": "Physical Attack",
+    "value": "+60"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Armor Buster",
+    "description": "When attacking an enemy, gains 0.1% extra Physical Penetration for each point of the enemy's Physical Defense, capped at 30%."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3918,
+  "slug": "rose-gold-meteor",
+  "name": "Rose Gold Meteor",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1820,
+  "attributes": [
+   {
+    "label": "Lifesteal",
+    "value": "+10"
+   },
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+30"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Dragon Scale",
+    "description": "Every 4 extra Physical Attack increases Hybrid Defense by 1, up to 50 (effect is halved if Main Role is not Fighter)."
+   },
+   {
+    "name": "Lifeline",
+    "description": "When taking damage that reduces HP below 30%, gains a (120*Hero Level) shield (increases with level) and 50% Movement Speed that rapidly decays over 3 seconds. This effect has a 60 seconds cooldown."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 703,
+  "slug": "sea-halberd",
+  "name": "Sea Halberd",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2050,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+80"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Lifebane",
+    "description": "Dealing damage to a target will reduce the Shield and HP Regen effects on them to 60% of normal for 3s."
+   },
+   {
+    "name": "Punish",
+    "description": "Increase damage by 8% against enemy heroes with higher extra HP."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 11200,
+  "slug": "sky-piercer",
+  "name": "Sky Piercer",
+  "category": "attack",
+  "other_categories": [
+   "magic"
+  ],
+  "tier": 3,
+  "price": 1500,
+  "attributes": [
+   {
+    "label": "Adaptive Attack",
+    "value": "+60"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+15"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Lethality",
+    "description": "After dealing damage to an enemy hero, executes the hero if their HP is lower than 4%. Gains 10 stack(s) of Lifebane for each kill and loses 30% of current stack(s) for each death. Each stack of Lifebane increases the HP threshold of the execute effect by 0.1%, stacking up 80 times"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3932,
+  "slug": "war-axe",
+  "name": "War Axe",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2100,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+400"
+   },
+   {
+    "label": "Spell Vamp",
+    "value": "+8"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+35"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Fighting Spirit",
+    "description": "Attacks grants 12 extra Physical Attack per second for 4 seconds, up to 6 stacks. Deals 10% extra True Damage based on the damage dealt (no damage reduction counted) at full stacks. (Marksmen, Mages, and Supports only receive 50% of these stacked effects.)"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3933,
+  "slug": "wind-of-nature",
+  "name": "Wind of Nature",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1910,
+  "attributes": [
+   {
+    "label": "Lifesteal",
+    "value": "+10"
+   },
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   },
+   {
+    "label": "Physical Attack",
+    "value": "+30"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Wind Chant (Active)",
+    "description": "Become immune to all Physical Damage for 2s. (Duration is halved when used by non-marksmen)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3927,
+  "slug": "windtalker",
+  "name": "Windtalker",
+  "category": "attack",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1880,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+35"
+   },
+   {
+    "label": "Crit Chance",
+    "value": "+20"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Typhoon",
+    "description": "Every 5–2 seconds (reduced by 0.2 seconds for each Basic Attack), the next Basic Attack will hit up to 3 enemy units for 150–362 Magic Damage. (This attack can critically strike and the damage increases to 200% against Minions.)"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3974,
+  "slug": "winter-crown",
+  "name": "Winter Crown",
+  "category": "attack",
+  "other_categories": [
+   "magic"
+  ],
+  "tier": 3,
+  "price": 1910,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+400"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+45"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+5"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Frozen (Active)",
+    "description": "Become frozen, untargetable, and immune to damage for 2 seconds (100 seconds cooldown). Cannot move or cast skills while frozen, but skills already cast won't be interrupted."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 8968,
+  "slug": "flower-of-hope",
+  "name": "Flower of Hope",
+  "category": "magic",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [
+   {
+    "label": "Adaptive Attack",
+    "value": "+5%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Flower of Hope",
+    "description": "Every 6s, a skill or Basic Attack deals 60(+30% Total Physical Attack)(+30% Total Magic Power) Magic Damage."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 8967,
+  "slug": "lantern-of-hope",
+  "name": "Lantern of Hope",
+  "category": "magic",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+20"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+4%"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+2"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Lantern of Hope",
+    "description": "The equipment's attributes scale with hero level."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3986,
+  "slug": "magic-potion",
+  "name": "Magic Potion",
+  "category": "magic",
+  "other_categories": [],
+  "tier": null,
+  "price": 1500,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Increase Power",
+    "description": "Automatically used after purchasing, increases Magic Power by 30 and Cooldown Reduction by 10% for 120s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3982,
+  "slug": "book-of-sages",
+  "name": "Book of Sages",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 1,
+  "price": 450,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+8"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+5"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3975,
+   3973,
+   11202,
+   3979,
+   3950,
+   8965
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3983,
+  "slug": "magic-necklace",
+  "name": "Magic Necklace",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 1,
+  "price": 120,
+  "attributes": [
+   {
+    "label": "Mana Regen",
+    "value": "+2"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3978,
+   3975,
+   3990
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3980,
+  "slug": "magic-wand",
+  "name": "Magic Wand",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 1,
+  "price": 820,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+45"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3970,
+   3969,
+   3957,
+   3956,
+   8966,
+   3953,
+   3952,
+   11202,
+   3950,
+   3949,
+   8965
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3985,
+  "slug": "mystery-codex",
+  "name": "Mystery Codex",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 1,
+  "price": 300,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+15"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3981,
+   3980,
+   3979,
+   3977,
+   3955,
+   11202
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3984,
+  "slug": "power-crystal",
+  "name": "Power Crystal",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 1,
+  "price": 220,
+  "attributes": [
+   {
+    "label": "Mana",
+    "value": "+280"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3976,
+   4211,
+   3950
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3978,
+  "slug": "azure-blade",
+  "name": "Azure Blade",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 2,
+  "price": 600,
+  "attributes": [
+   {
+    "label": "Mana Regen",
+    "value": "+5"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+5"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Judgement",
+    "description": "In 3s after using the skill, the caster's next Basic Attack will deal additional 50 True Damage with a cooldown of 1.5s."
+   }
+  ],
+  "builds_into": [
+   3928,
+   8966,
+   4216
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3976,
+  "slug": "elegant-gem",
+  "name": "Elegant Gem",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 2,
+  "price": 700,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+300"
+   },
+   {
+    "label": "Mana",
+    "value": "+380"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Gift",
+    "description": "When HP drops below 50%, recovers 15% of HP over the next 3 seconds. When Mana drops below 50%, restores 15% of Mana over the next 3 seconds. Cooldown: 60 seconds."
+   }
+  ],
+  "builds_into": [
+   3953
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3977,
+  "slug": "exotic-veil",
+  "name": "Exotic Veil",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 2,
+  "price": 600,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+30"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3955,
+   3949
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3981,
+  "slug": "mystic-container",
+  "name": "Mystic Container",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 2,
+  "price": 500,
+  "attributes": [
+   {
+    "label": "Spell Vamp",
+    "value": "+8"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+15"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3957,
+   3956,
+   8966
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3979,
+  "slug": "tome-of-evil",
+  "name": "Tome of Evil",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 2,
+  "price": 950,
+  "attributes": [
+   {
+    "label": "Mana Regen",
+    "value": "+4"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+35"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+8"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3975
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 3952,
+  "slug": "blood-wings",
+  "name": "Blood Wings",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2100,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+90"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Guard",
+    "description": "Gain a 800 (+100 Total Magic Power) Shield that will regenerate 20s after being damaged. the shield also grants 30 Movement Speed while it lasts and 150 Movement Speed for 1s after it breaks"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3953,
+  "slug": "clock-of-destiny",
+  "name": "Clock of Destiny",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2030,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+400"
+   },
+   {
+    "label": "Mana",
+    "value": "+400"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+45"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Destiny",
+    "description": "Gains 4.5(+0.5*Hero Level) Hybrid Defense for 5 seconds when dealing Magic Damage to enemy heroes, stacking up to 6 times (can gain 1 stack every 0.4 second)."
+   },
+   {
+    "name": "Gift",
+    "description": "When HP drops below 50%, recovers 15% of HP over the next 3 seconds. When Mana drops below 50%, restores 15% of Mana over the next 3 seconds. Cooldown: 60s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3957,
+  "slug": "concentrated-energy",
+  "name": "Concentrated Energy",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2020,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+400"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+70"
+   },
+   {
+    "label": "Hybrid Lifesteal (unique)",
+    "value": "+20%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Recharge",
+    "description": "Increases Magic Power by 5 after dealing Magic Damage (this effect stacks up to 6 times and can only gain 1 stack every 0.4s). When reaching full stacks, increases Magic Damage by 12% for 3s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3970,
+  "slug": "divine-glaive",
+  "name": "Divine Glaive",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1970,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+60"
+   },
+   {
+    "label": "Magic Penetration (unique)",
+    "value": "+40%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Spellbreaker",
+    "description": "When attacking an enemy, gains 0.1% extra Magic Penetration for each point of the enemy's Magic Defense, capped at 20%."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3975,
+  "slug": "enchanted-talisman",
+  "name": "Enchanted Talisman",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1870,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+250"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+50"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Mana Spring",
+    "description": "Regenerates 15% of Max Mana every 10s in total."
+   },
+   {
+    "name": "Magic Mastery",
+    "description": "Max CD Reduction increased by 5%."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3973,
+  "slug": "feather-of-heaven",
+  "name": "Feather of Heaven",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2030,
+  "attributes": [
+   {
+    "label": "Lifesteal",
+    "value": "+10"
+   },
+   {
+    "label": "Attack Speed",
+    "value": "+20"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+55"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+5"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Affliction",
+    "description": "Basic Attacks deal extra 50 (+30% Magic Power) Magic Damage."
+   },
+   {
+    "name": "Impulse",
+    "description": "Basic Attacks grant 6% extra Attack Speed for 3s, capped at 5 stacks"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 8965,
+  "slug": "flask-of-the-oasis",
+  "name": "Flask of the Oasis",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1850,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+300"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+60"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   },
+   {
+    "label": "Healing Effect (unique)",
+    "value": "+12%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Blessing",
+    "description": "When casting a healing or shielding skill, if the target's HP is below 35% or falls below 35% within 3 seconds, they will get a (100*Hero Level)) that lasts 3 seconds. When this effect triggers, it also reduces the cooldown of the caster's skills by 2 seconds. (This effect can only trigger once every 60 seconds on the same target, and will not trigger on self-onl healing and shield skills.)"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3949,
+  "slug": "genius-wand",
+  "name": "Genius Wand",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2000,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+75"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   },
+   {
+    "label": "Magic Penetration (unique)",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Magic",
+    "description": "Magic: Dealing damage to enemy heroes will reduce their Magic Defense by 3+(0.3*Hero Level) for 2 seconds. Stacks up to 3 times."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3955,
+  "slug": "glowing-wand",
+  "name": "Glowing Wand",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2150,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+400"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+75"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Scorch",
+    "description": "Burn target for 3s, dealing Magic Damage equal to 1.5% of the target's Max HP per second."
+   },
+   {
+    "name": "Lifebane",
+    "description": "Upon dealing damage to the target, reduces Shield and HP Regen of the target by 50% for 3 seconds."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3969,
+  "slug": "holy-crystal",
+  "name": "Holy Crystal",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 3000,
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+185"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Mystery",
+    "description": "Gains 21%-35% extra Magic Power(Scales with level)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3956,
+  "slug": "ice-queen-wand",
+  "name": "Ice Queen Wand",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2040,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+300"
+   },
+   {
+    "label": "Spell Vamp",
+    "value": "+10"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+75"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+7%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Ice Bound",
+    "description": "When skill deals damage to an enemy hero, it will slow them by 10% for 2s (stacks up to 3 times). This effect has a 1s cooldown"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3950,
+  "slug": "lightning-truncheon",
+  "name": "Lightning Truncheon",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2250,
+  "attributes": [
+   {
+    "label": "Mana",
+    "value": "+400"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+75"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Resonate",
+    "description": "Every 6 seconds, the next skill that deals damage will resonate, dealing (120% Magic Power) extra Magic Damage to up to 3 enemies and speeding up the hero by 30%, which decays over 2 seconds."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 8966,
+  "slug": "starlium-scythe",
+  "name": "Starlium Scythe",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2220,
+  "attributes": [
+   {
+    "label": "Mana Regen",
+    "value": "+6"
+   },
+   {
+    "label": "Hybrid Lifesteal",
+    "value": "+8"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+70"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Crisis",
+    "description": "In 3s after using the skill, the caster's next Basic Attack will apply additional 100 (+100% Total Magic Power) True Damage with a cooldown of 1.5s. Then briefly gains 10% Movement Speed"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 11202,
+  "slug": "wishing-lantern",
+  "name": "Wishing Lantern",
+  "category": "magic",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2250,
+  "attributes": [
+   {
+    "label": "Mana",
+    "value": "+400"
+   },
+   {
+    "label": "Magic Power",
+    "value": "+75"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Butterfly Goddess",
+    "description": "For every 800 Magic Damage dealt to an enemy hero (calculated before damage reduction). a Butterfly Goddess is summoned to attack the enemy hero, dealing Magic Damage equal to 10% of their current HP."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4060,
+  "slug": "rock-potion",
+  "name": "Rock Potion",
+  "category": "defense",
+  "other_categories": [],
+  "tier": null,
+  "price": 1500,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Increase Power",
+    "description": "Upon purchase, grants 500 extra Max HP and 25% Resilience for 120s"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4206,
+  "slug": "healing-necklace",
+  "name": "Healing Necklace",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 1,
+  "price": 140,
+  "attributes": [
+   {
+    "label": "HP Regen",
+    "value": "+4"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4203,
+   4195
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4207,
+  "slug": "hero-s-ring",
+  "name": "Hero's Ring",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 1,
+  "price": 450,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+150"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+5"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4201,
+   3932,
+   4215,
+   4197,
+   3951,
+   3974
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4204,
+  "slug": "leather-jerkin",
+  "name": "Leather Jerkin",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 1,
+  "price": 220,
+  "attributes": [
+   {
+    "label": "Physical Defense",
+    "value": "+14"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4211,
+   4212,
+   4213,
+   4001,
+   4214,
+   4198,
+   4216,
+   4197
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4205,
+  "slug": "magic-resist-cloak",
+  "name": "Magic Resist Cloak",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 1,
+  "price": 220,
+  "attributes": [
+   {
+    "label": "Magic Defense",
+    "value": "+14"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   3937,
+   4210,
+   4007,
+   4217,
+   4195,
+   4216
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4062,
+  "slug": "vitality-crystal",
+  "name": "Vitality Crystal",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 1,
+  "price": 300,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+230"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4215,
+   3957,
+   8965,
+   3955,
+   4200,
+   4201,
+   4197,
+   3974,
+   4208,
+   4209,
+   4210,
+   3976,
+   3940
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4208,
+  "slug": "ares-belt",
+  "name": "Ares Belt",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 2,
+  "price": 900,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+770"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4203,
+   4202,
+   4198,
+   4216,
+   4215
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4211,
+  "slug": "black-ice-shield",
+  "name": "Black Ice Shield",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 2,
+  "price": 880,
+  "attributes": [
+   {
+    "label": "Mana",
+    "value": "+400"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+18"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Arctic Cold",
+    "description": "Taking damage will reduce the Attack Speed of the attacker to 90% of normal for 1s."
+   }
+  ],
+  "builds_into": [
+   4199
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4212,
+  "slug": "dreadnaught-armor",
+  "name": "Dreadnaught Armor",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 2,
+  "price": 730,
+  "attributes": [
+   {
+    "label": "Physical Defense",
+    "value": "+30"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Deter",
+    "description": "When attacked by an enemy hero's skill, reduces their Physical ATK by 4% for 2s (up to 3 stacks)."
+   }
+  ],
+  "builds_into": [
+   4202
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4209,
+  "slug": "molten-essence",
+  "name": "Molten Essence",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 2,
+  "price": 800,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+540"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Burning Soul",
+    "description": "Deals Magic Damage equal to 0.6% of hero's Max HP per second to nearby enemies. This damage is increased by 140% to 350% against creeps and minions (scales with level)."
+   }
+  ],
+  "builds_into": [
+   4217
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4210,
+  "slug": "silence-robe",
+  "name": "Silence Robe",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 2,
+  "price": 1020,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+540"
+   },
+   {
+    "label": "Magic Defense",
+    "value": "+23"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4200,
+   4195
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4213,
+  "slug": "steel-legplates",
+  "name": "Steel Legplates",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 2,
+  "price": 630,
+  "attributes": [
+   {
+    "label": "Physical Defense",
+    "value": "+35"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4214,
+   4199
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4202,
+  "slug": "antique-cuirass",
+  "name": "Antique Cuirass",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2170,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+920"
+   },
+   {
+    "label": "HP Regen",
+    "value": "+4"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Deter",
+    "description": "When hit by a skill, reduces the attacker's Physical Damage by 6% for 2s (this effect stacks up to 3 times)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4200,
+  "slug": "athena-s-shield",
+  "name": "Athena's Shield",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2150,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+900"
+   },
+   {
+    "label": "HP Regen",
+    "value": "+2"
+   },
+   {
+    "label": "Magic Defense",
+    "value": "+48"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Shield",
+    "description": "Upon taking Magic Damage, gains 25% Magic Dmage Reduction for 3s (applies before taking damage). Regains this effect 5s after leaving combat."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4214,
+  "slug": "blade-armor",
+  "name": "Blade Armor",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1910,
+  "attributes": [
+   {
+    "label": "Physical Defense",
+    "value": "+70"
+   },
+   {
+    "label": "Critical Damage Reduction (unique)",
+    "value": "+20%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Bladed Armor",
+    "description": "When struck by a Basic Attack, deals Physical Damage equal to 30% of the incoming damage (calculated before Damage Reduction) plus 20% of the hero's Physical Defense to the attacker and slows them by 15% for 1s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4197,
+  "slug": "brute-force-breastplate",
+  "name": "Brute Force Breastplate",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1870,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+600"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+20"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Brute Force",
+    "description": "Each second after dealing damage, gain 6 Adaptive Attack and 2% extra Movement Speed for 4 seconds, up to 6 stacks. Gain 15% extra Control Duration Reduction at full stacks."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 16869,
+  "slug": "chastise-pauldron",
+  "name": "Chastise Pauldron",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2100,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+1800"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Chastise",
+    "description": "Taking damage will reduce the Attack Speed and Attack Speed cap of the attack to 75% of normal for 2s."
+   },
+   {
+    "name": "Redemption",
+    "description": "When icoming damage reduces HP below 30%, recover 20% Max HP over the next 2s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4217,
+  "slug": "cursed-helmet",
+  "name": "Cursed Helmet",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1910,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+1200"
+   },
+   {
+    "label": "Magic Defense",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Burning Soul",
+    "description": "Deals Magic Damage equal to 1.2% of hero's Max HP per second to nearby enemies. This damage is increased by 125→350 against creeps and minions (scales with level)."
+   },
+   {
+    "name": "Curse",
+    "description": "Dealing damage with Burning Soul will reduce the Target's Hybrid Defense by 3→9 for 3 seconds."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4199,
+  "slug": "dominance-ice",
+  "name": "Dominance Ice",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2010,
+  "attributes": [
+   {
+    "label": "Mana",
+    "value": "+500"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+55"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+5%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Arctic Cold",
+    "description": "Taking damage will reduce the Attack Speed of the attacker to 80% of normal for 1s."
+   },
+   {
+    "name": "Lifebane",
+    "description": "Taking damage will reduce the Shield and HP Regen effects of the attacker to 50% of normal for 1s."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4203,
+  "slug": "guardian-helmet",
+  "name": "Guardian Helmet",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2200,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+1550"
+   },
+   {
+    "label": "HP Regen",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Recovery",
+    "description": "Regenerates 2.5% Max HP per second (reduced to 0.5% Max HP per second over 5s after taking damage)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4198,
+  "slug": "immortality",
+  "name": "Immortality",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2120,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+800"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+15"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Immortal",
+    "description": "Revives 2.5s after death and gaining 16% Max HP and 220-1200 shield (scales with level) that lasts for 3s. (210 cooldown)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4201,
+  "slug": "oracle",
+  "name": "Oracle",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1860,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+850"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+20"
+   },
+   {
+    "label": "Magic Defense",
+    "value": "+20"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Bless",
+    "description": "Received Shield and HP Regen effects are increased by 30%."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4215,
+  "slug": "queen-s-wings",
+  "name": "Queen's Wings",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 2250,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+600"
+   },
+   {
+    "label": "Spell Vamp",
+    "value": "+10"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+40"
+   },
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Demonize",
+    "description": "When HP drops below 40%, gains 30% Damage Reduction for 3 seconds and reduces the skill cooldown by 2 seconds. This effect has a 60 seconds cooldown"
+   },
+   {
+    "name": "Defiance",
+    "description": "For every 1% HP lost, damage is increased by 0.25%, up to 15%"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4195,
+  "slug": "radiant-armor",
+  "name": "Radiant Armor",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1880,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+950"
+   },
+   {
+    "label": "HP Regen",
+    "value": "+12"
+   },
+   {
+    "label": "Magic Defense",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Holy Blessing",
+    "description": "Taking Magic Damage grants 6-20 Magic Defense (scales with level) for 5s, up to 6 stacks (1 stack only every 0.6s)."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4216,
+  "slug": "thunder-belt",
+  "name": "Thunder Belt",
+  "category": "defense",
+  "other_categories": [],
+  "tier": 3,
+  "price": 1820,
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+800"
+   },
+   {
+    "label": "Physical Defense",
+    "value": "+15"
+   },
+   {
+    "label": "Magic Defense",
+    "value": "+15"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+20"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Thunderbolt",
+    "description": "Every 4 seconds, the next Basic Attack deals 50 (+100% Total Physical Defense) (+100% Total Magic Defense) extra True Damage to the target and enemies around them, and briefly slows them by 99%. Hybrid Defense permanently increases by 1 each time the attack hits an enemy hero. (This effect is reduced to 50% for Marksmen and Mages)"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3987,
+  "slug": "allow-throw",
+  "name": "Allow Throw",
+  "category": "movement",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Trust",
+    "description": "Purchase to allow your Jawhead teammate to fling you."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3989,
+  "slug": "broken-heart",
+  "name": "Broken Heart",
+  "category": "movement",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Heart Broken",
+    "description": "After purchasing, Cecilion will not be able to use Moonlit Waltz on you during this game."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3988,
+  "slug": "throw-forbidden",
+  "name": "Throw Forbidden",
+  "category": "movement",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Heavy Mountain",
+    "description": "Become immunte to allied Jawhead's Ejector in this match."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4008,
+  "slug": "boots",
+  "name": "Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 1,
+  "price": 250,
+  "attributes": [
+   {
+    "label": "Movement Speed",
+    "value": "+20"
+   }
+  ],
+  "passives": [],
+  "builds_into": [
+   4002,
+   4003,
+   4004,
+   4007,
+   4001
+  ],
+  "icon_url": null
+ },
+ {
+  "id": 4004,
+  "slug": "arcane-boots",
+  "name": "Arcane Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 690,
+  "attributes": [
+   {
+    "label": "Magic Penetration",
+    "value": "+10"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+40"
+   }
+  ],
+  "passives": [],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 3990,
+  "slug": "demon-boots",
+  "name": "Demon Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 720,
+  "attributes": [
+   {
+    "label": "Mana Regen",
+    "value": "+10"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Mysticism",
+    "description": "Getting a kill or assist on an enemy Minion will restore 4% Mana. (An asisst occurs when a Minion dies within 2s after taking damage from the hero.)"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4006,
+  "slug": "magic-boots",
+  "name": "Magic Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 710,
+  "attributes": [
+   {
+    "label": "CD Reduction",
+    "value": "+10"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+40"
+   }
+  ],
+  "passives": [],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4002,
+  "slug": "rapid-boots",
+  "name": "Rapid Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 750,
+  "attributes": [
+   {
+    "label": "Movement Speed",
+    "value": "+65"
+   },
+   {
+    "label": "Slow Reduction",
+    "value": "+35%"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Side Effect",
+    "description": "Loses 25 Movement Speed for 5s upon dealing or taking damage"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4003,
+  "slug": "swift-boots",
+  "name": "Swift Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 710,
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+15"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+40"
+   }
+  ],
+  "passives": [],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4007,
+  "slug": "tough-boots",
+  "name": "Tough Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 700,
+  "attributes": [
+   {
+    "label": "Magic Defense",
+    "value": "+18"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Fortitude",
+    "description": "CC and Slow Duration Reduced by 30%"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4001,
+  "slug": "warrior-boots",
+  "name": "Warrior Boots",
+  "category": "movement",
+  "other_categories": [],
+  "tier": 3,
+  "price": 720,
+  "attributes": [
+   {
+    "label": "Physical Defense",
+    "value": "+18"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+40"
+   }
+  ],
+  "passives": [
+   {
+    "name": "Valor",
+    "description": "Gain 4 extra Physical Defense for 3s when taking Physical Damage, up to 20"
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4228,
+  "slug": "bloody-retribution",
+  "name": "Bloody Retribution",
+  "category": "jungle",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Bloody Retribution (Active)",
+    "description": "Retribution damage against creeps and minions is increased to 150%. When cast on an enemy hero, deals them 100 True Damage and steals HP equal to 250 plus 20% of the caster's extra HP from them for 4 seconds.\nRetribution is upgraded when the total number of creep kills, hero kills, and assists reaches 5."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4226,
+  "slug": "flame-retribution",
+  "name": "Flame Retribution",
+  "category": "jungle",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Flame Retribution (Active)",
+    "description": "Retribution damage against creeps and minions is increased to 150%. When cast on an enemy hero, deals them 100 True Damage and steals 58-100 Physical Attack and Magic Power (scales with level) from them for 4 seconds.\nRetribution is upgraded when the total number of creep kills, hero kills, and assists reaches 5."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4227,
+  "slug": "ice-retribution",
+  "name": "Ice Retribution",
+  "category": "jungle",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Ice Retribution (Active)",
+    "description": "Retribution damage against creeps and minions is increased to 150%. When cast on an enemy hero, deals them 100 True Damage and steals 72-100 Movement Speed (scales with level) from them for 4 seconds.\nRetribution is upgraded when the total number of creep kills, hero kills, and assists reaches 5."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4221,
+  "slug": "conceal",
+  "name": "Conceal",
+  "category": "roam",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Conceal (Active)",
+    "description": "Conceals nearby allied heroes (including self) and grants them 24%-60% extra Movement Speed (scale with Gold from Thriving) for 5 seconds or until they deal or take damage.\nHeroes with this Blessing no longer share minion and creep rewards with allied heroes and need to accumulate 600 Gold from Thriving (up to 1500 Gold) to unlock this skill."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4225,
+  "slug": "dire-hit",
+  "name": "Dire Hit",
+  "category": "roam",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Dire Hit",
+    "description": "Every 30 seconds, the next attack against enemy heroes below 35% HP deals 7%-18% of their Max HP (scales with Gold from Thriving) as extra Hybrid Damage (half Magic and half Physical)\nHeroes with this Blessing no longer share minion and creep rewards with allied heroes and need to accumulate 600 Gold from Thriving (up to 1500 Gold) to unlock this skill."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4223,
+  "slug": "encourage",
+  "name": "Encourage",
+  "category": "roam",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Encourage",
+    "description": "Grants nearby allied heroes (including self) 12-30 extra Physical Attack and Magic Power (scales with Gold from Thriving) and 15% extra Attack Speed.\nHeroes with this Blessing no longer share minion and creep rewards with allied heroes and need to accumulate 600 Gold from Thriving (up to 1500 Gold) to unlock this skill."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ },
+ {
+  "id": 4224,
+  "slug": "favor",
+  "name": "Favor",
+  "category": "roam",
+  "other_categories": [],
+  "tier": null,
+  "price": 0,
+  "attributes": [],
+  "passives": [
+   {
+    "name": "Favor",
+    "description": "Every 10 seconds, the next healing or shield skill restores an extra 240-600 HP (scales with Gold from Thriving) for the allied hero with the lowest HP (including self) within 5 units. Skills that only take effect on self cannot trigger this effect.\nHeroes with this Blessing no longer share minion and creep rewards with allied heroes and need to accumulate 600 Gold from Thriving (up to 1500 Gold) to unlock this skill."
+   }
+  ],
+  "builds_into": [],
+  "icon_url": null
+ }
+]

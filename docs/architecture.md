@@ -6,9 +6,21 @@ Status: draft for review. Update this file whenever hosting, data flow, or secre
 
 - Free tier only: Vercel Hobby, Supabase Free, GitHub Actions.
 - Pages are static or ISR. A visitor never triggers a database query directly; a page regenerates at most every few hours, or right after a data update.
-- No Next.js image optimization: hero, item, and emblem images load from the source URL with `unoptimized`.
+- No Next.js image optimization: hero images load from the official CDN URL with `unoptimized`. Items, emblems and spells have no image source yet and render as styled monograms.
 - The data updater runs in GitHub Actions, never on Vercel.
 - The browser never talks to Supabase. This changes only when Supabase Auth is added later.
+
+## Data sources
+
+| Data | Source | License and terms | Refresh |
+|---|---|---|---|
+| Heroes, skills, official relations | Official website API (`api.gms.moontontech.com`, the low-code backend of mobilelegends.com) | Moonton content, shown with attribution and the "Not affiliated" disclaimer | Weekly (catalog job) |
+| Win, pick and ban rates; counters and synergies | Same API; it serves CDN files the site config refreshes every 360 minutes | Same | Daily (stats job) |
+| Items, emblems, talents, battle spells | [Liquipedia Mobile Legends wiki](https://liquipedia.net/mobilelegends) through its MediaWiki API | CC BY-SA 3.0: credited on the pages that show it; API terms: at most one request every 2 seconds, a User-Agent with contact details | Weekly (catalog job) |
+| Composition tags | `seed/hero-tags.json`, curated by hand | Ours | On edit |
+| Recommended builds | None: the official MLBB Academy that published them closed on 2026-06-30 | | Not shown |
+
+Both scrapers run sequentially with pauses, retries with backoff, and a disk cache, and stop on a firewall block rather than retry harder.
 
 ## System overview
 
@@ -31,6 +43,7 @@ flowchart LR
         GSEC[["GitHub Secrets<br/>SUPABASE_URL<br/>SUPABASE_SERVICE_ROLE_KEY<br/>REVALIDATE_SECRET"]]
     end
     SRC[("Official MLBB data<br/>api.gms.moontontech.com")]
+    WIKI[("Liquipedia API<br/>items, emblems, spells")]
     IMG[("Official image CDN")]
 
     UI -->|"HTTPS GET"| EDGE
@@ -41,6 +54,7 @@ flowchart LR
     REPO --> GHA
     GSEC -.->|"injected at run time"| GHA
     GHA -->|"rate-limited POST"| SRC
+    GHA -->|"rate-limited GET, weekly"| WIKI
     GHA -->|"upsert with service role"| DB
     GHA -->|"POST /api/revalidate with secret"| APP
     VENV -.-> APP
@@ -90,7 +104,16 @@ sequenceDiagram
     V-->>U: 200 revalidated
 ```
 
-Retries, WAF handling, and failure behavior are described in `docs/activity-updater.md` (written before Phase 3).
+The weekly catalog job follows the same pattern for heroes (official API) and for the item, emblem and spell catalog (Liquipedia). Retries, WAF handling, and failure behavior are described in `docs/activity-updater.md` (written before Phase 3).
+
+## Seed data
+
+The first data load does not run the updater. Two one-off imports write JSON into the repository, and `pnpm seed:sql` turns it into `supabase/seed.sql`:
+
+- `pnpm seed:fetch` writes the official snapshot to `seed/official/` (heroes, skills, relations, ranked statistics).
+- `pnpm seed:catalog` writes the Liquipedia catalog to `seed/liquipedia/` (items, emblems, talents, battle spells), with its license in `seed/liquipedia/meta.json`.
+
+The development container cannot reach either source, so both run in GitHub Actions (`.github/workflows/seed-fetch.yml`), triggered by a change to `seed/fetch-request.json` on a working branch, and commit their output back to that branch.
 
 ## Secrets and configuration
 

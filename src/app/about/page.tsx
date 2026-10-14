@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { CatalogCredit } from "@/components/meta/catalog-credit";
 import { PageHeader } from "@/components/meta/page-header";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "About the data",
   description:
-    "Where Metapick's hero data comes from, how often it updates, and what is curated by hand.",
+    "Where Metapick's hero, statistics and item data come from, how often they update, and what is curated by hand.",
 };
 
 export default function AboutPage() {
@@ -20,10 +21,17 @@ export default function AboutPage() {
       <section className="flex flex-col gap-2">
         <h2 className="font-display text-lg font-semibold">Source</h2>
         <p className="text-muted-foreground">
-          Hero details, items, emblems, battle spells and ranked statistics come
-          from the data behind the official Mobile Legends: Bang Bang website. A
-          scheduled job fetches it once a day, slowly, and stores a copy, so
-          browsing Metapick never sends traffic to the official site.
+          Hero details, skills and ranked statistics come from the data behind
+          the official Mobile Legends: Bang Bang website. Items, emblems,
+          talents and battle spells come from the Liquipedia Mobile Legends
+          wiki, because the official MLBB Academy that used to publish them
+          closed in June 2026. Scheduled jobs fetch both slowly, statistics
+          daily and the rest weekly, and store a copy, so browsing Metapick
+          never sends traffic to either site.
+        </p>
+        <p className="text-muted-foreground">
+          Recommended builds closed with the Academy and have no other official
+          source, so hero pages do not show them for now.
         </p>
       </section>
 
@@ -55,6 +63,7 @@ export default function AboutPage() {
         <p className="text-muted-foreground">
           {siteConfig.disclaimer} {siteConfig.attribution}
         </p>
+        <CatalogCredit className="text-muted-foreground" />
       </section>
     </article>
   );

@@ -4,7 +4,8 @@ Source of truth: `supabase/migrations/`. Update this file in the same commit as 
 
 - Engine: Supabase Postgres 17 (Free plan), schema `public`.
 - Access: every table has Row Level Security enabled. The public (`anon`, `authenticated`) can only `SELECT`. Only the seed and updater scripts write, using the service role key from GitHub Secrets; the service role bypasses RLS.
-- IDs: catalog tables use the official IDs from the Mobile Legends data source as primary keys (`heroes.id` = official `hero_id`), so upserts never need ID mapping.
+- IDs: catalog tables use stable source IDs as primary keys, so upserts never need ID mapping. Heroes use the official `hero_id`. Items and battle spells use their Liquipedia page ID (stable across page moves). Emblem sets and talents have no pages of their own, so their ID is a stable hash of the slug.
+- Sources: heroes, skills, relations and statistics come from the official website's API. Items, emblems, talents and battle spells come from the Liquipedia Mobile Legends wiki (CC BY-SA 3.0), because the official MLBB Academy closed on 2026-06-30. Recommended builds have no source since then: their tables exist but stay empty.
 - Rates are stored as fractions (`0.5234` = 52.34%).
 
 ## Enums
@@ -41,6 +42,7 @@ erDiagram
     items ||--o{ hero_build_items : "used in"
     emblems |o--o{ hero_recommended_builds : "emblem"
     emblem_talents |o--o{ hero_recommended_builds : "talents"
+    emblems |o--o{ emblem_talents : "offers"
     battle_spells |o--o{ hero_recommended_builds : "spell"
 
     heroes {
@@ -97,10 +99,11 @@ erDiagram
         text description
     }
     items {
-        integer id PK "official equip id"
+        integer id PK "Liquipedia page id"
         text slug UK
         text name
         item_category category
+        item_category[] other_categories
         smallint tier
         integer price
         jsonb attributes
@@ -110,7 +113,7 @@ erDiagram
         boolean is_active
     }
     emblems {
-        integer id PK
+        integer id PK "hash of slug"
         text slug UK
         text name
         jsonb attributes
@@ -119,7 +122,8 @@ erDiagram
         smallint sort_order
     }
     emblem_talents {
-        integer id PK
+        integer id PK "hash of slug"
+        integer emblem_id FK
         text name
         smallint tier "1-3"
         text description
@@ -127,7 +131,7 @@ erDiagram
         smallint sort_order
     }
     battle_spells {
-        integer id PK
+        integer id PK "Liquipedia page id"
         text slug UK
         text name
         text description
@@ -265,56 +269,58 @@ Indexes: PK (hero_id). RLS: public SELECT.
 
 Indexes: PK (hero_id, relation, target_hero_id); (target_hero_id). RLS: public SELECT.
 
-**items**
+**items**: shop items from Liquipedia (CC BY-SA 3.0). Removed items are not imported.
 
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
-| id | integer | no | | PK, official equip id |
+| id | integer | no | | PK, Liquipedia page ID |
 | slug | text | no | | Unique |
 | name | text | no | | |
-| category | item_category | no | | |
-| tier | smallint | yes | | 1 basic, 2 intermediate, 3 final |
-| price | integer | yes | | Gold; manual override when the source lacks it |
-| attributes | jsonb | no | `'[]'` | `[{"label":"Physical Attack","value":"+60"}]` |
+| category | item_category | no | | Main shop tab |
+| other_categories | item_category[] | no | `'{}'` | Further shop tabs that list the item (for example Winter Crown: magic) |
+| tier | smallint | yes | | 1 basic, 2 intermediate, 3 final; null for jungle and roam blessings |
+| price | integer | yes | | Gold; `seed/overrides/items.json` corrects it when the wiki lags |
+| attributes | jsonb | no | `'[]'` | `[{"label":"Physical Attack","value":"+60"}]`; unique attributes carry "(unique)" in the label |
 | passives | jsonb | no | `'[]'` | `[{"name":"…","description":"…"}]` |
 | builds_into | integer[] | no | `'{}'` | Soft reference to items.id (no FK) |
 | icon_url | text | yes | | |
 | is_active | boolean | no | true | |
 
-Indexes: PK (id); unique (slug); (category). RLS: public SELECT.
+Indexes: PK (id); unique (slug); (category); GIN (other_categories). RLS: public SELECT.
 
-**emblems**: emblem sets.
+**emblems**: emblem sets from the Liquipedia emblem portal.
 
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
-| id | integer | no | | PK, official emblem id |
+| id | integer | no | | PK, stable hash of the slug |
 | slug | text | no | | Unique |
 | name | text | no | | |
 | attributes | jsonb | no | `'[]'` | Set bonuses |
 | icon_url | text | yes | | |
-| recommended_roles | hero_role[] | no | `'{}'` | Curated fallback when build data is missing |
+| recommended_roles | hero_role[] | no | `'{}'` | The role the set is named after; empty for Basic Common |
 | sort_order | smallint | no | 0 | |
 
 Indexes: PK (id); unique (slug). RLS: public SELECT.
 
-**emblem_talents**: talents are shared by every emblem set in the current game, so there is no FK to `emblems`.
+**emblem_talents**: each set offers its own talents plus those of Basic Common, which every set offers. A loadout picks one talent per tier.
 
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
-| id | integer | no | | PK, official talent id |
+| id | integer | no | | PK, stable hash of the slug |
+| emblem_id | integer | yes | | FK → emblems.id, on delete set null: the set that offers it |
 | name | text | no | | |
-| tier | smallint | no | | Check 1–3 (3 = core talent) |
+| tier | smallint | no | | Check 1–3: 1 attribute talent, 2 effect talent, 3 core talent |
 | description | text | no | | |
 | icon_url | text | yes | | |
 | sort_order | smallint | no | 0 | |
 
-Indexes: PK (id); (tier). RLS: public SELECT.
+Indexes: PK (id); (emblem_id); (tier). RLS: public SELECT.
 
-**battle_spells**
+**battle_spells**: the spells in Liquipedia's battle spell navbox, in its order. The description ends with the cooldown.
 
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
-| id | integer | no | | PK, official spell id |
+| id | integer | no | | PK, Liquipedia page ID |
 | slug | text | no | | Unique |
 | name, description | text | no | | |
 | short_description, icon_url | text | yes | | |
@@ -364,7 +370,7 @@ Indexes: PK (snapshot_id, hero_id, opponent_id); (hero_id); (opponent_id). RLS: 
 
 **hero_synergies**: same shape as `hero_matchups`, with `teammate_id` instead of `opponent_id`; `win_rate_delta` is the change in the hero's win rate when playing with that teammate. Indexes: PK (snapshot_id, hero_id, teammate_id); (hero_id); (teammate_id). Same RLS.
 
-**hero_recommended_builds**
+**hero_recommended_builds**: empty for now. Its only source, the official MLBB Academy, closed on 2026-06-30, and hero pages do not show builds.
 
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
@@ -428,7 +434,7 @@ The checks live in `supabase/tests/rls_test.sql`. Run them against a disposable 
 
 ## Data lifecycle
 
-- Seed (Phase 1): `seed/*.json` → `supabase/seed.sql` (idempotent upserts), applied by the project owner.
+- Seed (Phase 1): `seed/official/*.json` (official API) and `seed/liquipedia/*.json` (Liquipedia) plus `seed/hero-tags.json` → `supabase/seed.sql` (idempotent upserts), applied by the project owner.
 - Stats job (daily): new unpublished snapshot per bracket × period → `hero_stats` (+ matchups and synergies for the configured period) → publish → delete matchup/synergy rows of older snapshots → delete snapshots older than 120 days and unpublished leftovers older than 1 day.
-- Catalog job (weekly or on change): upserts heroes, skills, relations, items, emblems, talents, spells, builds. Heroes and items missing from the source get `is_active = false` instead of being deleted.
+- Catalog job (weekly or on change): upserts heroes, skills and relations from the official API, and items, emblems, talents and spells from Liquipedia. Heroes and items missing from their source get `is_active = false` instead of being deleted.
 - Storage estimate: about 3,900 `hero_stats` rows per day, about 470k rows at 120 days (~60 MB with indexes). Everything else stays under 10 MB.

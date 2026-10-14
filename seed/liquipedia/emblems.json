@@ -1,0 +1,168 @@
+[
+ {
+  "id": 227837244,
+  "slug": "basic-common",
+  "name": "Basic Common",
+  "attributes": [
+   {
+    "label": "Hybrid Regen",
+    "value": "+12"
+   },
+   {
+    "label": "HP",
+    "value": "+275"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+22"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [],
+  "sort_order": 1
+ },
+ {
+  "id": 170528991,
+  "slug": "tank",
+  "name": "Tank",
+  "attributes": [
+   {
+    "label": "HP",
+    "value": "+500"
+   },
+   {
+    "label": "Hybrid Defense",
+    "value": "+10"
+   },
+   {
+    "label": "HP Regen",
+    "value": "+4"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [
+   "tank"
+  ],
+  "sort_order": 2
+ },
+ {
+  "id": 220622328,
+  "slug": "assassin",
+  "name": "Assassin",
+  "attributes": [
+   {
+    "label": "Adaptive Penetration",
+    "value": "+14"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+10"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+3%"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [
+   "assassin"
+  ],
+  "sort_order": 3
+ },
+ {
+  "id": 151643373,
+  "slug": "mage",
+  "name": "Mage",
+  "attributes": [
+   {
+    "label": "Magic Power",
+    "value": "+30"
+   },
+   {
+    "label": "Cooldown Reduction",
+    "value": "+5%"
+   },
+   {
+    "label": "Magic Penetration",
+    "value": "+8"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [
+   "mage"
+  ],
+  "sort_order": 4
+ },
+ {
+  "id": 8871648,
+  "slug": "fighter",
+  "name": "Fighter",
+  "attributes": [
+   {
+    "label": "Hybrid Lifesteal",
+    "value": "+10%"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+16"
+   },
+   {
+    "label": "Hybrid Defense",
+    "value": "+8"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [
+   "fighter"
+  ],
+  "sort_order": 5
+ },
+ {
+  "id": 216500173,
+  "slug": "support",
+  "name": "Support",
+  "attributes": [
+   {
+    "label": "Healing Effect",
+    "value": "+12%"
+   },
+   {
+    "label": "Cooldown Reduction",
+    "value": "+10%"
+   },
+   {
+    "label": "Movement Speed",
+    "value": "+6%"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [
+   "support"
+  ],
+  "sort_order": 6
+ },
+ {
+  "id": 233788538,
+  "slug": "marksman",
+  "name": "Marksman",
+  "attributes": [
+   {
+    "label": "Attack Speed",
+    "value": "+15%"
+   },
+   {
+    "label": "Adaptive Attack",
+    "value": "+16"
+   },
+   {
+    "label": "Adaptive Penetration",
+    "value": "+10%"
+   }
+  ],
+  "icon_url": null,
+  "recommended_roles": [
+   "marksman"
+  ],
+  "sort_order": 7
+ }
+]

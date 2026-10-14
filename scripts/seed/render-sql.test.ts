@@ -111,6 +111,7 @@ describe("renderSeedSql", () => {
       slug: "blade-of-despair",
       name: "Blade of Despair",
       category: "attack" as const,
+      other_categories: [],
       tier: 3,
       price: 3010,
       attributes: [{ label: "Physical Attack", value: "+160" }],

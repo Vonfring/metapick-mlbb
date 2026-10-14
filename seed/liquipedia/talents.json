@@ -1,0 +1,236 @@
+[
+ {
+  "id": 50475123,
+  "emblem_id": 227837244,
+  "name": "Thrill",
+  "tier": 1,
+  "description": "Gain 16 Adaptive Attack",
+  "icon_url": null,
+  "sort_order": 1
+ },
+ {
+  "id": 119551402,
+  "emblem_id": 227837244,
+  "name": "Swift",
+  "tier": 1,
+  "description": "Gain 10% extra Attack Speed",
+  "icon_url": null,
+  "sort_order": 2
+ },
+ {
+  "id": 86543497,
+  "emblem_id": 227837244,
+  "name": "Wilderness Blessing",
+  "tier": 2,
+  "description": "Extra Movement Speed in Jungle and River\nMovement Speed in the Jungle and Rive is increased by 10%. This bonus is halved when in combat wih enemy heroes, Lord or Turtle",
+  "icon_url": null,
+  "sort_order": 3
+ },
+ {
+  "id": 178785004,
+  "emblem_id": 227837244,
+  "name": "Seasoned Hunter",
+  "tier": 2,
+  "description": "Increase Jungling Speed\nDamage against Lord and Turtle is increased by 15%. This bonus is halved against regular Creeps and doesn't affect the damage of Retribution.",
+  "icon_url": null,
+  "sort_order": 4
+ },
+ {
+  "id": 243977624,
+  "emblem_id": 227837244,
+  "name": "Impure Rage",
+  "tier": 3,
+  "description": "Extra Skill Damage & Restore Mana on Hit\nDealing damage with skills deals 4% of target's Max HP extra Adaptive Damage and restores 2% Mana on hit.\nIf the hero does not use Mana restores 1% HP instead. The extra Adaptive Damage dealt to non-hero units is up to 120.\nCooldown: 5s.",
+  "icon_url": null,
+  "sort_order": 5
+ },
+ {
+  "id": 82325654,
+  "emblem_id": 227837244,
+  "name": "Quantum Charge",
+  "tier": 3,
+  "description": "Basic Attacks Grant HP Regen & Speed Up\nDealing damage with Basic Attacks increases Movement Speed by 30% for 1.5s and restores 75-180HP (scales with level).\nCooldown: 8s.",
+  "icon_url": null,
+  "sort_order": 6
+ },
+ {
+  "id": 75180405,
+  "emblem_id": 227837244,
+  "name": "War Cry",
+  "tier": 3,
+  "description": "Increase Sustained Dmaage\nAfter every 3 Separate Basic Attacks or skill hit an enemy hero, all damage dealt increases by 8% for 6s.\nA single Basic ATtack or skill that deals damage multiple times only count as 1\nCooldown: 6s.",
+  "icon_url": null,
+  "sort_order": 7
+ },
+ {
+  "id": 238190540,
+  "emblem_id": 227837244,
+  "name": "Temporal Reign",
+  "tier": 3,
+  "description": "Non-Ultimate Skills Cooldown Reduction\nThe next Ultimate cast decreases other active skills' remaining cooldowns by 1.5 times within 4s. This effect is extended by 2s after getting hero kills or assists\nThis only applies to the hero themselves\nCooldown: 20s.",
+  "icon_url": null,
+  "sort_order": 8
+ },
+ {
+  "id": 91566361,
+  "emblem_id": 170528991,
+  "name": "Vitality",
+  "tier": 1,
+  "description": "Gain 225 extra max HP.",
+  "icon_url": null,
+  "sort_order": 9
+ },
+ {
+  "id": 218360197,
+  "emblem_id": 170528991,
+  "name": "Tenacity",
+  "tier": 2,
+  "description": "Increase Defense at Low HP\nWhen HP is below 50%, Physical & Magic Defense are increased by 15",
+  "icon_url": null,
+  "sort_order": 10
+ },
+ {
+  "id": 110045023,
+  "emblem_id": 170528991,
+  "name": "Concussive Blast",
+  "tier": 3,
+  "description": "HP-Based AOE Damage\nAfter the next Basic Attack, deal 100(+7% Total HP) Magic Damage to nearby enemies\nCooldown: 15s",
+  "icon_url": null,
+  "sort_order": 11
+ },
+ {
+  "id": 83885028,
+  "emblem_id": 220622328,
+  "name": "Rupture",
+  "tier": 1,
+  "description": "Give 5 Adaptive Penetration\nGain Physical Penetration if extra Physical Attack is higher than extra Magic Power, otherwise, gain Magic Penetration.",
+  "icon_url": null,
+  "sort_order": 12
+ },
+ {
+  "id": 14116134,
+  "emblem_id": 220622328,
+  "name": "Master Assassin",
+  "tier": 2,
+  "description": "Increase Damage to Lone Heroes\nif there is only one enemy hero nearby, damage dealt to them is increased by 7%",
+  "icon_url": null,
+  "sort_order": 13
+ },
+ {
+  "id": 23287934,
+  "emblem_id": 220622328,
+  "name": "Killing Spree",
+  "tier": 3,
+  "description": "Regen and Speed Up After Dealing Damage\nWhen damaging heroes below 30% HP, instantly recover 15% of Lost HP and gain 20% Movement Speed.\nAdditional Effect: Reset cooldown upon killing an enemy hero.\nDuration: 3s\nCooldown: 30s",
+  "icon_url": null,
+  "sort_order": 14
+ },
+ {
+  "id": 57907709,
+  "emblem_id": 151643373,
+  "name": "Inspire",
+  "tier": 1,
+  "description": "Cooldown Reduction is increased by 5% and Mana Regen by 2.",
+  "icon_url": null,
+  "sort_order": 15
+ },
+ {
+  "id": 192643582,
+  "emblem_id": 151643373,
+  "name": "Bargain Hunter",
+  "tier": 2,
+  "description": "Reduce Equipment Cost\nEquipment can be purchased at 95% of their base price.",
+  "icon_url": null,
+  "sort_order": 16
+ },
+ {
+  "id": 55305878,
+  "emblem_id": 151643373,
+  "name": "Lethal Ignition",
+  "tier": 3,
+  "description": "Extra Damage on Multi-Hits\nDealing damage greater than 7% of an enemy hero's Max HP 3 times within 5s will scorch the target for an additional 162-750 Adaptive Damage (scales with level).\nCooldown: 15s.",
+  "icon_url": null,
+  "sort_order": 17
+ },
+ {
+  "id": 130936021,
+  "emblem_id": 8871648,
+  "name": "Firmness",
+  "tier": 1,
+  "description": "Gain 8 extra Physical & Magic Defense.",
+  "icon_url": null,
+  "sort_order": 18
+ },
+ {
+  "id": 248145355,
+  "emblem_id": 8871648,
+  "name": "Festival of Blood",
+  "tier": 2,
+  "description": "Get Extra Spell Vamp\nGain 6% Spell Vamp. Each hero kill or assist grant an additional 0.5% Spell Vamp, up to 12 stacks",
+  "icon_url": null,
+  "sort_order": 19
+ },
+ {
+  "id": 69168859,
+  "emblem_id": 8871648,
+  "name": "Brave Smite",
+  "tier": 3,
+  "description": "Skill Damage Grants HP Regen\nDealing skill damage to an enemy hero recovers 5% Max HP.\nCooldown: 6s.",
+  "icon_url": null,
+  "sort_order": 20
+ },
+ {
+  "id": 224612471,
+  "emblem_id": 216500173,
+  "name": "Agility",
+  "tier": 1,
+  "description": "Gain 4% extra Movement Speed.",
+  "icon_url": null,
+  "sort_order": 21
+ },
+ {
+  "id": 247349857,
+  "emblem_id": 216500173,
+  "name": "Pull Yourself Together",
+  "tier": 2,
+  "description": "Reduce Battle Spell & Active Equipment CD\nCooldowns of Battle Spells and equipment's active skills are reduced by 12% initially. Each hero kill or assist grants an additional 1% reduction, up to 8 stacks.",
+  "icon_url": null,
+  "sort_order": 22
+ },
+ {
+  "id": 57605503,
+  "emblem_id": 216500173,
+  "name": "Focusing Mark",
+  "tier": 3,
+  "description": "Enhance Ally Damage\nAfter damaging an enemy hero, allied heroes deal 6% more damage to them and gain 10% Movement Speed.\nDuration: 3s\nCooldown: 4s",
+  "icon_url": null,
+  "sort_order": 23
+ },
+ {
+  "id": 182790251,
+  "emblem_id": 233788538,
+  "name": "Fatal",
+  "tier": 1,
+  "description": "Gain 5% Crit Chance and 5% extra Crit Damage.",
+  "icon_url": null,
+  "sort_order": 24
+ },
+ {
+  "id": 138988897,
+  "emblem_id": 233788538,
+  "name": "Weapon Master",
+  "tier": 2,
+  "description": "Bonus Extra Attack\nPhysical Attack and Magic Power gained from equipment, emblem, talents, and skills are increased by 8%.",
+  "icon_url": null,
+  "sort_order": 25
+ },
+ {
+  "id": 171394011,
+  "emblem_id": 233788538,
+  "name": "Weakness Finder",
+  "tier": 3,
+  "description": "Basic Attack Slow Enemies\nBasic Attacks slow enemies by 50% and reduce their Attack Speed by 30%.\nDuration: 1s.\nCooldown: 10s (each Basic Attack reduces it by 1s, down to 3s).",
+  "icon_url": null,
+  "sort_order": 26
+ }
+]

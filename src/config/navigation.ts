@@ -51,7 +51,7 @@ export const navGroups: NavGroup[] = [
         href: "/heroes",
         label: "Heroes",
         icon: UsersThreeIcon,
-        description: "Skills, builds, counters and best teammates.",
+        description: "Skills, statistics, counters and best teammates.",
       },
       {
         href: "/items",

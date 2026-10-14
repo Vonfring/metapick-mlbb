@@ -76,6 +76,8 @@ export type ItemRow = {
   slug: string;
   name: string;
   category: ItemCategory;
+  /** Further shop tabs that list the item. */
+  other_categories: ItemCategory[];
   tier: number | null;
   price: number | null;
   attributes: LabeledValue[];
@@ -97,6 +99,8 @@ export type EmblemRow = {
 
 export type EmblemTalentRow = {
   id: number;
+  /** The set that offers it; Basic Common talents are offered by every set. */
+  emblem_id: number | null;
   name: string;
   tier: number;
   description: string;

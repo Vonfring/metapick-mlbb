@@ -8,8 +8,9 @@
  *   pnpm seed:catalog --download-only --save-raw FILE  only save the raw pages
  *   pnpm seed:catalog --from-raw FILE                  parse a saved download
  *
- * A full download is about 8 requests (category lists, then up to 50 pages
- * per request), 2.5 seconds apart.
+ * A full download is 5 requests (two category lists, then 50 pages per
+ * request), 2.5 seconds apart. Emblem sets and talents have no pages of
+ * their own: they all come from the emblem portal.
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -29,7 +30,6 @@ import {
 } from "../source/liquipedia";
 import {
   EMBLEM_PORTAL,
-  emblemPortalLinks,
   NAVBOXES,
   parseCatalog,
   type RawCatalog,
@@ -41,14 +41,8 @@ async function downloadCatalog(client: LiquipediaClient): Promise<RawCatalog> {
   const fetchedAt = new Date().toISOString();
   const items = await fetchCategoryMembers(client, "Category:Items");
   const spells = await fetchCategoryMembers(client, "Category:Battle spells");
-  const first = await fetchWikitext(client, [EMBLEM_PORTAL, ...NAVBOXES]);
-  const linked = emblemPortalLinks(first.get(EMBLEM_PORTAL)?.content ?? "");
-  const rest = await fetchWikitext(client, [...new Set([...items, ...spells, ...linked])]);
-  return {
-    fetched_at: fetchedAt,
-    members: { items, spells },
-    pages: Object.fromEntries([...first, ...rest]),
-  };
+  const pages = await fetchWikitext(client, [...new Set([EMBLEM_PORTAL, ...NAVBOXES, ...items, ...spells])]);
+  return { fetched_at: fetchedAt, members: { items, spells }, pages: Object.fromEntries(pages) };
 }
 
 async function writeJson(name: string, data: unknown) {

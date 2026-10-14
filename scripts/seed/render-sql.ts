@@ -128,7 +128,8 @@ export function renderSeedSql(input: SeedInput): RenderResult {
 
   // Items, emblems, talents, spells (seed/liquipedia/) -----------------------
   const itemColumns = [
-    "id", "slug", "name", "category", "tier", "price", "attributes", "passives", "builds_into", "icon_url", "is_active",
+    "id", "slug", "name", "category", "other_categories", "tier", "price", "attributes", "passives", "builds_into",
+    "icon_url", "is_active",
   ];
   const unknownOverrides = Object.keys(itemOverrides).filter((slug) => !catalog.items.some((i) => i.slug === slug));
   for (const slug of unknownOverrides) warnings.push(`overrides/items.json: "${slug}" matches no item, skipped`);
@@ -138,7 +139,8 @@ export function renderSeedSql(input: SeedInput): RenderResult {
     catalog.items.map((item) => {
       const merged = { ...item, ...itemOverrides[item.slug] };
       return [
-        merged.id, merged.slug, merged.name, merged.category, merged.tier, merged.price, jsonb(merged.attributes),
+        merged.id, merged.slug, merged.name, merged.category,
+        textArray(merged.other_categories, "public.item_category"), merged.tier, merged.price, jsonb(merged.attributes),
         jsonb(merged.passives), intArray(merged.builds_into), merged.icon_url, merged.is_active ?? true,
       ];
     }),
@@ -157,11 +159,11 @@ export function renderSeedSql(input: SeedInput): RenderResult {
   ));
   counts.emblems = catalog.emblems.length;
 
-  const talentColumns = ["id", "name", "tier", "description", "icon_url", "sort_order"];
+  const talentColumns = ["id", "emblem_id", "name", "tier", "description", "icon_url", "sort_order"];
   out.push("-- Emblem talents", insertRows(
     "public.emblem_talents",
     talentColumns,
-    catalog.talents.map((t) => [t.id, t.name, t.tier, t.description, t.icon_url, t.sort_order]),
+    catalog.talents.map((t) => [t.id, t.emblem_id, t.name, t.tier, t.description, t.icon_url, t.sort_order]),
     `on conflict (id) do update ${updateExcluded(talentColumns.slice(1))}`,
   ));
   counts.talents = catalog.talents.length;

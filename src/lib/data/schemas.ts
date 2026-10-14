@@ -123,6 +123,7 @@ export const itemRowSchema = z.object({
   slug,
   name: z.string().min(1),
   category: z.enum(ITEM_CATEGORIES),
+  other_categories: z.array(z.enum(ITEM_CATEGORIES)),
   tier: z.number().int().min(1).max(3).nullable(),
   price: z.number().int().min(0).nullable(),
   attributes: z.array(labeledValue),
@@ -156,6 +157,7 @@ export const emblemRowSchema = z.object({
 
 export const emblemTalentRowSchema = z.object({
   id: z.number().int().positive(),
+  emblem_id: z.number().int().positive().nullable(),
   name: z.string().min(1),
   tier: z.number().int().min(1).max(3),
   description: z.string(),

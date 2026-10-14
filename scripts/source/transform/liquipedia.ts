@@ -20,7 +20,7 @@ import {
 
 /** The page that lists every emblem set with its attributes and talents. */
 export const EMBLEM_PORTAL = "Portal:Emblems";
-/** Navigation boxes that list what is currently in the game. */
+/** Navigation boxes that list what is in the game now. */
 export const ITEM_NAVBOX = "Template:Equipment";
 export const SPELL_NAVBOX = "Template:Battle spells";
 export const NAVBOXES = [ITEM_NAVBOX, SPELL_NAVBOX];
@@ -42,30 +42,13 @@ export type ParsedCatalog = {
   warnings: string[];
 };
 
-/** Every `link=` target on the emblem portal: the emblem set pages and the talent pages. */
-export function emblemPortalLinks(content: string): string[] {
-  const links = new Set<string>();
-  for (const match of stripComments(content).matchAll(
-    /\blink\s*=\s*([^|\]}\n]+)/g,
-  )) {
-    const title = match[1]!.trim();
-    if (title) links.add(title);
-  }
-  return [...links];
-}
-
-/** Our row ID: the wiki page ID when the page exists, else a stable hash of the slug. */
-function rowId(
-  pages: Record<string, WikiPage>,
-  title: string,
-  slug: string,
-  warnings: string[],
-) {
-  const page = pages[title];
-  if (page) return page.pageid;
-  warnings.push(`no wiki page for "${title}": using a hashed ID`);
+/**
+ * Emblem sets and talents have no wiki pages of their own (a talent name can
+ * even be a player's page), so their IDs are a stable hash of the slug.
+ */
+export function hashedId(kind: string, slug: string) {
   return Number.parseInt(
-    createHash("sha256").update(slug).digest("hex").slice(0, 7),
+    createHash("sha256").update(`${kind}:${slug}`).digest("hex").slice(0, 7),
     16,
   );
 }
@@ -84,9 +67,7 @@ const ITEM_CATEGORY: Record<string, ItemCategory> = {
   defense: "defense",
   movement: "movement",
   jungling: "jungle",
-  jungle: "jungle",
   roaming: "roam",
-  roam: "roam",
 };
 
 const CATEGORY_ORDER: ItemCategory[] = [
@@ -98,12 +79,14 @@ const CATEGORY_ORDER: ItemCategory[] = [
   "roam",
 ];
 
-/** Infobox parameters that are not attributes. */
+/** Infobox parameters that are not plain attributes. */
 const INFOBOX_FIELDS = new Set([
   "itemname",
   "itemcost",
   "recipecost",
   "category",
+  "category2",
+  "category3",
   "tier",
   "type",
   "status",
@@ -115,12 +98,14 @@ const INFOBOX_FIELDS = new Set([
   "image",
   "icon",
   "caption",
+  "uniqueattr",
 ]);
 
 /** Infobox attribute keys and the labels the game uses for them. */
 export const ATTRIBUTE_LABELS: Record<string, string> = {
   physatk: "Physical Attack",
-  magicpower: "Magic Power",
+  mp: "Magic Power",
+  adaptiveatk: "Adaptive Attack",
   hp: "HP",
   mana: "Mana",
   hpregen: "HP Regen",
@@ -133,19 +118,22 @@ export const ATTRIBUTE_LABELS: Record<string, string> = {
   cdreduction: "CD Reduction",
   lifesteal: "Lifesteal",
   spellvamp: "Spell Vamp",
+  hybridsteal: "Hybrid Lifesteal",
   physpen: "Physical Penetration",
   magicpen: "Magic Penetration",
+  slowreduction: "Slow Reduction",
 };
 
-function titleCase(key: string) {
-  return key
-    .replace(/[_-]+/g, " ")
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+function signed(text: string) {
+  return /^[+-]/.test(text) ? text : `+${text}`;
 }
 
-function formatAttribute(value: string) {
-  const text = plainText(value);
-  return /^[+-]/.test(text) ? text : `+${text}`;
+/** "40% Critical Damage" becomes { label: "Critical Damage (unique)", value: "+40%" }. */
+function uniqueAttribute(value: string): LabeledValue | null {
+  const match = /^([+-]?\d+(?:\.\d+)?%?)\s+(.+)$/.exec(plainText(value));
+  return match
+    ? { label: `${match[2]} (unique)`, value: signed(match[1]!) }
+    : null;
 }
 
 type ParsedItem = { row: ItemRow; buildsIntoTitles: string[] };
@@ -161,27 +149,43 @@ function parseItemPage(
     return null;
   }
   const { named } = templateParams(infobox);
-  const status = plainText(named.get("status") ?? "Available").toLowerCase();
-  if (status !== "available") return null;
+  if (
+    plainText(named.get("status") ?? "Available").toLowerCase() !== "available"
+  )
+    return null;
 
-  const categoryName = plainText(named.get("category") ?? "").toLowerCase();
-  const category = ITEM_CATEGORY[categoryName];
+  const categoryOf = (key: string) =>
+    ITEM_CATEGORY[plainText(named.get(key) ?? "").toLowerCase()];
+  const category = categoryOf("category");
   if (!category) {
     warnings.push(
-      `item "${page.title}" has an unknown category "${categoryName}", skipped`,
+      `item "${page.title}" has an unknown category "${named.get("category") ?? ""}", skipped`,
     );
     return null;
   }
+  const otherCategories = ["category2", "category3"]
+    .map(categoryOf)
+    .filter(
+      (value): value is ItemCategory =>
+        value !== undefined && value !== category,
+    );
 
   const attributes: LabeledValue[] = [];
   for (const [key, value] of named) {
-    if (INFOBOX_FIELDS.has(key) || !plainText(value)) continue;
+    const text = plainText(value);
+    if (INFOBOX_FIELDS.has(key) || !text) continue;
     const label = ATTRIBUTE_LABELS[key];
     if (!label) unknownKeys.add(key);
-    attributes.push({
-      label: label ?? titleCase(key),
-      value: formatAttribute(value),
-    });
+    attributes.push({ label: label ?? key, value: signed(text) });
+  }
+  const unique = named.get("uniqueattr");
+  if (unique && plainText(unique)) {
+    const attribute = uniqueAttribute(unique);
+    if (attribute) attributes.push(attribute);
+    else
+      warnings.push(
+        `item "${page.title}": unique attribute "${plainText(unique)}" not understood, skipped`,
+      );
   }
 
   const passives: NamedText[] = [];
@@ -192,18 +196,17 @@ function parseItemPage(
     const params = templateParams(card).named;
     const name = plainText(params.get("name") ?? "");
     const description = plainText(params.get("description") ?? "");
-    if (!name || !description) continue;
-    const kind = plainText(params.get("ability") ?? "").toLowerCase();
-    passives.push({
-      name: kind === "active" ? `${name} (Active)` : name,
-      description,
-    });
+    // The unique attribute is already an attribute; some pages repeat it as a card.
+    if (!name || !description || name.toLowerCase() === "unique attribute")
+      continue;
+    const active =
+      plainText(params.get("ability") ?? "").toLowerCase() === "active";
+    passives.push({ name: active ? `${name} (Active)` : name, description });
   }
 
   const buildsIntoTitles: string[] = [];
   for (const recipe of findTemplates(named.get("recipe") ?? "", "Recipe")) {
-    const params = templateParams(recipe).named;
-    for (const [key, value] of params) {
+    for (const [key, value] of templateParams(recipe).named) {
       if (/^topitem\d+$/.test(key) && plainText(value))
         buildsIntoTitles.push(plainText(value));
     }
@@ -216,6 +219,7 @@ function parseItemPage(
       slug: slugify(name),
       name,
       category,
+      other_categories: [...new Set(otherCategories)],
       tier: toInt(named.get("tier")),
       price: toInt(named.get("itemcost")),
       attributes,
@@ -241,15 +245,16 @@ function parseItems(raw: RawCatalog, warnings: string[]): ItemRow[] {
   }
   if (unknownKeys.size > 0) {
     warnings.push(
-      `item attributes without a label (shown title-cased): ${[...unknownKeys].sort().join(", ")}`,
+      `item attributes without a label (shown as the raw key): ${[...unknownKeys].sort().join(", ")}`,
     );
   }
 
-  const idByTitle = new Map<string, number>();
-  for (const { row } of parsed) idByTitle.set(row.name.toLowerCase(), row.id);
+  const idByName = new Map(
+    parsed.map(({ row }) => [row.name.toLowerCase(), row.id]),
+  );
   for (const item of parsed) {
     const ids = item.buildsIntoTitles
-      .map((title) => idByTitle.get(title.toLowerCase()))
+      .map((title) => idByName.get(title.toLowerCase()))
       .filter((id): id is number => id !== undefined);
     item.row.builds_into = [...new Set(ids)];
   }
@@ -267,7 +272,7 @@ function parseItems(raw: RawCatalog, warnings: string[]): ItemRow[] {
 
 // Battle spells ---------------------------------------------------------------
 
-/** Titles linked from a navbox, in order. */
+/** Page titles linked from a navbox, in order. */
 function navboxLinks(content: string) {
   const titles: string[] = [];
   for (const match of stripComments(content).matchAll(
@@ -275,7 +280,7 @@ function navboxLinks(content: string) {
   )) {
     const title = match[1]!.trim();
     if (
-      !/^(?:File|Image|Category|Template):/i.test(title) &&
+      !/^(?:File|Image|Category|Template|Portal):/i.test(title) &&
       !titles.includes(title)
     )
       titles.push(title);
@@ -316,6 +321,12 @@ function parseSpells(raw: RawCatalog, warnings: string[]): BattleSpellRow[] {
       sort_order: current ? current.indexOf(title) + 1 : spells.length + 1,
     });
   }
+  for (const title of current ?? []) {
+    if (!raw.members.spells.includes(title))
+      warnings.push(
+        `battle spell "${title}" is in the navbox but not in the category`,
+      );
+  }
   return spells.sort((a, b) => a.sort_order - b.sort_order);
 }
 
@@ -330,25 +341,20 @@ const EMBLEM_ROLES: Record<string, HeroRole[]> = {
   support: ["support"],
 };
 
-type TalentEntry = {
-  title: string;
-  name: string;
-  description: string;
-  kind: "standard" | "core";
-};
-
-function parseTalentSection(
-  text: string | null,
-  kind: TalentEntry["kind"],
-): TalentEntry[] {
+/**
+ * Talents on the portal: standard ones are either a plain attribute bonus
+ * (tier 1, no summary line) or an effect with a bold summary line (tier 2);
+ * core talents are tier 3.
+ */
+function parseTalents(text: string | null, core: boolean) {
   return findTemplates(text ?? "", "Gameplaybc").map((card) => {
     const params = templateParams(card).named;
-    const name = plainText(params.get("title") ?? "");
+    const adjustment = params.get("adjustment") ?? "";
+    const tier = core ? 3 : /'''[^']+'''/.test(adjustment) ? 2 : 1;
     return {
-      title: plainText(params.get("link") ?? "") || name,
-      name,
-      description: plainText(params.get("adjustment") ?? ""),
-      kind,
+      name: plainText(params.get("title") ?? ""),
+      description: plainText(adjustment),
+      tier,
     };
   });
 }
@@ -367,13 +373,13 @@ function parseEmblems(raw: RawCatalog, warnings: string[]) {
     .slice(1);
   const seenTalents = new Set<string>();
   tabs.forEach((tab, index) => {
-    const pageTitle = /\blink=([^|\]]+ Emblem)\]\]/.exec(tab)?.[1]?.trim();
-    if (!pageTitle) {
-      warnings.push(`emblem tab ${index + 1} has no emblem page link, skipped`);
+    const setName = /\blink=([^|\]]+?) Emblem\]\]/.exec(tab)?.[1]?.trim();
+    if (!setName) {
+      warnings.push(`emblem tab ${index + 1} has no emblem link, skipped`);
       return;
     }
-    const name = pageTitle.replace(/ Emblem$/, "");
-    const slug = slugify(name);
+    const slug = slugify(setName);
+    const emblemId = hashedId("emblem", slug);
     const attributes: LabeledValue[] = [];
     for (const line of plainText(section(tab, "Attributes") ?? "").split(
       "\n",
@@ -383,9 +389,9 @@ function parseEmblems(raw: RawCatalog, warnings: string[]) {
         attributes.push({ label: match[1]!.trim(), value: match[2]!.trim() });
     }
     emblems.push({
-      id: rowId(raw.pages, pageTitle, `emblem:${slug}`, warnings),
+      id: emblemId,
       slug,
-      name,
+      name: setName,
       attributes,
       icon_url: null,
       recommended_roles: EMBLEM_ROLES[slug] ?? [],
@@ -393,21 +399,20 @@ function parseEmblems(raw: RawCatalog, warnings: string[]) {
     });
 
     const entries = [
-      ...parseTalentSection(section(tab, "Standard Talents"), "standard"),
-      ...parseTalentSection(section(tab, "Core Talents"), "core"),
+      ...parseTalents(section(tab, "Standard Talents"), false),
+      ...parseTalents(section(tab, "Core Talents"), true),
     ];
+    if (entries.length === 0)
+      warnings.push(`emblem "${setName}" lists no talents`);
     for (const entry of entries) {
-      if (!entry.name || seenTalents.has(entry.name.toLowerCase())) continue;
-      seenTalents.add(entry.name.toLowerCase());
+      const key = slugify(entry.name);
+      if (!entry.name || seenTalents.has(key)) continue;
+      seenTalents.add(key);
       talents.push({
-        id: rowId(
-          raw.pages,
-          entry.title,
-          `talent:${slugify(entry.name)}`,
-          warnings,
-        ),
+        id: hashedId("talent", key),
+        emblem_id: emblemId,
         name: entry.name,
-        tier: entry.kind === "core" ? 3 : 1,
+        tier: entry.tier,
         description: entry.description,
         icon_url: null,
         sort_order: talents.length + 1,
@@ -419,15 +424,27 @@ function parseEmblems(raw: RawCatalog, warnings: string[]) {
 
 // -------------------------------------------------------------------------------
 
-function assertUniqueIds(kind: string, rows: { id: number; name: string }[]) {
-  const seen = new Map<number, string>();
+function assertUnique(
+  kind: string,
+  rows: { id: number; slug?: string; name: string }[],
+) {
+  const ids = new Map<number, string>();
+  const slugs = new Map<string, string>();
   for (const row of rows) {
-    const other = seen.get(row.id);
-    if (other)
+    const sameId = ids.get(row.id);
+    if (sameId)
       throw new Error(
-        `${kind} "${row.name}" and "${other}" share the ID ${row.id}`,
+        `${kind} "${row.name}" and "${sameId}" share the ID ${row.id}`,
       );
-    seen.set(row.id, row.name);
+    ids.set(row.id, row.name);
+    if (row.slug) {
+      const sameSlug = slugs.get(row.slug);
+      if (sameSlug)
+        throw new Error(
+          `${kind} "${row.name}" and "${sameSlug}" share the slug ${row.slug}`,
+        );
+      slugs.set(row.slug, row.name);
+    }
   }
 }
 
@@ -436,13 +453,19 @@ export function parseCatalog(raw: RawCatalog): ParsedCatalog {
   const items = parseItems(raw, warnings);
   const spells = parseSpells(raw, warnings);
   const { emblems, talents } = parseEmblems(raw, warnings);
-  assertUniqueIds("item", items);
-  assertUniqueIds("battle spell", spells);
-  assertUniqueIds("emblem", emblems);
-  assertUniqueIds("talent", talents);
+  assertUnique("item", items);
+  assertUnique("battle spell", spells);
+  assertUnique("emblem", emblems);
+  assertUnique("talent", talents);
 
-  const timestamps = Object.values(raw.pages)
-    .map((page) => page.timestamp)
+  const used = [
+    ...raw.members.items,
+    ...raw.members.spells,
+    EMBLEM_PORTAL,
+    ...NAVBOXES,
+  ];
+  const timestamps = used
+    .map((title) => raw.pages[title]?.timestamp)
     .filter((stamp): stamp is string => Boolean(stamp))
     .sort();
   return {

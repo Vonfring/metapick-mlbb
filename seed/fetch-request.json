@@ -1,5 +1,5 @@
 {
-  "mode": "liquipedia",
-  "reason": "Download every item, battle spell, emblem and talent page so the catalog parser can be refined offline.",
+  "mode": "catalog",
+  "reason": "Run the Liquipedia catalog import end to end on the runner: download, parse, write seed/liquipedia and rebuild seed.sql.",
   "note": "Pushing a change to this file on a claude/** branch runs .github/workflows/seed-fetch.yml. Change the reason for each request: an identical file does not trigger a run."
 }

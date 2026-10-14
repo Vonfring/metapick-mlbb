@@ -1,0 +1,110 @@
+[
+ {
+  "id": 2570,
+  "slug": "aegis",
+  "name": "Aegis",
+  "description": "Gain a 750(+90*Hero Level) shield for 5s\nCooldown: 75s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 1
+ },
+ {
+  "id": 2757,
+  "slug": "arrival",
+  "name": "Arrival",
+  "description": "After channeling for 3s, telepot to the target allied Turret, Base, Minion, or trap and gain 60% extra Movement Speed (decays over 3s) afterward.\nIf the channeling is canceled or interrupted, 30s of the spell cooldown will be refunded\nCooldown: 75s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 2
+ },
+ {
+  "id": 4045,
+  "slug": "execute",
+  "name": "Execute",
+  "description": "Deal 100(+10*Hero Level) plus 13% of target's lost HP True Damage to the target enemy hero.\nThis damage ignores shields. If the target is salin by this skill, the cooldown will be reduced by 40%\nCooldown: 90s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 3
+ },
+ {
+  "id": 4046,
+  "slug": "flameshot",
+  "name": "Flameshot",
+  "description": "Fire a Flaming Shot in the target direction. knocking back nearby enemies and dealing 200 -680 (scales with flying distance) to the first enemy hero or creep hit\nCooldown: 50s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 4
+ },
+ {
+  "id": 4047,
+  "slug": "flicker",
+  "name": "Flicker",
+  "description": "Blink a fixed distance in the target direction and gain a 5(+1*Hero Level) extra Physical & Magic Defense afterward for 1s.\nCooldown: 120s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 5
+ },
+ {
+  "id": 4048,
+  "slug": "inspire",
+  "name": "Inspire",
+  "description": "For up to 8 Basic Attacks within the next 5s, increase Attack Speed to 1.5 times and the Attack Speed cap to 500%.\nThe Basic Attacks also ignore 8 (+1*Hero Level) of the target's and restore 60 HP on hit.\nCooldown: 75s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 6
+ },
+ {
+  "id": 4053,
+  "slug": "petrify",
+  "name": "Petrify",
+  "description": "Deals 100(+15*Hero Level) to nearby enemies, petrify them for 0.8s, and slow them by 50% for 0.8s afterward.\nCooldown: 75s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 7
+ },
+ {
+  "id": 4049,
+  "slug": "purify",
+  "name": "Purify",
+  "description": "Remove all debuffs (excluding Suppression) and gain Control Immunity and 15% extra Movement Speed for 1.2s.\nCooldown: 90s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 8
+ },
+ {
+  "id": 4050,
+  "slug": "retribution",
+  "name": "Retribution",
+  "description": "Deals 520(+80*Hero Level) to the target creep or minion.\nIncreases Creep rewards by 60% and reduces damage taken form basic Creeps by 40%. ALso grants 15% additional Damage Reduction in the allied jungle during the first 2 min. Cannot share Minion rewards with llied heroes in the first 5 min.\nAccumulate 5 Creep kills, hero kills, or assists to upgrade the spell according to the Jungling Boots' Blessing, and 15 kills or assists to gain 10 Physical Attack and Magic Power and 100 Max HP\nCooldown: 35s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 9
+ },
+ {
+  "id": 4051,
+  "slug": "revitalize",
+  "name": "Revitalize",
+  "description": "Summon a Healing Spring that surrounds the hero and lasts 4s, restoring 2.5% Max HP every 0.4s to affected allied heroes (including self) and increasing Shield and HP Regen effects received by 25% (this effect cannot stack).\nCooldown: 75s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 10
+ },
+ {
+  "id": 4052,
+  "slug": "sprint",
+  "name": "Sprint",
+  "description": "Gains 50% extra Movement Speed and Slow Immunity for 6s.\nCooldown: 100s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 11
+ },
+ {
+  "id": 4054,
+  "slug": "vengeance",
+  "name": "Vengeance",
+  "description": "For 3s, gains 35% Damage Reduction and deal 35% back to the attacker each time you receive damage.\nCooldown: 75s",
+  "short_description": null,
+  "icon_url": null,
+  "sort_order": 12
+ }
+]
