@@ -1,0 +1,41 @@
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "records": [
+      {
+        "data": {
+          "hero": {
+            "data": {
+              "name": "Hirara"
+            }
+          },
+          "hero_id": 133,
+          "relation": {
+            "assist": {
+              "target_hero_id": [
+                55,
+                19
+              ]
+            },
+            "strong": {
+              "target_hero_id": [
+                52,
+                121,
+                113,
+                56
+              ]
+            },
+            "weak": {
+              "target_hero_id": [
+                3,
+                24
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "total": 133
+  }
+}
