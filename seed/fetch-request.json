@@ -1,4 +1,10 @@
 {
   "mode": "inspect",
+  "inspect": {
+    "siteOnly": true,
+    "maxScripts": 160,
+    "pages": ["/", "/hero", "/rank", "/academy", "/academy/equipment", "/academy/emblem"],
+    "terms": ["2669606", "2713995", "2775075", "2718121", "2718122", "2740642", "2776688", "2718124", "gms/source", "/api/gms"]
+  },
   "note": "Pushing a change to this file on a claude/** branch runs .github/workflows/seed-fetch.yml."
 }

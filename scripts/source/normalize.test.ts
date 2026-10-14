@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { contentHash, pick, slugify, stripMarkup, toDelta, toRate } from "./normalize";
+import {
+  contentHash,
+  pick,
+  slugify,
+  stripMarkup,
+  toDelta,
+  toRate,
+} from "./normalize";
 
 describe("slugify", () => {
   it.each([
@@ -17,10 +24,14 @@ describe("slugify", () => {
 
 describe("stripMarkup", () => {
   it("removes tags and color codes but keeps line breaks", () => {
-    expect(stripMarkup('Deals <font color="#ff0000">200</font> damage.<br>Slows by 30%.')).toBe(
-      "Deals 200 damage.\nSlows by 30%.",
+    expect(
+      stripMarkup(
+        'Deals <font color="#ff0000">200</font> damage.<br>Slows by 30%.',
+      ),
+    ).toBe("Deals 200 damage.\nSlows by 30%.");
+    expect(stripMarkup("[ffcc00]Passive[-]: gains &amp; keeps")).toBe(
+      "Passive: gains & keeps",
     );
-    expect(stripMarkup("[ffcc00]Passive[-]: gains &amp; keeps")).toBe("Passive: gains & keeps");
     expect(stripMarkup(null)).toBe("");
   });
 });
@@ -42,11 +53,15 @@ describe("rates", () => {
 
 describe("contentHash and pick", () => {
   it("ignores key order", () => {
-    expect(contentHash({ a: 1, b: [2, 3] })).toBe(contentHash({ b: [2, 3], a: 1 }));
+    expect(contentHash({ a: 1, b: [2, 3] })).toBe(
+      contentHash({ b: [2, 3], a: 1 }),
+    );
   });
 
   it("reads dotted paths", () => {
-    expect(pick({ hero: { data: { name: "Miya" } } }, "hero.data.name")).toBe("Miya");
+    expect(pick({ hero: { data: { name: "Miya" } } }, "hero.data.name")).toBe(
+      "Miya",
+    );
     expect(pick({ hero: null }, "hero.data.name")).toBeUndefined();
   });
 });

@@ -8,7 +8,7 @@
  * website's scripts, so field names and the "Academy" base path can be
  * confirmed. Nothing here writes to the database.
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { createSourceClient } from "../source/client";
 import {
@@ -25,6 +25,26 @@ import {
 import { buildQuery, eq, sortBy } from "../source/query";
 
 const outDir = path.resolve(process.argv[2] ?? "seed/official/_inspect");
+
+type InspectOptions = {
+  /** Skip the API calls and only crawl the official site's scripts. */
+  siteOnly?: boolean;
+  maxScripts?: number;
+  pages?: string[];
+  /** Extra strings to find in the scripts (source IDs, field names). */
+  terms?: string[];
+};
+
+async function readOptions(): Promise<InspectOptions> {
+  try {
+    const request = JSON.parse(await readFile("seed/fetch-request.json", "utf8")) as {
+      inspect?: InspectOptions;
+    };
+    return request.inspect ?? {};
+  } catch {
+    return {};
+  }
+}
 const OFFICIAL_SITE = "https://www.mobilelegends.com";
 
 async function save(name: string, data: unknown) {
@@ -48,7 +68,7 @@ const SNIPPET_TERMS = [
  * code snippets around the field names we care about. The snippets show how
  * the official UI labels each list (for example which one means "counters").
  */
-async function discoverApiPaths() {
+async function discoverApiPaths(options: InspectOptions) {
   const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
   const get = async (url: string) => {
     await sleep(2000);
@@ -60,7 +80,8 @@ async function discoverApiPaths() {
     }
   };
 
-  const pages = ["/", "/hero", "/rank"];
+  const pages = options.pages ?? ["/", "/hero", "/rank"];
+  const terms = [...SNIPPET_TERMS, ...(options.terms ?? [])];
   const queue: string[] = [];
   const seen = new Set<string>();
   const enqueue = (url: string) => {
@@ -80,7 +101,7 @@ async function discoverApiPaths() {
   }
   const allowedHosts = new Set(queue.map((url) => new URL(url).host));
 
-  const MAX_SCRIPTS = 40;
+  const MAX_SCRIPTS = options.maxScripts ?? 40;
   const apiMatches = new Map<string, Set<string>>();
   const snippets: Record<string, { script: string; text: string }[]> = {};
   let fetched = 0;
@@ -94,7 +115,7 @@ async function discoverApiPaths() {
       if (!apiMatches.has(match[0])) apiMatches.set(match[0], new Set());
       apiMatches.get(match[0])!.add(script);
     }
-    for (const term of SNIPPET_TERMS) {
+    for (const term of terms) {
       const list = (snippets[term] ??= []);
       let index = text.indexOf(term);
       while (index !== -1 && list.length < 6) {
@@ -124,6 +145,7 @@ async function discoverApiPaths() {
 
 async function main() {
   await mkdir(outDir, { recursive: true });
+  const options = await readOptions();
   const client = createSourceClient({ log: (message) => console.log(`  ${message}`) });
   const errors: Record<string, string> = {};
 
@@ -136,47 +158,49 @@ async function main() {
     }
   }
 
-  await attempt("hero-list", () =>
-    client.query(SOURCE_BASE_URL, HERO_SOURCE_IDS.heroList, buildQuery(5, 1, { sorts: [sortBy("hero_id", "desc")] })),
-  );
-  await attempt("hero-list-count", () =>
-    client.query(
-      SOURCE_BASE_URL,
-      HERO_SOURCE_IDS.heroList,
-      buildQuery(1, 1, { fields: ["hero_id", "hero.data.name"], sorts: [sortBy("hero_id", "desc")] }),
-    ),
-  );
-  for (const heroId of [1, 30]) {
-    await attempt(`hero-detail-${heroId}`, () =>
-      client.query(SOURCE_BASE_URL, HERO_SOURCE_IDS.heroList, buildQuery(1, 1, { filters: [eq("hero_id", heroId)] })),
+  if (!options.siteOnly) {
+    await attempt("hero-list", () =>
+      client.query(SOURCE_BASE_URL, HERO_SOURCE_IDS.heroList, buildQuery(5, 1, { sorts: [sortBy("hero_id", "desc")] })),
     );
-  }
-  for (const [label, matchType] of Object.entries(MATCH_TYPE)) {
-    await attempt(`stats-mythic-7d-${label}`, () =>
+    await attempt("hero-list-count", () =>
       client.query(
         SOURCE_BASE_URL,
-        STATS_SOURCE_IDS[7],
-        buildQuery(2, 1, {
-          filters: [eq("bigrank", RANK_CODES.mythic), eq("match_type", matchType)],
-          sorts: [sortBy("main_hero_win_rate", "desc")],
+        HERO_SOURCE_IDS.heroList,
+        buildQuery(1, 1, { fields: ["hero_id", "hero.data.name"], sorts: [sortBy("hero_id", "desc")] }),
+      ),
+    );
+    for (const heroId of [1, 30]) {
+      await attempt(`hero-detail-${heroId}`, () =>
+        client.query(SOURCE_BASE_URL, HERO_SOURCE_IDS.heroList, buildQuery(1, 1, { filters: [eq("hero_id", heroId)] })),
+      );
+    }
+    for (const [label, matchType] of Object.entries(MATCH_TYPE)) {
+      await attempt(`stats-mythic-7d-${label}`, () =>
+        client.query(
+          SOURCE_BASE_URL,
+          STATS_SOURCE_IDS[7],
+          buildQuery(2, 1, {
+            filters: [eq("bigrank", RANK_CODES.mythic), eq("match_type", matchType)],
+            sorts: [sortBy("main_hero_win_rate", "desc")],
+          }),
+        ),
+      );
+    }
+    await attempt("stats-all-1d-page-size", () =>
+      client.query(
+        SOURCE_BASE_URL,
+        STATS_SOURCE_IDS[1],
+        buildQuery(200, 1, {
+          filters: [eq("bigrank", RANK_CODES.all), eq("match_type", MATCH_TYPE.counters)],
+          fields: ["main_heroid", "main_hero_win_rate", "main_hero_appearance_rate", "main_hero_ban_rate"],
         }),
       ),
     );
   }
-  await attempt("stats-all-1d-page-size", () =>
-    client.query(
-      SOURCE_BASE_URL,
-      STATS_SOURCE_IDS[1],
-      buildQuery(200, 1, {
-        filters: [eq("bigrank", RANK_CODES.all), eq("match_type", MATCH_TYPE.counters)],
-        fields: ["main_heroid", "main_hero_win_rate", "main_hero_appearance_rate", "main_hero_ban_rate"],
-      }),
-    ),
-  );
 
   let academyBase = ACADEMY_BASE_URL;
   await attempt("official-site-api-paths", async () => {
-    const discovered = await discoverApiPaths();
+    const discovered = await discoverApiPaths(options);
     if (!academyBase) {
       const appIds = [
         ...new Set(
@@ -191,7 +215,7 @@ async function main() {
     return { ...discovered, academyBaseGuess: academyBase || null };
   });
 
-  if (academyBase) {
+  if (academyBase && !options.siteOnly) {
     const academy: Array<[string, number, ReturnType<typeof buildQuery>]> = [
       ["academy-equipment-expanded", ACADEMY_SOURCE_IDS.equipmentExpanded, buildQuery(3, 1)],
       ["academy-equipment", ACADEMY_SOURCE_IDS.equipment, buildQuery(3, 1)],
@@ -215,7 +239,7 @@ async function main() {
       ],
     ];
     for (const [name, id, body] of academy) await attempt(name, () => client.query(academyBase, id, body));
-  } else {
+  } else if (!academyBase) {
     errors.academy = "No Academy base path found; set MLBB_ACADEMY_BASE_URL and run again.";
   }
 

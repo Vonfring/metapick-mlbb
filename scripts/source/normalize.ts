@@ -41,7 +41,10 @@ export function stripMarkup(text: string | null | undefined): string {
  * values above 1 are treated as percentages. Returns null for anything else.
  */
 export function toRate(value: unknown): number | null {
-  const n = typeof value === "string" ? Number.parseFloat(value.replace("%", "")) : value;
+  const n =
+    typeof value === "string"
+      ? Number.parseFloat(value.replace("%", ""))
+      : value;
   if (typeof n !== "number" || !Number.isFinite(n)) return null;
   const fraction = n > 1 ? n / 100 : n;
   if (fraction < 0 || fraction > 1) return null;
@@ -50,7 +53,10 @@ export function toRate(value: unknown): number | null {
 
 /** A signed change in rate (fraction). Values beyond +-1 are treated as percentage points. */
 export function toDelta(value: unknown): number | null {
-  const n = typeof value === "string" ? Number.parseFloat(value.replace("%", "")) : value;
+  const n =
+    typeof value === "string"
+      ? Number.parseFloat(value.replace("%", ""))
+      : value;
   if (typeof n !== "number" || !Number.isFinite(n)) return null;
   const fraction = Math.abs(n) > 1 ? n / 100 : n;
   if (fraction < -1 || fraction > 1) return null;
@@ -75,7 +81,10 @@ export function stableStringify(value: unknown): string {
 }
 
 export function contentHash(value: unknown): string {
-  return createHash("sha256").update(stableStringify(value)).digest("hex").slice(0, 16);
+  return createHash("sha256")
+    .update(stableStringify(value))
+    .digest("hex")
+    .slice(0, 16);
 }
 
 /** Read a dotted path such as "hero.data.name" from a nested object. */

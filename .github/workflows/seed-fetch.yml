@@ -64,4 +64,6 @@ jobs:
             exit 0
           fi
           git commit -m "Seed ${{ steps.request.outputs.mode }}: data from the official source (run ${{ github.run_id }})"
+          # Someone may have pushed while this ran; replay our commit on top.
+          git pull --rebase origin "${{ github.ref_name }}"
           git push origin "HEAD:${{ github.ref_name }}"
