@@ -1,14 +1,11 @@
 {
   "pageStatus": {
-    "/": 200,
-    "/hero": 200,
-    "/rank": 200,
     "/academy": 200,
     "/academy/equipment": 200,
-    "/academy/emblem": 200
+    "/rank": 200
   },
-  "scriptsFetched": 160,
-  "scriptsQueued": 62,
+  "scriptsFetched": 230,
+  "scriptsQueued": 3,
   "apiMatches": [
     {
       "value": "https://api.gms.moontontech.com",
@@ -47,39 +44,7 @@
     }
   ],
   "snippets": {
-    "2669606": [
-      {
-        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
-        "text": "ent,TS=\"en\",PS=\"zh\",kS=[\"List\",\"Tabs\",\"TabPane\",\"Swiper\",\"Chart\",\"Dropdown\",\"DropdownV2\",\"ListLayout\",\"Custom\",\"CheckList\"],ir=\".\",Hn=\"mt-\",iv=Hn+\"uid-\",MS=\"config\",LS=\"__config__\",Dp=\"content\",NS=\"lang\",DS=\"location\",FS=\"APP_WEB__\",$S=\"\".concat(FS,\"2669606_2669607__\").toUpperCase(),av=\"APP_LOCAL_LANG\",VS=\"LOCAL_LANG\",pi=e=>{let t=\"\";for(const n in e)Wn(e[n])||(t+=encodeURIComponent(n)+\"=\"+encodeURIComponent(e[n])+\"&\");return t.replace(/&$/,\"\")},sv=e=>{const t={},n=e.split(\"&\");for(let r=0;r<n.l"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
-        "text": "ay.mobilelegends.com\",api:\"https://sg-api.mobilelegends.com\"}},dw=(e,t)=>{var n;return((n=jp[e])==null?void 0:n[t])||jp[e]||{}},js=dw(Vf,ns()),pw=uv()?\"https://api.moba5v5.com\":js.api,Wt={mode:Vf,baseURL:js.baseUrl,api:pw,sdk:js.sdk,cdn:js.cdn,name:\"2669606_2669607\"},gv=()=>window.matchMedia(\"(orientation: landscape)\").matches?Rl.LANDSCAPE:Rl.PORTRAIT,hw=[{designSize:750,scaleFixed:750}],Up=Wo((e,t=[],n)=>{const r=window.innerWidth,o=window.innerHeight;e===Xr.WIDTH_FIXED&&!t.length&&(t=hw);const"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
-        "text": "seEffect(()=>{const t=qn();((t==null?void 0:t.orientation)===\"adaptive\"||e===\"adaptive\")&&document.documentElement.setAttribute(\"off\",\"orientation\")},[e]),Ci(()=>{Uf()&&cv()&&mw()})},GD=()=>{AO(),cT(),qD()};function YD(){const e=qn()||{},t=+e.appId||2669606,n=+e.actId||2669607;return GD(),!n||!n?null:M.jsx(WD,{children:M.jsx(BD,{appId:t,actId:n})})}Vo($o.APP_ENTER);US();nA();lc.start();const KD=cA(M.jsx(ja.AliveScope,{children:M.jsx(YD,{})}));Il.createRoot(document.getElementById(\"root\")).render"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-legacy-e391391c.js",
-        "text": "ion:\"landscape\",scaleFixed:9999}]}},fr=\"prod\",mr=t(\"ar\",Date.now()),hr=navigator.userAgent,gr=[\"List\",\"Tabs\",\"TabPane\",\"Swiper\",\"Chart\",\"Dropdown\",\"DropdownV2\",\"ListLayout\",\"Custom\",\"CheckList\"],vr=\".\",yr=\"mt-\",br=yr+\"uid-\",wr=\"content\",kr=\"APP_WEB__2669606_2669607__\".toUpperCase(),xr=\"APP_LOCAL_LANG\",_r=t(\"b\",(e=>{let t=\"\";for(const n in e)fe(e[n])||(t+=encodeURIComponent(n)+\"=\"+encodeURIComponent(e[n])+\"&\");return t.replace(/&$/,\"\")})),Sr=e=>{const t={},n=e.split(\"&\");for(let r=0;r<n.length;r+"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-legacy-e391391c.js",
-        "text": "api:\"https://sg-api.mobilelegends.com\"}},sa=t(\"p\",((e,t)=>{var n;return(null===(n=oa[e])||void 0===n?void 0:n[t])||oa[e]||{}}))(fr,ta()),la=Pr()?\"https://api.moba5v5.com\":sa.api,ca=t(\"e\",{mode:fr,baseURL:sa.baseUrl,api:la,sdk:sa.sdk,cdn:sa.cdn,name:\"2669606_2669607\"}),ua=()=>window.matchMedia(\"(orientation: landscape)\").matches?nr.LANDSCAPE:nr.PORTRAIT,da=[{designSize:750,scaleFixed:750}],pa=ke(((e,t=[],n)=>{const r=window.innerWidth,a=window.innerHeight;e!==tr.WIDTH_FIXED||t.length||(t=da);cons"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-legacy-e391391c.js",
-        "text": ",emit:t}=ur();e(ar.TAB_SYNC,((e,n)=>{Tg.data.set(e,{index:n,time:Date.now()});const r=Ng(e);r&&r.length&&r.forEach((r=>{r&&r.includes(e)&&setTimeout((()=>t(ar.TAB_SYNC_NOTICE,r,n,e)))}))}))})(),nC()};function aC(){const e=Or()||{},t=+e.appId||Number(2669606),n=+e.actId||Number(2669607);return rC(),n&&n?lt.jsx(tC,{children:lt.jsx(QO,{appId:t,actId:n})}):null}Cr(rr.APP_ENTER),(()=>{const e=()=>{},t=window.__REACT_DEVTOOLS_GLOBAL_HOOK__;if(\"object\"==typeof t)for(const[n,r]of Object.entries(t))t[n]="
-      }
-    ],
-    "2713995": [],
-    "2718121": [],
-    "2718122": [],
-    "2718124": [],
-    "2740642": [],
-    "2775075": [],
-    "2776688": [],
+    "2713992": [],
     "sub_hero_last": [],
     "sub_hero": [],
     "increase_win_rate": [],
@@ -88,40 +53,70 @@
     "bigrank": [],
     "big_rank": [],
     "real_road": [],
-    "gms/source": [
+    "academy": [],
+    "Academy": [],
+    "actId": [
       {
         "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
-        "text": "ken:!0,withSign:!0});return rd(o)},cC=async e=>{const{url:t,method:n,params:r,isLogin:o}=e,i={url:t,method:n};return n===Gt.POST?i.data=r:i.params=r,await In.request(i,{ignoreCancelToken:!!o})},Ts=async(e,t,n,r)=>{const o=await Bv.request({url:\"/api/gms/source/\".concat(e,\"/\").concat(t),method:Gt.POST,data:n,statisticId:r==null?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return rd(o)},uC=ns()===co.SG?\"https://akmweb.youngjoygame.com/\":\"https://alicdn.web.moontonapp.com/\",lC=ns()===c"
+        "text": "a)))),e},requestInterceptors:(e,t)=>{var c,u,l;Vo($o.APP_HTTP,Hs(e));const{ignoreHeaders:n,withSign:r,withToken:o}=(c=e.requestOptions)!=null?c:{};if(n)return e;const{app:i,user:a}=dr.getState();if(e.headers[\"X-AppId\"]=i.appId,e.headers[\"X-ActId\"]=i.actId,e.headers[\"X-Lang\"]=encodeURIComponent(i.lang),r){const f=new URL(\"\".concat(e.baseURL).concat(e.url)),d=[(u=e.method)==null?void 0:u.toLocaleUpperCase(),f.pathname,Nv.stringify(e.params,{encode:!1}),JSON.stringify(e.data||{})].join(\"\\n\");(l=i.s"
       },
       {
-        "script": "https://www.mobilelegends.com/assets/index-legacy-e391391c.js",
-        "text": "e,t,n)=>{const r=await oc.request({url:`/api/content/inner/query/${e}`,method:$l.POST,data:t,statisticId:null==n?void 0:n.statisticId},{ignoreCancelToken:!0,withSign:!0});return sd(r)})),cd=t(\"P\",(async(e,t,n,r)=>{const a=await oc.request({url:`/api/gms/source/${e}/${t}`,method:$l.POST,data:n,statisticId:null==r?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return sd(a)})),ud=ta()===or.SG?\"https://akmweb.youngjoygame.com/\":\"https://alicdn.web.moontonapp.com/\",dd=ta()===or.SG?\"s3\":\"al"
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "nt.cdnPrefix))}const r=Date.now(),o=n.client.countryCode||n.client.country;return o&&(n.client.country=o.toLocaleUpperCase()),{...n,server:{...n.server,clientTime:r}}}}),oy=Tf({name:\"app\",initialState:RC,reducers:{init(e,t){e.appId=t.payload.appId,e.actId=t.payload.actId,t.payload.isPreview&&(e.isPreview=t.payload.isPreview)},changeState:(e,t)=>({...e,...t.payload}),changeMemory:(e,t)=>{const{feild:n,value:r}=t.payload;e.memory[n]=r},changeActiveContent:(e,t)=>{const{id:n,content:r,level:o}=t.pa"
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "s\\}\\}$/g.test(e),ql=(...e)=>[\"vars\",\"content\",\"runtime\",\"message\",\"params\"].reduce((n,r)=>(n[r]={},e.forEach(o=>{r===\"vars\"||r===\"content\"?n[r]=o[r]||n[r]:n[r]={...n[r],...o[r]}}),n),{}),MA=()=>ct(e=>{var f;const t=e.app.memory,n=e.app.appId,r=e.app.actId,o=e.app.server.time,i=e.app.lang,a=(f=e.app.client)==null?void 0:f.country,s=e.user.user,c=e.user.ready,u=window.location.href,l={appId:n,actId:r,ready:c,ua:ov,env:Vf,url:u};if(s){const d={...s};return d.token&&delete d.token,d.reg_country&&(d."
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "om:i,client_id:c,type:vy[r],scope:u,redirect_url:Oy})}else t===Jl.FAIL&&(tn.error(\"authorization_fail\"),yn.rejectFun(n))}catch(r){tn.error(\"authorization_fail\"),yn==null||yn.rejectFun(n)}finally{yn=null}};dr.subscribe(()=>{if(wc)return;const{appId:e,actId:t}=ct(({app:r})=>r),n=\"authorization_data_\".concat(e,\"_\").concat(t);wc=new rI({storageKey:n,authEventCallBack:oI,urlParamsCallBack:()=>{window==null||window.parent.focus(),window.close()}})});Me.on(we.PAGE_VISIBILITY_CHANGE,e=>{var t;e.visible&"
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "n=mr(e,{...t,shareType:qe.REDDIT}),{title:r=\"\"}=e;return\"https://share.naver.com/web/shareView?url=\".concat(encodeURIComponent(n),\"&title=\").concat(encodeURIComponent(r))},aR=(e,t)=>{const{shareId:n,token:r,url:o}=e;if(!n)throw new Error(\"游戏邀请需要活动ID-actId\");r?qI({token:r,act_id:n,inviteParams:{url:o,...t,shareType:\"inGame\"}}):yi()},sR=(e,t)=>{const n=mr(e,{...t,shareType:qe.LINK});sd(n)},cR={[qe.FACEBOCK]:GI,[qe.WHATSAPP]:YI,[qe.TWITTER]:KI,[qe.TELEGRAM]:XI,[qe.VK]:ZI,[qe.INSTAGRAM]:QI,[qe.IN_GA"
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": " Ut(i,r.current)?r.current:(r.current=i,i)},YR=Uc([WR,qR],(e,t)=>GR(e,t)),KR=(e,t={})=>{const n=b.useRef([]),r=Ge(e,t),o=gy(r),i=pe(a=>YR(a,{id:e,unique:r,lastVariable:n}));return{vars:o,varChange:i}},XR=e=>e.app.memory,ZR=e=>e.app.appId,JR=e=>e.app.actId,QR=e=>e.app.server.time,eO=e=>e.app.lang,tO=e=>{var t;return(t=e.app.client)==null?void 0:t.country},nO=e=>e.user.user,rO=Uc([XR,ZR,JR,QR,eO,tO,nO],(e,t,n,r,o,i,a)=>({memory:e,appId:t,actId:n,time:r,lang:o,country:i,user:a})),Ln=(e,t)=>{const n"
       }
     ],
-    "/api/gms": [
+    "appId:": [
       {
         "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
-        "text": "C=async(e,t,n)=>{const r=await Bv.request({url:\"/api/content/inner/query/\".concat(e),method:Gt.POST,data:t,statisticId:n==null?void 0:n.statisticId},{ignoreCancelToken:!0,withSign:!0});return rd(r)},sC=async(e,t,n,r)=>{const o=await In.request({url:\"/api/gms/data/app/\".concat(e,\"/\").concat(t),method:Gt.POST,data:n,statisticId:r==null?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return rd(o)},cC=async e=>{const{url:t,method:n,params:r,isLogin:o}=e,i={url:t,method:n};return n===Gt.POS"
+        "text": "t\"?n[r]=o[r]||n[r]:n[r]={...n[r],...o[r]}}),n),{}),MA=()=>ct(e=>{var f;const t=e.app.memory,n=e.app.appId,r=e.app.actId,o=e.app.server.time,i=e.app.lang,a=(f=e.app.client)==null?void 0:f.country,s=e.user.user,c=e.user.ready,u=window.location.href,l={appId:n,actId:r,ready:c,ua:ov,env:Vf,url:u};if(s){const d={...s};return d.token&&delete d.token,d.reg_country&&(d.reg_country=d.reg_country.toLocaleLowerCase()),{...t,app:l,time:o,lang:i,country:a,user:d}}return{...t,app:l,time:o,lang:i,country:a,use"
       },
       {
         "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
-        "text": "celToken:!0,withSign:!0});return rd(o)},cC=async e=>{const{url:t,method:n,params:r,isLogin:o}=e,i={url:t,method:n};return n===Gt.POST?i.data=r:i.params=r,await In.request(i,{ignoreCancelToken:!!o})},Ts=async(e,t,n,r)=>{const o=await Bv.request({url:\"/api/gms/source/\".concat(e,\"/\").concat(t),method:Gt.POST,data:n,statisticId:r==null?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return rd(o)},uC=ns()===co.SG?\"https://akmweb.youngjoygame.com/\":\"https://alicdn.web.moontonapp.com/\",lC=ns("
+        "text": "e:o,custom:i,client_id:c,type:vy[r],scope:u,redirect_url:Oy})}else t===Jl.FAIL&&(tn.error(\"authorization_fail\"),yn.rejectFun(n))}catch(r){tn.error(\"authorization_fail\"),yn==null||yn.rejectFun(n)}finally{yn=null}};dr.subscribe(()=>{if(wc)return;const{appId:e,actId:t}=ct(({app:r})=>r),n=\"authorization_data_\".concat(e,\"_\").concat(t);wc=new rI({storageKey:n,authEventCallBack:oI,urlParamsCallBack:()=>{window==null||window.parent.focus(),window.close()}})});Me.on(we.PAGE_VISIBILITY_CHANGE,e=>{var t;e."
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "rs:o,varChange:i}},XR=e=>e.app.memory,ZR=e=>e.app.appId,JR=e=>e.app.actId,QR=e=>e.app.server.time,eO=e=>e.app.lang,tO=e=>{var t;return(t=e.app.client)==null?void 0:t.country},nO=e=>e.user.user,rO=Uc([XR,ZR,JR,QR,eO,tO,nO],(e,t,n,r,o,i,a)=>({memory:e,appId:t,actId:n,time:r,lang:o,country:i,user:a})),Ln=(e,t)=>{const n=pe(rO),r=zc(),{vars:o,varChange:i}=KR(e,t),a=b.useCallback((c,u={})=>{const l=ql({vars:o,...t},u);return Gl(c,l)},[n,i,t,r.search]),s=b.useCallback((c,u={})=>{const l=ql({vars:o,..."
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "config:[a]})},[a,n]);const u=b.useMemo(()=>r?r.reduce((l,f)=>{const{id:d,...g}=f;if(d&&o&&o[d]){const m=o[d];l.push({...m,route:g})}return l},[]):[],[o,r]);return b.useEffect(()=>{i&&s(NC(i))},[s,i,c.search]),M.jsx(qb,{comps:u,path:t})},BD=e=>{const{appId:t,actId:n}=e,r=pe(({app:m})=>m.isReady),o=pe(({app:m})=>m.isPreview),i=pe(({app:m})=>m.lang),a=pe(({app:m})=>m.client.cdnPrefixLang),s=pe(({user:m})=>m.token),c=vo(),[u,l]=iA(),{i18n:f}=Qc();b.useEffect(()=>{s?Lx()||c(uy()):c(Pa({user:null}))},"
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "=pe(({user:m})=>m.token),c=vo(),[u,l]=iA(),{i18n:f}=Qc();b.useEffect(()=>{s?Lx()||c(uy()):c(Pa({user:null}))},[c,s]),b.useEffect(()=>{if(i&&a&&(i!==f.language&&f.changeLanguage(i),!o)){const m=c(ty());return()=>m.abort()}},[a,c,f,o,i]),Ci(()=>{c(ry({appId:t,actId:n,isPreview:o}))}),b.useEffect(()=>{r&&l(!1)},[r,l]);const d=b.useMemo(()=>[n],[n]),g=oA();return M.jsxs(b.Fragment,{children:[M.jsx(b.Suspense,{children:M.jsx(g,{})}),M.jsx(zD,{path:d}),M.jsx(sA,{})]})};const HD=({error:e})=>M.jsx(\"div"
+      },
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "ptive\")&&document.documentElement.setAttribute(\"off\",\"orientation\")},[e]),Ci(()=>{Uf()&&cv()&&mw()})},GD=()=>{AO(),cT(),qD()};function YD(){const e=qn()||{},t=+e.appId||2669606,n=+e.actId||2669607;return GD(),!n||!n?null:M.jsx(WD,{children:M.jsx(BD,{appId:t,actId:n})})}Vo($o.APP_ENTER);US();nA();lc.start();const KD=cA(M.jsx(ja.AliveScope,{children:M.jsx(YD,{})}));Il.createRoot(document.getElementById(\"root\")).render(M.jsx(a_,{store:dr,children:M.jsx(s_,{router:KD,future:{v7_startTransition:!0}})"
+      }
+    ],
+    "/api/gms/act": [],
+    "/api/gms/app": [],
+    "configId": [
+      {
+        "script": "https://www.mobilelegends.com/assets/index-06f6d0af.js",
+        "text": "t p={...t,type:f,object:[y]};return Co({...a,getPromise:()=>Ts(r,c,p,{statisticId:i}),opts:{opts:p,actId:h}})}case oo.COMMUNITY:{const h=d==null?void 0:d.app,y=l;return!h||!y?void 0:await Co({...a,getPromise:()=>sC(h,y,t,{statisticId:i}),opts:{app:h,configId:y,params:t}})}case oo.CONTENT:{if(!c)return;const h=(l||[]).filter(p=>!!p);return await Co({...a,getPromise:()=>Ts(r,c,{...t,object:h},{statisticId:i}),opts:{...t,object:h,id:c}})}case oo.API:{if(!c||!d)return;const h=d.type;if(!h)return;con"
       },
       {
         "script": "https://www.mobilelegends.com/assets/index-legacy-e391391c.js",
-        "text": "sync(e,t,n)=>{const r=await oc.request({url:`/api/content/inner/query/${e}`,method:$l.POST,data:t,statisticId:null==n?void 0:n.statisticId},{ignoreCancelToken:!0,withSign:!0});return sd(r)})),cd=t(\"P\",(async(e,t,n,r)=>{const a=await oc.request({url:`/api/gms/source/${e}/${t}`,method:$l.POST,data:n,statisticId:null==r?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return sd(a)})),ud=ta()===or.SG?\"https://akmweb.youngjoygame.com/\":\"https://alicdn.web.moontonapp.com/\",dd=ta()===or.SG?\"s3"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-legacy-e391391c.js",
-        "text": "n;const a={...t,type:d,object:[n]},s=()=>cd(r,l,a,{statisticId:i});return Av({...o,getPromise:s,opts:{opts:a,actId:e}})}case Sv.COMMUNITY:{const e=null==p?void 0:p.app,n=u;if(!e||!n)return;const r=()=>(async(e,t,n,r)=>{const a=await sc.request({url:`/api/gms/data/app/${e}/${t}`,method:$l.POST,data:n,statisticId:null==r?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return sd(a)})(e,n,t,{statisticId:i});return await Av({...o,getPromise:r,opts:{app:e,configId:n,params:t}})}case Sv.CONTE"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-aa803bb8.js",
-        "text": ".DELETE,headers:oe(),params:s},{isTransformResponse:!1}),Es=s=>ue.request({url:\"/ugc/comment\",method:se.POST,headers:oe(),params:{...s}}),Us=s=>ue.request({url:\"/ugc/comment\",method:se.GET,headers:oe(),params:{...s}}),Xe=async(s,t)=>is.request({url:\"/api/gms/data/app/\".concat(ze,\"/100182\"),method:se.POST,headers:oe(),data:t},{ignoreCancelToken:!0,withSign:!0,isTransformResponse:!1}).then(c=>c.data).catch(c=>{Ss()});const Ts=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAlCAYAAADBa/A+AAAAA"
-      },
-      {
-        "script": "https://www.mobilelegends.com/assets/index-legacy-ed04d995.js",
-        "text": "etry:!0,count:5,waitTime:100}}},K||{}));var K;let q=null;const W=e=>{const{app:t,user:i}=h.getState();return{\"X-Lang\":encodeURIComponent(t.lang)||\"en\",Authorization:null==i?void 0:i.token,\"X-AppId\":Y,\"X-Agent\":\"zgame\"}},Z=async(e,t)=>p.request({url:\"/api/gms/data/app/112523/100182\",method:d.POST,headers:W(),data:t},{ignoreCancelToken:!0,withSign:!0,isTransformResponse:!1}).then((e=>e.data)).catch((e=>{!async function(){if(q){var e;C.clear(),C.show({content:null===(e=q)||void 0===e?void 0:e.gms_2"
+        "text": "r)=>{const a=await sc.request({url:`/api/gms/data/app/${e}/${t}`,method:$l.POST,data:n,statisticId:null==r?void 0:r.statisticId},{ignoreCancelToken:!0,withSign:!0});return sd(a)})(e,n,t,{statisticId:i});return await Av({...o,getPromise:r,opts:{app:e,configId:n,params:t}})}case Sv.CONTENT:{if(!l)return;const e=(u||[]).filter((e=>!!e)),n=()=>cd(r,l,{...t,object:e},{statisticId:i});return await Av({...o,getPromise:n,opts:{...t,object:e,id:l}})}case Sv.API:{if(!l||!p)return;const n=p.type;if(!n)retu"
       }
     ]
   },

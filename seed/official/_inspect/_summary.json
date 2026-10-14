@@ -1,11 +1,22 @@
 {
   "stats": {
-    "requests": 0,
+    "requests": 11,
     "retries": 0,
     "cacheHits": 0
   },
   "academyBase": null,
   "errors": {
+    "probe-2669606-posts": "HTTP 400 from the source",
+    "probe-2669606-heroes": "HTTP 400 from the source",
+    "probe-2669606-roles": "HTTP 400 from the source",
+    "probe-2669606-equipment": "HTTP 400 from the source",
+    "probe-2669606-equipmentExpanded": "HTTP 400 from the source",
+    "probe-2669606-spells": "HTTP 400 from the source",
+    "probe-2669606-emblems": "HTTP 400 from the source",
+    "probe-2669606-ranks": "HTTP 400 from the source",
+    "probe-2669606-heroStats": "HTTP 400 from the source",
+    "probe-2669606-builds": "HTTP 400 from the source",
+    "probe-2669606-matchups": "HTTP 400 from the source",
     "academy": "No Academy base path found; set MLBB_ACADEMY_BASE_URL and run again."
   }
 }
