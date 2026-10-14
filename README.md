@@ -25,8 +25,18 @@ With `DATA_SOURCE=seed` the app reads the JSON files in `seed/` instead of Supab
 | `pnpm test` | Vitest unit tests |
 | `pnpm build` | Production build |
 | `pnpm seed:check-tags` | Validate `seed/hero-tags.json` |
+| `pnpm seed:fetch` | Download the official snapshot into `seed/official/` (needs access to the official site) |
+| `pnpm seed:catalog` | Download the Liquipedia catalog into `seed/liquipedia/` |
 | `pnpm seed:sql` | Rebuild `supabase/seed.sql` from the files in `seed/` |
 | `pnpm db:test` | Apply migrations, RLS checks and the seed to a disposable Postgres (`TEST_DATABASE_URL`) |
+
+## Data sources
+
+- Heroes, skills, official hero relations and ranked statistics (win, pick and ban rates, counters, synergies) come from the API behind the official Mobile Legends: Bang Bang website.
+- Items, emblems, talents and battle spells come from the [Liquipedia Mobile Legends wiki](https://liquipedia.net/mobilelegends) under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), because the official MLBB Academy that published them closed on 2026-06-30. The app credits Liquipedia wherever that data appears; `seed/liquipedia/README.md` has the license notice.
+- Recommended builds closed with the Academy and are not shown for now.
+
+Both imports are slow on purpose: one request at a time, a few seconds apart, with retries and a disk cache. The development container cannot reach either site, so the one-off imports run in GitHub Actions: change `mode` and `reason` in `seed/fetch-request.json` on a `claude/**` branch and push; `.github/workflows/seed-fetch.yml` commits the result back. See [`docs/architecture.md`](docs/architecture.md).
 
 ## Database setup (Supabase)
 

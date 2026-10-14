@@ -1,14 +1,15 @@
 name: Seed fetch (one-off)
 
-# Runs the one-time pull from the official data source on GitHub's runners,
-# because the development container cannot reach it. Triggered by pushing a
-# change to seed/fetch-request.json on a claude/** branch:
-#   {"mode": "browser"}  open official pages in headless Chromium and save the
-#                        API calls they make to seed/official/_inspect/browser/
-#   {"mode": "liquipedia"}  save the raw Liquipedia pages (items, emblems,
-#                        spells) to seed/official/_inspect/liquipedia/
-#   {"mode": "catalog"}  write seed/liquipedia/*.json and supabase/seed.sql
-#   {"mode": "fetch"}    write seed/official/*.json and supabase/seed.sql
+# Runs the one-off seed imports on GitHub's runners, because the development
+# container cannot reach the data sources. Triggered by pushing a change to
+# seed/fetch-request.json on a claude/** branch (change "reason" each time:
+# an identical file does not trigger a run):
+#   {"mode": "fetch"}       official snapshot: seed/official/*.json + seed.sql
+#   {"mode": "catalog"}     Liquipedia catalog: seed/liquipedia/*.json + seed.sql
+#   {"mode": "liquipedia"}  raw Liquipedia pages to seed/_inspect/liquipedia/
+#   {"mode": "browser"}     API calls made by official pages, opened in
+#                           headless Chromium, to seed/_inspect/browser/
+# seed/_inspect/ holds research output only; delete it once used.
 # Results are committed back to the same branch with GITHUB_TOKEN, which does
 # not trigger another run. Replaced by the scheduled updater in Phase 3.
 
@@ -54,11 +55,11 @@ jobs:
 
       - name: Inspect the official pages in a browser
         if: steps.request.outputs.mode == 'browser'
-        run: pnpm seed:inspect-browser seed/official/_inspect/browser
+        run: pnpm seed:inspect-browser seed/_inspect/browser
 
       - name: Download the raw Liquipedia pages
         if: steps.request.outputs.mode == 'liquipedia'
-        run: pnpm seed:catalog --download-only --save-raw seed/official/_inspect/liquipedia/raw-pages.json
+        run: pnpm seed:catalog --download-only --save-raw seed/_inspect/liquipedia/raw-pages.json
 
       - name: Import the Liquipedia catalog
         if: steps.request.outputs.mode == 'catalog'
@@ -81,7 +82,7 @@ jobs:
             echo "Nothing changed."
             exit 0
           fi
-          git commit -m "Seed ${{ steps.request.outputs.mode }}: data from the official source (run ${{ github.run_id }})"
+          git commit -m "Seed ${{ steps.request.outputs.mode }}: results of run ${{ github.run_id }}"
           # Someone may have pushed while this ran; replay our commit on top.
           git pull --rebase origin "${{ github.ref_name }}"
           git push origin "HEAD:${{ github.ref_name }}"

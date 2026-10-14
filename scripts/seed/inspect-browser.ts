@@ -16,7 +16,7 @@ import path from "node:path";
 import { chromium, type Page } from "@playwright/test";
 
 const SITE = process.env.INSPECT_SITE ?? "https://www.mobilelegends.com";
-const outDir = path.resolve(process.argv[2] ?? "seed/official/_inspect/browser");
+const outDir = path.resolve(process.argv[2] ?? "seed/_inspect/browser");
 
 type BrowserOptions = {
   /** Paths to open first. */
