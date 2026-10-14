@@ -24,3 +24,11 @@ for file in "$root"/supabase/migrations/*.sql; do
   psql "$test_url" -v ON_ERROR_STOP=1 -q -f "$file"
 done
 psql "$test_url" -v ON_ERROR_STOP=1 -q -f "$root/supabase/tests/rls_test.sql"
+
+if [[ -f "$root/supabase/seed.sql" ]]; then
+  # Applying the seed twice proves it is idempotent.
+  echo "applying seed.sql twice"
+  psql "$test_url" -v ON_ERROR_STOP=1 -q -f "$root/supabase/seed.sql" >/dev/null
+  psql "$test_url" -v ON_ERROR_STOP=1 -q -f "$root/supabase/seed.sql" >/dev/null
+  psql "$test_url" -v ON_ERROR_STOP=1 -q -f "$root/supabase/tests/rls_test.sql"
+fi

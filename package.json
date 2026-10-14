@@ -16,7 +16,10 @@
     "test:watch": "vitest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm lint && pnpm typecheck && pnpm test"
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "seed:sql": "tsx scripts/seed/build-sql.ts",
+    "seed:fetch": "tsx scripts/seed/fetch-official.ts",
+    "db:test": "scripts/db/test-migrations.sh"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -28,6 +31,7 @@
     "radix-ui": "^1.8.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
     "sonner": "^2.0.8",
     "tailwind-merge": "^3.7.0",
     "vaul": "^1.1.2",
