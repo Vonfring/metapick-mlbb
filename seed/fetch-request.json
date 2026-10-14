@@ -1,4 +1,4 @@
 {
-  "mode": "fetch",
+  "mode": "liquipedia",
   "note": "Pushing a change to this file on a claude/** branch runs .github/workflows/seed-fetch.yml."
 }

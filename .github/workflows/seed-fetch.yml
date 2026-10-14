@@ -5,6 +5,8 @@ name: Seed fetch (one-off)
 # change to seed/fetch-request.json on a claude/** branch:
 #   {"mode": "browser"}  open official pages in headless Chromium and save the
 #                        API calls they make to seed/official/_inspect/browser/
+#   {"mode": "liquipedia"}  save sample Liquipedia wikitext (items, emblems,
+#                        spells) to seed/official/_inspect/liquipedia/
 #   {"mode": "fetch"}    write seed/official/*.json and supabase/seed.sql
 # Results are committed back to the same branch with GITHUB_TOKEN, which does
 # not trigger another run. Replaced by the scheduled updater in Phase 3.
@@ -42,7 +44,7 @@ jobs:
         id: request
         run: |
           mode=$(node -p "require('./seed/fetch-request.json').mode")
-          case "$mode" in browser|fetch) ;; *) echo "Unknown mode: $mode"; exit 1 ;; esac
+          case "$mode" in browser|liquipedia|fetch) ;; *) echo "Unknown mode: $mode"; exit 1 ;; esac
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
 
       - name: Install Chromium
@@ -52,6 +54,10 @@ jobs:
       - name: Inspect the official pages in a browser
         if: steps.request.outputs.mode == 'browser'
         run: pnpm seed:inspect-browser seed/official/_inspect/browser
+
+      - name: Inspect the Liquipedia data
+        if: steps.request.outputs.mode == 'liquipedia'
+        run: pnpm seed:inspect-liquipedia seed/official/_inspect/liquipedia
 
       - name: Fetch the seed snapshot
         if: steps.request.outputs.mode == 'fetch'
