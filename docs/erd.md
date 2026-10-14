@@ -1,6 +1,6 @@
 # Database ERD: Metapick MLBB
 
-Status: draft for review. After Phase 1 the source of truth is `supabase/migrations/`; update this file in the same commit as any schema change.
+Source of truth: `supabase/migrations/`. Update this file in the same commit as any schema change.
 
 - Engine: Supabase Postgres 17 (Free plan), schema `public`.
 - Access: every table has Row Level Security enabled. The public (`anon`, `authenticated`) can only `SELECT`. Only the seed and updater scripts write, using the service role key from GitHub Secrets; the service role bypasses RLS.
@@ -65,7 +65,7 @@ erDiagram
     hero_skills {
         integer id PK
         smallint hero_id FK
-        smallint position "0 = passive"
+        smallint slot "0 = passive"
         integer source_skill_id
         text name
         text description
@@ -110,7 +110,7 @@ erDiagram
         boolean is_active
     }
     emblems {
-        smallint id PK
+        integer id PK
         text slug UK
         text name
         jsonb attributes
@@ -175,8 +175,8 @@ erDiagram
         smallint hero_id FK
         hero_lane lane
         rank_bracket rank_bracket
-        smallint position "1 = most picked"
-        smallint emblem_id FK
+        smallint build_rank "1 = most picked"
+        integer emblem_id FK
         integer talent_t1_id FK
         integer talent_t2_id FK
         integer talent_t3_id FK
@@ -192,9 +192,9 @@ erDiagram
     }
     data_update_logs {
         bigint id PK
-        text job "stats, catalog, retention"
+        text job "stats, catalog, retention, seed"
         update_status status
-        text trigger "schedule, manual"
+        text triggered_by "schedule, manual"
         timestamptz started_at
         timestamptz finished_at
         integer requests_made
@@ -234,7 +234,7 @@ Indexes: PK (id); unique (slug); GIN (roles); GIN (lanes). RLS: public SELECT.
 |---|---|---|---|---|
 | id | integer identity | no | | PK |
 | hero_id | smallint | no | | FK → heroes.id, on delete cascade |
-| position | smallint | no | | 0 = passive, then display order |
+| slot | smallint | no | | 0 = passive, then display order |
 | source_skill_id | integer | yes | | Official skill id |
 | name | text | no | | |
 | description | text | no | | Sanitized plain text |
@@ -242,7 +242,7 @@ Indexes: PK (id); unique (slug); GIN (roles); GIN (lanes). RLS: public SELECT.
 | tags | text[] | no | `'{}'` | e.g. `{Burst,CC}` |
 | icon_url | text | yes | | |
 
-Indexes: PK (id); unique (hero_id, position). RLS: public SELECT.
+Indexes: PK (id); unique (hero_id, slot). RLS: public SELECT.
 
 **hero_tags**: curated composition attributes, one row per hero. Source of truth: `seed/hero-tags.json`. Never written by the updater.
 
@@ -289,7 +289,7 @@ Indexes: PK (id); unique (slug); (category). RLS: public SELECT.
 
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
-| id | smallint | no | | PK, official emblem id |
+| id | integer | no | | PK, official emblem id |
 | slug | text | no | | Unique |
 | name | text | no | | |
 | attributes | jsonb | no | `'[]'` | Set bonuses |
@@ -375,14 +375,14 @@ Indexes: PK (snapshot_id, hero_id, opponent_id); (hero_id); (opponent_id). RLS: 
 | hero_id | smallint | no | | FK → heroes.id, cascade |
 | lane | hero_lane | no | | |
 | rank_bracket | rank_bracket | no | | |
-| position | smallint | no | | 1 = most picked |
-| emblem_id | smallint | yes | | FK → emblems.id, on delete set null |
+| build_rank | smallint | no | | 1 = most picked |
+| emblem_id | integer | yes | | FK → emblems.id, on delete set null |
 | talent_t1_id, talent_t2_id, talent_t3_id | integer | yes | | FK → emblem_talents.id, on delete set null |
 | battle_spell_id | integer | yes | | FK → battle_spells.id, on delete set null |
 | pick_rate, win_rate | real | yes | | Build popularity and result |
 | fetched_at | timestamptz | no | now() | |
 
-Indexes: PK (id); unique (hero_id, lane, rank_bracket, position); one index per FK column (emblem_id, talent_t1_id, talent_t2_id, talent_t3_id, battle_spell_id). RLS: public SELECT.
+Indexes: PK (id); unique (hero_id, lane, rank_bracket, build_rank); one index per FK column (emblem_id, talent_t1_id, talent_t2_id, talent_t3_id, battle_spell_id). RLS: public SELECT.
 
 **hero_build_items**
 
@@ -399,9 +399,9 @@ Indexes: PK (build_id, slot); (item_id). RLS: public SELECT.
 | Column | Type | Null | Default | Notes |
 |---|---|---|---|---|
 | id | bigint identity | no | | PK |
-| job | text | no | | Check in ('stats', 'catalog', 'retention') |
+| job | text | no | | Check in ('stats', 'catalog', 'retention', 'seed') |
 | status | update_status | no | 'running' | |
-| trigger | text | no | | Check in ('schedule', 'manual') |
+| triggered_by | text | no | | Check in ('schedule', 'manual') |
 | started_at | timestamptz | no | now() | |
 | finished_at | timestamptz | yes | | |
 | requests_made, retries, rows_written | integer | no | 0 | |
@@ -413,20 +413,21 @@ Indexes: PK (id); (job, started_at desc). RLS: public SELECT.
 
 ## RLS policies
 
-Every table:
+Every table has RLS enabled and one read policy:
 
 ```sql
 alter table public.<table> enable row level security;
 create policy "<table>: public read" on public.<table>
   for select to anon, authenticated using (true);
-revoke insert, update, delete, truncate on public.<table> from anon, authenticated;
 ```
 
 Exceptions:
 - `stat_snapshots`: `using (is_published)`.
 - `hero_stats`, `hero_matchups`, `hero_synergies`: `using (exists (select 1 from public.stat_snapshots s where s.id = snapshot_id and s.is_published))`.
 
-There are no insert, update, or delete policies. The service role used by the scripts bypasses RLS.
+There are no insert, update, or delete policies. As a second layer, the RLS migration revokes `insert, update, delete, truncate, references, trigger` on every table (and `usage, update` on sequences) from `anon` and `authenticated`, then grants `select` back. The service role used by the scripts bypasses RLS.
+
+The checks live in `supabase/tests/rls_test.sql`. Run them against a disposable Postgres server with `TEST_DATABASE_URL=... scripts/db/test-migrations.sh`; CI runs the same script.
 
 ## Data lifecycle
 
