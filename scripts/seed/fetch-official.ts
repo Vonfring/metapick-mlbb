@@ -1,51 +1,49 @@
 /**
- * One-time pull of the official data into seed/official/*.json.
+ * One-time pull of the official data into seed/official/*.json: heroes,
+ * skills, relations and ranked statistics with matchups and synergies.
  *
  *   pnpm seed:fetch
  *
  * Requests run one at a time, about 2 seconds apart (see scripts/source).
  * Responses are cached in .cache/source for 20 hours, so a rerun on the same
- * day does not hit the source again. Snapshots that fail the sanity checks
- * are skipped rather than written.
+ * day does not hit the source again. A statistics snapshot that fails to
+ * load or fails the sanity checks is skipped with a warning.
+ *
+ * Items, emblems, talents, battle spells and builds are not official data
+ * any more (the MLBB Academy closed on 2026-06-30). Their files are created
+ * empty when missing and otherwise left alone.
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { access, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type {
-  BattleSpellRow,
-  EmblemRow,
-  EmblemTalentRow,
-  HeroRelationRow,
-  HeroRow,
-  HeroSkillRow,
-  ItemRow,
-  RecommendedBuildRecord,
-  StatSnapshotRecord,
-} from "@/types/data";
-import { PERIODS, RANK_BRACKETS } from "@/types/domain";
-import { createSourceClient } from "../source/client";
-import {
-  ACADEMY_BASE_URL,
-  HERO_SOURCE_IDS,
-  MATCH_TYPE,
-  RANK_CODES,
-  SOURCE_BASE_URL,
-  STATS_SOURCE_IDS,
-} from "../source/config";
+import type { HeroRelationRow, HeroRow, HeroSkillRow, PairRow, StatSnapshotRecord } from "@/types/data";
+import { PERIODS, RANK_BRACKETS, type PeriodDays, type RankBracket } from "@/types/domain";
+import { createSourceClient, SourceBlockedError, type SourceClient } from "../source/client";
+import { HERO_SOURCE_IDS, MATCH_TYPE, RANK_CODES, SOURCE_BASE_URL, STATS_SOURCE_IDS } from "../source/config";
 import { contentHash } from "../source/normalize";
 import { eq, sortBy } from "../source/query";
 import { fetchAllRecords } from "../source/records";
 import { parseHeroRecord } from "../source/transform/heroes";
 import { checkStatsSanity, parseStatsRecords } from "../source/transform/stats";
-import { fetchAcademy } from "./fetch-academy";
 
 /** Matchups and synergies are stored for this period only (all ranks). */
 export const MATCHUP_PERIOD = 7;
 
 const OUT_DIR = path.resolve("seed", "official");
 
+/** Catalog files that the official source no longer provides. */
+const NON_OFFICIAL_FILES = ["items.json", "emblems.json", "talents.json", "spells.json", "builds.json"];
+
 async function writeJson(name: string, data: unknown) {
   await writeFile(path.join(OUT_DIR, name), `${JSON.stringify(data, null, 1)}\n`);
   console.log(`wrote seed/official/${name}`);
+}
+
+async function fetchPairs(client: SourceClient, bracket: RankBracket, period: PeriodDays, matchType: string) {
+  const records = await fetchAllRecords(client, SOURCE_BASE_URL, STATS_SOURCE_IDS[period], {
+    filters: [eq("bigrank", RANK_CODES[bracket]), eq("match_type", matchType)],
+    sorts: [sortBy("main_heroid", "asc")],
+  });
+  return parseStatsRecords(records);
 }
 
 async function main() {
@@ -86,16 +84,18 @@ async function main() {
   const snapshots: StatSnapshotRecord[] = [];
   for (const bracket of RANK_BRACKETS) {
     for (const period of PERIODS) {
-      const filters = (matchType: string) => ({
-        filters: [eq("bigrank", RANK_CODES[bracket]), eq("match_type", matchType)],
-        sorts: [sortBy("main_heroid", "asc")],
-      });
-      const counters = parseStatsRecords(
-        await fetchAllRecords(client, SOURCE_BASE_URL, STATS_SOURCE_IDS[period], filters(MATCH_TYPE.counters)),
-      );
+      const label = `stats ${bracket}/${period}d`;
+      let counters: ReturnType<typeof parseStatsRecords>;
+      try {
+        counters = await fetchPairs(client, bracket, period, MATCH_TYPE.counters);
+      } catch (error) {
+        if (error instanceof SourceBlockedError) throw error;
+        warnings.push(`${label} skipped: ${(error as Error).message}`);
+        continue;
+      }
       const sanity = checkStatsSanity(counters.stats, heroes.length);
       if (!sanity.ok) {
-        warnings.push(`stats ${bracket}/${period}d skipped: ${sanity.problems.join("; ")}`);
+        warnings.push(`${label} skipped: ${sanity.problems.join("; ")}`);
         continue;
       }
       const snapshot: StatSnapshotRecord = {
@@ -108,10 +108,14 @@ async function main() {
       };
       if (period === MATCHUP_PERIOD) {
         snapshot.matchups = counters.pairs;
-        const teammates = parseStatsRecords(
-          await fetchAllRecords(client, SOURCE_BASE_URL, STATS_SOURCE_IDS[period], filters(MATCH_TYPE.teammates)),
-        );
-        snapshot.synergies = teammates.pairs;
+        let synergies: PairRow[] = [];
+        try {
+          synergies = (await fetchPairs(client, bracket, period, MATCH_TYPE.teammates)).pairs;
+        } catch (error) {
+          if (error instanceof SourceBlockedError) throw error;
+          warnings.push(`${label} synergies skipped: ${(error as Error).message}`);
+        }
+        snapshot.synergies = synergies;
       }
       snapshot.content_hash = contentHash({
         stats: snapshot.stats,
@@ -119,23 +123,10 @@ async function main() {
         synergies: snapshot.synergies,
       });
       snapshots.push(snapshot);
-      console.log(`  stats ${bracket}/${period}d: ${snapshot.stats.length} heroes`);
+      console.log(`  ${label}: ${snapshot.stats.length} heroes`);
     }
   }
-
-  // Items, emblems, talents, spells and builds come from the Academy endpoints.
-  let academy: {
-    items: ItemRow[];
-    emblems: EmblemRow[];
-    talents: EmblemTalentRow[];
-    spells: BattleSpellRow[];
-    builds: RecommendedBuildRecord[];
-  } = { items: [], emblems: [], talents: [], spells: [], builds: [] };
-  if (ACADEMY_BASE_URL) {
-    academy = await fetchAcademy(client, ACADEMY_BASE_URL, heroes, warnings);
-  } else {
-    warnings.push("MLBB_ACADEMY_BASE_URL is not set: items, emblems, spells and builds were not fetched");
-  }
+  if (snapshots.length === 0) throw new Error("No statistics snapshot passed the checks; refusing to write.");
 
   await mkdir(OUT_DIR, { recursive: true });
   await writeJson("meta.json", {
@@ -147,11 +138,13 @@ async function main() {
   await writeJson("skills.json", skills);
   await writeJson("relations.json", relations);
   await writeJson("stats.json", snapshots);
-  await writeJson("items.json", academy.items);
-  await writeJson("emblems.json", academy.emblems);
-  await writeJson("talents.json", academy.talents);
-  await writeJson("spells.json", academy.spells);
-  await writeJson("builds.json", academy.builds);
+  for (const name of NON_OFFICIAL_FILES) {
+    const exists = await access(path.join(OUT_DIR, name)).then(
+      () => true,
+      () => false,
+    );
+    if (!exists) await writeJson(name, []);
+  }
 
   console.log(`\ndone: ${client.stats.requests} requests, ${client.stats.retries} retries, ${client.stats.cacheHits} cache hits`);
   if (warnings.length > 0) {

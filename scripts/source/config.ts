@@ -6,21 +6,25 @@ import type {
 } from "@/types/domain";
 
 /**
- * Where the official data lives. The hero endpoints sit under one base path;
- * the "Academy" endpoints (items, emblems, spells, builds) use a second base
- * path that is confirmed on the first live request (see docs/activity-updater.md).
+ * Where the official data lives: the low-code API behind the official
+ * website. Items, emblems, battle spells and builds used to come from the
+ * MLBB Academy, which closed on 2026-06-30; the website has no data source
+ * for them any more.
  */
 export const SOURCE_BASE_URL =
   process.env.MLBB_SOURCE_BASE_URL ??
   "https://api.gms.moontontech.com/api/gms/source/2669606";
-export const ACADEMY_BASE_URL = process.env.MLBB_ACADEMY_BASE_URL ?? "";
 
 export const HERO_SOURCE_IDS = {
   heroList: 2756564,
   skillCombos: 2674711,
 } as const;
 
-/** Ranked statistics, one source per time period. */
+/**
+ * Ranked statistics, one source per time period. The API serves them from
+ * CDN files the website's config lists with a 360-minute refresh interval
+ * (share.bi.moonton.net/web/hero_predict/latest/hero_predict_<days>.json).
+ */
 export const STATS_SOURCE_IDS: Record<PeriodDays, number> = {
   1: 2756567,
   3: 2756568,
@@ -34,22 +38,6 @@ export const TREND_SOURCE_IDS = {
   15: 2687909,
   30: 2690860,
 } as const;
-
-export const ACADEMY_SOURCE_IDS = {
-  posts: 2718124,
-  heroes: 2766683,
-  roles: 2740642,
-  equipment: 2775075,
-  equipmentExpanded: 2713995,
-  spells: 2718122,
-  emblems: 2718121,
-  ranks: 3210596,
-  heroStats: 2755183,
-  builds: 2776688,
-  matchups: 2777391,
-} as const;
-
-export const PATCH_NOTES_FORM_ID = 2777742;
 
 export const RANK_CODES: Record<RankBracket, string> = {
   all: "101",

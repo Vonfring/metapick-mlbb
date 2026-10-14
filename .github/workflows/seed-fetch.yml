@@ -3,7 +3,6 @@ name: Seed fetch (one-off)
 # Runs the one-time pull from the official data source on GitHub's runners,
 # because the development container cannot reach it. Triggered by pushing a
 # change to seed/fetch-request.json on a claude/** branch:
-#   {"mode": "inspect"}  save a few raw responses to seed/official/_inspect/
 #   {"mode": "browser"}  open official pages in headless Chromium and save the
 #                        API calls they make to seed/official/_inspect/browser/
 #   {"mode": "fetch"}    write seed/official/*.json and supabase/seed.sql
@@ -43,12 +42,8 @@ jobs:
         id: request
         run: |
           mode=$(node -p "require('./seed/fetch-request.json').mode")
-          case "$mode" in inspect|browser|fetch) ;; *) echo "Unknown mode: $mode"; exit 1 ;; esac
+          case "$mode" in browser|fetch) ;; *) echo "Unknown mode: $mode"; exit 1 ;; esac
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-
-      - name: Inspect the source
-        if: steps.request.outputs.mode == 'inspect'
-        run: pnpm seed:inspect seed/official/_inspect
 
       - name: Install Chromium
         if: steps.request.outputs.mode == 'browser'
