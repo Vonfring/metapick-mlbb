@@ -33,6 +33,10 @@ type InspectOptions = {
   pages?: string[];
   /** Extra strings to find in the scripts (source IDs, field names). */
   terms?: string[];
+  /** Save the HTML of each crawled page (first 200 KB). */
+  savePages?: boolean;
+  /** Base URLs to try every Academy source ID against (2 records each). */
+  probeBases?: string[];
 };
 
 async function readOptions(): Promise<InspectOptions> {
@@ -94,6 +98,11 @@ async function discoverApiPaths(options: InspectOptions) {
   for (const page of pages) {
     const { status, text } = await get(OFFICIAL_SITE + page);
     pageStatus[page] = status;
+    if (options.savePages && text) {
+      const file = page === "/" ? "home" : page.replace(/^\//, "").replace(/\//g, "_");
+      await mkdir(path.join(outDir, "pages"), { recursive: true });
+      await writeFile(path.join(outDir, "pages", `${file}.html`), text.slice(0, 200_000));
+    }
     console.log(`GET ${page} -> ${status}`);
     for (const match of text.matchAll(/<(?:script|link)[^>]+(?:src|href)="([^"]+\.js[^"]*)"/g)) {
       enqueue(new URL(match[1]!, OFFICIAL_SITE).toString());
@@ -196,6 +205,13 @@ async function main() {
         }),
       ),
     );
+  }
+
+  for (const base of options.probeBases ?? []) {
+    const app = /source\/(\d+)/.exec(base)?.[1] ?? "base";
+    for (const [name, id] of Object.entries(ACADEMY_SOURCE_IDS)) {
+      await attempt(`probe-${app}-${name}`, () => client.query(base, id, buildQuery(2, 1)));
+    }
   }
 
   let academyBase = ACADEMY_BASE_URL;
