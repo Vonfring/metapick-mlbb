@@ -20,7 +20,8 @@
     "seed:sql": "tsx scripts/seed/build-sql.ts",
     "seed:fetch": "tsx scripts/seed/fetch-official.ts",
     "db:test": "scripts/db/test-migrations.sh",
-    "seed:check-tags": "tsx scripts/seed/check-tags.ts"
+    "seed:check-tags": "tsx scripts/seed/check-tags.ts",
+    "seed:inspect": "tsx scripts/seed/inspect-source.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
