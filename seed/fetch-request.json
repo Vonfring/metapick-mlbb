@@ -2,11 +2,9 @@
   "mode": "inspect",
   "inspect": {
     "siteOnly": true,
-    "maxScripts": 230,
-    "savePages": true,
-    "pages": ["/academy", "/academy/equipment", "/rank"],
-    "terms": ["academy", "Academy", "actId", "appId:", "/api/gms/act", "/api/gms/app", "configId", "2713992"],
-    "probeBases": ["https://api.gms.moontontech.com/api/gms/source/2669606"]
+    "maxScripts": 2,
+    "pages": ["/academy"],
+    "saveScripts": ["/assets/index-"]
   },
   "note": "Pushing a change to this file on a claude/** branch runs .github/workflows/seed-fetch.yml."
 }
