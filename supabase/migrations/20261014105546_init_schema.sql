@@ -2,8 +2,9 @@
 -- Documented in docs/erd.md. Keep both in sync.
 --
 -- Conventions
---   * Catalog tables use the official IDs from the Mobile Legends data source
---     as primary keys, so the updater can upsert without mapping IDs.
+--   * Catalog tables use stable source IDs as primary keys (official hero_id,
+--     Liquipedia page IDs, or a hash of the slug; see docs/erd.md), so the
+--     updater can upsert without mapping IDs.
 --   * Rates are fractions between 0 and 1 (0.5234 = 52.34%).
 --   * Row Level Security policies live in the next migration.
 
@@ -175,7 +176,7 @@ create table public.emblems (
 
 comment on table public.emblems is
   'Emblem sets from the Liquipedia Mobile Legends wiki (CC BY-SA 3.0). id is a stable hash of the slug.';
-comment on column public.emblems.recommended_roles is 'Curated fallback when build data is missing.';
+comment on column public.emblems.recommended_roles is 'The role the set is named after; empty for Basic Common.';
 
 create trigger emblems_set_updated_at before update on public.emblems
   for each row execute function public.set_updated_at();
@@ -336,6 +337,8 @@ create table public.hero_recommended_builds (
   unique (hero_id, lane, rank_bracket, build_rank)
 );
 
+comment on table public.hero_recommended_builds is
+  'Empty for now: the only source, the official MLBB Academy, closed on 2026-06-30.';
 comment on column public.hero_recommended_builds.build_rank is '1 is the most picked build.';
 
 create index hero_recommended_builds_emblem_idx on public.hero_recommended_builds (emblem_id);
