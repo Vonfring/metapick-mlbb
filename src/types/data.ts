@@ -125,7 +125,6 @@ export type PairRow = {
   hero_id: number;
   other_id: number;
   win_rate_delta: number;
-  other_win_rate: number | null;
 };
 
 export type StatSnapshotRecord = {

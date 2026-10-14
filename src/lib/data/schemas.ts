@@ -177,7 +177,6 @@ const pairRowSchema = z.object({
   hero_id: z.number().int().positive(),
   other_id: z.number().int().positive(),
   win_rate_delta: delta,
-  other_win_rate: rate.nullable(),
 });
 
 export const statSnapshotRecordSchema = z.object({

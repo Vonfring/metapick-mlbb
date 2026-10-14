@@ -274,7 +274,6 @@ create table public.hero_matchups (
   hero_id smallint not null references public.heroes (id) on delete cascade,
   opponent_id smallint not null references public.heroes (id) on delete cascade,
   win_rate_delta real not null check (win_rate_delta between -1 and 1),
-  opponent_win_rate real check (opponent_win_rate between 0 and 1),
   sample_size integer check (sample_size >= 0),
   primary key (snapshot_id, hero_id, opponent_id),
   check (hero_id <> opponent_id)
@@ -292,7 +291,6 @@ create table public.hero_synergies (
   hero_id smallint not null references public.heroes (id) on delete cascade,
   teammate_id smallint not null references public.heroes (id) on delete cascade,
   win_rate_delta real not null check (win_rate_delta between -1 and 1),
-  teammate_win_rate real check (teammate_win_rate between 0 and 1),
   sample_size integer check (sample_size >= 0),
   primary key (snapshot_id, hero_id, teammate_id),
   check (hero_id <> teammate_id)

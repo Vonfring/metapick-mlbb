@@ -1,0 +1,755 @@
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "records": [
+      {
+        "_id": "6a229b4a7c9aed93ba5ac04b",
+        "caption": "133彼良良",
+        "configId": 144237,
+        "createdAt": 1780652874789,
+        "createdUser": "keiralin",
+        "data": {
+          "_object": 2667538,
+          "head": "https://akmweb.youngjoygame.com/web/gms/image/425a83af97169190c173587764c42650.jpg",
+          "head_big": "https://akmweb.youngjoygame.com/web/gms/image/f156378413102969d6682fe940755d70.jpg",
+          "hero": {
+            "_createdAt": 1769674501778,
+            "_id": "697b1705b57c116ffd8a05e0",
+            "_updatedAt": 1789542899945,
+            "data": {
+              "abilityshow": ["40", "70", "40", "60"],
+              "difficulty": "60",
+              "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_71224844b111f09367df00e4f9b97753.png",
+              "heroid": 133,
+              "heroskilllist": [
+                {
+                  "skilllist": [
+                    {
+                      "skillcd&cost": "",
+                      "skilldesc": "Hirara has only two skills, representing her two weapons: <font color=\"a6aafb\">Meisen-e</font> and <font color=\"a6aafb\">Kaerazu</font>. Drag one skill onto the other to cast a combo skill.\n\nHirara has 2 <font color=\"a6aafb\">Crimson / Death</font> Energy. Casting a combo skill consumes 1 <font color=\"a6aafb\">Crimson / Death</font> Energy. Energy recovery time is the same as the cooldown of <font color=\"a6aafb\">Meisen-e</font>. Consuming Energy interrupts the recovery process.\n\nHirara only deals 30 (+4*Hero Level)% damage to minions.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_08027b326d3c236be35e6d82a6b7dbf2.png",
+                      "skillid": 13380,
+                      "skillname": "Twin Fans: Ukifune",
+                      "skilltag": [
+                        {
+                          "tagid": 62,
+                          "tagname": "Buff",
+                          "tagrgb": "79,156,184"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 9",
+                      "skilldesc": "Hirara rides the waves using <font color=\"a6aafb\">Meisen-e</font>, performing up to two <font color=\"a6aafb\">joystick dashes</font> (the first dash goes in her facing direction). She deals 150<font color=\"fba51f\"> (+50% Extra Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> to enemies hit.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e474b986578e520c42bef6d49e5509cb.png",
+                      "skillid": 13320,
+                      "skillname": "Meisen-e",
+                      "skilltag": [
+                        {
+                          "tagid": 81,
+                          "tagname": "Mobility",
+                          "tagrgb": "162,105,198"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 5",
+                      "skilldesc": "Hirara uses <font color=\"a6aafb\">Kaerazu</font> to unleash the <font color=\"a6aafb\">Crimson Maple</font>, dealing 150<font color=\"fba51f\"> (+65% Extra Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> to enemies in a fan-shaped area.\n\nAfter a short delay, she deals damage again at the target location, dealing 2 times the initial <font color=\"a6aafb\">Crimson Maple</font> damage.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_14b0cce85253b33fb3d1bd1e21a09d9f.png",
+                      "skillid": 13310,
+                      "skillname": "Kaerazu",
+                      "skilltag": [
+                        {
+                          "tagid": 32,
+                          "tagname": "AOE",
+                          "tagrgb": "199,121,85"
+                        }
+                      ],
+                      "skillvideo": ""
+                    }
+                  ],
+                  "skilllistid": "1331"
+                },
+                {
+                  "skilllist": [
+                    {
+                      "skillcd&cost": "",
+                      "skilldesc": "Hirara has only two skills, representing her two weapons: <font color=\"a6aafb\">Meisen-e</font> and <font color=\"a6aafb\">Kaerazu</font>. Drag one skill onto the other to cast a combo skill.\n\nHirara has 2 <font color=\"a6aafb\">Crimson / Death</font> Energy. Casting a combo skill consumes 1 <font color=\"a6aafb\">Crimson / Death</font> Energy. Energy recovery time is the same as the cooldown of <font color=\"a6aafb\">Meisen-e</font>. Consuming Energy interrupts the recovery process.\n\nHirara only deals 30 (+4*Hero Level)% damage to minions.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_08027b326d3c236be35e6d82a6b7dbf2.png",
+                      "skillid": 13380,
+                      "skillname": "Twin Fans: Ukifune",
+                      "skilltag": [
+                        {
+                          "tagid": 62,
+                          "tagname": "Buff",
+                          "tagrgb": "79,156,184"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "",
+                      "skilldesc": "Hirara enhances <font color=\"a6aafb\">Kaerazu</font> with the power of <font color=\"a6aafb\">Meisen-e</font> to cast a combo skill.\nShe becomes untargetable and immobilized for up to 1s.\nAfter 0.6s, she deals 3 times <font color=\"a6aafb\">Crimson Maple</font> damage, and can then cast the second <font color=\"a6aafb\">joystick dash</font> of <font color=\"a6aafb\">Meisen-e</font> to end these states early.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1f6a0ce72a450b74c732bcb3a7a8d686.png",
+                      "skillid": 13391,
+                      "skillname": "Falling Maple",
+                      "skilltag": [
+                        {
+                          "tagid": 31,
+                          "tagname": "Burst",
+                          "tagrgb": "199,121,85"
+                        },
+                        {
+                          "tagid": 41,
+                          "tagname": "Invincible",
+                          "tagrgb": "177,157,96"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "",
+                      "skilldesc": "Hirara enhances <font color=\"a6aafb\">Meisen-e</font> with the power of <font color=\"a6aafb\">Kaerazu</font> to cast a combo skill.\nAfter casting the first <font color=\"a6aafb\">joystick dash</font> of <font color=\"a6aafb\">Meisen-e</font>, she spins, dealing 2.5 times the <font color=\"a6aafb\">Crimson Maple</font> damage and immobilizing enemies for 0.8s.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_91ebdff8ef41201f5aec33240ea632f8.png",
+                      "skillid": 13390,
+                      "skillname": "Infernal Torrent",
+                      "skilltag": [
+                        {
+                          "tagid": 21,
+                          "tagname": "CC",
+                          "tagrgb": "205,93,109"
+                        },
+                        {
+                          "tagid": 32,
+                          "tagname": "AOE",
+                          "tagrgb": "199,121,85"
+                        }
+                      ],
+                      "skillvideo": ""
+                    }
+                  ],
+                  "skilllistid": "1332"
+                }
+              ],
+              "heroskin": null,
+              "name": "Hirara",
+              "painting": "",
+              "recommendlevel": ["2", "1", "0", "0", "2/1"],
+              "recommendlevellabel": "2-1-0-0-2/1",
+              "recommendmasterplan": [],
+              "roadsort": [
+                {
+                  "_id": "668541caaa8e7f6ec4703d8a",
+                  "caption": "打野",
+                  "configId": 144237,
+                  "createdAt": 1720009162509,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2732073,
+                    "road_sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/de611167c7310681135f0b4198137bfa.svg",
+                    "road_sort_id": "4",
+                    "road_sort_title": "Jungle"
+                  },
+                  "dynamic": null,
+                  "id": 2732080,
+                  "linkId": [2732073],
+                  "sort": 0,
+                  "updatedAt": 1723022951463,
+                  "updatedUser": "nickjin"
+                },
+                ""
+              ],
+              "roadsorticon1": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_741d46ff696f02305139a2d817e67e75.png",
+              "roadsorticon2": "",
+              "roadsortlabel": ["Jungling", ""],
+              "smallmap": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ec67aa6f87226cceb794b3786d14c902.png",
+              "sorticon1": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_933dce3f6078bc4eeaa97caaaa81875f.png",
+              "sorticon2": "",
+              "sortid": [
+                {
+                  "_id": "6698bffd613093b976b4a970",
+                  "caption": "3刺客",
+                  "configId": 144237,
+                  "createdAt": 1721286653803,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2740651,
+                    "sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/d0b8b65a47fc43dc7bb2bac447072fd2.png",
+                    "sort_id": "3",
+                    "sort_title": "assassin"
+                  },
+                  "dynamic": null,
+                  "id": 2740661,
+                  "linkId": [2740651],
+                  "sort": 0,
+                  "updatedAt": 1723023131050,
+                  "updatedUser": "nickjin"
+                },
+                ""
+              ],
+              "sortlabel": ["Assassin", ""],
+              "speciality": ["Chase", "Finisher"],
+              "squarehead": "",
+              "squareheadbig": "",
+              "story": "A geisha ninja from the Scarlet Shadow, armed with dual fans and adorned in crimson maple and the meisen. In her twisted mind, death is the ultimate salvation.",
+              "tale": ""
+            },
+            "id": 102817,
+            "sourceId": 2756563
+          },
+          "hero_id": 133,
+          "painting": "https://akmweb.youngjoygame.com/web/gms/image/e2c9c365b95a4de69fa98b2ce9712588.webp",
+          "relation": {
+            "assist": {
+              "desc": "Hirara has high damage output in the early-to-mid game, but the delay in her skills makes landing them less consistent. Hirara works especially well with strong early-game heroes with CC, such as Angela and Minotaur, allowing her to build an early advantage more easily.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c7e0183956b2c2fd6d3fa0b18fe46917.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3ecd2c0843df7ec85044dafff6bf4553.png"
+                  }
+                }
+              ],
+              "target_hero_id": [55, 19]
+            },
+            "strong": {
+              "desc": "Hirara's high mobility allows her to dive the enemy backline with ease, making her an excellent counter to squishy heroes who lack self-protection, like Ixia and Pharsa.The untargetable effect from Hirara's 2nd + 1st Combo Skill is great against delayed skills that deal high damage, giving her a big advantage when facing heroes like Yin and Gusion.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_10151d43910e62f7aa9ce08df481a20f.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f070d82521ecd2e14d4ef3f25880830a.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ee1c12c84f49514a30e405fb5c617796.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c6cd232de60da5372a7101a203e56554.png"
+                  }
+                }
+              ],
+              "target_hero_id": [52, 121, 113, 56]
+            },
+            "weak": {
+              "desc": "However, while Hirara is quick and nimble, she is also quite fragile. Against burst Assassins with targeted abilities, such as Saber and Natalia, it can be difficult to predict their attacks and use her 2nd + 1st Combo Skill in time. If she gets caught, she'll be taken down instantly.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6bbfac806f29d29f17fea9e98d2d2fee.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fbb5065b6ff174d1a20ccf5b7f523514.png"
+                  }
+                }
+              ],
+              "target_hero_id": [3, 24]
+            }
+          }
+        },
+        "dynamic": null,
+        "id": 3309114,
+        "linkId": [2667538],
+        "sort": 0,
+        "updatedAt": 1781256202596,
+        "updatedUser": "v_zhu"
+      },
+      {
+        "_id": "65b1f90d26ca28031f8b6b85",
+        "caption": "001弥亚",
+        "configId": 144237,
+        "createdAt": 1706162445836,
+        "createdUser": "nickjin",
+        "data": {
+          "_object": 2667538,
+          "head": "https://akmweb.youngjoygame.com/web/gms/image/299d8aab8de508fff88c1f1e935017cb.jpg",
+          "head_big": "https://akmweb.youngjoygame.com/web/gms/image/6667b3e9109ca180e63c524471f29278.jpg",
+          "hero": {
+            "_createdAt": 1724837697935,
+            "_id": "66ceef41af5771f18c50098a",
+            "_updatedAt": 1789542899945,
+            "data": {
+              "abilityshow": ["10", "70", "40", "10"],
+              "difficulty": "10",
+              "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_da894b37bfb5cadb32307f371f31918a.png",
+              "heroid": 1,
+              "heroskilllist": [
+                {
+                  "skilllist": [
+                    {
+                      "skillcd&cost": "",
+                      "skilldesc": "Each time Miya's Basic Attack hits a target, she gains 5% Attack Speed for 4s (up to 5 stacks).\n\nAt maximum stacks, each Basic Attack also summons a <font color=\"a6aafb\">Moonlight Shadow</font> to attack the target, dealing 25<font color=\"fba51f\"> (+20% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font>, inheriting 20% Attack Effects.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fbe01740efd779f6059fd2313b427457.png",
+                      "skillid": 140,
+                      "skillname": "Moon Blessing",
+                      "skilltag": [
+                        {
+                          "tagid": 62,
+                          "tagname": "Buff",
+                          "tagrgb": "79,156,184"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 11   Mana Cost: 60",
+                      "skilldesc": "Miya's Basic Attacks shoot 2 extra <font color=\"a6aafb\">Split Arrows</font>, each inheriting 30% of Attack Effects. They deal 10<font color=\"fba51f\"> (+100% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> to the primary target and 30% damage to other targets.\n\nThis effect lasts 4s.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_de41566ded345f89064e32da9dfd8893.png",
+                      "skillid": 110,
+                      "skillname": "Moon Arrow",
+                      "skilltag": [
+                        {
+                          "tagid": 62,
+                          "tagname": "Buff",
+                          "tagrgb": "79,156,184"
+                        },
+                        {
+                          "tagid": 32,
+                          "tagname": "AOE",
+                          "tagrgb": "199,121,85"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 8   Mana Cost: 90",
+                      "skilldesc": "Miya calls upon the power of <font color=\"a6aafb\">Moon Eclipse</font> in the target area, dealing 270<font color=\"fba51f\"> (+45% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> to enemies within and immobilizing them for 1.2s.\n\nThe attack then splits into 6 arrows that scatter in different directions. Each arrow deals 40<font color=\"fba51f\"> (+20% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> and slows enemies hit by 30% for 2s.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c5771dd5686278640dabfaa26839545c.png",
+                      "skillid": 120,
+                      "skillname": "Arrow of Eclipse",
+                      "skilltag": [
+                        {
+                          "tagid": 21,
+                          "tagname": "CC",
+                          "tagrgb": "205,93,109"
+                        },
+                        {
+                          "tagid": 32,
+                          "tagname": "AOE",
+                          "tagrgb": "199,121,85"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 30   Mana Cost: 120",
+                      "skilldesc": "Miya removes all debuffs and enters the <font color=\"a6aafb\">Conceal</font> state, gaining 65% Movement Speed for up to 2s (attacking ends the state early).\n\nUpon exiting the <font color=\"a6aafb\">Conceal</font> state, Miya gains maximum stacks of <font color=\"a6aafb\">Moon Blessing</font>.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_361546d795e6df7029a1cf1252e57ac8.png",
+                      "skillid": 130,
+                      "skillname": "Hidden Moonlight",
+                      "skilltag": [
+                        {
+                          "tagid": 74,
+                          "tagname": "Conceal",
+                          "tagrgb": "97,127,198"
+                        },
+                        {
+                          "tagid": 64,
+                          "tagname": "Remove CC",
+                          "tagrgb": "79,156,184"
+                        }
+                      ],
+                      "skillvideo": ""
+                    }
+                  ],
+                  "skilllistid": "11"
+                }
+              ],
+              "heroskin": null,
+              "name": "Miya",
+              "painting": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f6d3f7f102e1f0fb9dc92b971d1128ec.png",
+              "recommendlevel": ["3", "1", "2", "0", "1/2"],
+              "recommendlevellabel": "3-1-2-0-1/2",
+              "recommendmasterplan": [],
+              "roadsort": [
+                {
+                  "_id": "668541a2aa8e7f6ec4703d86",
+                  "caption": "金币路",
+                  "configId": 144237,
+                  "createdAt": 1720009122589,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2732073,
+                    "road_sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/91f817c656908a83c2e24eecb3b70986.svg",
+                    "road_sort_id": "5",
+                    "road_sort_title": "Gold Lane"
+                  },
+                  "dynamic": null,
+                  "id": 2732079,
+                  "linkId": [2732073],
+                  "sort": 0,
+                  "updatedAt": 1723022953428,
+                  "updatedUser": "nickjin"
+                },
+                ""
+              ],
+              "roadsorticon1": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b4302450af5d1f55adf07399b4d3ed95.png",
+              "roadsorticon2": "",
+              "roadsortlabel": ["Gold Lane", ""],
+              "smallmap": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_32c0d9d3a727a9052754296af6251435.png",
+              "sorticon1": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_094c17e22ff5e8086641e9a2c67dd81e.png",
+              "sorticon2": "",
+              "sortid": [
+                {
+                  "_id": "6698c04f613093b976b4a978",
+                  "caption": "5射手",
+                  "configId": 144237,
+                  "createdAt": 1721286735503,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2740651,
+                    "sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/025c69a764924f4bac526a2662f1a0b9.png",
+                    "sort_id": "5",
+                    "sort_title": "Marksman"
+                  },
+                  "dynamic": null,
+                  "id": 2740665,
+                  "linkId": [2740651],
+                  "sort": 0,
+                  "updatedAt": 1723023126452,
+                  "updatedUser": "nickjin"
+                },
+                ""
+              ],
+              "sortlabel": ["Marksman", ""],
+              "speciality": ["Finisher", "Damage"],
+              "squarehead": "https://akmweb.youngjoygame.com/web/svnres/file/test/homepage_2_2_16_1232_1/100_7c5b221cf1f95a1f06da1b7b644adfec.jpg",
+              "squareheadbig": "https://akmweb.youngjoygame.com/web/svnres/file/test/homepage_2_2_16_1232_1/100_5264c2a7b30fee59a25fc2133ff001ac.jpg",
+              "story": "The Priestess of the Moon and protector of the Moonlit Forest.",
+              "tale": ""
+            },
+            "id": 100378,
+            "sourceId": 2756563
+          },
+          "hero_id": 1,
+          "relation": {
+            "assist": {
+              "desc": "Miya works well with Tanks who have powerful CC abilities like Belerick and Tigreal since their CCs give her more opportunities to dish out damage.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8b30576754be1a4f8bebd09df8d6bec7.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5f2a9eca0bafd4ed8dc39a93c771b3af.png"
+                  }
+                },
+                0
+              ],
+              "target_hero_id": [6, 70, 0]
+            },
+            "strong": {
+              "desc": "Miya counters heroes who rely on targeted CC effects, such as Saber and Eudora, because she can easily escape their CC and respond with a strong counterattack. The split arrows from her 1st Skill are also very effective against heroes that summon units, such as Sun.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6bbfac806f29d29f17fea9e98d2d2fee.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_87b2a655b254c136dce8976e21935a80.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_117b5cdcc13232157075ce7b7f6177e9.png"
+                  }
+                }
+              ],
+              "target_hero_id": [3, 15, 27]
+            },
+            "weak": {
+              "desc": "Miya is countered by heroes with a lot of AOE damage, such as Pharsa and Yve, because they can still hit her while she is concealed.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_10151d43910e62f7aa9ce08df481a20f.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d9b0a1d92b1c4b3643d6332fd66aa8e6.png"
+                  }
+                },
+                0
+              ],
+              "target_hero_id": [52, 101, 0]
+            }
+          },
+          "url": "https://play.mobilelegends.com/lore/hero/Miya"
+        },
+        "dynamic": null,
+        "id": 2667597,
+        "linkId": [2667538],
+        "sort": 0,
+        "updatedAt": 1763037894023,
+        "updatedUser": "v_zhu"
+      },
+      {
+        "_id": "65f2e27ffd1bb8e47d25df72",
+        "caption": "030李舜臣",
+        "configId": 144237,
+        "createdAt": 1710416511192,
+        "createdUser": "nickjin",
+        "data": {
+          "_object": 2667538,
+          "head": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/community/100_2c58c685825527c0643de5e0af8e0c2a.png",
+          "head_big": "https://akmweb.youngjoygame.com/web/svnres/file/mlbb/homepage/100_42a497ad29f61bdc1cea4bc6a9e1e163.jpg",
+          "hero": {
+            "_createdAt": 1724837697935,
+            "_id": "66ceef41af5771f18c5009a3",
+            "_updatedAt": 1789542899945,
+            "data": {
+              "abilityshow": ["40", "90", "40", "60"],
+              "difficulty": "60",
+              "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_961378be3f498d42c25b3defd1635ad1.png",
+              "heroid": 30,
+              "heroskilllist": [
+                {
+                  "skilllist": [
+                    {
+                      "skillcd&cost": "",
+                      "skilldesc": "Yi Sun-shin attacks with his <font color=\"a6aafb\">longbow</font> or <font color=\"a6aafb\">glaive</font> based on his distance from the target.\n<font color=\"a6aafb\">Weapon Mastery</font>: After each weapon swap, his next 2 Basic Attacks gain extra Attack Speed and deal 70% and 55% Crit Damage respectively. He also gains 15% Movement Speed for 1s.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_708b471cf829d9ffb5d892a79b17d710.png",
+                      "skillid": 3040,
+                      "skillname": "Heavenly Vow",
+                      "skilltag": [
+                        {
+                          "tagid": 62,
+                          "tagname": "Buff",
+                          "tagrgb": "79,156,184"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 12   Mana Cost: 50",
+                      "skilldesc": "Yi Sun-shin dashes forward and slashes with his glaive, dealing 150<font color=\"fba51f\"> (+40% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> and gaining Control Immunity for 0.4s.\nEach <font color=\"a6aafb\">Weapon Mastery</font> triggered reduces the cooldown of <font color=\"a6aafb\">Traceless</font> by 1s.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_abd7c311019ffb1e4210092e448a445e.png",
+                      "skillid": 3010,
+                      "skillname": "Traceless",
+                      "skilltag": [
+                        {
+                          "tagid": 81,
+                          "tagname": "Mobility",
+                          "tagrgb": "162,105,198"
+                        },
+                        {
+                          "tagid": 32,
+                          "tagname": "AOE",
+                          "tagrgb": "199,121,85"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 11   Mana Cost: 60",
+                      "skilldesc": "<font color=\"a6aafb\">Tap</font>: Yi Sun-shin slashes swiftly with his glaive, dealing 240<font color=\"fba51f\"> (+80% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font>.\n<font color=\"a6aafb\">Hold</font>: Yi Sun-shin shoots a powerful arrow forward, dealing 240<font color=\"fba51f\"> (+80% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> to the target (damage scales with hold time, up to 200%).\nCasting this skill immediately triggers <font color=\"a6aafb\">Weapon Mastery</font>.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_cbefbe66ac78ac29ec20d14a057c30a5.png",
+                      "skillid": 3020,
+                      "skillname": "Blood Floods",
+                      "skilltag": [
+                        {
+                          "tagid": 32,
+                          "tagname": "AOE",
+                          "tagrgb": "199,121,85"
+                        }
+                      ],
+                      "skillvideo": ""
+                    },
+                    {
+                      "skillcd&cost": "CD: 60   Mana Cost: 150",
+                      "skilldesc": "Yi Sun-shin summons a turtle ship and reveals the whole map for 2s. The turtle ship lasts up to 10s, during which he gains 70% burst Movement Speed (decays to 20% over 2s).\n\n<font color=\"a6aafb\">Use Again</font>: Yi Sun-shin commands the turtle ship to ram the target area, dealing 160<font color=\"fba51f\"> (+50% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> to enemies in the center and stunning them for 0.8s. Meanwhile, he commands the naval fleet to launch 3 waves of cannon attacks over a larger area. Each wave deals 160<font color=\"fba51f\"> (+50% Total Physical Attack)</font> <font color=\"fb1f1f\">Physical Damage</font> and slows enemies by 30%.\nCasting this skill immediately triggers <font color=\"a6aafb\">Weapon Mastery</font>.",
+                      "skillicon": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fa5511e292c6b516b1b258b13ab0f883.png",
+                      "skillid": 3030,
+                      "skillname": "Mountain Shocker",
+                      "skilltag": [
+                        {
+                          "tagid": 31,
+                          "tagname": "Burst",
+                          "tagrgb": "199,121,85"
+                        },
+                        {
+                          "tagid": 21,
+                          "tagname": "CC",
+                          "tagrgb": "205,93,109"
+                        }
+                      ],
+                      "skillvideo": ""
+                    }
+                  ],
+                  "skilllistid": "301"
+                }
+              ],
+              "heroskin": null,
+              "name": "Yi Sun-shin",
+              "painting": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e7ec78a2d7f84ef57deac87ec2b40dbf.png",
+              "recommendlevel": ["3", "1", "2", "0", "1/2"],
+              "recommendlevellabel": "3-1-2-0-1/2",
+              "recommendmasterplan": [],
+              "roadsort": [
+                {
+                  "_id": "668541caaa8e7f6ec4703d8a",
+                  "caption": "打野",
+                  "configId": 144237,
+                  "createdAt": 1720009162509,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2732073,
+                    "road_sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/de611167c7310681135f0b4198137bfa.svg",
+                    "road_sort_id": "4",
+                    "road_sort_title": "Jungle"
+                  },
+                  "dynamic": null,
+                  "id": 2732080,
+                  "linkId": [2732073],
+                  "sort": 0,
+                  "updatedAt": 1723022951463,
+                  "updatedUser": "nickjin"
+                },
+                ""
+              ],
+              "roadsorticon1": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_741d46ff696f02305139a2d817e67e75.png",
+              "roadsorticon2": "",
+              "roadsortlabel": ["Jungling", ""],
+              "smallmap": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3fe7fdb5f2aedef505f3728c28572e2e.png",
+              "sorticon1": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_933dce3f6078bc4eeaa97caaaa81875f.png",
+              "sorticon2": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_094c17e22ff5e8086641e9a2c67dd81e.png",
+              "sortid": [
+                {
+                  "_id": "6698bffd613093b976b4a970",
+                  "caption": "3刺客",
+                  "configId": 144237,
+                  "createdAt": 1721286653803,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2740651,
+                    "sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/d0b8b65a47fc43dc7bb2bac447072fd2.png",
+                    "sort_id": "3",
+                    "sort_title": "assassin"
+                  },
+                  "dynamic": null,
+                  "id": 2740661,
+                  "linkId": [2740651],
+                  "sort": 0,
+                  "updatedAt": 1723023131050,
+                  "updatedUser": "nickjin"
+                },
+                {
+                  "_id": "6698c04f613093b976b4a978",
+                  "caption": "5射手",
+                  "configId": 144237,
+                  "createdAt": 1721286735503,
+                  "createdUser": "nickjin",
+                  "data": {
+                    "_object": 2740651,
+                    "sort_icon": "https://akmweb.youngjoygame.com/web/gms/image/025c69a764924f4bac526a2662f1a0b9.png",
+                    "sort_id": "5",
+                    "sort_title": "Marksman"
+                  },
+                  "dynamic": null,
+                  "id": 2740665,
+                  "linkId": [2740651],
+                  "sort": 0,
+                  "updatedAt": 1723023126452,
+                  "updatedUser": "nickjin"
+                }
+              ],
+              "sortlabel": ["Assassin", "Marksman"],
+              "speciality": ["Finisher", "Chase"],
+              "squarehead": "https://akmweb.youngjoygame.com/web/svnres/file/test/homepage_2_2_16_1232_1/100_891fc37964908684f554ca6a552c82e0.jpg",
+              "squareheadbig": "https://akmweb.youngjoygame.com/web/svnres/file/test/homepage_2_2_16_1232_1/100_42a497ad29f61bdc1cea4bc6a9e1e163.jpg",
+              "story": "Leader of the City of the Dragon Fleet.",
+              "tale": ""
+            },
+            "id": 100403,
+            "sourceId": 2756563
+          },
+          "hero_id": 30,
+          "relation": {
+            "assist": {
+              "desc": "Yi Sun-shin works best with Fighters who can initiate, such as Alpha and Khaleed, so he can follow up and unleash his full damage after they have CC'd the enemy.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_86c9f91f530727db6498f920d19180d1.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_540a6a9d343842674ce002082366ec9d.png"
+                  }
+                },
+                0
+              ],
+              "target_hero_id": [28, 98, 0]
+            },
+            "strong": {
+              "desc": "Yi Sun-shin counters heroes that lack CC like Uranus and Terizla who are at the mercy of his ability to jump in and out of melee range using his 2 weapons.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2e15a0a506aaecd9b3de40a8cc9f7ec7.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c4bb270c28c7be663f57e993b0d6d3d8.png"
+                  }
+                },
+                0,
+                0
+              ],
+              "target_hero_id": [59, 82, 0, 0]
+            },
+            "weak": {
+              "desc": "Yi Sun-shin is countered by heroes with CC skills, such as Franco and Kaja who can lock him down and stop him from freely swapping weapons.",
+              "target_hero": [
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9bed3c0095335606e0ce616c6e5a8553.png"
+                  }
+                },
+                {
+                  "data": {
+                    "head": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d558bb881e18a070eaeda1e1fdc248a8.png"
+                  }
+                },
+                0,
+                0
+              ],
+              "target_hero_id": [10, 62, 0, 0]
+            }
+          },
+          "url": "https://play.mobilelegends.com/lore/hero/Yi_Sunshin"
+        },
+        "dynamic": null,
+        "id": 2678766,
+        "linkId": [2667538],
+        "sort": 0,
+        "updatedAt": 1726805352355,
+        "updatedUser": "nickjin"
+      }
+    ],
+    "total": 3
+  }
+}

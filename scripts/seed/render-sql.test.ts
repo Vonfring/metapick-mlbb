@@ -94,8 +94,8 @@ describe("renderSeedSql", () => {
               { hero_id: 99, win_rate: 0.5, pick_rate: 0.01, ban_rate: 0 },
             ],
             matchups: [
-              { hero_id: 1, other_id: 2, win_rate_delta: 0.02, other_win_rate: null },
-              { hero_id: 1, other_id: 99, win_rate_delta: 0.01, other_win_rate: 0.5 },
+              { hero_id: 1, other_id: 2, win_rate_delta: 0.02 },
+              { hero_id: 1, other_id: 99, win_rate_delta: 0.01 },
             ],
           },
         ],

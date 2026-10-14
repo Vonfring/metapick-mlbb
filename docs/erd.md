@@ -159,7 +159,6 @@ erDiagram
         smallint hero_id PK, FK
         smallint opponent_id PK, FK
         real win_rate_delta "positive = hero favored"
-        real opponent_win_rate
         integer sample_size "not provided yet"
     }
     hero_synergies {
@@ -167,7 +166,6 @@ erDiagram
         smallint hero_id PK, FK
         smallint teammate_id PK, FK
         real win_rate_delta
-        real teammate_win_rate
         integer sample_size "not provided yet"
     }
     hero_recommended_builds {
@@ -360,12 +358,11 @@ Indexes: PK (snapshot_id, hero_id); (hero_id). RLS: public SELECT when the paren
 | hero_id | smallint | no | | PK part, FK → heroes.id, cascade |
 | opponent_id | smallint | no | | PK part, FK → heroes.id, cascade |
 | win_rate_delta | real | no | | Change in the hero's win rate against this opponent (positive = hero favored) |
-| opponent_win_rate | real | yes | | When provided |
 | sample_size | integer | yes | | The source does not provide match counts today |
 
 Indexes: PK (snapshot_id, hero_id, opponent_id); (hero_id); (opponent_id). RLS: public SELECT when the parent snapshot is published.
 
-**hero_synergies**: same shape as `hero_matchups` with `teammate_id` and `teammate_win_rate`. Indexes: PK (snapshot_id, hero_id, teammate_id); (hero_id); (teammate_id). Same RLS.
+**hero_synergies**: same shape as `hero_matchups`, with `teammate_id` instead of `opponent_id`; `win_rate_delta` is the change in the hero's win rate when playing with that teammate. Indexes: PK (snapshot_id, hero_id, teammate_id); (hero_id); (teammate_id). Same RLS.
 
 **hero_recommended_builds**
 

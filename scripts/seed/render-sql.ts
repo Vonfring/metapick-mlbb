@@ -287,7 +287,7 @@ export function renderSeedSql(input: SeedInput): RenderResult {
       for (const [rows, target] of [[s.matchups, matchupValues], [s.synergies, synergyValues]] as const) {
         for (const r of rows ?? []) {
           if (r.hero_id === r.other_id || !heroIds.has(r.hero_id) || !heroIds.has(r.other_id)) continue;
-          target.push(tuple([...key, r.hero_id, r.other_id, r.win_rate_delta, r.other_win_rate]));
+          target.push(tuple([...key, r.hero_id, r.other_id, r.win_rate_delta]));
         }
       }
     }
@@ -306,12 +306,10 @@ export function renderSeedSql(input: SeedInput): RenderResult {
     };
     pushJoined("hero_stats", "snapshot_id, hero_id, win_rate, pick_rate, ban_rate",
       "s.id, v.hero_id, v.win_rate, v.pick_rate, v.ban_rate", statValues, "hero_id, win_rate, pick_rate, ban_rate");
-    pushJoined("hero_matchups", "snapshot_id, hero_id, opponent_id, win_rate_delta, opponent_win_rate",
-      "s.id, v.hero_id, v.other_id, v.win_rate_delta, v.other_win_rate::real", matchupValues,
-      "hero_id, other_id, win_rate_delta, other_win_rate");
-    pushJoined("hero_synergies", "snapshot_id, hero_id, teammate_id, win_rate_delta, teammate_win_rate",
-      "s.id, v.hero_id, v.other_id, v.win_rate_delta, v.other_win_rate::real", synergyValues,
-      "hero_id, other_id, win_rate_delta, other_win_rate");
+    pushJoined("hero_matchups", "snapshot_id, hero_id, opponent_id, win_rate_delta",
+      "s.id, v.hero_id, v.other_id, v.win_rate_delta", matchupValues, "hero_id, other_id, win_rate_delta");
+    pushJoined("hero_synergies", "snapshot_id, hero_id, teammate_id, win_rate_delta",
+      "s.id, v.hero_id, v.other_id, v.win_rate_delta", synergyValues, "hero_id, other_id, win_rate_delta");
 
     counts.snapshots = snapshots.length;
     counts.stats = statValues.length;

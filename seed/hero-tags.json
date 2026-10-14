@@ -129,5 +129,8 @@
   "lukas": {"damage_type": "physical", "frontline": 2, "hard_cc": 2, "peel": 0, "aoe_damage": 2, "pickoff": 1, "push": 1, "mobility": 2, "sustain": 2, "burst": 1, "scaling": 1, "needs_review": true},
   "kalea": {"damage_type": "physical", "frontline": 2, "hard_cc": 2, "peel": 2, "aoe_damage": 1, "pickoff": 1, "push": 0, "mobility": 1, "sustain": 2, "burst": 1, "scaling": 1, "needs_review": true},
   "zetian": {"damage_type": "magic", "frontline": 0, "hard_cc": 1, "peel": 0, "aoe_damage": 2, "pickoff": 1, "push": 1, "mobility": 1, "sustain": 0, "burst": 2, "scaling": 2, "needs_review": true},
-  "obsidia": {"damage_type": "physical", "frontline": 0, "hard_cc": 1, "peel": 0, "aoe_damage": 1, "pickoff": 1, "push": 1, "mobility": 1, "sustain": 0, "burst": 2, "scaling": 2, "needs_review": true}
+  "obsidia": {"damage_type": "physical", "frontline": 0, "hard_cc": 1, "peel": 0, "aoe_damage": 1, "pickoff": 1, "push": 1, "mobility": 1, "sustain": 0, "burst": 2, "scaling": 2, "needs_review": true},
+  "sora": {"damage_type": "physical", "frontline": 1, "hard_cc": 1, "peel": 0, "aoe_damage": 1, "pickoff": 2, "push": 1, "mobility": 2, "sustain": 1, "burst": 3, "scaling": 1, "needs_review": true, "notes": "Official: fighter and assassin, EXP lane, Charge and Burst."},
+  "marcel": {"damage_type": "magic", "frontline": 1, "hard_cc": 2, "peel": 2, "aoe_damage": 1, "pickoff": 1, "push": 0, "mobility": 1, "sustain": 1, "burst": 0, "scaling": 1, "needs_review": true, "notes": "Official: support, roam, Crowd Control and Support."},
+  "hirara": {"damage_type": "physical", "frontline": 0, "hard_cc": 1, "peel": 0, "aoe_damage": 2, "pickoff": 3, "push": 0, "mobility": 3, "sustain": 0, "burst": 3, "scaling": 2, "needs_review": true, "notes": "Official: assassin, jungle, Chase and Finisher; two dashes and an invincible combo."}
 }
