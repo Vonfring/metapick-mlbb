@@ -53,7 +53,8 @@ export type TemplateParams = {
 };
 
 /** Split a template's inner text on top-level `|` into named and positional parameters. */
-export function templateParams(inner: string): TemplateParams {
+export function templateParams(template: string): TemplateParams {
+  const inner = stripComments(template);
   const parts: string[] = [];
   let curly = 0;
   let square = 0;
