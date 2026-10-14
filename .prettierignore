@@ -1,0 +1,9 @@
+.next
+node_modules
+pnpm-lock.yaml
+coverage
+.cache
+seed
+supabase
+docs
+*.md
