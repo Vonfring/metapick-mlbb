@@ -24,7 +24,7 @@ import {
 } from "../source/config";
 import { buildQuery, eq, sortBy } from "../source/query";
 
-const outDir = path.resolve(process.argv[2] ?? ".cache/inspect");
+const outDir = path.resolve(process.argv[2] ?? "seed/official/_inspect");
 const OFFICIAL_SITE = "https://www.mobilelegends.com";
 
 async function save(name: string, data: unknown) {
@@ -32,37 +32,93 @@ async function save(name: string, data: unknown) {
   console.log(`saved ${name}.json`);
 }
 
-/** Find API base paths the official site's own scripts call. */
+const SNIPPET_TERMS = [
+  "sub_hero_last",
+  "sub_hero",
+  "increase_win_rate",
+  "main_hero_appearance_rate",
+  "match_type",
+  "bigrank",
+  "big_rank",
+  "real_road",
+];
+
+/**
+ * Find the API paths the official site's own scripts call, and keep short
+ * code snippets around the field names we care about. The snippets show how
+ * the official UI labels each list (for example which one means "counters").
+ */
 async function discoverApiPaths() {
   const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
   const get = async (url: string) => {
     await sleep(2000);
-    const response = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
-    return { status: response.status, text: response.ok ? await response.text() : "" };
+    try {
+      const response = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+      return { status: response.status, text: response.ok ? await response.text() : "" };
+    } catch (error) {
+      return { status: 0, text: "", error: (error as Error).message };
+    }
   };
 
   const pages = ["/", "/hero", "/rank"];
-  const scripts = new Set<string>();
+  const queue: string[] = [];
+  const seen = new Set<string>();
+  const enqueue = (url: string) => {
+    if (!seen.has(url)) {
+      seen.add(url);
+      queue.push(url);
+    }
+  };
+  const pageStatus: Record<string, number> = {};
   for (const page of pages) {
     const { status, text } = await get(OFFICIAL_SITE + page);
+    pageStatus[page] = status;
     console.log(`GET ${page} -> ${status}`);
-    for (const match of text.matchAll(/<script[^>]+src="([^"]+\.js[^"]*)"/g)) {
-      scripts.add(new URL(match[1]!, OFFICIAL_SITE).toString());
+    for (const match of text.matchAll(/<(?:script|link)[^>]+(?:src|href)="([^"]+\.js[^"]*)"/g)) {
+      enqueue(new URL(match[1]!, OFFICIAL_SITE).toString());
+    }
+  }
+  const allowedHosts = new Set(queue.map((url) => new URL(url).host));
+
+  const MAX_SCRIPTS = 40;
+  const apiMatches = new Map<string, Set<string>>();
+  const snippets: Record<string, { script: string; text: string }[]> = {};
+  let fetched = 0;
+  while (queue.length > 0 && fetched < MAX_SCRIPTS) {
+    const script = queue.shift()!;
+    fetched += 1;
+    const { text } = await get(script);
+    if (!text) continue;
+
+    for (const match of text.matchAll(/(?:https?:)?\/\/[a-z0-9.-]*moontontech\.com[^"'`\s)]*|gms\/source\/\d+(?:\/\d+)?/g)) {
+      if (!apiMatches.has(match[0])) apiMatches.set(match[0], new Set());
+      apiMatches.get(match[0])!.add(script);
+    }
+    for (const term of SNIPPET_TERMS) {
+      const list = (snippets[term] ??= []);
+      let index = text.indexOf(term);
+      while (index !== -1 && list.length < 6) {
+        list.push({ script, text: text.slice(Math.max(0, index - 250), index + 250) });
+        index = text.indexOf(term, index + term.length + 250);
+      }
+    }
+    // Lazy-loaded chunks referenced by this script, on the same hosts.
+    for (const match of text.matchAll(/["'`]((?:\.{0,2}\/)?[\w./-]+\.js)["'`]/g)) {
+      try {
+        const url = new URL(match[1]!, script);
+        if (allowedHosts.has(url.host)) enqueue(url.toString());
+      } catch {
+        // not a URL
+      }
     }
   }
 
-  const found = new Map<string, Set<string>>();
-  for (const script of [...scripts].slice(0, 25)) {
-    const { text } = await get(script);
-    for (const match of text.matchAll(/(?:https?:)?\/\/[a-z0-9.-]*moontontech\.com[^"'`\s)]*|gms\/source\/\d+(?:\/\d+)?/g)) {
-      const key = match[0];
-      if (!found.has(key)) found.set(key, new Set());
-      found.get(key)!.add(script);
-    }
-  }
   return {
-    scripts: [...scripts],
-    matches: [...found.entries()].map(([value, inScripts]) => ({ value, scripts: [...inScripts] })),
+    pageStatus,
+    scriptsFetched: fetched,
+    scriptsQueued: queue.length,
+    apiMatches: [...apiMatches.entries()].map(([value, inScripts]) => ({ value, scripts: [...inScripts] })),
+    snippets,
   };
 }
 
@@ -122,10 +178,15 @@ async function main() {
   await attempt("official-site-api-paths", async () => {
     const discovered = await discoverApiPaths();
     if (!academyBase) {
-      const candidates = discovered.matches
-        .map((m) => /gms\/source\/(\d+)$/.exec(m.value)?.[1])
-        .filter((id): id is string => Boolean(id) && id !== "2669606");
-      if (candidates[0]) academyBase = `https://api.gms.moontontech.com/api/gms/source/${candidates[0]}`;
+      const appIds = [
+        ...new Set(
+          discovered.apiMatches
+            .map((m) => /gms\/source\/(\d+)/.exec(m.value)?.[1])
+            .filter((id): id is string => Boolean(id) && id !== "2669606"),
+        ),
+      ];
+      if (appIds[0]) academyBase = `https://api.gms.moontontech.com/api/gms/source/${appIds[0]}`;
+      return { ...discovered, otherAppIds: appIds, academyBaseGuess: academyBase || null };
     }
     return { ...discovered, academyBaseGuess: academyBase || null };
   });

@@ -1,0 +1,67 @@
+name: Seed fetch (one-off)
+
+# Runs the one-time pull from the official data source on GitHub's runners,
+# because the development container cannot reach it. Triggered by pushing a
+# change to seed/fetch-request.json on a claude/** branch:
+#   {"mode": "inspect"}  save a few raw responses to seed/official/_inspect/
+#   {"mode": "fetch"}    write seed/official/*.json and supabase/seed.sql
+# Results are committed back to the same branch with GITHUB_TOKEN, which does
+# not trigger another run. Replaced by the scheduled updater in Phase 3.
+
+on:
+  push:
+    branches:
+      - "claude/**"
+    paths:
+      - seed/fetch-request.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seed-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Read the requested mode
+        id: request
+        run: |
+          mode=$(node -p "require('./seed/fetch-request.json').mode")
+          case "$mode" in inspect|fetch) ;; *) echo "Unknown mode: $mode"; exit 1 ;; esac
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+
+      - name: Inspect the source
+        if: steps.request.outputs.mode == 'inspect'
+        run: pnpm seed:inspect seed/official/_inspect
+
+      - name: Fetch the seed snapshot
+        if: steps.request.outputs.mode == 'fetch'
+        run: |
+          pnpm seed:fetch
+          pnpm seed:sql
+
+      - name: Commit the results to this branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A seed supabase
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "Seed ${{ steps.request.outputs.mode }}: data from the official source (run ${{ github.run_id }})"
+          git push origin "HEAD:${{ github.ref_name }}"
