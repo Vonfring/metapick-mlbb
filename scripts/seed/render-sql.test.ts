@@ -33,21 +33,20 @@ const tags = {
   scaling: 3,
 };
 
-function input(overrides: Partial<SeedInput["official"]> = {}): SeedInput {
+function input(
+  overrides: Partial<SeedInput["official"]> = {},
+  catalog: Partial<SeedInput["catalog"]> = {},
+): SeedInput {
   return {
     official: {
       meta: { fetched_at: "2026-10-14T03:00:00Z", source: "test" },
       heroes: [hero(1, "miya", "Miya"), hero(2, "yi-sun-shin", "Yi Sun-shin")],
       skills: [],
       relations: [],
-      items: [],
-      emblems: [],
-      talents: [],
-      spells: [],
-      builds: [],
       snapshots: [],
       ...overrides,
     },
+    catalog: { meta: null, items: [], emblems: [], talents: [], spells: [], ...catalog },
     tags: { miya: tags, ghost: tags },
     itemOverrides: {},
   };
@@ -104,5 +103,29 @@ describe("renderSeedSql", () => {
     expect(counts.stats).toBe(1);
     expect(counts.matchups).toBe(1);
     expect(warnings.some((w) => w.includes("hero 99"))).toBe(true);
+  });
+
+  it("applies item overrides by slug and warns about unknown ones", () => {
+    const item = {
+      id: 501,
+      slug: "blade-of-despair",
+      name: "Blade of Despair",
+      category: "attack" as const,
+      tier: 3,
+      price: 3010,
+      attributes: [{ label: "Physical Attack", value: "+160" }],
+      passives: [],
+      builds_into: [],
+      icon_url: null,
+    };
+    const result = renderSeedSql({
+      ...input({}, { items: [item] }),
+      itemOverrides: { "blade-of-despair": { price: 2999 }, "no-such-item": { price: 1 } },
+    });
+    expect(result.counts.items).toBe(1);
+    expect(result.sql).toContain("2999");
+    expect(result.sql).not.toContain("3010");
+    expect(result.warnings).toContain('overrides/items.json: "no-such-item" matches no item, skipped');
+    expect(result.sql).toContain("-- No item, emblem, talent or spell catalog yet");
   });
 });

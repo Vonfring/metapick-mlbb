@@ -9,11 +9,11 @@
  * day does not hit the source again. A statistics snapshot that fails to
  * load or fails the sanity checks is skipped with a warning.
  *
- * Items, emblems, talents, battle spells and builds are not official data
- * any more (the MLBB Academy closed on 2026-06-30). Their files are created
- * empty when missing and otherwise left alone.
+ * Items, emblems, talents and battle spells are not official data any more
+ * (the MLBB Academy closed on 2026-06-30); `pnpm seed:catalog` imports them
+ * from Liquipedia into seed/liquipedia/.
  */
-import { access, mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { HeroRelationRow, HeroRow, HeroSkillRow, PairRow, StatSnapshotRecord } from "@/types/data";
 import { PERIODS, RANK_BRACKETS, type PeriodDays, type RankBracket } from "@/types/domain";
@@ -29,9 +29,6 @@ import { checkStatsSanity, parseStatsRecords } from "../source/transform/stats";
 export const MATCHUP_PERIOD = 7;
 
 const OUT_DIR = path.resolve("seed", "official");
-
-/** Catalog files that the official source no longer provides. */
-const NON_OFFICIAL_FILES = ["items.json", "emblems.json", "talents.json", "spells.json", "builds.json"];
 
 async function writeJson(name: string, data: unknown) {
   await writeFile(path.join(OUT_DIR, name), `${JSON.stringify(data, null, 1)}\n`);
@@ -138,13 +135,6 @@ async function main() {
   await writeJson("skills.json", skills);
   await writeJson("relations.json", relations);
   await writeJson("stats.json", snapshots);
-  for (const name of NON_OFFICIAL_FILES) {
-    const exists = await access(path.join(OUT_DIR, name)).then(
-      () => true,
-      () => false,
-    );
-    if (!exists) await writeJson(name, []);
-  }
 
   console.log(`\ndone: ${client.stats.requests} requests, ${client.stats.retries} retries, ${client.stats.cacheHits} cache hits`);
   if (warnings.length > 0) {

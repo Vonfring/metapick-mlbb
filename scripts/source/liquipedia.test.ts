@@ -108,6 +108,7 @@ describe("fetchWikitext", () => {
           redirects: [{ from: "BoD", to: "Blade of Despair" }],
           pages: [
             {
+              pageid: 1234,
               title: "Blade of Despair",
               revisions: [
                 {
@@ -129,6 +130,7 @@ describe("fetchWikitext", () => {
     );
     expect([...pages.keys()]).toEqual(["BoD"]);
     expect(pages.get("BoD")).toEqual({
+      pageid: 1234,
       title: "Blade of Despair",
       content: "{{Infobox item}}",
       timestamp: "2026-09-01T00:00:00Z",

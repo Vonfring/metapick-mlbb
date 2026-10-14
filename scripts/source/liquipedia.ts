@@ -185,6 +185,8 @@ export function createLiquipediaClient(options: LiquipediaClientOptions = {}) {
 export type LiquipediaClient = ReturnType<typeof createLiquipediaClient>;
 
 export type WikiPage = {
+  /** MediaWiki page ID: stable across page moves, so it doubles as our row ID. */
+  pageid: number;
   title: string;
   content: string;
   timestamp: string | null;
@@ -193,6 +195,7 @@ export type WikiPage = {
 type RevisionsResponse = {
   query?: {
     pages?: {
+      pageid?: number;
       title: string;
       missing?: boolean;
       revisions?: {
@@ -226,9 +229,11 @@ export async function fetchWikitext(
     for (const page of json.query?.pages ?? []) {
       const revision = page.revisions?.[0];
       const content = revision?.slots?.main?.content;
-      if (page.missing || content === undefined) continue;
+      if (page.missing || content === undefined || page.pageid === undefined)
+        continue;
       const requested = redirectedFrom.get(page.title) ?? page.title;
       pages.set(requested, {
+        pageid: page.pageid,
         title: page.title,
         content,
         timestamp: revision?.timestamp ?? null,

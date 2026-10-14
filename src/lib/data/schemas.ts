@@ -217,3 +217,13 @@ export const officialMetaSchema = z.object({
   source: z.string(),
   notes: z.string().optional(),
 });
+
+/** seed/liquipedia/meta.json: where the item, emblem and spell catalog came from. */
+export const catalogMetaSchema = z.object({
+  fetched_at: isoDateTime,
+  source: z.string(),
+  license: z.string(),
+  /** Latest revision time of the wiki pages used. */
+  revised_at: isoDateTime.nullable(),
+  notes: z.string().optional(),
+});
