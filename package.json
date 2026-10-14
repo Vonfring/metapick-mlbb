@@ -21,7 +21,8 @@
     "seed:fetch": "tsx scripts/seed/fetch-official.ts",
     "db:test": "scripts/db/test-migrations.sh",
     "seed:check-tags": "tsx scripts/seed/check-tags.ts",
-    "seed:inspect": "tsx scripts/seed/inspect-source.ts"
+    "seed:inspect": "tsx scripts/seed/inspect-source.ts",
+    "seed:inspect-browser": "tsx scripts/seed/inspect-browser.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -40,6 +41,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^22.20.5",
     "@types/react": "^19",

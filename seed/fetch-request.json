@@ -1,10 +1,9 @@
 {
-  "mode": "inspect",
-  "inspect": {
-    "siteOnly": true,
-    "maxScripts": 2,
-    "pages": ["/academy"],
-    "saveScripts": ["/assets/index-"]
+  "mode": "browser",
+  "browser": {
+    "pages": ["/academy", "/academy/equipment"],
+    "follow": ["academy"],
+    "maxPages": 12
   },
   "note": "Pushing a change to this file on a claude/** branch runs .github/workflows/seed-fetch.yml."
 }

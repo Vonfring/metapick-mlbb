@@ -37,8 +37,6 @@ type InspectOptions = {
   savePages?: boolean;
   /** Base URLs to try every Academy source ID against (2 records each). */
   probeBases?: string[];
-  /** Save the full text of fetched scripts whose URL contains one of these strings. */
-  saveScripts?: string[];
 };
 
 async function readOptions(): Promise<InspectOptions> {
@@ -121,10 +119,6 @@ async function discoverApiPaths(options: InspectOptions) {
     fetched += 1;
     const { text } = await get(script);
     if (!text) continue;
-    if (options.saveScripts?.some((part) => script.includes(part))) {
-      await mkdir(path.join(outDir, "scripts"), { recursive: true });
-      await writeFile(path.join(outDir, "scripts", script.split("/").pop()!.split("?")[0]!), text);
-    }
 
     for (const match of text.matchAll(/(?:https?:)?\/\/[a-z0-9.-]*moontontech\.com[^"'`\s)]*|gms\/source\/\d+(?:\/\d+)?/g)) {
       if (!apiMatches.has(match[0])) apiMatches.set(match[0], new Set());
