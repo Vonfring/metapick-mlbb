@@ -1,5 +1,5 @@
 {
-  "dry_run": true,
+  "dry_run": false,
   "fresh": false,
-  "reason": "retest Liquipedia after the 429 handling change"
+  "reason": "first real catalog run after the secrets were added"
 }
