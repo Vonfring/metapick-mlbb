@@ -1,5 +1,5 @@
 {
   "dry_run": false,
   "fresh": false,
-  "reason": "first real catalog run after the secrets were added"
+  "reason": "real catalog run with repository secrets in place"
 }
