@@ -74,7 +74,9 @@ Every score comes from a config file, and each page explains its formula from th
 | [`src/config/tier-scoring.ts`](src/config/tier-scoring.ts) | Tier list: weights of win, pick and ban rate, tier cut-offs |
 | [`src/config/counter-scoring.ts`](src/config/counter-scoring.ts) | How much one hero counters another (statistics, official notes, tag rules) and the Counter pick score |
 | [`src/config/matchup-scoring.ts`](src/config/matchup-scoring.ts) | Matchup verdicts: weights for form, counters, synergy and composition |
-| [`src/config/composition-rules.ts`](src/config/composition-rules.ts) | The team composition checklist and its thresholds |
+| [`src/config/composition-rules.ts`](src/config/composition-rules.ts) | The team composition checklist, its thresholds and the plain-language hints |
+| [`src/config/draft-scoring.ts`](src/config/draft-scoring.ts) | Draft master and Team composition suggestions, swaps and the team strength score |
+| [`src/config/draft-order.ts`](src/config/draft-order.ts) | Ban and pick order presets (ranked Epic, Legend, Mythic and above, MPL) |
 
 ## Data updates
 

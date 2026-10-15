@@ -89,10 +89,10 @@ Each page carries the data for its default rank (Mythic). Another choice loads a
 | Path | Contents | Used by |
 |---|---|---|
 | `/data/v1/stats/{rank}/{period}` | Rates, tiers and changes for one rank and period (30 files) | Statistics, Tier list |
-| `/data/v1/matchups/{rank}` | 7-day rates, matchups and synergies for one rank (6 files) | Counter pick, Matchup |
+| `/data/v1/matchups/{rank}` | 7-day rates, matchups and synergies for one rank (6 files) | Counter pick, Matchup, Team composition, Draft master |
 | `/data/v1/hero-notes` | The official explanation behind each hero note | Matchup |
 
-Counter pick and Matchup score in the browser, with the pure functions in `src/lib/scoring/` and the weights in `src/config/counter-scoring.ts`, `matchup-scoring.ts` and `composition-rules.ts`.
+The four tools score in the browser, with the pure functions in `src/lib/scoring/` and the weights in `src/config/counter-scoring.ts`, `matchup-scoring.ts`, `composition-rules.ts` and `draft-scoring.ts`. Draft master's ban and pick orders are presets in `src/config/draft-order.ts` (see `docs/activity-draft-master.md`).
 
 ## Data update
 

@@ -1,10 +1,11 @@
 # Activity: Draft master and Team composition
 
-Status: draft for review. Nothing in Phase 5 is built until the ban and pick
-order below is confirmed. Once it is, this document describes what the code
-in `src/config/draft-order.ts`, `src/config/draft-scoring.ts`,
-`src/lib/scoring/draft.ts` and the two pages does. Update it in the same commit
-as any change to the flow.
+Status: confirmed on 15 Oct 2026 (Mythic bans in two blind waves before the
+picks, the MPL tournament preset included, a strength score per team plus
+the matchup estimate). The code in `src/config/draft-order.ts`,
+`src/config/draft-scoring.ts`, `src/lib/scoring/draft.ts` and the two pages
+follows this document. Update it in the same commit as any change to the
+flow.
 
 ## In short
 
@@ -21,7 +22,7 @@ heroes (`src/config/counter-scoring.ts`), synergy, the composition checklist
 (`src/config/composition-rules.ts`) and the matchup estimate
 (`src/config/matchup-scoring.ts`). Nothing new is stored in the database.
 
-## Ban and pick order (please confirm)
+## Ban and pick order
 
 Sources disagree on some details and Moonton publishes no official rules
 page, so the order lives in one config file, `src/config/draft-order.ts`, as

@@ -11,6 +11,8 @@ export type HeroMeta = {
   /** Win rate pulled toward 50% for rarely picked heroes (see tier-scoring.ts). */
   adjustedWinRate: number;
   tier: Tier | null;
+  /** Tier list score (higher is stronger); null when picked too rarely to rank. */
+  tierScore: number | null;
 };
 
 export type HeroNotes = {
@@ -82,6 +84,7 @@ export function buildHeroIndex(
       banRate: s.ban_rate,
       adjustedWinRate: tier?.adjustedWinRate ?? s.win_rate,
       tier: tier?.tier ?? null,
+      tierScore: tier?.tier ? tier.score : null,
     });
   }
 
