@@ -81,7 +81,7 @@ Settings in the repository (Settings → Secrets and variables → Actions):
 | Name | Kind | Used for |
 |---|---|---|
 | `SUPABASE_URL` | Secret | Both jobs |
-| `SUPABASE_SERVICE_ROLE_KEY` | Secret | Writing (the `sb_secret_…` key). Without it every run is a dry run |
+| `SUPABASE_SERVICE_ROLE_KEY` | Secret | Writing (the `sb_secret_…` key). Without it a run only checks the sources and ends red, unless it was started as a dry run |
 | `REVALIDATE_SECRET` | Secret | Asking the site to refresh; same value as in Vercel |
 | `SITE_URL` | Variable | The site's address, for example `https://metapick-mlbb.vercel.app` |
 

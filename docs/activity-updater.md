@@ -231,7 +231,10 @@ as plain deletes from the updater instead, with the same rules.
 | `REVALIDATE_SECRET`         | GitHub Secrets and Vercel env          | Revalidation, once the site is on Vercel              |
 | `SITE_URL`                  | GitHub Actions variable                | Revalidation                                          |
 
-Without `SUPABASE_SERVICE_ROLE_KEY`, the workflows run as a dry run.
+Without `SUPABASE_SERVICE_ROLE_KEY` (or `SUPABASE_URL`), a run still fetches and
+checks everything but writes nothing and ends red, so a missing secret never
+goes unnoticed. A run started as a dry run ends green. The secrets must be
+repository secrets: the workflows use no GitHub environment.
 
 ## Testing before the first real run
 

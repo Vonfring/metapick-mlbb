@@ -91,6 +91,7 @@ async function main(): Promise<number> {
   const env = process.env;
   const fetchedAt = new Date().toISOString();
   let dryRun = values["dry-run"];
+  let missingKey = false;
   let store: UpdaterStore;
   const notes: string[] = [];
   if (env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY) {
@@ -102,10 +103,13 @@ async function main(): Promise<number> {
       ? createDryRunStore(createSupabaseReader(db))
       : createSupabaseStore(db);
   } else {
-    if (!dryRun)
+    if (!dryRun) {
+      // Asked to write but cannot: run dry, then fail so the run turns red.
+      missingKey = true;
       notes.push(
-        "SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is not set, so this is a dry run.",
+        "SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is not set (add both under Settings, Secrets and variables, Actions, Repository secrets), so nothing was written.",
       );
+    }
     notes.push("Compared against the seed files instead of the database.");
     dryRun = true;
     store = createDryRunStore(createSeedReader());
@@ -221,7 +225,7 @@ async function main(): Promise<number> {
   console.log(`\n${summary}`);
   if (env.GITHUB_STEP_SUMMARY)
     await appendFile(env.GITHUB_STEP_SUMMARY, summary);
-  return exitCode(report);
+  return missingKey ? 1 : exitCode(report);
 }
 
 main().then(

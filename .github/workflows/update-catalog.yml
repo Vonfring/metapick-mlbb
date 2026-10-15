@@ -8,7 +8,8 @@ name: Update catalog
 # ({"dry_run": true} writes nothing; change "reason" each time, because an
 # identical file does not trigger a run).
 #
-# Without the SUPABASE_SERVICE_ROLE_KEY secret every run is a dry run.
+# Without the SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY repository secrets a
+# run writes nothing and ends red, unless it was started as a dry run.
 
 on:
   schedule:
