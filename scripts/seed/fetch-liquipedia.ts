@@ -22,28 +22,11 @@ import {
   emblemTalentRowSchema,
   itemRowSchema,
 } from "@/lib/data/schemas";
-import {
-  createLiquipediaClient,
-  fetchCategoryMembers,
-  fetchWikitext,
-  type LiquipediaClient,
-} from "../source/liquipedia";
-import {
-  EMBLEM_PORTAL,
-  NAVBOXES,
-  parseCatalog,
-  type RawCatalog,
-} from "../source/transform/liquipedia";
+import { createLiquipediaClient } from "../source/liquipedia";
+import { parseCatalog, type RawCatalog } from "../source/transform/liquipedia";
+import { downloadCatalog } from "../updater/wiki";
 
 const OUT_DIR = path.resolve("seed", "liquipedia");
-
-async function downloadCatalog(client: LiquipediaClient): Promise<RawCatalog> {
-  const fetchedAt = new Date().toISOString();
-  const items = await fetchCategoryMembers(client, "Category:Items");
-  const spells = await fetchCategoryMembers(client, "Category:Battle spells");
-  const pages = await fetchWikitext(client, [...new Set([EMBLEM_PORTAL, ...NAVBOXES, ...items, ...spells])]);
-  return { fetched_at: fetchedAt, members: { items, spells }, pages: Object.fromEntries(pages) };
-}
 
 async function writeJson(name: string, data: unknown) {
   await writeFile(path.join(OUT_DIR, name), `${JSON.stringify(data, null, 1)}\n`);

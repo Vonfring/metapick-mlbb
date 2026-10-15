@@ -15,30 +15,19 @@
  */
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { HeroRelationRow, HeroRow, HeroSkillRow, PairRow, StatSnapshotRecord } from "@/types/data";
+import type { PairRow, StatSnapshotRecord } from "@/types/data";
 import { MATCHUP_PERIOD } from "@/config/filters";
-import { PERIODS, RANK_BRACKETS, type PeriodDays, type RankBracket } from "@/types/domain";
-import { createSourceClient, SourceBlockedError, type SourceClient } from "../source/client";
-import { HERO_SOURCE_IDS, MATCH_TYPE, RANK_CODES, SOURCE_BASE_URL, STATS_SOURCE_IDS } from "../source/config";
+import { PERIODS, RANK_BRACKETS } from "@/types/domain";
+import { createSourceClient, SourceBlockedError } from "../source/client";
 import { contentHash } from "../source/normalize";
-import { eq, sortBy } from "../source/query";
-import { fetchAllRecords } from "../source/records";
-import { parseHeroRecord } from "../source/transform/heroes";
-import { checkStatsSanity, parseStatsRecords } from "../source/transform/stats";
+import { checkStatsSanity, type ParsedStats } from "../source/transform/stats";
+import { fetchHeroCatalog, fetchRankedStats } from "../updater/official";
 
 const OUT_DIR = path.resolve("seed", "official");
 
 async function writeJson(name: string, data: unknown) {
   await writeFile(path.join(OUT_DIR, name), `${JSON.stringify(data, null, 1)}\n`);
   console.log(`wrote seed/official/${name}`);
-}
-
-async function fetchPairs(client: SourceClient, bracket: RankBracket, period: PeriodDays, matchType: string) {
-  const records = await fetchAllRecords(client, SOURCE_BASE_URL, STATS_SOURCE_IDS[period], {
-    filters: [eq("bigrank", RANK_CODES[bracket]), eq("match_type", matchType)],
-    sorts: [sortBy("main_heroid", "asc")],
-  });
-  return parseStatsRecords(records);
 }
 
 async function main() {
@@ -52,26 +41,8 @@ async function main() {
 
   // Heroes: one record per hero holds the profile, skills and relations.
   console.log("heroes...");
-  const heroRecords = await fetchAllRecords(client, SOURCE_BASE_URL, HERO_SOURCE_IDS.heroList, {
-    sorts: [sortBy("hero_id", "asc")],
-  });
-  const heroes: HeroRow[] = [];
-  const skills: HeroSkillRow[] = [];
-  const relations: HeroRelationRow[] = [];
-  const slugs = new Set<string>();
-  for (const raw of heroRecords) {
-    try {
-      const parsed = parseHeroRecord(raw);
-      if (slugs.has(parsed.hero.slug)) parsed.hero.slug = `${parsed.hero.slug}-${parsed.hero.id}`;
-      slugs.add(parsed.hero.slug);
-      heroes.push(parsed.hero);
-      skills.push(...parsed.skills);
-      relations.push(...parsed.relations);
-    } catch (error) {
-      warnings.push(`hero record skipped: ${(error as Error).message}`);
-    }
-  }
-  heroes.sort((a, b) => a.id - b.id);
+  const { heroes, skills, relations, warnings: heroWarnings } = await fetchHeroCatalog(client);
+  warnings.push(...heroWarnings);
   console.log(`  ${heroes.length} heroes, ${skills.length} skills, ${relations.length} relations`);
   if (heroes.length < 100) throw new Error(`Only ${heroes.length} heroes parsed; refusing to write a partial seed.`);
 
@@ -80,9 +51,9 @@ async function main() {
   for (const bracket of RANK_BRACKETS) {
     for (const period of PERIODS) {
       const label = `stats ${bracket}/${period}d`;
-      let counters: ReturnType<typeof parseStatsRecords>;
+      let counters: ParsedStats;
       try {
-        counters = await fetchPairs(client, bracket, period, MATCH_TYPE.counters);
+        counters = await fetchRankedStats(client, bracket, period, "counters");
       } catch (error) {
         if (error instanceof SourceBlockedError) throw error;
         warnings.push(`${label} skipped: ${(error as Error).message}`);
@@ -105,7 +76,7 @@ async function main() {
         snapshot.matchups = counters.pairs;
         let synergies: PairRow[] = [];
         try {
-          synergies = (await fetchPairs(client, bracket, period, MATCH_TYPE.teammates)).pairs;
+          synergies = (await fetchRankedStats(client, bracket, period, "teammates")).pairs;
         } catch (error) {
           if (error instanceof SourceBlockedError) throw error;
           warnings.push(`${label} synergies skipped: ${(error as Error).message}`);

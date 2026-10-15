@@ -11,7 +11,9 @@ name: Seed fetch (one-off)
 #                           headless Chromium, to seed/_inspect/browser/
 # seed/_inspect/ holds research output only; delete it once used.
 # Results are committed back to the same branch with GITHUB_TOKEN, which does
-# not trigger another run. Replaced by the scheduled updater in Phase 3.
+# not trigger another run. The database itself is kept current by the
+# scheduled updater (update-stats.yml, update-catalog.yml); this workflow only
+# refreshes the seed files used by local and CI builds.
 
 on:
   push:

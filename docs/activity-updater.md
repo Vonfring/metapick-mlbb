@@ -1,8 +1,9 @@
 # Activity: data updater
 
-Status: draft for review before Phase 3. Once confirmed, the code in
-`scripts/updater/` and the two workflows follow this document. Update it in
-the same commit as any change to the flow.
+Status: confirmed on 15 Oct 2026 (per-row hashes for manual corrections,
+morning schedule in WIB). The code in `scripts/updater/` and the two
+workflows follow this document. Update it in the same commit as any change to
+the flow.
 
 ## In short
 
@@ -29,7 +30,7 @@ the same commit as any change to the flow.
 ```mermaid
 flowchart TD
     A([Daily schedule or manual run]) --> B[Add a log row: running]
-    B --> C[Read known hero IDs and the newest published hash for each rank and period]
+    B --> C[Read known hero IDs and the newest snapshot hash for each rank and period]
     C --> D{Next rank and period?}
     D -->|all 30 done| P[Prune old data]
     D --> E[Fetch statistics. The 7-day period also fetches teammate pairs]
@@ -41,7 +42,7 @@ flowchart TD
     F -->|yes| G{Hero IDs the database does not know?}
     G -->|yes| H[Refresh the hero list once, then drop rows still unknown]
     G -->|no| I
-    H --> I{Same hash as the newest published snapshot?}
+    H --> I{Same hash as the newest snapshot?}
     I -->|yes| U[Unchanged: write nothing]
     I -->|no| J[Write the snapshot in one transaction]
     J -->|database error| S
@@ -60,8 +61,9 @@ run. Each holds every hero's win, pick and ban rate. The 7-day snapshots also
 hold matchup and teammate pairs. `snapshot_date` is the UTC date of the run.
 
 **Unchanged data.** The source refreshes its numbers about every 6 hours. The
-job hashes each snapshot and compares it with the newest published one for
-the same rank and period. Same hash, nothing is written.
+job hashes each snapshot and compares it with the newest one for the same
+rank and period, hidden or not, so a snapshot you hid is not written again
+with the same numbers. Same hash, nothing is written.
 
 **Writing.** A SQL function writes each snapshot in one database transaction:
 
@@ -97,8 +99,8 @@ inside the 500 MB of the free plan.
 | ------- | ----------------------------------------------------------------- | ----------------------------------------- |
 | success | Every snapshot was written or unchanged                           | Green                                     |
 | skipped | Every snapshot was unchanged                                      | Green                                     |
-| partial | Some snapshots were skipped because of errors, the rest are fine  | Green, with warnings in the job summary   |
-| failed  | The firewall blocked the run, nothing could be read, or a crash   | Red. GitHub emails you about failed runs  |
+| partial | Some snapshots were skipped because of errors, the rest are fine  | Green, with warnings in the job summary. Red when the firewall stopped the run |
+| failed  | Nothing could be written: the firewall blocked the run, every read failed, or a crash | Red. GitHub emails you about failed runs |
 
 ## Catalog job
 

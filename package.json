@@ -22,7 +22,9 @@
     "db:test": "scripts/db/test-migrations.sh",
     "seed:check-tags": "tsx scripts/seed/check-tags.ts",
     "seed:inspect-browser": "tsx scripts/seed/inspect-browser.ts",
-    "seed:catalog": "tsx scripts/seed/fetch-liquipedia.ts"
+    "seed:catalog": "tsx scripts/seed/fetch-liquipedia.ts",
+    "update:stats": "tsx scripts/updater/run.ts stats",
+    "update:catalog": "tsx scripts/updater/run.ts catalog"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

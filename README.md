@@ -28,6 +28,8 @@ With `DATA_SOURCE=seed` the app reads the JSON files in `seed/` instead of Supab
 | `pnpm seed:fetch` | Download the official snapshot into `seed/official/` (needs access to the official site) |
 | `pnpm seed:catalog` | Download the Liquipedia catalog into `seed/liquipedia/` |
 | `pnpm seed:sql` | Rebuild `supabase/seed.sql` from the files in `seed/` |
+| `pnpm update:stats` | Run the daily statistics update (add `--dry-run` to write nothing) |
+| `pnpm update:catalog` | Run the weekly catalog update (add `--dry-run` to write nothing) |
 | `pnpm db:test` | Apply migrations, RLS checks and the seed to a disposable Postgres (`TEST_DATABASE_URL`) |
 
 ## Data sources
@@ -61,4 +63,26 @@ pnpm seed:check-tags
 pnpm seed:sql
 ```
 
-Then run `supabase/seed.sql` again (CLI or SQL Editor). Quick fixes in the Supabase Table Editor work too, but the JSON file is the source of truth and will overwrite them on the next seed.
+Then run `supabase/seed.sql` again (CLI or SQL Editor). Quick fixes in the Supabase Table Editor work too, but the JSON file will overwrite them if the seed is applied again. The updater never changes existing tags; it only adds tags from this file for heroes that have none yet.
+
+## Data updates
+
+Two GitHub Actions workflows keep the database current (details in [`docs/activity-updater.md`](docs/activity-updater.md)):
+
+| Workflow | Schedule | What it does |
+|---|---|---|
+| `update-stats.yml` | Daily, 03:17 UTC (10:17 WIB) | Ranked statistics for every rank and period; prunes history older than 120 days |
+| `update-catalog.yml` | Mondays, 03:47 UTC (10:47 WIB) | Heroes, skills and relations; items, emblems, talents and battle spells from Liquipedia |
+
+Both also run from the Actions tab ("Run workflow", with a dry run option). Schedules only run from the default branch. Each run logs a row in `data_update_logs` and a summary on its Actions page, and asks the site to refresh when something changed.
+
+Settings in the repository (Settings → Secrets and variables → Actions):
+
+| Name | Kind | Used for |
+|---|---|---|
+| `SUPABASE_URL` | Secret | Both jobs |
+| `SUPABASE_SERVICE_ROLE_KEY` | Secret | Writing (the `sb_secret_…` key). Without it every run is a dry run |
+| `REVALIDATE_SECRET` | Secret | Asking the site to refresh; same value as in Vercel |
+| `SITE_URL` | Variable | The site's address, for example `https://metapick-mlbb.vercel.app` |
+
+Corrections made in the Table Editor stay until the source changes that row: the catalog job only rewrites rows whose source data changed. For a permanent correction, add it to `seed/overrides/` (items today). To hide a bad statistics snapshot, set its `is_published` to false.

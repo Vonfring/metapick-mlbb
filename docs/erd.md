@@ -206,6 +206,12 @@ erDiagram
         jsonb details
         text workflow_run_url
     }
+    source_hashes {
+        text kind PK "hero, item, emblem, talent, spell"
+        text source_id PK
+        text hash
+        timestamptz seen_at
+    }
 ```
 
 ## Table structure
@@ -414,6 +420,17 @@ Indexes: PK (build_id, slot); (item_id). RLS: public SELECT.
 
 Indexes: PK (id); (job, started_at desc). RLS: public SELECT.
 
+**source_hashes**: hash of each catalog row's source data at the last catalog run.
+
+| Column | Type | Null | Default | Notes |
+|---|---|---|---|---|
+| kind | text | no | | PK part, check in ('hero', 'item', 'emblem', 'talent', 'spell') |
+| source_id | text | no | | PK part, the row's ID as text |
+| hash | text | no | | Hash of the row as the source gave it, overrides applied |
+| seen_at | timestamptz | no | now() | |
+
+Indexes: PK (kind, source_id). RLS: public SELECT.
+
 ## RLS policies
 
 Every table has RLS enabled and one read policy:
@@ -435,6 +452,6 @@ The checks live in `supabase/tests/rls_test.sql`. Run them against a disposable 
 ## Data lifecycle
 
 - Seed (Phase 1): `seed/official/*.json` (official API) and `seed/liquipedia/*.json` (Liquipedia) plus `seed/hero-tags.json` → `supabase/seed.sql` (idempotent upserts), applied by the project owner.
-- Stats job (daily): new unpublished snapshot per bracket × period → `hero_stats` (+ matchups and synergies for the configured period) → publish → delete matchup/synergy rows of older snapshots → delete snapshots older than 120 days and unpublished leftovers older than 1 day.
-- Catalog job (weekly or on change): upserts heroes, skills and relations from the official API, and items, emblems, talents and spells from Liquipedia. Heroes and items missing from their source get `is_active = false` instead of being deleted.
+- Stats job (daily, `docs/activity-updater.md`): each changed snapshot (bracket × period) is written by `public.write_stat_snapshot(payload jsonb)` in one transaction, replacing that day's snapshot if there is one, and published at once. `public.prune_stats(keep_days)` then deletes matchup and synergy rows of all but the newest published snapshot with pairs per rank and period, snapshots older than 120 days, and log rows older than a year. Only the service role may run either function.
+- Catalog job (weekly): heroes, skills and relations from the official API, and items, emblems, talents and spells from Liquipedia. A row is written only when the hash of its source data differs from the one in `source_hashes`, so fixes made in the Table Editor stay until the source changes that row. Heroes and items missing from their source get `is_active = false`; emblems, talents and spells missing from a complete parse are deleted. `hero_tags` rows are only ever inserted, for heroes that have none.
 - Storage estimate: about 3,900 `hero_stats` rows per day, about 470k rows at 120 days (~60 MB with indexes). Everything else stays under 10 MB.

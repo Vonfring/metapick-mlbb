@@ -97,14 +97,14 @@ sequenceDiagram
         U->>O: POST source query
         O-->>U: JSON, validated with zod
     end
-    U->>S: write unpublished snapshots and rows
-    U->>S: publish snapshots, prune old data
+    U->>S: write_stat_snapshot(): one transaction per changed snapshot
+    U->>S: prune_stats(): retention
     U->>S: update log (success, partial or failed)
     U->>V: POST with REVALIDATE_SECRET
     V-->>U: 200 revalidated
 ```
 
-The weekly catalog job follows the same pattern for heroes (official API) and for the item, emblem and spell catalog (Liquipedia). Retries, WAF handling, and failure behavior are described in `docs/activity-updater.md` (written before Phase 3).
+The weekly catalog job follows the same pattern for heroes (official API) and for the item, emblem and spell catalog (Liquipedia), writing only rows whose source data changed. Schedules, retries, firewall handling and failure behavior are in `docs/activity-updater.md`. The code is in `scripts/updater/`, the workflows are `.github/workflows/update-stats.yml` and `update-catalog.yml`.
 
 ## Seed data
 
