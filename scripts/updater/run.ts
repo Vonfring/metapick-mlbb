@@ -26,6 +26,7 @@ import { readJson, SEED_DIR } from "../seed/files";
 import { runCatalogJob, syncHeroes, type CatalogDeps } from "./catalog-job";
 import { fetchHeroCatalog, fetchRankedStats } from "./official";
 import {
+  errorText,
   exitCode,
   logMessage,
   newReport,
@@ -33,6 +34,7 @@ import {
   rowsWritten,
   runStatus,
   type JobName,
+  type JobReport,
 } from "./report";
 import { revalidateSite } from "./revalidate";
 import { createSeedReader } from "./seed-reader";
@@ -46,9 +48,28 @@ import {
 import { runStatsJob } from "./stats-job";
 import { downloadCatalog } from "./wiki";
 
-const errorText = (error: unknown) =>
-  error instanceof Error ? error.message : String(error);
 const log = (message: string) => console.log(`  ${message}`);
+
+/**
+ * The stats job's one-off hero refresh. Its results go into the stats report
+ * as notes, so they do not count as snapshots; only what it wrote counts.
+ */
+async function refreshHeroesFor(report: JobReport, deps: CatalogDeps) {
+  const sub = newReport("catalog", report.dryRun, report.startedAt);
+  try {
+    return await syncHeroes({ ...deps, report: sub });
+  } finally {
+    for (const entry of sub.entries) {
+      if (entry.outcome === "written")
+        report.entries.push({ ...entry, key: `hero refresh: ${entry.key}` });
+      else
+        report.warnings.push(
+          `Hero refresh, ${entry.key}: ${entry.outcome}${entry.reason ? ` (${entry.reason})` : ""}`,
+        );
+    }
+    report.warnings.push(...sub.warnings);
+  }
+}
 
 async function main(): Promise<number> {
   const { positionals, values } = parseArgs({
@@ -143,7 +164,7 @@ async function main(): Promise<number> {
           runId,
           fetchStats: (bracket, period, pairs) =>
             fetchRankedStats(official, bracket, period, pairs),
-          refreshHeroes: () => syncHeroes(catalogDeps),
+          refreshHeroes: () => refreshHeroesFor(report, catalogDeps),
         });
       } else {
         await runCatalogJob(catalogDeps);
@@ -157,8 +178,12 @@ async function main(): Promise<number> {
   report.retries = official.stats.retries + wiki.stats.retries;
   report.cacheHits = official.stats.cacheHits + wiki.stats.cacheHits;
 
+  // A stats run that reached the source refreshes the site even when no
+  // number changed, so pages show when the data was last checked.
+  const refresh =
+    job === "stats" ? runStatus(report) !== "failed" : rowsWritten(report) > 0;
   if (dryRun) report.revalidation = "dry-run";
-  else if (rowsWritten(report) === 0) report.revalidation = "no-changes";
+  else if (!refresh) report.revalidation = "no-changes";
   else {
     const { result, detail } = await revalidateSite(
       env.SITE_URL,

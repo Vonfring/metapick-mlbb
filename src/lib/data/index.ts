@@ -1,6 +1,7 @@
 import "server-only";
 
 import { cacheLife, cacheTag } from "next/cache";
+import { buildMetaRows, daysBefore, type MetaRow } from "@/lib/meta/meta-rows";
 import { computeTiers } from "@/lib/scoring/tier";
 import type { BattleSpellRow, HeroRow, ItemRow } from "@/types/data";
 import type { PeriodDays, RankBracket, Tier } from "@/types/domain";
@@ -59,6 +60,18 @@ export async function getStatsSnapshot(
   return provider().getStats(bracket, period);
 }
 
+/** The newest snapshot dated on or before `onOrBefore` (YYYY-MM-DD). */
+export async function getStatsSnapshotOnOrBefore(
+  bracket: RankBracket,
+  period: PeriodDays,
+  onOrBefore: string,
+): Promise<StatsSnapshot | null> {
+  "use cache";
+  cacheLife("gameData");
+  cacheTag(GAME_DATA_TAG);
+  return provider().getStats(bracket, period, onOrBefore);
+}
+
 export async function getPairsSnapshot(
   bracket: RankBracket,
   period: PeriodDays,
@@ -97,11 +110,23 @@ export async function getLastUpdate(): Promise<string | null> {
   return provider().getLastUpdate();
 }
 
-/** A hero with its rates and tier in one rank and period. Rates are null when the snapshot lacks the hero. */
-export type RankedHero = Pick<
+/** What lists and pickers need to show a hero. */
+export type HeroSummary = Pick<
   HeroRow,
   "id" | "slug" | "name" | "roles" | "lanes" | "head_image_url"
-> & {
+>;
+
+export const toHeroSummary = ({
+  id,
+  slug,
+  name,
+  roles,
+  lanes,
+  head_image_url,
+}: HeroRow): HeroSummary => ({ id, slug, name, roles, lanes, head_image_url });
+
+/** A hero with its rates and tier in one rank and period. Rates are null when the snapshot lacks the hero. */
+export type RankedHero = HeroSummary & {
   winRate: number | null;
   pickRate: number | null;
   banRate: number | null;
@@ -155,5 +180,64 @@ export async function getRankedHeroes(
           fetched_at: snapshot.fetched_at,
         }
       : null,
+  };
+}
+
+export type MetaSnapshot = {
+  bracket: RankBracket;
+  period: PeriodDays;
+  /** When the updater last checked the source, even if nothing changed. */
+  checkedAt: string | null;
+  snapshot: SnapshotInfo | null;
+  /** The snapshot one period earlier that the changes compare with. */
+  previous: SnapshotInfo | null;
+  rows: MetaRow[];
+};
+
+const info = (s: StatsSnapshot): SnapshotInfo => ({
+  rank_bracket: s.rank_bracket,
+  period_days: s.period_days,
+  snapshot_date: s.snapshot_date,
+  fetched_at: s.fetched_at,
+});
+
+/**
+ * Every hero's rates and tier in one rank and period, plus the rates one
+ * period earlier (the 7-day numbers from a week before, and so on). Served
+ * to the Statistics and Tier list pages.
+ */
+export async function getMetaSnapshot(
+  bracket: RankBracket,
+  period: PeriodDays,
+): Promise<MetaSnapshot> {
+  "use cache";
+  cacheLife("gameData");
+  cacheTag(GAME_DATA_TAG);
+  const [current, checkedAt] = await Promise.all([
+    getStatsSnapshot(bracket, period),
+    getLastUpdate(),
+  ]);
+  if (!current) {
+    return {
+      bracket,
+      period,
+      checkedAt,
+      snapshot: null,
+      previous: null,
+      rows: [],
+    };
+  }
+  const previous = await getStatsSnapshotOnOrBefore(
+    bracket,
+    period,
+    daysBefore(current.snapshot_date, period),
+  );
+  return {
+    bracket,
+    period,
+    checkedAt,
+    snapshot: info(current),
+    previous: previous ? info(previous) : null,
+    rows: buildMetaRows(current.stats, previous?.stats ?? null),
   };
 }

@@ -65,11 +65,16 @@ const talents = () =>
 const spells = () =>
   readSeed("liquipedia/spells.json", z.array(battleSpellRowSchema), []);
 
-async function newestSnapshot(bracket: RankBracket, period: PeriodDays) {
+async function newestSnapshot(
+  bracket: RankBracket,
+  period: PeriodDays,
+  onOrBefore?: string,
+) {
   let newest: StatSnapshotRecord | undefined;
   for (const record of await snapshots()) {
     if (record.rank_bracket !== bracket || record.period_days !== period)
       continue;
+    if (onOrBefore && record.snapshot_date > onOrBefore) continue;
     if (!newest || record.snapshot_date > newest.snapshot_date) newest = record;
   }
   return newest;
@@ -111,8 +116,8 @@ export function createSeedProvider(): GameDataProvider {
         tags,
       };
     },
-    async getStats(bracket, period) {
-      const newest = await newestSnapshot(bracket, period);
+    async getStats(bracket, period, onOrBefore) {
+      const newest = await newestSnapshot(bracket, period, onOrBefore);
       return newest ? { ...snapshotInfo(newest), stats: newest.stats } : null;
     },
     async getPairs(bracket, period) {

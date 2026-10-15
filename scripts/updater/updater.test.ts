@@ -198,6 +198,26 @@ describe("stats job", () => {
     expect(exitCode(deps.report)).toBe(1);
   });
 
+  it("skips a weekly snapshot whose teammate pairs failed, so older pairs survive pruning", async () => {
+    const deps = statsDeps({
+      fetchStats: async (bracket, period, pairs) => {
+        if (bracket === "mythic" && pairs === "teammates")
+          throw new SourceRequestError("timeout");
+        return statsFor(heroIds);
+      },
+    });
+    await runStatsJob(deps);
+    expect(
+      deps.report.entries.find((e) => e.key === "mythic/7d"),
+    ).toMatchObject({ outcome: "skipped" });
+    const written = (
+      deps.store.writeSnapshot as ReturnType<typeof vi.fn>
+    ).mock.calls.map((c) => c[0]);
+    expect(
+      written.some((p) => p.rank_bracket === "mythic" && p.period_days === 7),
+    ).toBe(false);
+  });
+
   it("refreshes the hero list once for unknown heroes, then leaves out the rest", async () => {
     const withNew = [...heroIds, 500, 501];
     const refreshHeroes = vi.fn(async () => new Set([...heroIds, 500]));
@@ -445,6 +465,58 @@ describe("catalog job", () => {
       "battle_spells",
       [4999],
     );
+    expect(runStatus(deps.report)).toBe("partial");
+  });
+
+  it("hides no hero when some hero records did not parse", async () => {
+    const catalog = heroCatalog(105);
+    catalog.warnings.push("hero record skipped: unexpected shape");
+    const deps = catalogDeps(
+      { fetchHeroes: async () => catalog },
+      { activeIds: async () => [999] },
+    );
+    await syncHeroes(deps);
+    expect(deps.store.deactivate).toHaveBeenCalledWith("heroes", []);
+    expect(deps.report.warnings.join(" ")).toMatch(/none was marked inactive/);
+  });
+
+  it("removes no spell when a spell page did not parse", async () => {
+    const wiki = wikiCatalog();
+    wiki.warnings.push('battle spell "Flicker" has no spell card, skipped');
+    const deps = catalogDeps(
+      { fetchWiki: async () => wiki },
+      {
+        allIds: async (table) =>
+          table === "battle_spells" ? [4000, 4999] : [],
+      },
+    );
+    await runCatalogJob(deps);
+    expect(deps.store.deleteCatalog).toHaveBeenCalledWith("battle_spells", []);
+  });
+
+  it("keeps syncing the other tables when one fails, and reports database errors", async () => {
+    const deps = catalogDeps();
+    (deps.store.upsertHeroes as ReturnType<typeof vi.fn>).mockImplementation(
+      async () => {
+        throw new Error("Database write heroes failed: boom");
+      },
+    );
+    const upsert = deps.store.upsertCatalog as ReturnType<typeof vi.fn>;
+    upsert.mockImplementation(async (table: string) => {
+      if (table === "items")
+        throw new Error("duplicate key value violates unique constraint");
+    });
+    await runCatalogJob(deps);
+    expect(deps.report.entries.find((e) => e.key === "heroes")).toMatchObject({
+      outcome: "skipped",
+      reason: expect.stringMatching(/boom/),
+    });
+    expect(deps.report.entries.find((e) => e.key === "items")).toMatchObject({
+      outcome: "skipped",
+    });
+    expect(
+      deps.report.entries.find((e) => e.key === "battle spells"),
+    ).toMatchObject({ outcome: "written" });
     expect(runStatus(deps.report)).toBe("partial");
   });
 

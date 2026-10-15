@@ -16,7 +16,7 @@ import { SourceBlockedError } from "../source/client";
 import { contentHash } from "../source/normalize";
 import type { ParsedCatalog } from "../source/transform/liquipedia";
 import type { HeroCatalog } from "./official";
-import type { JobReport } from "./report";
+import { errorText, type JobReport } from "./report";
 import type {
   CatalogKind,
   CatalogRowOf,
@@ -44,9 +44,6 @@ export type CatalogDeps = {
   /** seed/overrides/items.json, keyed by item slug. */
   loadItemOverrides: () => Promise<Record<string, Partial<ItemRow>>>;
 };
-
-const errorText = (error: unknown) =>
-  error instanceof Error ? error.message : String(error);
 
 type Hashed<T> = { id: number; row: T; hash: string };
 
@@ -135,10 +132,18 @@ export async function syncHeroes(deps: CatalogDeps): Promise<Set<number>> {
   );
 
   // Heroes the source no longer lists stay in the database, inactive; their
-  // hash is dropped so a returning hero is written again.
-  const gone = (await store.activeIds("heroes")).filter(
+  // hash is dropped so a returning hero is written again. When some records
+  // failed to parse, a missing hero may only be unreadable, so none is hidden.
+  const missing = (await store.activeIds("heroes")).filter(
     (id) => !fetchedIds.has(id),
   );
+  const complete = catalog.warnings.length === 0;
+  if (!complete && missing.length > 0) {
+    report.warnings.push(
+      `${missing.length} heroes are missing from the hero list, but some records did not parse, so none was marked inactive.`,
+    );
+  }
+  const gone = complete ? missing : [];
   await store.deactivate("heroes", gone);
   await store.dropSourceHashes("hero", gone.map(String));
 
@@ -239,11 +244,27 @@ const WIKI_TABLES = {
   },
 } as const satisfies Record<string, WikiTable>;
 
+/**
+ * Parser warnings that mean a row may be missing only because its page did
+ * not parse. Rows are then never removed for that table.
+ */
+const INCOMPLETE: Record<keyof typeof WIKI_TABLES, RegExp> = {
+  items:
+    /^item (page )?"[^"]*" (has no item infobox|has an unknown category|was not downloaded)/,
+  emblems:
+    /^(Portal:Emblems was not downloaded|emblem tab \d+ has no emblem link)/,
+  talents:
+    /^(Portal:Emblems was not downloaded|emblem tab \d+ has no emblem link|emblem "[^"]*" lists no talents)/,
+  spells:
+    /^(battle spell "[^"]*" has no spell card|Template:Battle spells was not downloaded)/,
+};
+
 /** Writes one Liquipedia table. Returns false when it was skipped. */
 async function syncWikiTable<T extends CatalogTable>(
   deps: CatalogDeps,
   spec: WikiTable & { table: T },
   rows: CatalogRowOf[T][],
+  complete: boolean,
 ): Promise<boolean> {
   const { store, report } = deps;
   const valid = z.array(spec.schema).safeParse(rows);
@@ -280,18 +301,20 @@ async function syncWikiTable<T extends CatalogTable>(
   );
 
   const fetchedIds = new Set(rows.map((r) => r.id));
-  let removed: number[];
-  if (spec.table === "items") {
-    removed = (await store.activeIds("items")).filter(
-      (id) => !fetchedIds.has(id),
+  const missing = (
+    spec.table === "items"
+      ? await store.activeIds("items")
+      : await store.allIds(spec.table)
+  ).filter((id) => !fetchedIds.has(id));
+  // A row missing from an incomplete parse may only be unreadable: keep it.
+  if (!complete && missing.length > 0) {
+    report.warnings.push(
+      `${missing.length} ${spec.label} are missing from Liquipedia, but some pages did not parse, so none was removed.`,
     );
-    await store.deactivate("items", removed);
-  } else {
-    removed = (await store.allIds(spec.table)).filter(
-      (id) => !fetchedIds.has(id),
-    );
-    await store.deleteCatalog(spec.table, removed);
   }
+  const removed = complete ? missing : [];
+  if (spec.table === "items") await store.deactivate("items", removed);
+  else await store.deleteCatalog(spec.table, removed);
   await store.dropSourceHashes(spec.kind, removed.map(String));
 
   report.entries.push(
@@ -341,28 +364,56 @@ export async function syncWiki(deps: CatalogDeps): Promise<void> {
     is_active: true,
   }));
 
-  await syncWikiTable(deps, WIKI_TABLES.items, items);
-  const emblemsOk = await syncWikiTable(
-    deps,
-    WIKI_TABLES.emblems,
-    parsed.emblems,
-  );
-  if (emblemsOk) await syncWikiTable(deps, WIKI_TABLES.talents, parsed.talents);
-  else
+  const complete = (kind: keyof typeof WIKI_TABLES) =>
+    !parsed.warnings.some((w) => INCOMPLETE[kind].test(w));
+  // One table failing (a database error, say) does not stop the others.
+  const sync = async <T extends CatalogTable>(
+    spec: WikiTable & { table: T },
+    rows: CatalogRowOf[T][],
+    kind: keyof typeof WIKI_TABLES,
+  ) => {
+    try {
+      return await syncWikiTable(deps, spec, rows, complete(kind));
+    } catch (error) {
+      report.entries.push({
+        key: spec.label,
+        outcome: "skipped",
+        reason: errorText(error),
+      });
+      return false;
+    }
+  };
+
+  await sync(WIKI_TABLES.items, items, "items");
+  if (await sync(WIKI_TABLES.emblems, parsed.emblems, "emblems")) {
+    await sync(WIKI_TABLES.talents, parsed.talents, "talents");
+  } else {
     report.entries.push({
       key: "talents",
       outcome: "skipped",
       reason: "the emblem sets were skipped",
     });
-  await syncWikiTable(deps, WIKI_TABLES.spells, parsed.spells);
+  }
+  await sync(WIKI_TABLES.spells, parsed.spells, "spells");
 }
 
 export async function runCatalogJob(deps: CatalogDeps): Promise<void> {
+  const { report } = deps;
   try {
     await syncHeroes(deps);
   } catch (error) {
-    // Already in the report. Liquipedia is a different source, so carry on.
-    if (error instanceof SourceBlockedError) deps.report.blocked = true;
+    if (error instanceof SourceBlockedError) report.blocked = true;
+    // A failed download is already in the report; anything else is not.
+    if (
+      !report.entries.some((e) => e.key === "heroes" && e.outcome === "skipped")
+    ) {
+      report.entries.push({
+        key: "heroes",
+        outcome: "skipped",
+        reason: errorText(error),
+      });
+    }
   }
+  // Liquipedia is a different source, so carry on.
   await syncWiki(deps);
 }

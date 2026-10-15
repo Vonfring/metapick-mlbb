@@ -49,9 +49,11 @@ export type GameDataProvider = {
   /** Active heroes, sorted by name. */
   listHeroes(): Promise<HeroRow[]>;
   getHeroDetails(slug: string): Promise<HeroDetails | null>;
+  /** The newest snapshot, or the newest one dated on or before `onOrBefore` (YYYY-MM-DD). */
   getStats(
     bracket: RankBracket,
     period: PeriodDays,
+    onOrBefore?: string,
   ): Promise<StatsSnapshot | null>;
   getPairs(
     bracket: RankBracket,
@@ -60,6 +62,10 @@ export type GameDataProvider = {
   listItems(): Promise<ItemRow[]>;
   getEmblemCatalog(): Promise<EmblemCatalog>;
   listSpells(): Promise<BattleSpellRow[]>;
-  /** fetched_at of the newest published stats snapshot, or null if there is none. */
+  /**
+   * When the statistics were last checked: the end of the last stats run that
+   * reached the source (even when nothing changed), else the newest snapshot's
+   * fetch time, else null.
+   */
   getLastUpdate(): Promise<string | null>;
 };

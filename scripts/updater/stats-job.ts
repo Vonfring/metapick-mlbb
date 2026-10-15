@@ -3,6 +3,7 @@
  * its numbers changed, then pruning. See docs/activity-updater.md.
  */
 import { MATCHUP_PERIOD } from "@/config/filters";
+import { daysBefore } from "@/lib/meta/meta-rows";
 import type { PairRow } from "@/types/data";
 import {
   PERIODS,
@@ -13,7 +14,7 @@ import {
 import { SourceBlockedError } from "../source/client";
 import { contentHash } from "../source/normalize";
 import { checkStatsSanity, type ParsedStats } from "../source/transform/stats";
-import type { JobReport } from "./report";
+import { errorText, type JobReport } from "./report";
 import { snapshotKey, type UpdaterStore } from "./store";
 
 /** Statistics history kept in the database. */
@@ -32,15 +33,6 @@ export type StatsDeps = {
   /** Refreshes the hero catalog and returns every hero ID the database knows. */
   refreshHeroes: () => Promise<Set<number>>;
 };
-
-const errorText = (error: unknown) =>
-  error instanceof Error ? error.message : String(error);
-
-function daysBefore(isoDate: string, days: number) {
-  const date = new Date(`${isoDate}T00:00:00Z`);
-  date.setUTCDate(date.getUTCDate() - days);
-  return date.toISOString().slice(0, 10);
-}
 
 export async function runStatsJob(deps: StatsDeps): Promise<void> {
   const { store, report, fetchedAt, runId } = deps;
@@ -80,16 +72,10 @@ export async function runStatsJob(deps: StatsDeps): Promise<void> {
         let synergies: PairRow[] | undefined;
         if (period === MATCHUP_PERIOD) {
           matchups = counters.pairs;
-          try {
-            synergies = (await deps.fetchStats(bracket, period, "teammates"))
-              .pairs;
-          } catch (error) {
-            if (error instanceof SourceBlockedError) throw error;
-            synergies = [];
-            report.warnings.push(
-              `${key}: teammate pairs skipped: ${errorText(error)}`,
-            );
-          }
+          // Without teammate pairs the whole snapshot waits for the next run:
+          // writing it would let pruning drop the older snapshot's pairs.
+          synergies = (await deps.fetchStats(bracket, period, "teammates"))
+            .pairs;
         }
 
         // A hero the database does not know yet: refresh the hero list once.

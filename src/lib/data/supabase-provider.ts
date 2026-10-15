@@ -3,6 +3,7 @@ import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { PeriodDays, RankBracket } from "@/types/domain";
+import { selectAll } from "./paging";
 import type { GameDataProvider, SnapshotInfo } from "./provider";
 import {
   battleSpellRowSchema,
@@ -39,30 +40,6 @@ function fail(what: string, error: { message: string }): never {
   throw new Error(`Supabase query failed (${what}): ${error.message}`);
 }
 
-type Page<T> = PromiseLike<{
-  data: T[] | null;
-  error: { message: string } | null;
-}>;
-
-/**
- * Reads every row of an ordered query, page by page. PostgREST caps each
- * response at the project's "Max rows" setting (1000 by default, and it can
- * be lower), so only an empty page means the end.
- */
-async function selectAll<T>(
-  what: string,
-  page: (from: number, to: number) => Page<T>,
-): Promise<T[]> {
-  const size = 1000;
-  const rows: T[] = [];
-  for (;;) {
-    const { data, error } = await page(rows.length, rows.length + size - 1);
-    if (error) fail(what, error);
-    if (!data || data.length === 0) return rows;
-    rows.push(...data);
-  }
-}
-
 const snapshotSchema = statSnapshotRecordSchema
   .pick({
     rank_bracket: true,
@@ -92,14 +69,20 @@ export function createSupabaseProvider(): GameDataProvider {
   const db = createReadClient();
 
   /** The newest snapshot for one rank and period. RLS only returns published ones. */
-  async function newestSnapshot(bracket: RankBracket, period: PeriodDays) {
-    const { data, error } = await db
+  async function newestSnapshot(
+    bracket: RankBracket,
+    period: PeriodDays,
+    onOrBefore?: string,
+  ) {
+    let query = db
       .from("stat_snapshots")
       .select(
         "id, rank_bracket, period_days, snapshot_date, fetched_at, has_matchups",
       )
       .eq("rank_bracket", bracket)
-      .eq("period_days", period)
+      .eq("period_days", period);
+    if (onOrBefore) query = query.lte("snapshot_date", onOrBefore);
+    const { data, error } = await query
       .order("snapshot_date", { ascending: false })
       .limit(1)
       .maybeSingle();
@@ -143,8 +126,8 @@ export function createSupabaseProvider(): GameDataProvider {
         tags: tags.data ? heroTagRowSchema.parse(tags.data) : null,
       };
     },
-    async getStats(bracket, period) {
-      const snapshot = await newestSnapshot(bracket, period);
+    async getStats(bracket, period, onOrBefore) {
+      const snapshot = await newestSnapshot(bracket, period, onOrBefore);
       if (!snapshot) return null;
       const stats = await selectAll("hero_stats", (from, to) =>
         db
@@ -219,6 +202,19 @@ export function createSupabaseProvider(): GameDataProvider {
       return z.array(battleSpellRowSchema).parse(data);
     },
     async getLastUpdate() {
+      // The last stats run that checked the source, even if nothing changed.
+      const runs = await db
+        .from("data_update_logs")
+        .select("finished_at")
+        .eq("job", "stats")
+        .in("status", ["success", "skipped", "partial"])
+        .not("finished_at", "is", null)
+        .order("finished_at", { ascending: false })
+        .limit(1);
+      if (runs.error) fail("data_update_logs", runs.error);
+      const checked = runs.data?.[0]?.finished_at as string | undefined;
+      if (checked) return checked;
+      // Before the first updater run: when the newest snapshot was fetched.
       const { data, error } = await db
         .from("stat_snapshots")
         .select("fetched_at")

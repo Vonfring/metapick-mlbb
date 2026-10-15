@@ -1,5 +1,8 @@
 /** What one updater run did, and how it is reported (log row, job summary, exit code). */
 
+export const errorText = (error: unknown) =>
+  error instanceof Error ? error.message : String(error);
+
 export type JobName = "stats" | "catalog";
 export type RunStatus = "success" | "partial" | "failed" | "skipped";
 export type Outcome = "written" | "unchanged" | "skipped";
@@ -112,7 +115,7 @@ export function renderSummary(report: JobReport): string {
   if (report.revalidation) {
     const text: Record<Revalidation, string> = {
       done: "The site was asked to refresh its pages.",
-      "no-changes": "Nothing changed, so the site was not asked to refresh.",
+      "no-changes": "Nothing to show, so the site was not asked to refresh.",
       "not-configured":
         "SITE_URL or REVALIDATE_SECRET is not set, so the site refreshes on its own schedule.",
       failed:

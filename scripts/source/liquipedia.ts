@@ -36,6 +36,10 @@ export type LiquipediaClientOptions = {
   jitterMs?: number;
   maxRetries?: number;
   backoffBaseMs?: number;
+  /** First wait after a 429 without Retry-After; doubles on each retry. */
+  rateLimitBaseMs?: number;
+  /** Most time spent waiting on 429s in one run; a longer wait gives up instead. */
+  rateLimitBudgetMs?: number;
   timeoutMs?: number;
   /** Directory for cached responses. null disables caching. */
   cacheDir?: string | null;
@@ -50,6 +54,20 @@ export type LiquipediaClientOptions = {
 const defaultSleep = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms));
 
+/** Retry-After in seconds or as an HTTP date, in milliseconds from now. */
+export function retryAfterMs(
+  value: string | null,
+  nowMs: number,
+): number | null {
+  if (!value) return null;
+  const seconds = Number(value);
+  const ms = Number.isFinite(seconds)
+    ? seconds * 1000
+    : Date.parse(value) - nowMs;
+  if (!Number.isFinite(ms) || ms < 0) return null;
+  return ms;
+}
+
 export function createLiquipediaClient(options: LiquipediaClientOptions = {}) {
   const {
     apiUrl = LIQUIPEDIA_API_URL,
@@ -58,6 +76,8 @@ export function createLiquipediaClient(options: LiquipediaClientOptions = {}) {
     jitterMs = 500,
     maxRetries = 3,
     backoffBaseMs = 5_000,
+    rateLimitBaseMs = 60_000,
+    rateLimitBudgetMs = 8 * 60_000,
     timeoutMs = 30_000,
     cacheDir = null,
     cacheTtlMs = 20 * 60 * 60 * 1000,
@@ -69,6 +89,7 @@ export function createLiquipediaClient(options: LiquipediaClientOptions = {}) {
   } = options;
 
   const stats = { requests: 0, retries: 0, cacheHits: 0 };
+  let rateLimitWaited = 0;
   let lastRequestAt = Number.NEGATIVE_INFINITY;
   let queue: Promise<unknown> = Promise.resolve();
 
@@ -133,8 +154,25 @@ export function createLiquipediaClient(options: LiquipediaClientOptions = {}) {
       if (response.status === 429 || response.status >= 500) {
         if (attempt < maxRetries) {
           stats.retries += 1;
-          log(`HTTP ${response.status}; retry ${attempt + 1}/${maxRetries}`);
-          await sleep(backoffBaseMs * 2 ** attempt);
+          let wait = backoffBaseMs * 2 ** attempt;
+          if (response.status === 429) {
+            // Rate limited: wait as long as Liquipedia asks, or minutes, not
+            // seconds, within one budget for the whole run.
+            wait =
+              retryAfterMs(response.headers.get("retry-after"), now()) ??
+              rateLimitBaseMs * 2 ** attempt;
+            if (rateLimitWaited + wait > rateLimitBudgetMs) {
+              throw new LiquipediaError(
+                `Rate limited by Liquipedia (asked to wait ${Math.ceil(wait / 60_000)} min); trying again on the next run`,
+                429,
+              );
+            }
+            rateLimitWaited += wait;
+          }
+          log(
+            `HTTP ${response.status}; waiting ${Math.round(wait / 1000)}s, retry ${attempt + 1}/${maxRetries}`,
+          );
+          await sleep(wait);
           continue;
         }
       }

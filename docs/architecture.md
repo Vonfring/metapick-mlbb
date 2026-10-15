@@ -98,7 +98,7 @@ sequenceDiagram
         O-->>U: JSON, validated with zod
     end
     U->>S: write_stat_snapshot(): one transaction per changed snapshot
-    U->>S: prune_stats(): retention
+    U->>S: delete old pairs, snapshots and logs (retention)
     U->>S: update log (success, partial or failed)
     U->>V: POST with REVALIDATE_SECRET
     V-->>U: 200 revalidated

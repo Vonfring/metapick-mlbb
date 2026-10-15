@@ -1,4 +1,5 @@
--- Checks for the updater's SQL functions (supabase/migrations/*_updater.sql).
+-- Checks for the updater's SQL function and table
+-- (supabase/migrations/*_source_hashes.sql, *_write_stat_snapshot.sql).
 -- Runs inside a transaction and rolls back. Any failed expectation raises
 -- an exception (run psql with ON_ERROR_STOP=1).
 
@@ -43,7 +44,6 @@ do $$
 begin
   perform pg_temp.expect_denied($q$select public.write_stat_snapshot('{}'::jsonb)$q$, 'anon');
   perform pg_temp.expect_denied($q$select public.write_stat_snapshot('{}'::jsonb)$q$, 'authenticated');
-  perform pg_temp.expect_denied($q$select public.prune_stats(120)$q$, 'anon');
   perform pg_temp.expect_denied($q$insert into public.source_hashes (kind, source_id, hash) values ('hero', '1', 'x')$q$, 'anon');
 end
 $$;
@@ -86,42 +86,6 @@ begin
 end
 $$;
 
--- Pruning keeps pairs only for the newest published snapshot with pairs.
-do $$
-declare
-  old_id bigint;
-  new_id bigint;
-  ancient_id bigint;
-  result jsonb;
-begin
-  old_id := (select id from public.stat_snapshots where rank_bracket = 'glory' and period_days = 7 and snapshot_date = '2999-01-10');
-  new_id := public.write_stat_snapshot(pg_temp.payload('2999-01-11', 'd', 0.5, true));
-  ancient_id := public.write_stat_snapshot(pg_temp.payload((current_date - 200)::text, 'e', 0.5, false));
-  result := public.prune_stats(120);
-
-  if exists (select 1 from public.hero_matchups where snapshot_id = old_id)
-     or exists (select 1 from public.hero_synergies where snapshot_id = old_id)
-     or (select has_matchups from public.stat_snapshots where id = old_id) then
-    raise exception 'pairs of older snapshots should be pruned: %', result;
-  end if;
-  if not exists (select 1 from public.hero_matchups where snapshot_id = new_id)
-     or not exists (select 1 from public.hero_stats where snapshot_id = old_id) then
-    raise exception 'pruning removed rows it should keep: %', result;
-  end if;
-  if exists (select 1 from public.stat_snapshots where id = ancient_id) then
-    raise exception 'snapshots older than keep_days should be deleted: %', result;
-  end if;
-
-  begin
-    perform public.prune_stats(5);
-    raise exception 'expected keep_days below 30 to be refused';
-  exception when raise_exception then
-    if sqlerrm not like 'keep_days must be at least 30%' then
-      raise;
-    end if;
-  end;
-end
-$$;
 reset role;
 
 rollback;

@@ -18,7 +18,14 @@ import type {
   PairRow,
   HeroStatRow,
 } from "@/types/data";
+import { selectAll } from "@/lib/data/paging";
 import type { PeriodDays, RankBracket } from "@/types/domain";
+import {
+  oldestKeptDate,
+  snapshotsToDelete,
+  snapshotsToStripPairs,
+  type SnapshotWithPairs,
+} from "./prune";
 import type { JobName, RunStatus } from "./report";
 
 export type CatalogKind = "hero" | "item" | "emblem" | "talent" | "spell";
@@ -134,22 +141,6 @@ export function createServiceClient(
       detectSessionInUrl: false,
     },
   });
-}
-
-/** Reads every row of an ordered query, page by page, until an empty page. */
-async function selectAll<T>(
-  what: string,
-  page: (
-    from: number,
-    to: number,
-  ) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>,
-): Promise<T[]> {
-  const rows: T[] = [];
-  for (;;) {
-    const data = check(what, await page(rows.length, rows.length + 999));
-    if (!data || data.length === 0) return rows;
-    rows.push(...data);
-  }
 }
 
 export function createSupabaseReader(db: SupabaseClient): StoreReader {
@@ -294,10 +285,80 @@ export function createSupabaseStore(db: SupabaseClient): UpdaterStore {
       );
     },
     async pruneStats(keepDays) {
-      return check(
-        "prune statistics",
-        await db.rpc("prune_stats", { keep_days: keepDays }),
-      ) as Record<string, number>;
+      const today = new Date().toISOString().slice(0, 10);
+      const cutoff = oldestKeptDate(today, keepDays);
+      const counted = (
+        what: string,
+        result: { count: number | null; error: { message: string } | null },
+      ) => {
+        if (result.error)
+          throw new Error(`Database ${what} failed: ${result.error.message}`);
+        return result.count ?? 0;
+      };
+
+      const snapshots = await selectAll<
+        SnapshotWithPairs & { has_matchups: boolean }
+      >("read snapshots", (from, to) =>
+        db
+          .from("stat_snapshots")
+          .select(
+            "id, rank_bracket, period_days, snapshot_date, is_published, has_matchups",
+          )
+          .order("id")
+          .range(from, to),
+      );
+
+      // Pairs only for the newest published snapshot with pairs, per rank and period.
+      let matchups = 0;
+      let synergies = 0;
+      for (const ids of chunks(
+        snapshotsToStripPairs(snapshots.filter((s) => s.has_matchups)),
+        100,
+      )) {
+        matchups += counted(
+          "prune matchups",
+          await db
+            .from("hero_matchups")
+            .delete({ count: "exact" })
+            .in("snapshot_id", ids),
+        );
+        synergies += counted(
+          "prune teammate pairs",
+          await db
+            .from("hero_synergies")
+            .delete({ count: "exact" })
+            .in("snapshot_id", ids),
+        );
+        check(
+          "flag pruned snapshots",
+          await db
+            .from("stat_snapshots")
+            .update({ has_matchups: false })
+            .in("id", ids),
+        );
+      }
+
+      // Older snapshots go with their rows (foreign keys cascade).
+      let deleted = 0;
+      for (const ids of chunks(snapshotsToDelete(snapshots, cutoff), 100)) {
+        deleted += counted(
+          "prune snapshots",
+          await db
+            .from("stat_snapshots")
+            .delete({ count: "exact" })
+            .in("id", ids),
+        );
+      }
+      const yearAgo = new Date(Date.now() - 365 * 86_400_000).toISOString();
+      const logs = counted(
+        "prune update logs",
+        await db
+          .from("data_update_logs")
+          .delete({ count: "exact" })
+          .lt("started_at", yearAgo)
+          .neq("status", "running"),
+      );
+      return { matchups, synergies, snapshots: deleted, logs };
     },
     async saveSourceHashes(kind, entries) {
       const seenAt = new Date().toISOString();

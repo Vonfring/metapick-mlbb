@@ -58,7 +58,9 @@ flowchart TD
 **What a snapshot is.** One rank (All, Epic, Legend, Mythic, Mythic Honor,
 Mythic Glory) times one period (1, 3, 7, 15 or 30 days) is 30 snapshots per
 run. Each holds every hero's win, pick and ban rate. The 7-day snapshots also
-hold matchup and teammate pairs. `snapshot_date` is the UTC date of the run.
+hold matchup and teammate pairs; if the teammate pairs cannot be fetched, the
+whole 7-day snapshot waits for the next run, so pruning never drops the
+previous snapshot's pairs. `snapshot_date` is the UTC date of the run.
 
 **Unchanged data.** The source refreshes its numbers about every 6 hours. The
 job hashes each snapshot and compares it with the newest one for the same
@@ -82,11 +84,13 @@ the one before it.
 the job refreshes the official hero list first (1 extra request). A new hero
 then gets stats on the day it appears instead of waiting for Monday.
 
-**Pruning** (a SQL function, after the snapshots):
+**Pruning** (by the updater, after the snapshots):
 
 - Matchup and teammate pairs are kept for the newest snapshot that has them,
   per rank. Older pairs are deleted.
-- Snapshots older than 120 days are deleted with their rows. The Statistics
+- Snapshots older than 120 days are deleted with their rows, except the
+  newest published one per rank and period: if a rank stops updating, the
+  site keeps its last numbers with a note that they are old. The Statistics
   page uses this history for "change since the previous period".
 - Log rows older than one year are deleted.
 
@@ -125,11 +129,15 @@ flowchart TD
   relations. A changed hero gets its row updated and its skills and relations
   replaced. A hero missing from the source is marked inactive, never deleted,
   because its statistics history still points to it. Fewer than 100 heroes
-  means the source broke, and the job leaves the heroes alone.
+  means the source broke, and the job leaves the heroes alone. When some hero
+  records do not parse, no hero is marked inactive that week: a missing hero
+  may only be unreadable.
 - **Items.** Same rules, with a minimum of 80 items.
 - **Emblems, talents and battle spells.** These tables have no inactive flag.
-  A row that leaves the source is deleted, but only when the whole source
-  parsed (all 7 emblem sets, every spell listed in the wiki's navigation box).
+  A row that leaves the source is deleted, but only when that part of the
+  wiki parsed without problems.
+- Each table is written on its own: a database error in one (a duplicate
+  name, say) is reported and the other tables still update.
 - **Team tags.** The updater never changes `hero_tags`. Tags in
   `seed/hero-tags.json` for a hero that has no tag row yet are inserted, so a
   new hero gets tags once someone adds them to that file. Existing rows are
@@ -158,6 +166,7 @@ Proposal:
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------- |
 | Normal                                                                  | One request at a time, 2 s plus up to 0.6 s apart, with a fixed User-Agent naming the project | New data after the run                  |
 | Network error, 30 s timeout, or a 408, 429 or 5xx answer in JSON       | Retry up to 4 times, after 2, 4, 8 and 16 s plus jitter. Then skip that snapshot or source    | The previous data                       |
+| Liquipedia rate limit (429)                                             | Wait as long as its Retry-After header asks, otherwise 1, 2 and 4 minutes, at most 8 minutes per run. A longer wait skips Liquipedia until the next run | The previous item, emblem and spell data |
 | Firewall page (405 or 429 answered with HTML)                           | Wait 60 s once. Blocked again: stop every request for this run                                 | The previous data                       |
 | Response shape changed                                                  | Skip that snapshot or source. The summary names the field that failed                          | The previous data                       |
 | Numbers fail the checks: under 80% of heroes, pick rates far from summing to 1, mean win rate outside 45 to 55% | Skip that snapshot                                                   | The previous data                       |
@@ -180,7 +189,9 @@ holds secrets, keys or private URLs.
 
 ## Telling the site to refresh
 
-After a run that wrote something, the updater sends
+After a catalog run that wrote something, and after every stats run that
+reached the source (even when no number changed, so pages can say when the
+data was last checked), the updater sends
 `POST {SITE_URL}/api/revalidate` with `Authorization: Bearer
 <REVALIDATE_SECRET>`. The route accepts only POST, compares the secret in
 constant time and expires the `game-data` cache tag with
@@ -189,8 +200,8 @@ page while a fresh one renders in the background; later visits get the fresh
 one. While `SITE_URL` is not set (before Vercel is set up), this step is
 skipped with a notice.
 
-If the newest statistics are more than 48 hours old, the Statistics and Tier
-list pages say so next to the update date.
+If the last successful stats run is more than 48 hours old, the Statistics
+and Tier list pages say so next to the update date.
 
 ## Keeping the schedule alive
 
@@ -199,15 +210,17 @@ without repository activity. Each stats run calls GitHub's "enable workflow"
 API for both workflows with the run's own token, which keeps them on without
 dummy commits.
 
-## Database changes (one migration)
+## Database changes
 
-- `write_stat_snapshot(payload jsonb)`: the transaction described above.
-- `prune_stats(keep_days integer default 120)`: the pruning described above.
 - `source_hashes (kind, source_id, hash, seen_at)`: the per-row hashes for the
-  catalog job, with RLS on and public read like every other table.
+  catalog job, with RLS on and public read like every other table
+  (`*_source_hashes.sql`).
+- `write_stat_snapshot(payload jsonb)`: the transaction described above. Only
+  the service role may run it (`*_write_stat_snapshot.sql`).
 
-Only the service role may run the two functions. The migration is tested on
-local Postgres first, then applied to Supabase through MCP, as in Phase 1.
+Both were tested on local Postgres first, then applied to Supabase through
+MCP, as in Phase 1. Pruning was first planned as a SQL function too; it runs
+as plain deletes from the updater instead, with the same rules.
 
 ## Secrets and settings
 
@@ -224,8 +237,8 @@ Without `SUPABASE_SERVICE_ROLE_KEY`, the workflows run as a dry run.
 
 1. Unit tests: parsing, hashing, run status, and retry and firewall handling
    with a fake network.
-2. The SQL functions on local Postgres 16 with the Supabase roles simulated:
-   the public role cannot run them, and a failed write leaves the previous
+2. The SQL function on local Postgres 16 with the Supabase roles simulated:
+   the public role cannot run it, and a failed write leaves the previous
    snapshot in place.
 3. A dry run in the development container against recorded responses, since
    the container cannot reach the sources.

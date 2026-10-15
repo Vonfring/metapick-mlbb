@@ -5,6 +5,7 @@ import {
   fetchWikitext,
   LIQUIPEDIA_USER_AGENT,
   LiquipediaError,
+  retryAfterMs,
 } from "./liquipedia";
 
 const json = (data: unknown, status = 200) =>
@@ -87,6 +88,52 @@ describe("createLiquipediaClient", () => {
       maxRetries: 1,
     });
     await expect(strict.get({ action: "query" })).rejects.toThrow("HTTP 500");
+  });
+
+  it("waits much longer when rate limited, as long as Retry-After asks", async () => {
+    const clock = virtualTime();
+    const limited = new Response("{}", {
+      status: 429,
+      headers: { "content-type": "application/json", "retry-after": "90" },
+    });
+    const { fetchImpl } = scriptedFetch([
+      json({}, 429),
+      limited,
+      json({ query: { ok: 1 } }),
+    ]);
+    const client = createLiquipediaClient({
+      fetchImpl,
+      ...clock,
+      random: () => 0,
+    });
+    await client.get({ action: "query" });
+    // pace, 60 s after a bare 429, pace, 90 s from Retry-After, pace
+    expect(clock.waits.filter((ms) => ms > 2_500)).toEqual([60_000, 90_000]);
+  });
+
+  it("gives up at once when the wait would exceed the run's budget", async () => {
+    const clock = virtualTime();
+    const { fetchImpl } = scriptedFetch([
+      new Response("{}", {
+        status: 429,
+        headers: { "content-type": "application/json", "retry-after": "3600" },
+      }),
+    ]);
+    const client = createLiquipediaClient({
+      fetchImpl,
+      ...clock,
+      random: () => 0,
+    });
+    await expect(client.get({ action: "query" })).rejects.toThrow(/next run/);
+    expect(clock.waits.filter((ms) => ms > 2_500)).toEqual([]);
+  });
+
+  it("reads Retry-After as seconds or a date", () => {
+    expect(retryAfterMs("30", 0)).toBe(30_000);
+    expect(retryAfterMs("3600", 0)).toBe(3_600_000);
+    expect(retryAfterMs(new Date(5_000).toUTCString(), 0)).toBe(5_000);
+    expect(retryAfterMs("soon", 0)).toBeNull();
+    expect(retryAfterMs(null, 0)).toBeNull();
   });
 
   it("turns an API error object into a LiquipediaError", async () => {
