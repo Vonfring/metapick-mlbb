@@ -6,6 +6,7 @@ import { DEFAULT_BRACKET, DEFAULT_PERIOD } from "@/config/filters";
 import { getHeroes, getMetaSnapshot, toHeroSummary } from "@/lib/data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/tier-list" },
   title: "Tier list",
   description:
     "Mobile Legends heroes ranked SS to D from win rate, pick rate and ban rate, by rank and period.",

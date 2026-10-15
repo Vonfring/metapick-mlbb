@@ -71,6 +71,7 @@ export async function generateMetadata({
   return {
     title: hero.name,
     description: `${hero.name} (${roles}) in Mobile Legends: win rate, tier, the heroes ${hero.name} beats and loses to, best teammates and skills.`,
+    alternates: { canonical: `/heroes/${hero.slug}` },
   };
 }
 

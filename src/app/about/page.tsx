@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CatalogCredit } from "@/components/meta/catalog-credit";
 import { PageHeader } from "@/components/meta/page-header";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About the data",
   description:
     "Where Metapick's hero, statistics and item data come from, how often they update, and what is curated by hand.",
@@ -55,6 +57,58 @@ export default function AboutPage() {
           Team composition checks use hero attributes such as frontline, crowd
           control and damage type. Those are not part of the official data, so
           they are maintained by hand and may lag behind balance changes.
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-2">
+        <h2 className="font-display text-lg font-semibold">
+          How the tools decide
+        </h2>
+        <p className="text-muted-foreground">
+          Every suggestion is rule-based: no hidden model, just a few weights
+          applied to the numbers above. Each tool explains its own formula at
+          the bottom of its page, written from the same settings the scores use:
+        </p>
+        <ul className="flex list-disc flex-col gap-1 pl-5 text-muted-foreground">
+          <li>
+            <Link href="/tier-list" className="text-ally-text hover:underline">
+              Tier list
+            </Link>
+            : win, pick and ban rate compared with every hero in the same rank
+            and period.
+          </li>
+          <li>
+            <Link
+              href="/counter-pick"
+              className="text-ally-text hover:underline"
+            >
+              Counter pick
+            </Link>{" "}
+            and{" "}
+            <Link href="/matchup" className="text-ally-text hover:underline">
+              Matchup
+            </Link>
+            : matchup statistics, official hero notes and hero tags, plus a
+            little for current form.
+          </li>
+          <li>
+            <Link
+              href="/team-composition"
+              className="text-ally-text hover:underline"
+            >
+              Team composition
+            </Link>{" "}
+            and{" "}
+            <Link href="/draft" className="text-ally-text hover:underline">
+              Draft master
+            </Link>
+            : the composition checklist, synergy between teammates and the same
+            counter edges.
+          </li>
+        </ul>
+        <p className="text-muted-foreground">
+          Estimates such as &ldquo;56% to 44%&rdquo; explain a draft. They are
+          not predictions of a game, which depends far more on the players.
         </p>
       </section>
 

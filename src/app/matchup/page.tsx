@@ -11,6 +11,7 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/matchup" },
   title: "Matchup",
   description:
     "Compare two heroes head to head, or see which team is favored in a five against five game and why.",

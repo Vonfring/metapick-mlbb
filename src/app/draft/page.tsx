@@ -11,6 +11,7 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/draft" },
   title: "Draft master",
   description:
     "Practice ranked ban and pick with suggestions on every turn and a strength score for both teams.",
