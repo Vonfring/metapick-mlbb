@@ -1,5 +1,5 @@
 {
-  "dry_run": true,
+  "dry_run": false,
   "fresh": false,
-  "reason": "first test of the updater"
+  "reason": "first real stats run after the catalog run succeeded"
 }
