@@ -9,6 +9,13 @@ export function formatPercent(
   return `${(fraction * 100).toFixed(digits)}%`;
 }
 
+/** Signed points with a true minus sign: "+4.8", "−1.2", "0.0". */
+export function formatPoints(points: number, digits = 1): string {
+  const rounded = Number(points.toFixed(digits));
+  const text = Math.abs(rounded).toFixed(digits);
+  return rounded > 0 ? `+${text}` : rounded < 0 ? `−${text}` : text;
+}
+
 const dateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
   month: "short",

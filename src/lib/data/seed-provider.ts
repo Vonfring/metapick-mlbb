@@ -4,7 +4,12 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import { compareNames } from "@/lib/format";
-import type { HeroTagRow, ItemRow, StatSnapshotRecord } from "@/types/data";
+import type {
+  HeroTagRow,
+  HeroTagValues,
+  ItemRow,
+  StatSnapshotRecord,
+} from "@/types/data";
 import type { PeriodDays, RankBracket } from "@/types/domain";
 import type { GameDataProvider, SnapshotInfo } from "./provider";
 import {
@@ -80,6 +85,15 @@ async function newestSnapshot(
   return newest;
 }
 
+function tagRow(heroId: number, values: HeroTagValues): HeroTagRow {
+  return {
+    ...values,
+    hero_id: heroId,
+    needs_review: values.needs_review ?? false,
+    notes: values.notes ?? null,
+  };
+}
+
 function snapshotInfo(record: StatSnapshotRecord): SnapshotInfo {
   const { rank_bracket, period_days, snapshot_date, fetched_at } = record;
   return { rank_bracket, period_days, snapshot_date, fetched_at };
@@ -99,22 +113,24 @@ export function createSeedProvider(): GameDataProvider {
       );
       if (!hero) return null;
       const values = (await tagsFile())[slug];
-      const tags: HeroTagRow | null = values
-        ? {
-            ...values,
-            hero_id: hero.id,
-            needs_review: values.needs_review ?? false,
-            notes: values.notes ?? null,
-          }
-        : null;
       return {
         hero,
         skills: (await skills())
           .filter((s) => s.hero_id === hero.id)
           .sort((a, b) => a.slot - b.slot),
         relations: (await relations()).filter((r) => r.hero_id === hero.id),
-        tags,
+        tags: values ? tagRow(hero.id, values) : null,
       };
+    },
+    async listHeroTags() {
+      const file = await tagsFile();
+      return (await heroes()).flatMap((hero) => {
+        const values = file[hero.slug];
+        return values ? [tagRow(hero.id, values)] : [];
+      });
+    },
+    async listRelations() {
+      return relations();
     },
     async getStats(bracket, period, onOrBefore) {
       const newest = await newestSnapshot(bracket, period, onOrBefore);

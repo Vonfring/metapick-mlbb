@@ -49,6 +49,10 @@ export type GameDataProvider = {
   /** Active heroes, sorted by name. */
   listHeroes(): Promise<HeroRow[]>;
   getHeroDetails(slug: string): Promise<HeroDetails | null>;
+  /** Curated composition tags of every hero that has them. */
+  listHeroTags(): Promise<HeroTagRow[]>;
+  /** Every official note (strong against, weak against, best teammate). */
+  listRelations(): Promise<HeroRelationRow[]>;
   /** The newest snapshot, or the newest one dated on or before `onOrBefore` (YYYY-MM-DD). */
   getStats(
     bracket: RankBracket,

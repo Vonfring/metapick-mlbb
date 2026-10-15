@@ -2,6 +2,8 @@
 
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useSyncExternalStore } from "react";
+import { DEFAULT_BRACKET } from "@/config/filters";
+import { RANK_BRACKETS, type RankBracket } from "@/types/domain";
 
 const EVENT = "metapick:urlparams";
 
@@ -36,7 +38,9 @@ export function useUrlParams(): [
       if (value === null || value === "") params.delete(key);
       else params.set(key, value);
     }
-    const query = params.toString();
+    // Commas are allowed in a query; keeping them makes shared hero lists
+    // readable (?enemies=fanny,ling).
+    const query = params.toString().replace(/%2C/gi, ",");
     // A null state lets the Next.js router pick up the new URL.
     window.history.replaceState(
       null,
@@ -69,4 +73,14 @@ export function oneOf<T extends string>(
   return value && (allowed as readonly string[]).includes(value)
     ? (value as T)
     : "all";
+}
+
+/**
+ * The "rank" query value. "all" is a real rank here (All ranks), so oneOf's
+ * "all" fallback can't be used; a missing or unknown value is the default.
+ */
+export function rankParam(value: string | null): RankBracket {
+  return value && (RANK_BRACKETS as readonly string[]).includes(value)
+    ? (value as RankBracket)
+    : DEFAULT_BRACKET;
 }

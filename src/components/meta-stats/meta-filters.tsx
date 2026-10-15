@@ -1,10 +1,10 @@
 "use client";
 
+import { RankSelect, selectClass } from "@/components/meta/rank-select";
 import { ChipGroup, type ChipOption } from "@/components/ui/chip-group";
 import { DEFAULT_BRACKET, DEFAULT_PERIOD } from "@/config/filters";
-import { oneOf, useUrlParams } from "@/lib/use-url-params";
+import { oneOf, rankParam, useUrlParams } from "@/lib/use-url-params";
 import {
-  bracketLabels,
   HERO_LANES,
   HERO_ROLES,
   type HeroLane,
@@ -13,7 +13,6 @@ import {
   PERIODS,
   type PeriodDays,
   periodLabels,
-  RANK_BRACKETS,
   type RankBracket,
   roleLabels,
 } from "@/types/domain";
@@ -28,14 +27,9 @@ export type MetaFilterState = {
 /** Rank, period, role and lane, kept in the URL. */
 export function useMetaFilters() {
   const [params, setParams] = useUrlParams();
-  // "all" is a real rank here (All ranks), so oneOf's "all" fallback can't be used.
-  const rank = params.get("rank");
   const periodValue = Number(params.get("period"));
   const state: MetaFilterState = {
-    bracket:
-      rank && (RANK_BRACKETS as readonly string[]).includes(rank)
-        ? (rank as RankBracket)
-        : DEFAULT_BRACKET,
+    bracket: rankParam(params.get("rank")),
     period: (PERIODS as readonly number[]).includes(periodValue)
       ? (periodValue as PeriodDays)
       : DEFAULT_PERIOD,
@@ -44,9 +38,6 @@ export function useMetaFilters() {
   };
   return { state, params, setParams };
 }
-
-const selectClass =
-  "h-10 w-full rounded-md border bg-surface px-3 text-sm text-foreground focus-visible:outline-2 focus-visible:outline-ring";
 
 export function MetaFilters({
   state,
@@ -66,25 +57,13 @@ export function MetaFilters({
   return (
     <div className="flex flex-col gap-3">
       <div className="grid grid-cols-2 gap-3 sm:flex sm:max-w-md">
-        <label className="flex flex-col gap-1 text-sm text-muted-foreground sm:flex-1">
-          Rank
-          <select
-            className={selectClass}
-            value={state.bracket}
-            onChange={(e) =>
-              setParams({
-                rank:
-                  e.target.value === DEFAULT_BRACKET ? null : e.target.value,
-              })
-            }
-          >
-            {RANK_BRACKETS.map((b) => (
-              <option key={b} value={b}>
-                {bracketLabels[b]}
-              </option>
-            ))}
-          </select>
-        </label>
+        <RankSelect
+          className="sm:flex-1"
+          value={state.bracket}
+          onChange={(bracket) =>
+            setParams({ rank: bracket === DEFAULT_BRACKET ? null : bracket })
+          }
+        />
         <label className="flex flex-col gap-1 text-sm text-muted-foreground sm:flex-1">
           Period
           <select

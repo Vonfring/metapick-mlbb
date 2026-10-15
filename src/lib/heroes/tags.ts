@@ -1,13 +1,8 @@
-import type { HeroTagValues } from "@/types/data";
+import type { TagLevelKey } from "@/types/data";
 import type { DamageType } from "@/types/domain";
 
-type LevelKey = Exclude<
-  keyof HeroTagValues,
-  "damage_type" | "needs_review" | "notes"
->;
-
 /** Curated composition attributes (0 to 3), in display order. */
-export const TAG_FIELDS: readonly { key: LevelKey; label: string }[] = [
+export const TAG_FIELDS: readonly { key: TagLevelKey; label: string }[] = [
   { key: "frontline", label: "Frontline" },
   { key: "hard_cc", label: "Hard crowd control" },
   { key: "peel", label: "Peel" },

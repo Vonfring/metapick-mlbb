@@ -68,6 +68,12 @@ export type HeroTagValues = {
 
 export type HeroTagRow = HeroTagValues & { hero_id: number };
 
+/** The 0 to 3 tag levels, without the damage type and review fields. */
+export type TagLevelKey = Exclude<
+  keyof HeroTagValues,
+  "damage_type" | "needs_review" | "notes"
+>;
+
 export type LabeledValue = { label: string; value: string };
 export type NamedText = { name: string; description: string };
 

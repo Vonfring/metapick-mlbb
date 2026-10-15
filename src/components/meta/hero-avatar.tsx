@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const sizes = { xs: 32, sm: 40, md: 56, lg: 80, xl: 112 } as const;
+const sizes = { xxs: 24, xs: 32, sm: 40, md: 56, lg: 80, xl: 112 } as const;
 
 function initials(name: string) {
   const parts = name

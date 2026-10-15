@@ -126,6 +126,24 @@ export function createSupabaseProvider(): GameDataProvider {
         tags: tags.data ? heroTagRowSchema.parse(tags.data) : null,
       };
     },
+    async listHeroTags() {
+      const rows = await selectAll("hero_tags", (from, to) =>
+        db.from("hero_tags").select("*").order("hero_id").range(from, to),
+      );
+      return z.array(heroTagRowSchema).parse(rows);
+    },
+    async listRelations() {
+      const rows = await selectAll("hero_relations", (from, to) =>
+        db
+          .from("hero_relations")
+          .select("hero_id, relation, target_hero_id, description")
+          .order("hero_id")
+          .order("relation")
+          .order("target_hero_id")
+          .range(from, to),
+      );
+      return z.array(heroRelationRowSchema).parse(rows);
+    },
     async getStats(bracket, period, onOrBefore) {
       const snapshot = await newestSnapshot(bracket, period, onOrBefore);
       if (!snapshot) return null;

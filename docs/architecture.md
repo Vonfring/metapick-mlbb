@@ -78,9 +78,21 @@ sequenceDiagram
         S-->>N: rows (RLS read-only)
         N-->>E: new HTML and JSON bundles
     end
-    B->>E: GET /data/v1/stats/glory/30.json after a filter change
+    B->>E: GET /data/v1/stats/glory/30 after a filter change
     E-->>B: static JSON bundle
 ```
+
+### Static JSON bundles
+
+Each page carries the data for its default rank (Mythic). Another choice loads a JSON file that is built with the site and refreshed with it, so filters never query the database:
+
+| Path | Contents | Used by |
+|---|---|---|
+| `/data/v1/stats/{rank}/{period}` | Rates, tiers and changes for one rank and period (30 files) | Statistics, Tier list |
+| `/data/v1/matchups/{rank}` | 7-day rates, matchups and synergies for one rank (6 files) | Counter pick, Matchup |
+| `/data/v1/hero-notes` | The official explanation behind each hero note | Matchup |
+
+Counter pick and Matchup score in the browser, with the pure functions in `src/lib/scoring/` and the weights in `src/config/counter-scoring.ts`, `matchup-scoring.ts` and `composition-rules.ts`.
 
 ## Data update
 

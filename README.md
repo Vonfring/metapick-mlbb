@@ -65,6 +65,17 @@ pnpm seed:sql
 
 Then run `supabase/seed.sql` again (CLI or SQL Editor). Quick fixes in the Supabase Table Editor work too, but the JSON file will overwrite them if the seed is applied again. The updater never changes existing tags; it only adds tags from this file for heroes that have none yet.
 
+## Changing the formulas
+
+Every score comes from a config file, and each page explains its formula from the same numbers, so the text never drifts. Edit a number and redeploy:
+
+| File | Controls |
+|---|---|
+| [`src/config/tier-scoring.ts`](src/config/tier-scoring.ts) | Tier list: weights of win, pick and ban rate, tier cut-offs |
+| [`src/config/counter-scoring.ts`](src/config/counter-scoring.ts) | How much one hero counters another (statistics, official notes, tag rules) and the Counter pick score |
+| [`src/config/matchup-scoring.ts`](src/config/matchup-scoring.ts) | Matchup verdicts: weights for form, counters, synergy and composition |
+| [`src/config/composition-rules.ts`](src/config/composition-rules.ts) | The team composition checklist and its thresholds |
+
 ## Data updates
 
 Two GitHub Actions workflows keep the database current (details in [`docs/activity-updater.md`](docs/activity-updater.md)):

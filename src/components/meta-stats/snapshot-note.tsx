@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { InfoIcon } from "@/components/icons";
-import type { MetaSnapshot } from "@/lib/data";
+import type { MetaSnapshot, SnapshotInfo } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 import { bracketLabels, periodLabels } from "@/types/domain";
 
@@ -14,13 +14,19 @@ const STALE_AFTER_HOURS = 48;
 const openedAt = typeof window === "undefined" ? null : Date.now();
 const subscribe = () => () => {};
 
-/** Which numbers are shown, when they were updated, and what the changes compare with. */
+/**
+ * Which numbers are shown, when they were updated, and what the changes
+ * compare with. Without `previous` (pages that show no changes) the last
+ * part is left out.
+ */
 export function SnapshotNote({
   data,
   loading,
   error,
 }: {
-  data: MetaSnapshot;
+  data: Pick<MetaSnapshot, "bracket" | "period" | "checkedAt" | "snapshot"> & {
+    previous?: SnapshotInfo | null;
+  };
   loading: boolean;
   error: boolean;
 }) {
@@ -56,9 +62,11 @@ export function SnapshotNote({
         {periodLabels[snapshot.period_days].toLowerCase()}. Updated{" "}
         {formatDate(checked)}
         {unchangedSince}.{" "}
-        {previous
-          ? `Changes compare with ${formatDate(previous.snapshot_date)}.`
-          : `Changes appear once there are numbers from ${snapshot.period_days === 1 ? "the day" : `${snapshot.period_days} days`} before.`}
+        {previous === undefined
+          ? ""
+          : previous
+            ? `Changes compare with ${formatDate(previous.snapshot_date)}.`
+            : `Changes appear once there are numbers from ${snapshot.period_days === 1 ? "the day" : `${snapshot.period_days} days`} before.`}
         {loading ? " Loading…" : ""}
       </p>
       {error ? (

@@ -1,9 +1,21 @@
 import "server-only";
 
 import { cacheLife, cacheTag } from "next/cache";
+import { MATCHUP_PERIOD } from "@/config/filters";
 import { buildMetaRows, daysBefore, type MetaRow } from "@/lib/meta/meta-rows";
+import type {
+  HeroNoteLists,
+  HeroTagLevels,
+  PairTuple,
+} from "@/lib/scoring/hero-index";
 import { computeTiers } from "@/lib/scoring/tier";
-import type { BattleSpellRow, HeroRow, ItemRow } from "@/types/data";
+import type {
+  BattleSpellRow,
+  HeroRow,
+  HeroStatRow,
+  ItemRow,
+  PairRow,
+} from "@/types/data";
 import type { PeriodDays, RankBracket, Tier } from "@/types/domain";
 import { GAME_DATA_TAG, getDataSourceKind } from "./config";
 import type {
@@ -240,4 +252,101 @@ export async function getMetaSnapshot(
     previous: previous ? info(previous) : null,
     rows: buildMetaRows(current.stats, previous?.stats ?? null),
   };
+}
+
+/** What Counter pick and Matchup need for one rank: the 7-day rates and pairs. */
+export type MatchupSnapshot = {
+  bracket: RankBracket;
+  period: PeriodDays;
+  /** When the updater last checked the source, even if nothing changed. */
+  checkedAt: string | null;
+  snapshot: SnapshotInfo | null;
+  stats: HeroStatRow[];
+  matchups: PairTuple[];
+  synergies: PairTuple[];
+};
+
+/** Five decimals is a thousandth of a percentage point, plenty for display and scoring. */
+const toTuple = (row: PairRow): PairTuple => [
+  row.hero_id,
+  row.other_id,
+  Math.round(row.win_rate_delta * 1e5) / 1e5,
+];
+
+/**
+ * The newest 7-day snapshot of one rank with its matchups and synergies,
+ * compact enough to send to the browser. Served to Counter pick and Matchup.
+ */
+export async function getMatchupSnapshot(
+  bracket: RankBracket,
+): Promise<MatchupSnapshot> {
+  "use cache";
+  cacheLife("gameData");
+  cacheTag(GAME_DATA_TAG);
+  const [stats, pairs, checkedAt] = await Promise.all([
+    getStatsSnapshot(bracket, MATCHUP_PERIOD),
+    getPairsSnapshot(bracket, MATCHUP_PERIOD),
+    getLastUpdate(),
+  ]);
+  return {
+    bracket,
+    period: MATCHUP_PERIOD,
+    checkedAt,
+    snapshot: stats ? info(stats) : null,
+    stats: stats?.stats ?? [],
+    // Both reads take the newest 7-day snapshot, which always stores its
+    // pairs; only a revalidation between the two reads could split them.
+    matchups: pairs?.matchups.map(toTuple) ?? [],
+    synergies: pairs?.synergies.map(toTuple) ?? [],
+  };
+}
+
+/** Curated tags and official notes: what the tools know about heroes besides the numbers. */
+export type HeroKnowledge = {
+  tags: HeroTagLevels[];
+  notes: HeroNoteLists[];
+};
+
+export async function getHeroKnowledge(): Promise<HeroKnowledge> {
+  "use cache";
+  cacheLife("gameData");
+  cacheTag(GAME_DATA_TAG);
+  const [tags, relations] = await Promise.all([
+    provider().listHeroTags(),
+    provider().listRelations(),
+  ]);
+  const key = {
+    strong_against: "strong",
+    weak_against: "weak",
+    best_teammate: "teammates",
+  } as const;
+  const lists = new Map<
+    number,
+    { heroId: number; strong: number[]; weak: number[]; teammates: number[] }
+  >();
+  for (const r of relations) {
+    let entry = lists.get(r.hero_id);
+    if (!entry) {
+      entry = { heroId: r.hero_id, strong: [], weak: [], teammates: [] };
+      lists.set(r.hero_id, entry);
+    }
+    entry[key[r.relation]].push(r.target_hero_id);
+  }
+  return {
+    // The editing fields stay out of the browser.
+    tags: tags.map(({ needs_review: _, notes: __, ...levels }) => levels),
+    notes: [...lists.values()],
+  };
+}
+
+/** The official explanation for each kind of note a hero has, keyed "heroId:relation". */
+export async function getNoteTexts(): Promise<Record<string, string>> {
+  "use cache";
+  cacheLife("gameData");
+  cacheTag(GAME_DATA_TAG);
+  const texts: Record<string, string> = {};
+  for (const r of await provider().listRelations()) {
+    if (r.description) texts[`${r.hero_id}:${r.relation}`] = r.description;
+  }
+  return texts;
 }
