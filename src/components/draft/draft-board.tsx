@@ -139,11 +139,13 @@ export function DraftTeamPanel({
                       ? cn("border-solid", t.border, t.soft)
                       : "border-dashed border-border",
                   )}
-                  aria-label={isCurrent ? "Picking now" : "Pick not made yet"}
                 >
                   {isCurrent ? (
                     <PlusIcon className={cn("size-5", t.text)} aria-hidden />
                   ) : null}
+                  <span className="sr-only">
+                    {isCurrent ? "Picking now" : "Pick not made yet"}
+                  </span>
                 </span>
               )}
               <span className="w-full truncate text-center text-xs font-medium">
@@ -186,8 +188,11 @@ function BanSlot({
           "block size-8 rounded-sm border-2",
           isCurrent ? cn("border-solid", t.border, t.soft) : "border-dashed",
         )}
-        aria-label={isCurrent ? "Banning now" : "Ban not made yet"}
-      />
+      >
+        <span className="sr-only">
+          {isCurrent ? "Banning now" : "Ban not made yet"}
+        </span>
+      </span>
     );
   return (
     <LockIn play={play}>

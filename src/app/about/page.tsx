@@ -71,7 +71,10 @@ export default function AboutPage() {
         </p>
         <ul className="flex list-disc flex-col gap-1 pl-5 text-muted-foreground">
           <li>
-            <Link href="/tier-list" className="text-ally-text hover:underline">
+            <Link
+              href="/tier-list"
+              className="text-ally-text underline underline-offset-2 hover:decoration-2"
+            >
               Tier list
             </Link>
             : win, pick and ban rate compared with every hero in the same rank
@@ -80,12 +83,15 @@ export default function AboutPage() {
           <li>
             <Link
               href="/counter-pick"
-              className="text-ally-text hover:underline"
+              className="text-ally-text underline underline-offset-2 hover:decoration-2"
             >
               Counter pick
             </Link>{" "}
             and{" "}
-            <Link href="/matchup" className="text-ally-text hover:underline">
+            <Link
+              href="/matchup"
+              className="text-ally-text underline underline-offset-2 hover:decoration-2"
+            >
               Matchup
             </Link>
             : matchup statistics, official hero notes and hero tags, plus a
@@ -94,12 +100,15 @@ export default function AboutPage() {
           <li>
             <Link
               href="/team-composition"
-              className="text-ally-text hover:underline"
+              className="text-ally-text underline underline-offset-2 hover:decoration-2"
             >
               Team composition
             </Link>{" "}
             and{" "}
-            <Link href="/draft" className="text-ally-text hover:underline">
+            <Link
+              href="/draft"
+              className="text-ally-text underline underline-offset-2 hover:decoration-2"
+            >
               Draft master
             </Link>
             : the composition checklist, synergy between teammates and the same

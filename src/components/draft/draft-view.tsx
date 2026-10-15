@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowClockwiseIcon, MagnifyingGlassIcon } from "@/components/icons";
 import { HeroAvatar } from "@/components/meta/hero-avatar";
 import { RankSelect, selectClass } from "@/components/meta/rank-select";
@@ -60,6 +60,7 @@ import { rankParam, useUrlParams } from "@/lib/use-url-params";
 import { cn } from "@/lib/utils";
 import { bracketLabels, type RankBracket } from "@/types/domain";
 import { DraftTeamPanel, teamName } from "./draft-board";
+import { preloadGsap } from "./lock-in";
 
 const PRESET_IDS = Object.keys(DRAFT_PRESETS) as DraftPresetId[];
 const SIDES = [
@@ -136,6 +137,10 @@ export function DraftView({
     bracket,
   );
   const [justPlaced, setJustPlaced] = useState<number | null>(null);
+  // Warm the animation library while the visitor reads the board.
+  useEffect(() => {
+    preloadGsap().catch(() => {});
+  }, []);
   const [sheetOpen, setSheetOpen] = useState(false);
   const nameOf = (id: number) => byId.get(id)?.name ?? "Unknown hero";
   const rankLabel = bracketLabels[snapshot.bracket];

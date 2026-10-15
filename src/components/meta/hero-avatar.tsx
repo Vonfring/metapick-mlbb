@@ -70,12 +70,15 @@ export function HeroAvatar({
           onError={() => setFailed(true)}
         />
       ) : (
+        // The initials are drawn by CSS, not written as text, so a button
+        // that holds the avatar keeps the hero's name as its only text.
         <span
           role={decorative ? undefined : "img"}
           aria-label={decorative ? undefined : name}
           aria-hidden={decorative || undefined}
+          data-initials={initials(name)}
           className={cn(
-            "font-display font-bold text-muted-foreground",
+            "font-display font-bold text-muted-foreground before:content-[attr(data-initials)]",
             fluid && "text-xl",
           )}
           style={
@@ -83,9 +86,7 @@ export function HeroAvatar({
               ? undefined
               : { fontSize: Math.max(12, Math.round(px * 0.34)) }
           }
-        >
-          {initials(name)}
-        </span>
+        />
       )}
     </span>
   );
