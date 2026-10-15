@@ -1,0 +1,92 @@
+name: Seed fetch (one-off)
+
+# Runs the one-off seed imports on GitHub's runners, because the development
+# container cannot reach the data sources. Triggered by pushing a change to
+# seed/fetch-request.json on a claude/** branch (change "reason" each time:
+# an identical file does not trigger a run):
+#   {"mode": "fetch"}       official snapshot: seed/official/*.json + seed.sql
+#   {"mode": "catalog"}     Liquipedia catalog: seed/liquipedia/*.json + seed.sql
+#   {"mode": "liquipedia"}  raw Liquipedia pages to seed/_inspect/liquipedia/
+#   {"mode": "browser"}     API calls made by official pages, opened in
+#                           headless Chromium, to seed/_inspect/browser/
+# seed/_inspect/ holds research output only; delete it once used.
+# Results are committed back to the same branch with GITHUB_TOKEN, which does
+# not trigger another run. The database itself is kept current by the
+# scheduled updater (update-stats.yml, update-catalog.yml); this workflow only
+# refreshes the seed files used by local and CI builds.
+
+on:
+  push:
+    branches:
+      - "claude/**"
+    paths:
+      - seed/fetch-request.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seed-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Read the requested mode
+        id: request
+        run: |
+          mode=$(node -p "require('./seed/fetch-request.json').mode")
+          case "$mode" in browser|liquipedia|catalog|fetch) ;; *) echo "Unknown mode: $mode"; exit 1 ;; esac
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+
+      - name: Install Chromium
+        if: steps.request.outputs.mode == 'browser'
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Inspect the official pages in a browser
+        if: steps.request.outputs.mode == 'browser'
+        run: pnpm seed:inspect-browser seed/_inspect/browser
+
+      - name: Download the raw Liquipedia pages
+        if: steps.request.outputs.mode == 'liquipedia'
+        run: pnpm seed:catalog --download-only --save-raw seed/_inspect/liquipedia/raw-pages.json
+
+      - name: Import the Liquipedia catalog
+        if: steps.request.outputs.mode == 'catalog'
+        run: |
+          pnpm seed:catalog
+          pnpm seed:sql
+
+      - name: Fetch the seed snapshot
+        if: steps.request.outputs.mode == 'fetch'
+        run: |
+          pnpm seed:fetch
+          pnpm seed:sql
+
+      - name: Commit the results to this branch
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A seed supabase
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "Seed ${{ steps.request.outputs.mode }}: results of run ${{ github.run_id }}"
+          # Someone may have pushed while this ran; replay our commit on top.
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:$BRANCH"

@@ -1,0 +1,5 @@
+{
+  "dry_run": false,
+  "fresh": false,
+  "reason": "real catalog run with repository secrets in place"
+}

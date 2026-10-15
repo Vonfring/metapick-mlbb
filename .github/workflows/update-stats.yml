@@ -1,0 +1,116 @@
+name: Update statistics
+
+# Daily ranked statistics from the official source. See docs/activity-updater.md.
+#
+# GitHub only runs schedules and the "Run workflow" button from the default
+# branch. Before this file is on main, test it from a claude/** branch by
+# pushing a change to scripts/updater/requests/stats.json
+# ({"dry_run": true} writes nothing; change "reason" each time, because an
+# identical file does not trigger a run).
+#
+# Without the SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY repository secrets a
+# run writes nothing and ends red, unless it was started as a dry run.
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # 10:17 WIB every day
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Fetch and check everything, write nothing
+        type: boolean
+        default: false
+      fresh:
+        description: Ignore responses cached earlier today
+        type: boolean
+        default: false
+  push:
+    branches:
+      - "claude/**"
+    paths:
+      - scripts/updater/requests/stats.json
+
+permissions:
+  contents: read
+  # Keepalive: re-enables the scheduled workflows (see the last step).
+  actions: write
+
+concurrency:
+  group: updater
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Read the run options
+        id: options
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_DRY_RUN: ${{ inputs.dry_run }}
+          INPUT_FRESH: ${{ inputs.fresh }}
+        run: |
+          dry_run=false
+          fresh=false
+          trigger=manual
+          case "$EVENT" in
+            schedule) trigger=schedule ;;
+            workflow_dispatch)
+              dry_run="$INPUT_DRY_RUN"
+              fresh="$INPUT_FRESH"
+              ;;
+            push)
+              # A request file is a test: it stays a dry run unless it says otherwise.
+              dry_run=$(node -p "require('./scripts/updater/requests/stats.json').dry_run !== false")
+              fresh=$(node -p "require('./scripts/updater/requests/stats.json').fresh === true")
+              ;;
+          esac
+          {
+            echo "dry_run=$dry_run"
+            echo "fresh=$fresh"
+            echo "trigger=$trigger"
+            echo "today=$(date -u +%F)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Restore responses cached earlier today
+        if: steps.options.outputs.fresh != 'true'
+        uses: actions/cache@v4
+        with:
+          path: .cache/source
+          key: updater-stats-${{ steps.options.outputs.today }}-${{ github.run_id }}
+          restore-keys: updater-stats-${{ steps.options.outputs.today }}-
+
+      - name: Run the stats job
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          DRY_RUN: ${{ steps.options.outputs.dry_run }}
+          FRESH: ${{ steps.options.outputs.fresh }}
+          TRIGGER: ${{ steps.options.outputs.trigger }}
+        run: |
+          args=(--trigger "$TRIGGER")
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          if [ "$FRESH" = "true" ]; then args+=(--fresh); fi
+          pnpm update:stats "${args[@]}"
+
+      # GitHub turns off schedules in a public repository after 60 days
+      # without activity. Re-enabling them through the API keeps them on
+      # without dummy commits.
+      - name: Keep the schedules enabled
+        if: always() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow enable update-stats.yml --repo "$GITHUB_REPOSITORY"
+          gh workflow enable update-catalog.yml --repo "$GITHUB_REPOSITORY"

@@ -1,0 +1,102 @@
+{
+  "fetched_at": "2026-10-14T09:42:33.896Z",
+  "members": {
+    "items": [
+      "Legion Sword",
+      "Blade of Despair",
+      "Berserker's Fury",
+      "Winter Crown",
+      "Bloodlust Axe",
+      "Conceal",
+      "Boots",
+      "Warrior Boots"
+    ],
+    "spells": ["Flicker", "Track", "Aegis"]
+  },
+  "pages": {
+    "Legion Sword": {
+      "pageid": 3941,
+      "title": "Legion Sword",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Legion Sword\n<!--Info-->\n|itemcost=910\n|recipecost=\n|category=Attack\n|tier=2\n|type=Regular\n|status=Available\n<!--Attributes-->\n|physatk=60\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Legion Sword\n\t|topitems=5\n\t|topitem1=Malefic Roar\n\t|topitem2=Berserker's Fury\n\t|topitem3=Great Dragon Spear\n\t|topitem4=Blade of Despair\n\t|topitem5=Sea Halberd\n\t|bottomitems=2\n\t|bottomitem1=Dagger\n\t|bottomitem2=Dagger\n\t}}\n}}\n\n: '''Legion Sword''' is a Tier 2 Attack equipment.\n\n==Story==\n\nThe archaeologists in the Land of Dawn have not reached a clear conclusion about this piece of equipment.\n\n==References==\n\n{{Reflist}}\n\n{{Equipment}}",
+      "timestamp": "2025-02-21T00:50:36Z"
+    },
+    "Blade of Despair": {
+      "pageid": 3921,
+      "title": "Blade of Despair",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Blade of Despair\n<!--Info-->\n|itemcost=3010\n|recipecost=\n|category=Attack\n|tier=3\n|type=Regular\n|status=Available\n<!--Attributes-->\n|physatk=160\n|movespeed=5%\n<!--Ability-->\n|passive=Despair\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Blade of Despair\n\t|bottomitems=2\n\t|bottomitem1=Legion Sword\n\t|bottomitem2=Legion Sword\n\t}}\n}}\n\n: '''Blade of Despair''' is a Tier 3 Attack equipment. Short description is Highest Physical Attack\n\n==Ability==\n{{SpellCard\n|name=Despair\n|image=Item Blade of Despair ML.png\n|ability=Passive\n|affects= Self\n|description=Dealing damage to non-Minion enemies below 50% HP grants 25% extra Physical Attack for 2 seconds (takes effect before the damage is dealt).\n}}\n\n==Story==\n\nThe most fearsome fighters have their own demons to face, and so the sharpest blades in their hands speak their deepset despair.\n\n==Version History==\n<h3>[[Patch 1.4.94]] {{TextID|nerf}}</h3>\n* '''Attributes''' {{TextID|nerf}}\n: Physical Attack reduced from 170 >> 160\n\n==References==\n\n{{Reflist}}\n\nBlade of Despair information, Retrieved May 10, 2024 from https://mobile-legends.fandom.com/wiki/Blade_of_Despair\n\n{{Equipment}}",
+      "timestamp": "2026-02-18T07:31:27Z"
+    },
+    "Berserker's Fury": {
+      "pageid": 3929,
+      "title": "Berserker's Fury",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Berserker's Fury\n<!--Info-->\n|itemcost=2390\n|recipecost=\n|category=Attack\n|tier=3\n|type=Regular\n|status=Available\n<!--Attributes-->\n|physatk=65\n|critchance=25\n|uniqueattr=40% Critical Damage\n<!--Ability-->\n|passive=Doom\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Berserker's Fury\n\t|bottomitems=3\n\t|bottomitem1=Legion Sword\n\t|bottomitem2=Javelin\n\t|bottomitem3=Javelin\n\t}}\n}}\n\n: '''Berserker's Fury''' is a Tier 3 Attack equipment. Short description is Crit Chance & Damage.\n\n==Ability==\n{{SpellCard\n|name=Unique Attribute\n|image=Item Berserker's Fury ML.png\n|ability=Passive\n|affects=Self\n|description=+40% Critical Damage\n}}\n\n{{SpellCard\n|name=Doom\n|image=Item Berserker's Fury ML.png\n|ability=Passive\n|affects=Self\n|description=Critical strikes grant 5% extra Physical Attack for 2s.\n}}\n\n==Story==\n\nA forgotten relic, lost in the Endless War. If the pain of the past ultimately leads to greater despair, then madness is only a step away.\n\n==Version History==\n<h3>[[Patch 1.8.92]] {{TextID|buff}}</h3>\n* Price: 2500 >> 2390\n<h3>[[Patch 1.8.20B]]  {{TextID|nerf}}</h3>\n* Price: 2250 >> 2500\n<h3>[[Patch 1.6.18]]  {{TextID|buff}}</h3>\n* Craft Cost reduced by 100\n\n==References==\n\n{{Reflist}}\n\nBerserker's Fury information, Retrieved May 13, 2024 from https://mobile-legends.fandom.com/wiki/Berserker%27s_Fury\n\n{{Equipment}}",
+      "timestamp": "2026-02-18T07:33:11Z"
+    },
+    "Winter Crown": {
+      "pageid": 3974,
+      "title": "Winter Crown",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Winter Crown\n<!--Info-->\n|itemcost=1910\n|recipecost=\n|category=Attack\n|category2=Magic\n|tier=3\n|type=Regular\n|status=Available\n<!--Attributes-->\n|hp=400\n|adaptiveatk=45\n|cdreduction=5\n<!--Ability-->\n|active=Frozen\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Winter Crown\n\t|bottomitems=3\n\t|bottomitem1=Expert Gloves\n\t|bottomitem2=Hero's Ring\n\t|bottomitem3=Vitality Crystal\n\t}}\n}}\n\n: '''Winter Crown''' is a Tier 3 Attack, Magic equipment.\n\n==Ability==\n{{SpellCard\n|name=Frozen\n|image=Item Winter Crown ML.png\n|ability=Active\n|affects=Self\n|description=Become frozen, untargetable, and immune to damage for 2 seconds (100 seconds cooldown). Cannot move or cast skills while frozen, but skills already cast won't be interrupted.\n}}\n\n==Story==\n\nThe core of the Glacier was created by the Lord of Light. Having awakened along with the Maiden of the Glacier, it symbolizes the power of eternity that not only protects but also confines her.\n\n==Version History==\n<big>As Winter Crown</big>\n<h3>[[Patch 1.8.92]] {{TextID|revamp}}</h3>\n* Changed name from Winter Truncheon to Winter Crown\n* '''Attributes'''\n: +45 Adaptive Attack\n: +400 Max HP\n: +5% CD Reduction\n* '''Unique Passive - Frozen'''\n:  Becomes frozen, untarge, and immune to damage for 2 seconds (100 seconds cooldown). Cannot move or cast skills while frozen, but skills already cast won't be interrupted.\n<hr>\n<big>As Winter Truncheon</big>\n<h3>[[Patch 1.8.78]] {{TextID|nerf}}</h3>\n* '''Attributes''' {{TextID|nerf}}\n: Physical Defense: 25 >> 20\n<h3>[[Patch 1.5.88]]</h3>\n* '''Build Path'''\n: {{ItemIcon|leather jerkin|size=20px}} [[Leather Jerkin]] + {{ItemIcon|magic wand|size=20px}} [[Magic Wand]] >> {{ItemIcon|vitality crystal|size=20px}} [[Vitality Crystal]] + {{ItemIcon|magic wand|size=20px}} [[Magic Wand]]\n==References==\n\n{{Reflist}}\nWinter Crown information, Retrieved June 20, 2024 from https://mobile-legends.fandom.com/wiki/Winter_Crown<br>\nWinter Truncheon information, Retrieved June 2, 2024 from https://mobile-legends.fandom.com/wiki/Winter_Truncheon\n{{Equipment}}",
+      "timestamp": "2026-02-18T07:45:26Z"
+    },
+    "Bloodlust Axe": {
+      "pageid": 3919,
+      "title": "Bloodlust Axe",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Bloodlust Axe\n<!--Info-->\n|itemcost=1970\n|recipecost=\n|category=Attack\n|tier=3\n|type=Regular\n|status=Removed\n<!--Attributes-->\n|physatk=70\n|cdreduction=10\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Bloodlust Axe\n\t|bottomitems=3\n\t|bottomitem1=Iron Hunting Bow\n\t|bottomitem2=Dagger\n\t|bottomitem3=Iron Hunting Bow\n\t}}\n}}\n\n: '''Bloodlust Axe''' was a Tier 3 Attack equipment. Short description is Spell Vamp. {{ItemIcon|Bloodlust Axe|size=20px}} [[Bloodlust Axe]] was merge with {{ItemIcon|War Axe|size=20px}} [[War Axe]] on [[Patch 1.8.92|Patch Notes 1.8.92]]\n\n==Ability==\n{{SpellCard\n|name=Unique Attribute\n|image=Item Bloodlust Axe ML.png\n|ability=Passive\n|affects=Self\n|description=+20% Spell Vamp\n}}\n\n==Story==\n\nBattle is the way of survival.\n\n==Version History==\n===[[Patch 1.8.92]]===\n<table class=\"table-bordered\" class=\"text-align:center;\">\n<tr class=\"{{Color|staydown}}\"><td>Removed</td></tr>\n</table>\n{{ItemIcon|Bloodlust Axe|size=20px}} [[Bloodlust Axe]] has been combined with {{ItemIcon|War Axe|size=20px}} [[War Axe]].\n\n===[[Patch 1.1.76]]===\n\nWe feel that for heroes who mainly rely on skills to deal physical attacks, the Tooth of Greed's Physical Lifesteal is not the best choice for them. This gear will be more suitable as it has a high cooldown reduction and blood thirsty effects.\n\n<table class=\"table-bordered\" class=\"text-align:center;\">\n<tr class=\"{{Color|up}}\"><td>Added</td></tr>\n</table> \n[[File:{{{1|}}}Item Bloodlust Axe ML.png|text-bottom|{{{size|20px}}}|link=Bloodlust_Axe{{{1|}}}]]Bloodlust Axe\n:* Price: 1970\n:* Attributes: +70 Physical Attack\n:* Unique Attribute: +20% Cooldown Reduction\n:* '''Unique Passive - Bloodlust''': Restores 15% of damage dealt as HP for the hero when hero's skills hits a target.\n\n==References==\n\n{{Reflist}}\n\nBloodlust Axe information, Retrieved May 10, 2024 from https://mobile-legends.fandom.com/wiki/Bloodlust_Axe\n\n{{Equipment}}",
+      "timestamp": "2026-02-18T07:31:11Z"
+    },
+    "Conceal": {
+      "pageid": 4221,
+      "title": "Conceal",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Conceal\n<!--Info-->\n|itemcost=0\n|recipecost=\n|category=Roaming\n|tier=\n|type=\n|status=Available\n}}\n: '''Conceal''' is a Roaming Equipment Blessing.\n\n==Ability==\n{{SpellCard\n|name=Conceal\n|image=Item Conceal ML.png\n|ability=Active\n|affects= Enemy\n|affects2= Ally \n|description=\n<p>\nConceals nearby allied heroes (including self) and grants them 24%-60% extra Movement Speed (scale with Gold from Thriving) for 5 seconds or until they deal or take damage.\n</p>\nHeroes with this Blessing no longer share minion and creep rewards with allied heroes and need to accumulate 600 Gold from Thriving (up to 1500 Gold) to unlock this skill.\n}}\n\n==Version History==\n\n==References==\n\n{{Reflist}}\n{{Equipment}}",
+      "timestamp": "2025-02-21T12:39:56Z"
+    },
+    "Boots": {
+      "pageid": 4008,
+      "title": "Boots",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Boots\n<!--Info-->\n|itemcost=250\n|recipecost=\n|category=Movement\n|tier=1\n|type=Footwear\n|status=Available\n<!--Attributes-->\n|movespeed=20\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Boots\n\t|topitems=4\n\t|topitem1=Demon Shoes\n\t|topitem2=Rapid Boots\n\t|topitem3=Swift Boots\n\t|topitem4=Arcane Boots\n\t}}\n\t<br>\n\t\t{{Recipe\n\t|item=Boots\n\t|topitems=3\n\t|topitem1=Magic Shoes\n\t|topitem2=Tough Boots\n\t|topitem3=Warrior Boots\n\t}}\n}}\n\n: '''Boots''' is a Tier 1 Movement equipment.\n\n==Story==\n\nThe archaeologists in the Land of Dawn have not reached a clear conclusion about this piece of equipment.\n\n==Version History==\n\n==References==\n\n{{Reflist}}\n{{Equipment}}",
+      "timestamp": "2025-02-20T09:56:56Z"
+    },
+    "Warrior Boots": {
+      "pageid": 4001,
+      "title": "Warrior Boots",
+      "content": "{{Infobox item\n<!--Icon-->\n|itemname=Warrior Boots\n<!--Info-->\n|itemcost=720\n|recipecost=\n|category=Movement\n|tier=3\n|type=Advanced Footwear\n|status=Available\n<!--Attributes-->\n|physdefense=18\n|movespeed=40\n<!--Ability-->\n|passive=Valor\n<!--Recipe-->\n|recipe=\n\t{{Recipe\n\t|item=Warrior Boots\n\t|bottomitems=2\n\t|bottomitem1=Boots\n\t|bottomitem2=Leather Jerkin\n\t}}\n}}\n\n: '''Warrior Boots''' is a Tier 3 Movement equipment. Short description is Stackable Physical Defense.\n\n==Ability==\n{{SpellCard\n|name=Valor\n|image=Item Warrior Boots ML.png\n|ability=Passive\n|affects=Self\n|description=Gain 4 extra Physical Defense for 3s when taking Physical Damage, up to 20\n}}\n\n==Story==\n\nThe archaeologists in the Land of Dawn have not reached a clear conclusion about this piece of equipment.\n\n==Jungling==\n{{SpellCard\n|name=Hunter\n|description=Jungle only\n}}\n",
+      "timestamp": "2026-02-18T08:00:41Z"
+    },
+    "Flicker": {
+      "pageid": 4047,
+      "title": "Flicker",
+      "content": "==Ability==\n{{SpellCard\n|name        = Flicker\n|image       = Flicker ML.png\n|cooldown\t = 120s\n|description =<!--{{att|att=Active}}-->\nBlink a fixed distance in the target direction and gain a 5(+1*Hero Level) extra Physical & Magic Defense afterward for 1s.\n}}\n<!--==Strategy==\n'''''To be added'''''\n==Version History==\n'''''To be added'''''\n==References==-->\n{{Battle spells}}\n[[Category:Battle spells]]",
+      "timestamp": "2024-11-05T14:46:41Z"
+    },
+    "Track": {
+      "pageid": 4058,
+      "title": "Track",
+      "content": "\n: '''Track''' is a removed [[Portal:Battle Spells|battle spell]] in Mobile Legends: Bang Bang.\n\n==Ability==\n{{SpellCard\n|name        = Track\n|image       = Battle spell Track.png\n|ability     = Revealing Nearby Enemy\n|affects     = Enemy\n|affects2     =\n|cooldown=100s\n|description = {{att|att=Active}} Summons Harper to search for nearest enemy hero. Reduces revealed Hero Movement Speed by 70%, Physical and Magical Attack by 50% for 3 seconds.\n}}\n\n==Strategy==\n'''''To be added'''''\n\n==Version History==\n\n'''''To be added'''''\n\n==References==\n\n{{Battle spells}}\n\n[[Category:Battle spells]]",
+      "timestamp": "2022-06-26T07:23:28Z"
+    },
+    "Aegis": {
+      "pageid": 2570,
+      "title": "Aegis",
+      "content": "==Ability==\n{{SpellCard\n|name        = Aegis\n|image       = Aegis ML.png\n|cooldown    = 75s\n|description =\nGain a 750(+90*Hero Level) shield for 5s\n}}\n<!-- ==Strategy==\n* '''Aegis''' is usually used on heroes that have low health, such as Marksmen or Mages.\n==Version History==\n'''''To be added'''''\n==References== -->\n{{Battle spells}}\n[[Category:Battle spells]]",
+      "timestamp": "2024-12-29T10:41:53Z"
+    },
+    "Portal:Emblems": {
+      "pageid": 3466,
+      "title": "Portal:Emblems",
+      "content": "{{DISPLAYTITLE:Emblems System}}\n\n==Emblems Sets==\n{{tabs dynamic\n|name1=Basic Common\n|name2=Tank\n|name3=Assassin\n|name4=Mage \n|name5=Fighter \n|name6=Support\n|name7=Marksman \n|hide-showall=true\n}}\n{{tabs dynamic/tab|1}}<br><br>\n<div style{{=}}\"text-align:center;\">[[File:Emblem Basic Common MLBB V2.png|75px|link=Basic Common Emblem]]</div>\n<h3><div style{{=}}\"text-align:center;\">Basic Common Emblem</div></h3>\n<br><hr><br>\n====Attributes====\n\n: Hybrid Regen: +12\n\n: HP: +275\n\n: Adaptive Attack: +22\n\n<br><hr><br>\n====Standard Talents====\n====={{HiddenSort|Thrill}}=====\n{{Gameplaybc\n|image      = Talent Thrill ML V2.png\n|link       = Thrill\n|title      = Thrill\n|note       = \n|adjustment = \n\nGain 16 Adaptive Attack\n}}\n====={{HiddenSort|Swift}}=====\n{{Gameplaybc\n|image      = Talent Swift ML V2.png\n|link       = Swift\n|title      = Swift\n|note       = \n|adjustment = \n\nGain 10% extra Attack Speed\n}}\n====={{HiddenSort|Wilderness Blessing}}=====\n{{Gameplaybc\n|image      = Talent Wilderness Blessing ML V2.png\n|link       = Wilderness Blessing\n|title      = Wilderness Blessing\n|note       = \n|adjustment = \n'''Extra Movement Speed in Jungle and River'''\n\nMovement Speed in the Jungle and Rive is increased by 10%. This bonus is halved when in combat wih enemy heroes, Lord or Turtle\n}}\n====={{HiddenSort|Seasoned Hunter}}=====\n{{Gameplaybc\n|image      = Talent Seasoned Hunter ML V2.png\n|link       = Seasoned Hunter\n|title      = Seasoned Hunter\n|note       = \n|adjustment = \n'''Increase Jungling Speed'''\n\nDamage against Lord and Turtle is increased by 15%. This bonus is halved against regular Creeps and doesn't affect the damage of Retribution.\n}}\n\n<br><hr><br>\n====Core Talents====\n====={{HiddenSort|Impure Rage}}=====\n{{Gameplaybc\n|image      = Talent Impure Rage ML V2.png\n|link       = Impure Rage\n|title      = Impure Rage\n|note       = \n|adjustment = \n'''Extra Skill Damage & Restore Mana on Hit'''\n\nDealing damage with skills deals 4% of target's Max HP extra Adaptive Damage and restores 2% Mana on hit. <br> If the hero does not use Mana restores 1% HP instead. The extra Adaptive Damage dealt to non-hero units is up to 120.\n\nCooldown: 5s.\n}}\n====={{HiddenSort|Quantum Charge}}=====\n{{Gameplaybc\n|image      = Talent Quantum Charge ML V2.png\n|link       = Quantum Charge\n|title      = Quantum Charge\n|note       = \n|adjustment = \n'''Basic Attacks Grant HP Regen & Speed Up'''\n\nDealing damage with Basic Attacks increases Movement Speed by 30% for 1.5s and restores 75-180HP (scales with level). \n\nCooldown: 8s.\n}}\n====={{HiddenSort|War Cry}}=====\n{{Gameplaybc\n|image      = Talent War Cry ML.png\n|link       = War Cry\n|title      = War Cry\n|note       = \n|adjustment = \n'''Increase Sustained Dmaage'''\n\nAfter every 3 Separate Basic Attacks or skill hit an enemy hero, all damage dealt increases by 8% for 6s.<br>A single Basic ATtack or skill that deals damage multiple times only count as 1\n\nCooldown: 6s.\n}}\n====={{HiddenSort|Temporal Reign}}=====\n{{Gameplaybc\n|image      = Talent Temporal Reign ML.png\n|link       = Temporal Reign\n|title      = Temporal Reign\n|note       = \n|adjustment = \n'''Non-Ultimate Skills Cooldown Reduction'''\n\nThe next Ultimate cast decreases other active skills' remaining cooldowns by 1.5 times within 4s. This effect is extended by 2s after getting hero kills or assists <br> This only applies to the hero themselves\n\nCooldown: 20s.\n}}\n{{tabs dynamic/tab|2}}<br><br>\n<div style{{=}}\"text-align:center;\">[[File:Emblem Tank MLBB V2.png|75px|link=Tank Emblem]]</div>\n<h3><div style{{=}}\"text-align:center;\">Tank Emblem</div></h3>\n<br><hr><br>\n\n====Attributes====\n\n: HP: +500\n\n: Hybrid Defense: +10\n\n: HP Regen: +4\n\n<br><hr><br>\n====Standard Talents====\n====={{HiddenSort|Vitality}}=====\n{{Gameplaybc\n|image      = Talent Vitality ML V2.png\n|link       = Vitality\n|title      = Vitality\n|note       = \n|adjustment = \n\nGain 225 extra max HP.\n}}\n====={{HiddenSort|Tenacity}}=====\n{{Gameplaybc\n|image      = Talent Tenacity ML V2.png\n|link       = Tenacity\n|title      = Tenacity\n|note       = \n|adjustment = \n'''Increase Defense at Low HP'''\n\nWhen HP is below 50%, Physical & Magic Defense are increased by 15\n}}\n\n<br><hr><br>\n====Core Talents====\n\n====={{HiddenSort|Concussive Blast}}=====\n{{Gameplaybc\n|image      = Talent Concussive Blast ML V2.png\n|link       = Concussive Blast\n|title      = Concussive Blast\n|note       = \n|adjustment = \n'''HP-Based AOE Damage'''\n\nAfter the next Basic Attack, deal 100(+7% Total HP) Magic Damage to nearby enemies\n\nCooldown: 15s\n}}\n\n",
+      "timestamp": "2026-06-14T18:30:50Z"
+    },
+    "Template:Battle spells": {
+      "pageid": 2756,
+      "title": "Template:Battle spells",
+      "content": "{{NavBox\n|template= Battle spells\n|title=[[Portal:Battle Spells|Battle Spells]]\n|state=plain uncollapsed\n|child1={{NavBoxChild|center=1\n|[[File:Aegis ML.png|20px|link=Aegis]] [[Aegis]]\n|[[File:Flicker ML.png|20px|link=Flicker]] [[Flicker]]\n}}\n}}<noinclude>\n[[Category:Navboxes]]\n</noinclude>",
+      "timestamp": "2025-06-10T16:23:24Z"
+    },
+    "Template:Equipment": {
+      "pageid": 4381,
+      "title": "Template:Equipment",
+      "content": "{{NavBox\n|template=Equipment\n|title=[[Portal:Equipment|Equipment]]\n|child1={{NavBoxChild\n|name=Attack\n|{{ItemIcon|Malefic Gun|size=20px}} [[Malefic Gun]]\n|{{ItemIcon|Great Dragon Spear|size=20px}} [[Great Dragon Spear]]\n|{{ItemIcon|Sea Halberd|size=20px}} [[Sea Halberd]]\n|{{ItemIcon|Rose Gold Meteor|size=20px}} [[Rose Gold Meteor]]\n|{{ItemIcon|Hunter Strike|size=20px}} [[Hunter Strike]]\n|{{ItemIco\n}}\n}}",
+      "timestamp": "2026-01-03T09:18:49Z"
+    }
+  }
+}

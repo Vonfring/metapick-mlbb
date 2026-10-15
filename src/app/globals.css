@@ -1,0 +1,241 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Metapick design tokens.
+ *
+ * Theme: `data-theme="light" | "dark"` on <html>, set before first paint by
+ * the inline script in src/components/theme/theme-script.tsx.
+ *
+ * Every color pair below was checked with the dataviz palette validator:
+ * team colors (categorical), tier ramp (ordinal, one hue, monotone
+ * lightness) and text tokens (WCAG >= 4.5:1 on their surfaces).
+ *
+ * Shape rule: badges and chips 6px, controls 10px, panels 14px. Hero
+ * portraits use a square tile with one clipped corner (the diagonal motif).
+ */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  /* Surfaces and text */
+  --background: #eef2f2;
+  --surface: #ffffff;
+  --surface-2: #f5f8f8;
+  --muted: #e3e9ea;
+  --border: #d2dcde;
+  --foreground: #10212a;
+  --muted-foreground: #4a5f69;
+
+  /* Teams. Marks use the base color; text uses the -text variant. */
+  --ally: #2a63d4;
+  --ally-text: #2a63d4;
+  --ally-soft: rgb(42 99 212 / 0.1);
+  --enemy: #ef6a43;
+  --enemy-text: #b8432a;
+  --enemy-soft: rgb(239 106 67 / 0.12);
+
+  /* Deltas and states */
+  --positive: #16754f;
+  --negative: #b8432a;
+
+  /* Interactive */
+  --primary: #2a63d4;
+  --primary-foreground: #ffffff;
+  --ring: #2a63d4;
+
+  /* Tier ramp: SS (strongest) to D. Ordinal, one hue. */
+  --tier-ss: #772703;
+  --tier-ss-foreground: #ffffff;
+  --tier-s: #953307;
+  --tier-s-foreground: #ffffff;
+  --tier-a: #b63e03;
+  --tier-a-foreground: #ffffff;
+  --tier-b: #e65719;
+  --tier-b-foreground: #10212a;
+  --tier-c: #fd703b;
+  --tier-c-foreground: #10212a;
+  --tier-d: #fd9976;
+  --tier-d-foreground: #10212a;
+
+  --shadow-color: 196 30% 30%;
+}
+
+[data-theme="dark"] {
+  --background: #0e1a21;
+  --surface: #15262f;
+  --surface-2: #1b313c;
+  --muted: #1f3541;
+  --border: #284150;
+  --foreground: #e4ecee;
+  --muted-foreground: #93a7b0;
+
+  --ally: #5287f0;
+  --ally-text: #8db0ff;
+  --ally-soft: rgb(82 135 240 / 0.16);
+  --enemy: #e2693d;
+  --enemy-text: #ff9a70;
+  --enemy-soft: rgb(226 105 61 / 0.16);
+
+  --positive: #3fd39c;
+  --negative: #ff9a70;
+
+  --primary: #5287f0;
+  --primary-foreground: #0e1a21;
+  --ring: #8db0ff;
+
+  /* In dark mode the strongest tier is the brightest step. */
+  --tier-ss: #ffb49a;
+  --tier-ss-foreground: #0e1a21;
+  --tier-s: #ff9069;
+  --tier-s-foreground: #0e1a21;
+  --tier-a: #f27142;
+  --tier-a-foreground: #0e1a21;
+  --tier-b: #db5d2c;
+  --tier-b-foreground: #0e1a21;
+  --tier-c: #bd4102;
+  --tier-c-foreground: #ffffff;
+  --tier-d: #9c3607;
+  --tier-d-foreground: #ffffff;
+
+  --shadow-color: 200 60% 3%;
+}
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-display-face), var(--font-body), ui-sans-serif, system-ui,
+    sans-serif;
+
+  /* Major-third type scale (1.25). */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.45;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.4;
+  --text-xl: 1.5625rem;
+  --text-xl--line-height: 1.25;
+  --text-2xl: 1.953rem;
+  --text-2xl--line-height: 1.15;
+  --text-3xl: 2.441rem;
+  --text-3xl--line-height: 1.1;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* shadcn/ui token names, mapped onto the Metapick palette. */
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--foreground);
+  --color-secondary: var(--muted);
+  --color-secondary-foreground: var(--foreground);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--foreground);
+  --color-destructive: var(--negative);
+
+  --color-ally: var(--ally);
+  --color-ally-text: var(--ally-text);
+  --color-ally-soft: var(--ally-soft);
+  --color-enemy: var(--enemy);
+  --color-enemy-text: var(--enemy-text);
+  --color-enemy-soft: var(--enemy-soft);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+
+  --color-tier-ss: var(--tier-ss);
+  --color-tier-ss-foreground: var(--tier-ss-foreground);
+  --color-tier-s: var(--tier-s);
+  --color-tier-s-foreground: var(--tier-s-foreground);
+  --color-tier-a: var(--tier-a);
+  --color-tier-a-foreground: var(--tier-a-foreground);
+  --color-tier-b: var(--tier-b);
+  --color-tier-b-foreground: var(--tier-b-foreground);
+  --color-tier-c: var(--tier-c);
+  --color-tier-c-foreground: var(--tier-c-foreground);
+  --color-tier-d: var(--tier-d);
+  --color-tier-d-foreground: var(--tier-d-foreground);
+
+  --shadow-panel:
+    0 1px 2px hsl(var(--shadow-color) / 0.06),
+    0 8px 24px -12px hsl(var(--shadow-color) / 0.18);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: light;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-ally-soft);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Square tile with one clipped corner, echoing the map's diagonal. */
+@utility clip-corner {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--clip-size, 10px)) 0,
+    100% var(--clip-size, 10px),
+    100% 100%,
+    0 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::after,
+  ::before {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

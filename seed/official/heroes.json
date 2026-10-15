@@ -1,0 +1,2992 @@
+[
+ {
+  "id": 1,
+  "slug": "miya",
+  "name": "Miya",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 10,
+  "offense": 70,
+  "control_effect": 40,
+  "difficulty": 10,
+  "lore": "The Priestess of the Moon and protector of the Moonlit Forest.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_da894b37bfb5cadb32307f371f31918a.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f6d3f7f102e1f0fb9dc92b971d1128ec.png"
+ },
+ {
+  "id": 2,
+  "slug": "balmond",
+  "name": "Balmond",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Damage",
+   "Regen"
+  ],
+  "durability": 80,
+  "offense": 30,
+  "control_effect": 20,
+  "difficulty": 20,
+  "lore": "One day, the Orcs will break free from their shackles.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_df9a6990b1946d045e4d3a46c90725cf.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_80be8a6ffd65666746a218bdae1648a0.png"
+ },
+ {
+  "id": 3,
+  "slug": "saber",
+  "name": "Saber",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle",
+   "roam"
+  ],
+  "specialties": [
+   "Charge",
+   "Finisher"
+  ],
+  "durability": 20,
+  "offense": 60,
+  "control_effect": 60,
+  "difficulty": 30,
+  "lore": "A swordsman in pursuit of invincibility, used by Laboratory 1718.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6bbfac806f29d29f17fea9e98d2d2fee.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e3171fbce7f67586df05233bfa1635c5.png"
+ },
+ {
+  "id": 4,
+  "slug": "alice",
+  "name": "Alice",
+  "roles": [
+   "tank",
+   "mage"
+  ],
+  "lanes": [
+   "exp",
+   "jungle"
+  ],
+  "specialties": [
+   "Charge",
+   "Regen"
+  ],
+  "durability": 50,
+  "offense": 50,
+  "control_effect": 70,
+  "difficulty": 40,
+  "lore": "Queen of the Blood Demons and one of the two dominant powers in the Abyss.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_18300163a5a912a84adb52b8d59b4618.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_34013ffb449baa842122de6126e43259.png"
+ },
+ {
+  "id": 5,
+  "slug": "nana",
+  "name": "Nana",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Burst"
+  ],
+  "durability": 50,
+  "offense": 60,
+  "control_effect": 100,
+  "difficulty": 20,
+  "lore": "Little Leonin with no worries.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ee1e0d80d87bb614a0c552ef028f85ce.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ff9412a3d36170f98801085bb32f7bad.png"
+ },
+ {
+  "id": 6,
+  "slug": "tigreal",
+  "name": "Tigreal",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control"
+  ],
+  "durability": 80,
+  "offense": 10,
+  "control_effect": 100,
+  "difficulty": 10,
+  "lore": "Leader of the Light's Order, guardian of the Moniyan Empire.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8b30576754be1a4f8bebd09df8d6bec7.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2f346943d85318a466b5eba513682d7c.png"
+ },
+ {
+  "id": 7,
+  "slug": "alucard",
+  "name": "Alucard",
+  "roles": [
+   "fighter",
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 50,
+  "offense": 50,
+  "control_effect": 10,
+  "difficulty": 30,
+  "lore": "Demon hunter who detests the darkness.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_0f51b6906e08897aa02330d65b0deeac.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3c0135f79624621b63ff686f540b2a78.png"
+ },
+ {
+  "id": 8,
+  "slug": "karina",
+  "name": "Karina",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Finisher",
+   "Magic Damage"
+  ],
+  "durability": 50,
+  "offense": 70,
+  "control_effect": 10,
+  "difficulty": 50,
+  "lore": "Killer from the Dark Elf tribe who is fighting to rescue her sister Selena.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f49394186dc0e55d545da8377be83280.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_44a9d295baa79bf949fe562ba1b15f2e.png"
+ },
+ {
+  "id": 9,
+  "slug": "akai",
+  "name": "Akai",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Guard",
+   "Crowd Control"
+  ],
+  "durability": 90,
+  "offense": 30,
+  "control_effect": 90,
+  "difficulty": 30,
+  "lore": "The almighty panda hero of Stream Valley.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_28f223447f0174336ff0922d364d81d3.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_7ed2c59361619204e6e2134e2452bd8e.png"
+ },
+ {
+  "id": 10,
+  "slug": "franco",
+  "name": "Franco",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Initiator",
+   "Control"
+  ],
+  "durability": 80,
+  "offense": 10,
+  "control_effect": 100,
+  "difficulty": 20,
+  "lore": "Brave permafrost warrior, Bane's sworn enemy.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9bed3c0095335606e0ce616c6e5a8553.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e6e87e9b82ab7863cbcb678e544200e4.png"
+ },
+ {
+  "id": 11,
+  "slug": "bane",
+  "name": "Bane",
+  "roles": [
+   "fighter",
+   "mage"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Push",
+   "Burst"
+  ],
+  "durability": 50,
+  "offense": 60,
+  "control_effect": 40,
+  "difficulty": 40,
+  "lore": "Cruel pirate leader, Franco's sworn enemy.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_7e4e74bb161da0f477cc0d1819fa39e6.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_384c3e16350f91e191de2351d73a9980.png"
+ },
+ {
+  "id": 12,
+  "slug": "bruno",
+  "name": "Bruno",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Burst"
+  ],
+  "durability": 20,
+  "offense": 60,
+  "control_effect": 20,
+  "difficulty": 40,
+  "lore": "The captain of the Eruditio Rangers who returned to the \"pitch\" thanks to advanced prosthetics.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2a733ac5b7d1f97093e82940af6f5008.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_890739c136c183bc1a128867baf2a357.png"
+ },
+ {
+  "id": 13,
+  "slug": "clint",
+  "name": "Clint",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Burst"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 40,
+  "difficulty": 60,
+  "lore": "A fearless gunslinger and sheriff, carving his own justice into the sands with grit and unwavering resolve.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fd120c3e9261a233442ee88a1d7c9f58.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3f5ffe36b6e07ded46dac0ce665d971b.png"
+ },
+ {
+  "id": 14,
+  "slug": "rafaela",
+  "name": "Rafaela",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Regen",
+   "Guard"
+  ],
+  "durability": 60,
+  "offense": 20,
+  "control_effect": 70,
+  "difficulty": 40,
+  "lore": "An angel loved and respected by the people of this world.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_68277dce415742c4a98883151c693a07.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c4d4ab4a6353c0dd1481a59d57d09cdf.png"
+ },
+ {
+  "id": 15,
+  "slug": "eudora",
+  "name": "Eudora",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Control",
+   "Burst"
+  ],
+  "durability": 10,
+  "offense": 80,
+  "control_effect": 80,
+  "difficulty": 20,
+  "lore": "The elven mage who commands lightning at her fingertips to pierce prejudice and illuminate the path forward.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_87b2a655b254c136dce8976e21935a80.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_86c82f8ea9c76bfb38f5fa83320928e6.png"
+ },
+ {
+  "id": 16,
+  "slug": "zilong",
+  "name": "Zilong",
+  "roles": [
+   "fighter",
+   "assassin"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 20,
+  "offense": 50,
+  "control_effect": 60,
+  "difficulty": 10,
+  "lore": "Guardian of the Dragon Altar and the Oriental Fighter who inherited the Cloud Dragon's power.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9db57da4f0daef6d432676e4f19101ed.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d218e81f1b2383e3def3d6a14796d74e.png"
+ },
+ {
+  "id": 17,
+  "slug": "fanny",
+  "name": "Fanny",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Finisher"
+  ],
+  "durability": 60,
+  "offense": 70,
+  "control_effect": 10,
+  "difficulty": 100,
+  "lore": "A blade dancer in the battlefield.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3391df36d6dcc54dd1c417098e15ec59.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_eec0194a974ed18ceb71bf5d86457d4e.png"
+ },
+ {
+  "id": 18,
+  "slug": "layla",
+  "name": "Layla",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 10,
+  "offense": 80,
+  "control_effect": 10,
+  "difficulty": 20,
+  "lore": "The backbone of the Eruditio Rangers who is also known as the Shining Star.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b2b38e9406ea0de0b866db7674feea0f.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5a532838b7358fed58458c612da3d59b.png"
+ },
+ {
+  "id": 19,
+  "slug": "minotaur",
+  "name": "Minotaur",
+  "roles": [
+   "tank",
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control"
+  ],
+  "durability": 100,
+  "offense": 10,
+  "control_effect": 80,
+  "difficulty": 30,
+  "lore": "Minoan prince determined to restore his homeland.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3ecd2c0843df7ec85044dafff6bf4553.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1d1c6132b7cb0a2031972d45029967db.png"
+ },
+ {
+  "id": 20,
+  "slug": "lolita",
+  "name": "Lolita",
+  "roles": [
+   "support",
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Guard",
+   "Crowd Control"
+  ],
+  "durability": 100,
+  "offense": 10,
+  "control_effect": 90,
+  "difficulty": 50,
+  "lore": "Member of the Eruditio Rangers and protector of the Leviathan workshop.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_474cea36a4bfdc7bf7d94530853a99b2.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c58952634f940136c125ba17aad8376e.png"
+ },
+ {
+  "id": 21,
+  "slug": "hayabusa",
+  "name": "Hayabusa",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 40,
+  "offense": 50,
+  "control_effect": 10,
+  "difficulty": 60,
+  "lore": "The young leader of the Shadow Sect who wields his blade through moonless nights, walking the path of nindo without fear.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9cc074562291a02644a0ddae28eeaa42.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_261209d8154dbe2bf6d4292076b0437f.png"
+ },
+ {
+  "id": 22,
+  "slug": "freya",
+  "name": "Freya",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 60,
+  "offense": 70,
+  "control_effect": 60,
+  "difficulty": 40,
+  "lore": "The Valkyrie who guards the Northern Vale.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b9c34c88762ca8e66ccd4d84071bf0bc.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_703d1d626507f05ff72c799f53b123b9.png"
+ },
+ {
+  "id": 23,
+  "slug": "gord",
+  "name": "Gord",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Burst"
+  ],
+  "durability": 10,
+  "offense": 70,
+  "control_effect": 80,
+  "difficulty": 30,
+  "lore": "Dean of the Icarus School of the Magic Academy.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9513f5e10ec33f76747732eaf2082259.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_818d00fbb946feca543a95ff7b035ec5.png"
+ },
+ {
+  "id": 24,
+  "slug": "natalia",
+  "name": "Natalia",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle",
+   "roam"
+  ],
+  "specialties": [
+   "Chase",
+   "Finisher"
+  ],
+  "durability": 10,
+  "offense": 60,
+  "control_effect": 60,
+  "difficulty": 90,
+  "lore": "An assassin exiled by the Empire.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fbb5065b6ff174d1a20ccf5b7f523514.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8ca11ea3470a120eb3b011225e40bf08.png"
+ },
+ {
+  "id": 25,
+  "slug": "kagura",
+  "name": "Kagura",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Finisher"
+  ],
+  "durability": 30,
+  "offense": 90,
+  "control_effect": 40,
+  "difficulty": 90,
+  "lore": "A young spirit born of the deep longings stored within the Seimei Umbrella, she has finally stepped out of her dream, like a radiant bloom, in defiance of the dark night.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_da424b020b8ac8235d64a1b8a09aa749.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_81334e359e0b00a4797ce3c80a49ca73.png"
+ },
+ {
+  "id": 26,
+  "slug": "chou",
+  "name": "Chou",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "roam"
+  ],
+  "specialties": [
+   "Chase",
+   "Control"
+  ],
+  "durability": 50,
+  "offense": 30,
+  "control_effect": 80,
+  "difficulty": 60,
+  "lore": "A talented fighter with a heart of chivalry.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_158209b180032c4564b8f3bde8c48888.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_57d7c6285b0aeb615f8b4e8865e6dc7b.png"
+ },
+ {
+  "id": 27,
+  "slug": "sun",
+  "name": "Sun",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "jungle"
+  ],
+  "specialties": [
+   "Push",
+   "Damage"
+  ],
+  "durability": 50,
+  "offense": 50,
+  "control_effect": 10,
+  "difficulty": 50,
+  "lore": "The immortal Monkey King, resolute and unyielding like the mountain that bore him.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_117b5cdcc13232157075ce7b7f6177e9.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_da4cfb603eab2b975aa8f7630881e3a9.png"
+ },
+ {
+  "id": 28,
+  "slug": "alpha",
+  "name": "Alpha",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Charge",
+   "Damage"
+  ],
+  "durability": 60,
+  "offense": 40,
+  "control_effect": 70,
+  "difficulty": 10,
+  "lore": "A pure cyborg made by Laboratory 1718.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_86c9f91f530727db6498f920d19180d1.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e7ace719171987280795da2c885daf03.png"
+ },
+ {
+  "id": 29,
+  "slug": "ruby",
+  "name": "Ruby",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Regen"
+  ],
+  "durability": 90,
+  "offense": 20,
+  "control_effect": 90,
+  "difficulty": 40,
+  "lore": "A girl who grew up with Roger's help.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4b96c75b136290576d849309722d4d20.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_87a6b382c3e5b864cdcd8f7752151a96.png"
+ },
+ {
+  "id": 30,
+  "slug": "yi-sun-shin",
+  "name": "Yi Sun-shin",
+  "roles": [
+   "assassin",
+   "marksman"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Finisher",
+   "Chase"
+  ],
+  "durability": 40,
+  "offense": 90,
+  "control_effect": 40,
+  "difficulty": 60,
+  "lore": "Leader of the City of the Dragon Fleet.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_961378be3f498d42c25b3defd1635ad1.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e7ec78a2d7f84ef57deac87ec2b40dbf.png"
+ },
+ {
+  "id": 31,
+  "slug": "moskov",
+  "name": "Moskov",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Chase"
+  ],
+  "durability": 20,
+  "offense": 60,
+  "control_effect": 60,
+  "difficulty": 40,
+  "lore": "A warrior of the desert that embraced the darkness to seek his revenge.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a60a866ab6752a7f66766e720da987ea.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_67e50f5bc90601cd0596bd41d0572baa.png"
+ },
+ {
+  "id": 32,
+  "slug": "johnson",
+  "name": "Johnson",
+  "roles": [
+   "tank",
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Support",
+   "Crowd Control"
+  ],
+  "durability": 80,
+  "offense": 30,
+  "control_effect": 90,
+  "difficulty": 60,
+  "lore": "A super cyborg who can transform into a car and lead his teammates into battle.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_85ff988c6660b4d04f8dd3d40df988bb.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2ad944e166e69a31623ccdb1f4b38f91.png"
+ },
+ {
+  "id": 33,
+  "slug": "cyclops",
+  "name": "Cyclops",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Damage",
+   "Control"
+  ],
+  "durability": 30,
+  "offense": 100,
+  "control_effect": 70,
+  "difficulty": 40,
+  "lore": "A celestial traveler in the universe.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_68da456f9c01b2f88d29ee320db181ed.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_70d3453531870386192d20dd91aa882c.png"
+ },
+ {
+  "id": 34,
+  "slug": "estes",
+  "name": "Estes",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Regen",
+   "Guard"
+  ],
+  "durability": 70,
+  "offense": 10,
+  "control_effect": 20,
+  "difficulty": 30,
+  "lore": "Elf King who rules the Moon Elves.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ff4de3b0aabd1d2f6e184db1c831f6a9.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c10f7328de015adbc999254a72c912d8.png"
+ },
+ {
+  "id": 35,
+  "slug": "hilda",
+  "name": "Hilda",
+  "roles": [
+   "fighter",
+   "tank"
+  ],
+  "lanes": [
+   "roam",
+   "exp"
+  ],
+  "specialties": [
+   "Damage",
+   "Regen"
+  ],
+  "durability": 90,
+  "offense": 40,
+  "control_effect": 40,
+  "difficulty": 10,
+  "lore": "Inheritor of the Power of the Megalith.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_acd700708dc515f5c63a08f8835a9941.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e71f7aa2d75cd340da108318b3d5a3f1.png"
+ },
+ {
+  "id": 36,
+  "slug": "aurora",
+  "name": "Aurora",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Poke"
+  ],
+  "durability": 40,
+  "offense": 70,
+  "control_effect": 100,
+  "difficulty": 20,
+  "lore": "The Maiden of the Glacier who grants eternal remembrance in the legends of the North.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f9b2be0150361018bb98f941b9667c42.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_0c97d1f7482d3c18074fc27a61c0e802.png"
+ },
+ {
+  "id": 37,
+  "slug": "lapu-lapu",
+  "name": "Lapu-Lapu",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 80,
+  "offense": 40,
+  "control_effect": 40,
+  "difficulty": 60,
+  "lore": "Hero who defends the Vonetis Islands from outsiders",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_28036c4584c914c5aad4d2feeafb2452.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_585b7071cf12473e2b27a0121f6192c0.png"
+ },
+ {
+  "id": 38,
+  "slug": "vexana",
+  "name": "Vexana",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Control"
+  ],
+  "durability": 20,
+  "offense": 90,
+  "control_effect": 50,
+  "difficulty": 10,
+  "lore": "The young duchess guarding Necrokeep.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_743edd1702084c4ed247908d698bca77.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8a6f5f1c20d001819222bd251bb594d1.png"
+ },
+ {
+  "id": 39,
+  "slug": "roger",
+  "name": "Roger",
+  "roles": [
+   "fighter",
+   "marksman"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Finisher",
+   "Burst"
+  ],
+  "durability": 60,
+  "offense": 40,
+  "control_effect": 10,
+  "difficulty": 60,
+  "lore": "A werewolf wandering in the dark forest longing for revenge.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b40e578f13465b3ae99d0a9baac7ecc9.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_32304eb469dc241a15e3d539584f62a9.png"
+ },
+ {
+  "id": 40,
+  "slug": "karrie",
+  "name": "Karrie",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 30,
+  "offense": 80,
+  "control_effect": 10,
+  "difficulty": 40,
+  "lore": "Indifferent and powerful Yasson.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_294576f2bd0dcbcc9041031969d0eb09.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_141cd91af493fe420541835221d24c18.png"
+ },
+ {
+  "id": 41,
+  "slug": "gatotkaca",
+  "name": "Gatotkaca",
+  "roles": [
+   "tank",
+   "fighter"
+  ],
+  "lanes": [
+   "roam",
+   "exp"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Burst"
+  ],
+  "durability": 90,
+  "offense": 30,
+  "control_effect": 90,
+  "difficulty": 40,
+  "lore": "Warrior from the Arcadhem universe.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_96f9dbbc096e0f0a28f9b9e587d06a9c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b7a1b7f856deca1644516417db30acb6.png"
+ },
+ {
+  "id": 42,
+  "slug": "harley",
+  "name": "Harley",
+  "roles": [
+   "assassin",
+   "mage"
+  ],
+  "lanes": [
+   "jungle",
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Poke"
+  ],
+  "durability": 30,
+  "offense": 90,
+  "control_effect": 10,
+  "difficulty": 40,
+  "lore": "The young mage whose powers awakened once thrust into danger and who now arrives at the Magic Academy to study.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3aa6964c07a70f9b125da447f320e1ac.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3197492c35e6a2918d9196e4989cfda9.png"
+ },
+ {
+  "id": 43,
+  "slug": "irithel",
+  "name": "Irithel",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Burst"
+  ],
+  "durability": 10,
+  "offense": 80,
+  "control_effect": 10,
+  "difficulty": 30,
+  "lore": "A red-haired elf who lives and fights alongside her companion Leo.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a65d1e2ced64fbfdfcefdcfba719b3fd.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a1faeef3e2187f0938c2eeff4a7bf962.png"
+ },
+ {
+  "id": 44,
+  "slug": "grock",
+  "name": "Grock",
+  "roles": [
+   "tank",
+   "fighter"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Initiator"
+  ],
+  "durability": 90,
+  "offense": 40,
+  "control_effect": 80,
+  "difficulty": 50,
+  "lore": "Stone man awakened from sleep.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f8b8c8964d3202b7b762947ac96f1ed3.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b6bfa6adbe8c282a0b83f3f3a5bd85c7.png"
+ },
+ {
+  "id": 45,
+  "slug": "argus",
+  "name": "Argus",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Charge",
+   "Burst"
+  ],
+  "durability": 70,
+  "offense": 50,
+  "control_effect": 50,
+  "difficulty": 60,
+  "lore": "The angel who fell from light into darkness.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_0bd96658e5b8ec578226ea1622bd7231.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e6c706529acaf3f6c703405673af945b.png"
+ },
+ {
+  "id": 46,
+  "slug": "odette",
+  "name": "Odette",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Poke"
+  ],
+  "durability": 30,
+  "offense": 100,
+  "control_effect": 70,
+  "difficulty": 30,
+  "lore": "Innocent princess that grew up in the Swan Castle and genius mage that excels in sword and scepter.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d9251718a8894546ba04cfa9ca68dedc.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8ecd04f6d20c82508e69b839ca49131b.png"
+ },
+ {
+  "id": 47,
+  "slug": "lancelot",
+  "name": "Lancelot",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 40,
+  "offense": 50,
+  "control_effect": 10,
+  "difficulty": 50,
+  "lore": "Prodigal son and genius swordsman of House Baroque.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_dc4b821e49b904715172136017798da3.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9d7d32fc7cd9da8b47003178a279c046.png"
+ },
+ {
+  "id": 48,
+  "slug": "diggie",
+  "name": "Diggie",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Guard",
+   "Poke"
+  ],
+  "durability": 40,
+  "offense": 40,
+  "control_effect": 20,
+  "difficulty": 30,
+  "lore": "The owl scholar who can control time.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b1bdf46136cb8a7903dae6d58e8349cb.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_45ea26bab973b16071fe6e3d52e18a66.png"
+ },
+ {
+  "id": 49,
+  "slug": "hylos",
+  "name": "Hylos",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Guard",
+   "Initiator"
+  ],
+  "durability": 100,
+  "offense": 20,
+  "control_effect": 80,
+  "difficulty": 50,
+  "lore": "Centaur guarding the Misty Mountains.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_195ad9af866afaab415ae23a6be13b45.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d6af7bfc2f67e7bc30dec2c3bd115f91.png"
+ },
+ {
+  "id": 50,
+  "slug": "zhask",
+  "name": "Zhask",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 10,
+  "offense": 100,
+  "control_effect": 40,
+  "difficulty": 70,
+  "lore": "King of the Swarm who disrupts the balance of the universe.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d8f170087cb2d5b71bb22a0a4664a927.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d023ab101f269f45930140b8317a23d0.png"
+ },
+ {
+  "id": 51,
+  "slug": "helcurt",
+  "name": "Helcurt",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle",
+   "roam"
+  ],
+  "specialties": [
+   "Push",
+   "Burst"
+  ],
+  "durability": 30,
+  "offense": 50,
+  "control_effect": 50,
+  "difficulty": 40,
+  "lore": "The nightmare of the Abyss who's willing to betray anyone in order to survive.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6abf0c552b59b8ca4cbc1af3662ef176.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4fcae9e3a7db0bd9f49aea013839d217.png"
+ },
+ {
+  "id": 52,
+  "slug": "pharsa",
+  "name": "Pharsa",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Poke"
+  ],
+  "durability": 20,
+  "offense": 90,
+  "control_effect": 50,
+  "difficulty": 50,
+  "lore": "Crow Princess of Askati Forest.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_10151d43910e62f7aa9ce08df481a20f.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d3de1398e008eadbcc2d711ba43c8c42.png"
+ },
+ {
+  "id": 53,
+  "slug": "lesley",
+  "name": "Lesley",
+  "roles": [
+   "marksman",
+   "assassin"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Burst"
+  ],
+  "durability": 10,
+  "offense": 70,
+  "control_effect": 20,
+  "difficulty": 50,
+  "lore": "Adopted daughter of House Vance, a clandestine sniper.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_08770893183018333f54a98e63c41ee3.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fe343ddb9097b53f2d1e27d1c342add7.png"
+ },
+ {
+  "id": 54,
+  "slug": "jawhead",
+  "name": "Jawhead",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "roam"
+  ],
+  "specialties": [
+   "Charge",
+   "Burst"
+  ],
+  "durability": 60,
+  "offense": 30,
+  "control_effect": 60,
+  "difficulty": 60,
+  "lore": "Intelligent robot used to protect little Ailee.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_bd87c30b6c7de6ae3b5aa56162c48c8b.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6761b204394f78d20d60c8bd707a28b2.png"
+ },
+ {
+  "id": 55,
+  "slug": "angela",
+  "name": "Angela",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Guard",
+   "Support"
+  ],
+  "durability": 30,
+  "offense": 20,
+  "control_effect": 50,
+  "difficulty": 60,
+  "lore": "Artificial human made in Laboratory 1718.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c7e0183956b2c2fd6d3fa0b18fe46917.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_07643d046530288eb0ff56f13b5e31dd.png"
+ },
+ {
+  "id": 56,
+  "slug": "gusion",
+  "name": "Gusion",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle",
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Magic Damage"
+  ],
+  "durability": 30,
+  "offense": 90,
+  "control_effect": 10,
+  "difficulty": 80,
+  "lore": "Rebellious son of House Paxley.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c6cd232de60da5372a7101a203e56554.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b0de2d71aeb40a289c44288b1861b641.png"
+ },
+ {
+  "id": 57,
+  "slug": "valir",
+  "name": "Valir",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Damage",
+   "Guard"
+  ],
+  "durability": 20,
+  "offense": 70,
+  "control_effect": 70,
+  "difficulty": 20,
+  "lore": "Heir to Fire Throat, fire mage.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_bf16690876761b80822df90eb3320d69.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_88b057a88cdb623936e6d9d49e081aa7.png"
+ },
+ {
+  "id": 58,
+  "slug": "martis",
+  "name": "Martis",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Finisher",
+   "Charge"
+  ],
+  "durability": 60,
+  "offense": 30,
+  "control_effect": 50,
+  "difficulty": 60,
+  "lore": "Persistent and victorious Asura King.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_cc8124b0eb6ca22d950b000744d69fbf.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2fe6e9c466dbcf83d81b6f37e311bfcd.png"
+ },
+ {
+  "id": 59,
+  "slug": "uranus",
+  "name": "Uranus",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Regen"
+  ],
+  "durability": 100,
+  "offense": 20,
+  "control_effect": 20,
+  "difficulty": 20,
+  "lore": "Guardian made from lightning and air, guards the Celestial Palace.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2e15a0a506aaecd9b3de40a8cc9f7ec7.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8d6008a84213058d99ce54a7d445f9d3.png"
+ },
+ {
+  "id": 60,
+  "slug": "hanabi",
+  "name": "Hanabi",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 20,
+  "offense": 70,
+  "control_effect": 80,
+  "difficulty": 10,
+  "lore": "Leader of the Scarlet Sect, in the Scarlet Shadow of the Cadia Riverlands.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8a9c1966feb34e85d7bdcc1ed01ffb5d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_aa86eb7d1c6db212d6cfd3921a8dfab2.png"
+ },
+ {
+  "id": 61,
+  "slug": "chang-e",
+  "name": "Chang'e",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Burst"
+  ],
+  "durability": 40,
+  "offense": 80,
+  "control_effect": 20,
+  "difficulty": 40,
+  "lore": "Naughty and cute disciple of the Great Dragon.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_46cfe9c30e8a14f85b4d022496aca274.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_91e96418810894dfb8b74a3c1a58cc8d.png"
+ },
+ {
+  "id": 62,
+  "slug": "kaja",
+  "name": "Kaja",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Initiator",
+   "Charge"
+  ],
+  "durability": 80,
+  "offense": 20,
+  "control_effect": 70,
+  "difficulty": 60,
+  "lore": "Leader of Nazar who guards the Celestial Palace.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d558bb881e18a070eaeda1e1fdc248a8.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_92b841a4898314b3a4f1996492bb0b24.png"
+ },
+ {
+  "id": 63,
+  "slug": "selena",
+  "name": "Selena",
+  "roles": [
+   "assassin",
+   "mage"
+  ],
+  "lanes": [
+   "mid",
+   "roam"
+  ],
+  "specialties": [
+   "Initiator",
+   "Finisher"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 100,
+  "difficulty": 80,
+  "lore": "Dark Elf girl who fell into the Abyss.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c3f967121519ae40509c5b2fdf52b19d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_0e2fbc7a5f2e4ba45f7a740daf1910f6.png"
+ },
+ {
+  "id": 64,
+  "slug": "aldous",
+  "name": "Aldous",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Burst",
+   "Support"
+  ],
+  "durability": 70,
+  "offense": 30,
+  "control_effect": 50,
+  "difficulty": 70,
+  "lore": "The guardian of the Minoan Labyrinth.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_0eb32187d08f14779585a8be53b83f01.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4222a9efc85e75188d3048bd7d042d32.png"
+ },
+ {
+  "id": 65,
+  "slug": "claude",
+  "name": "Claude",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Burst",
+   "Chase"
+  ],
+  "durability": 30,
+  "offense": 60,
+  "control_effect": 10,
+  "difficulty": 60,
+  "lore": "An excellent thief who comes and goes without a trace.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e1097b9d3e1d5e9f14600d32e8b18acd.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_526c87ad0a41e34499fedefdc90357c6.png"
+ },
+ {
+  "id": 66,
+  "slug": "vale",
+  "name": "Vale",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Crowd Control"
+  ],
+  "durability": 20,
+  "offense": 100,
+  "control_effect": 70,
+  "difficulty": 10,
+  "lore": "The heir to Wind Fort, a wind mage.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2a7a8d1531a1c4f8524880413535348d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6045061856a83522959d160c3a9e70b7.png"
+ },
+ {
+  "id": 67,
+  "slug": "leomord",
+  "name": "Leomord",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 70,
+  "offense": 50,
+  "control_effect": 30,
+  "difficulty": 30,
+  "lore": "A sworn knight who vowed to guard Necrokeep until his last breath.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_554cdf13a7587fe08c5deed60132c61c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a7527695da7a9a4ef62739861205b57b.png"
+ },
+ {
+  "id": 68,
+  "slug": "lunox",
+  "name": "Lunox",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Damage"
+  ],
+  "durability": 30,
+  "offense": 90,
+  "control_effect": 20,
+  "difficulty": 90,
+  "lore": "A miraculous creature born in Twilight Orb.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e162688afdcaf3f6498af30badfe31c5.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_86a0c8cc7b2fc883b59a6dd63c766aef.png"
+ },
+ {
+  "id": 69,
+  "slug": "hanzo",
+  "name": "Hanzo",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Poke",
+   "Burst"
+  ],
+  "durability": 70,
+  "offense": 80,
+  "control_effect": 20,
+  "difficulty": 50,
+  "lore": "Genius ninja in the Shadow Sect who is at the crossroads.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d2d28d2fcb060726fa27553920ca1a33.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_eabfca6f5eec4128626dba78d6aecc81.png"
+ },
+ {
+  "id": 70,
+  "slug": "belerick",
+  "name": "Belerick",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Regen"
+  ],
+  "durability": 90,
+  "offense": 40,
+  "control_effect": 100,
+  "difficulty": 10,
+  "lore": "A kind and fraternal elemental creature.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5f2a9eca0bafd4ed8dc39a93c771b3af.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_29fa60e268304ff61fce131a158e0ad2.png"
+ },
+ {
+  "id": 71,
+  "slug": "kimmy",
+  "name": "Kimmy",
+  "roles": [
+   "marksman",
+   "mage"
+  ],
+  "lanes": [
+   "mid",
+   "gold"
+  ],
+  "specialties": [
+   "Damage",
+   "Magic Damage"
+  ],
+  "durability": 30,
+  "offense": 80,
+  "control_effect": 50,
+  "difficulty": 60,
+  "lore": "Born into a military family, she earned recognition through her own merit as the bold yet laid-back \"tough girl\" of the Border Guard.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_61295dfefd369004e5e4a7f4fc86647b.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_53a544034aaaf52b773be2d2450d16d4.png"
+ },
+ {
+  "id": 72,
+  "slug": "thamuz",
+  "name": "Thamuz",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 70,
+  "offense": 40,
+  "control_effect": 20,
+  "difficulty": 60,
+  "lore": "The lord of the Fire Demons who seeks to reignite the flames of the Abyss through war and violence.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b5ad55e408b68acf6a86e7ff76f5f569.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2fc38a2e465b275a72c3308152cab77d.png"
+ },
+ {
+  "id": 73,
+  "slug": "harith",
+  "name": "Harith",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 40,
+  "offense": 50,
+  "control_effect": 10,
+  "difficulty": 60,
+  "lore": "Leonin boy who came to the Moniyan Empire from Azrya.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d228a823b477fdf6c458c829c2e62bcf.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1b798782cb64820af74f9365dbbf4689.png"
+ },
+ {
+  "id": 74,
+  "slug": "minsitthar",
+  "name": "Minsitthar",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "roam"
+  ],
+  "specialties": [
+   "Initiator",
+   "Crowd Control"
+  ],
+  "durability": 60,
+  "offense": 40,
+  "control_effect": 80,
+  "difficulty": 30,
+  "lore": "A young king that led the people of Mahar Pura to victory against invaders.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c5d24a1dad6cef21de2698a4ed1d80ce.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1c74ac9a30e2fc665c118dce09a721d5.png"
+ },
+ {
+  "id": 75,
+  "slug": "kadita",
+  "name": "Kadita",
+  "roles": [
+   "mage",
+   "assassin"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Charge"
+  ],
+  "durability": 40,
+  "offense": 80,
+  "control_effect": 80,
+  "difficulty": 60,
+  "lore": "The Ocean Goddess who wields the Trident of the Seas to cleanse the seas.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_99c0a77d0e01b06ad3f4351f8ef2869c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_812f998f0d153ace42c9c55a10dd2533.png"
+ },
+ {
+  "id": 76,
+  "slug": "faramis",
+  "name": "Faramis",
+  "roles": [
+   "support",
+   "mage"
+  ],
+  "lanes": [
+   "mid",
+   "roam"
+  ],
+  "specialties": [
+   "Guard",
+   "Charge"
+  ],
+  "durability": 40,
+  "offense": 60,
+  "control_effect": 10,
+  "difficulty": 50,
+  "lore": "A necromancer in Necrokeep who's determined to find a cure for the Mist.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_04e575d648d7f7ac1174f4369595c3a2.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e6b0467527533e7882bcb7967db96063.png"
+ },
+ {
+  "id": 77,
+  "slug": "badang",
+  "name": "Badang",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "roam",
+   "exp"
+  ],
+  "specialties": [
+   "Charge",
+   "Burst"
+  ],
+  "durability": 40,
+  "offense": 70,
+  "control_effect": 50,
+  "difficulty": 30,
+  "lore": "The guardian of Solari Isle who wields the immense power of a sea beast.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a81815e34246147b672d48209089da9c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ae19689ee111addb7f2c0e6f8f30a4ec.png"
+ },
+ {
+  "id": 78,
+  "slug": "khufra",
+  "name": "Khufra",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Initiator",
+   "Crowd Control"
+  ],
+  "durability": 90,
+  "offense": 20,
+  "control_effect": 100,
+  "difficulty": 60,
+  "lore": "Sealed ancient tyrant.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_2fe99f4001211d18b3d2b95d0d3dc395.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6541be939404a7e45c28a30bd2f2aa16.png"
+ },
+ {
+  "id": 79,
+  "slug": "granger",
+  "name": "Granger",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Burst",
+   "Finisher"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 10,
+  "difficulty": 30,
+  "lore": "A mysterious demon hunter that operates outside the conventions of the Church of Light. Always seen with a violin case in hand, he hunts down demons with his two soul-devouring weapons.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a7729262d5b4abdc34ae5181e964c235.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f44e2457fb0f3539937c6a181e5dcbc4.png"
+ },
+ {
+  "id": 80,
+  "slug": "guinevere",
+  "name": "Guinevere",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Burst",
+   "Magic Damage"
+  ],
+  "durability": 40,
+  "offense": 50,
+  "control_effect": 70,
+  "difficulty": 40,
+  "lore": "Aristocratic girl with a strange temperament, loved by her elder brother Lancelot.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_901bdd5d4432a2c0290dfc71df615a5a.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c6ee596036c7b8e25760559ab67ff698.png"
+ },
+ {
+  "id": 81,
+  "slug": "esmeralda",
+  "name": "Esmeralda",
+  "roles": [
+   "tank",
+   "mage"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Regen",
+   "Mixed Damage"
+  ],
+  "durability": 90,
+  "offense": 30,
+  "control_effect": 60,
+  "difficulty": 70,
+  "lore": "A mysterious astrologer.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4661a64a2c6b724e7b67032fcbface27.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_08a84eb0f690c4c4f3865d924c704b25.png"
+ },
+ {
+  "id": 82,
+  "slug": "terizla",
+  "name": "Terizla",
+  "roles": [
+   "fighter",
+   "tank"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Burst",
+   "Crowd Control"
+  ],
+  "durability": 90,
+  "offense": 30,
+  "control_effect": 40,
+  "difficulty": 20,
+  "lore": "Once an eccentric master smith, but now an avenger siding with the Abyss.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c4bb270c28c7be663f57e993b0d6d3d8.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_7fe813b1c6b84e6fb234d0428c0c7cd7.png"
+ },
+ {
+  "id": 83,
+  "slug": "x-borg",
+  "name": "X.Borg",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Regen",
+   "Burst"
+  ],
+  "durability": 80,
+  "offense": 30,
+  "control_effect": 10,
+  "difficulty": 60,
+  "lore": "An uncontrollable flame that's determined to take revenge against Eruditio.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_efe9c7ed8d8f84f1bb0f88a3e08de5fc.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3f372795b38be1e2b2037229928bfe57.png"
+ },
+ {
+  "id": 84,
+  "slug": "ling",
+  "name": "Ling",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 50,
+  "offense": 60,
+  "control_effect": 30,
+  "difficulty": 60,
+  "lore": "A graceful, free-soaring Finch and the Oriental Fighter who inherited the Vermilion Bird's power.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_017bade52b9fc94bbc12615de6d75c08.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_563f09baf8ad4675dace2f94af6436de.png"
+ },
+ {
+  "id": 85,
+  "slug": "dyrroth",
+  "name": "Dyrroth",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "jungle"
+  ],
+  "specialties": [
+   "Charge",
+   "Burst"
+  ],
+  "durability": 50,
+  "offense": 50,
+  "control_effect": 20,
+  "difficulty": 50,
+  "lore": "Once a noble prince of the Moniyan Empire, he was abducted by Alice, the Queen of the Blood Demons, and transformed into the Prince of the Abyss.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8ec13b59871b2862d773beac2d69fa3e.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ce1031d6d4e49f33719bd3d833a9b45b.png"
+ },
+ {
+  "id": 86,
+  "slug": "lylia",
+  "name": "Lylia",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Push",
+   "Damage"
+  ],
+  "durability": 50,
+  "offense": 100,
+  "control_effect": 20,
+  "difficulty": 60,
+  "lore": "A funny and witted little witch.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_706573f138055c3df3df94948b4f26bd.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_84a089c2608b908b87c01ce7af5c3162.png"
+ },
+ {
+  "id": 87,
+  "slug": "baxia",
+  "name": "Baxia",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "jungle",
+   "roam"
+  ],
+  "specialties": [
+   "Support",
+   "Damage"
+  ],
+  "durability": 100,
+  "offense": 30,
+  "control_effect": 60,
+  "difficulty": 30,
+  "lore": "The Mystic Tortoise of the Oriental Fighters, a shield-wielding, unstoppable wheel of flames.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_80e408203869ca99302af195ac4f756c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c2ef0eba78b5b1c21c50cb9b696ac71b.png"
+ },
+ {
+  "id": 88,
+  "slug": "masha",
+  "name": "Masha",
+  "roles": [
+   "fighter",
+   "tank"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Push",
+   "Damage"
+  ],
+  "durability": 50,
+  "offense": 70,
+  "control_effect": 30,
+  "difficulty": 30,
+  "lore": "Guardian of the Direbears.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4d79ba6ebb0a0f2bf542917f0b19d056.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_087f15d931d74f75b577f5aff372ce25.png"
+ },
+ {
+  "id": 89,
+  "slug": "wanwan",
+  "name": "Wanwan",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Burst"
+  ],
+  "durability": 20,
+  "offense": 60,
+  "control_effect": 30,
+  "difficulty": 80,
+  "lore": "The Agile Tiger of the Oriental Fighters and a lively young girl who wields the Crossbow of Tang.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_44bfa1dc44deb8d7620605faaa9ffae7.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d52dd5ccf7d25cb590dc57e48c1df8d2.png"
+ },
+ {
+  "id": 90,
+  "slug": "silvanna",
+  "name": "Silvanna",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Initiator",
+   "Magic Damage"
+  ],
+  "durability": 50,
+  "offense": 40,
+  "control_effect": 70,
+  "difficulty": 30,
+  "lore": "Princess of the Moniyan Empire and queen regent.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5e7b297af7c6e32a420b897aa4998071.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1582f0613b6c03e1f4f147a3da23d70a.png"
+ },
+ {
+  "id": 91,
+  "slug": "cecilion",
+  "name": "Cecilion",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Burst"
+  ],
+  "durability": 40,
+  "offense": 100,
+  "control_effect": 50,
+  "difficulty": 40,
+  "lore": "Carmilla's Blood Demon lover.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_045399c265021d47da6512e6de20b64f.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c0bb649180f1f1bfd0ba81b78ee35844.png"
+ },
+ {
+  "id": 92,
+  "slug": "carmilla",
+  "name": "Carmilla",
+  "roles": [
+   "support",
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Damage"
+  ],
+  "durability": 90,
+  "offense": 20,
+  "control_effect": 80,
+  "difficulty": 10,
+  "lore": "The girl who became a Blood Demon for love.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6fb8f120dafdcbc1b5da2a2667016ad5.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_429bbf3c9f1b16aa45bdfdeac80761e5.png"
+ },
+ {
+  "id": 93,
+  "slug": "atlas",
+  "name": "Atlas",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Initiator"
+  ],
+  "durability": 80,
+  "offense": 10,
+  "control_effect": 90,
+  "difficulty": 50,
+  "lore": "Abysmal Sea creature who broke free from the seal.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d974ac796678180ff8724b88e192898b.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f7b43ccce0423507f62bbe555e9f2395.png"
+ },
+ {
+  "id": 94,
+  "slug": "popol-and-kupa",
+  "name": "Popol and Kupa",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "jungle",
+   "gold"
+  ],
+  "specialties": [
+   "Push",
+   "Burst"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 70,
+  "difficulty": 60,
+  "lore": "Boy and an Icefield Wolf, partners who understand each other well.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1acbb23b9a50f412104047a60eb18808.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_08f8fb30b35d029e172e0ed9be3be09d.png"
+ },
+ {
+  "id": 95,
+  "slug": "yu-zhong",
+  "name": "Yu Zhong",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Regen",
+   "Damage"
+  ],
+  "durability": 70,
+  "offense": 40,
+  "control_effect": 70,
+  "difficulty": 70,
+  "lore": "Yu Zhong, the reincarnation of the Black Dragon, intends to unify the Cadia Riverlands through conquest and usher in an era of prosperity.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9823ce4fe5eb89c0082b24f6d5ea67f6.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_dfed2cf32adddc8c9a87fd679321a977.png"
+ },
+ {
+  "id": 96,
+  "slug": "luo-yi",
+  "name": "Luo Yi",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Support",
+   "Crowd Control"
+  ],
+  "durability": 20,
+  "offense": 100,
+  "control_effect": 40,
+  "difficulty": 80,
+  "lore": "Seeking to revive an ancient past, she is the sole being who has mastered the secrets of Yin and Yang.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_26e03fd72532d11c7b32911b95b8d559.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e8f1e6dd0d7864b66bda10ef65242dd6.png"
+ },
+ {
+  "id": 97,
+  "slug": "benedetta",
+  "name": "Benedetta",
+  "roles": [
+   "assassin",
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 60,
+  "offense": 50,
+  "control_effect": 20,
+  "difficulty": 80,
+  "lore": "Female warrior defending the Barren Lands against demon invasion.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b4a5e537894bdc00787e80e4d3ada5dd.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_11bf645722b931631c3a63d5be7da068.png"
+ },
+ {
+  "id": 98,
+  "slug": "khaleed",
+  "name": "Khaleed",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "roam",
+   "exp"
+  ],
+  "specialties": [
+   "Damage",
+   "Regen"
+  ],
+  "durability": 80,
+  "offense": 50,
+  "control_effect": 50,
+  "difficulty": 50,
+  "lore": "A sand-walking intrepid Clan leader.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_540a6a9d343842674ce002082366ec9d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9f6754dc95d5afbacfae441ae43b6051.png"
+ },
+ {
+  "id": 99,
+  "slug": "barats",
+  "name": "Barats",
+  "roles": [
+   "tank",
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "jungle"
+  ],
+  "specialties": [
+   "Damage",
+   "Crowd Control"
+  ],
+  "durability": 100,
+  "offense": 30,
+  "control_effect": 90,
+  "difficulty": 40,
+  "lore": "Adventurer riding a dragon lizard.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_6495be044c2d28106e200f6918391d54.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_dd47c9cac5a4848e8d4d0246a6739fec.png"
+ },
+ {
+  "id": 100,
+  "slug": "brody",
+  "name": "Brody",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Burst",
+   "Finisher"
+  ],
+  "durability": 40,
+  "offense": 70,
+  "control_effect": 50,
+  "difficulty": 50,
+  "lore": "A ranger of the frontier with a right arm seeped in darkness, he channels pain into arrows to strike down invaders; he is the \"Lone Star\" that pierces the nights of the Barren Lands.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_cbb309b63cdf838fce79bd9cb95d4ed7.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_0dd42d343fcd6298ca65eec2a65a6b77.png"
+ },
+ {
+  "id": 101,
+  "slug": "yve",
+  "name": "Yve",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Poke",
+   "Burst"
+  ],
+  "durability": 40,
+  "offense": 80,
+  "control_effect": 40,
+  "difficulty": 50,
+  "lore": "Keeper of the equilibrium of the universe.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d9b0a1d92b1c4b3643d6332fd66aa8e6.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b98852e20d4e492a55c25565ed1a101e.png"
+ },
+ {
+  "id": 102,
+  "slug": "mathilda",
+  "name": "Mathilda",
+  "roles": [
+   "support",
+   "assassin"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Initiator",
+   "Guard"
+  ],
+  "durability": 80,
+  "offense": 20,
+  "control_effect": 40,
+  "difficulty": 70,
+  "lore": "A brave girl who stands up and doesn't fear power.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_24d08ed788a9f5984bcf3b732ddcaf04.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d7c6f7896c10c7938994ba4c5a28c9c1.png"
+ },
+ {
+  "id": 103,
+  "slug": "paquito",
+  "name": "Paquito",
+  "roles": [
+   "fighter",
+   "assassin"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 60,
+  "offense": 50,
+  "control_effect": 40,
+  "difficulty": 90,
+  "lore": "A mortal hero who fights demons with nothing but his fists—and the iron will to protect his tribe.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5ab87805b9107b126a3bab64a8a199ad.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e57019805d928c886bd0ae01b8947c30.png"
+ },
+ {
+  "id": 104,
+  "slug": "gloo",
+  "name": "Gloo",
+  "roles": [
+   "tank"
+  ],
+  "lanes": [
+   "roam",
+   "exp"
+  ],
+  "specialties": [
+   "Regen",
+   "Control"
+  ],
+  "durability": 100,
+  "offense": 30,
+  "control_effect": 100,
+  "difficulty": 60,
+  "lore": "A magical amalgamation of cute, mischievous creatures that dwells deep in the Shadow Swamp.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c472fe0233e5ef84a3ac9ba4a229d09f.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_088134981d9d9753f9d77648c0361fa3.png"
+ },
+ {
+  "id": 105,
+  "slug": "beatrix",
+  "name": "Beatrix",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 30,
+  "offense": 80,
+  "control_effect": 10,
+  "difficulty": 70,
+  "lore": "A confident inventor girl.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4687eca874feec9017b448a0b9110d65.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_564a14b35d0f172bdd7b3d04b33a1d68.png"
+ },
+ {
+  "id": 106,
+  "slug": "phoveus",
+  "name": "Phoveus",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Regen",
+   "Damage"
+  ],
+  "durability": 60,
+  "offense": 80,
+  "control_effect": 50,
+  "difficulty": 40,
+  "lore": "A former soldier from the border of the Empire who took on the chains of sin to defend his people.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_af21c0dd8b5308c27974bff900803a9a.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9abf963fae03d641bac528f6fab2b8c2.png"
+ },
+ {
+  "id": 107,
+  "slug": "natan",
+  "name": "Natan",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Burst",
+   "Magic Damage"
+  ],
+  "durability": 20,
+  "offense": 60,
+  "control_effect": 20,
+  "difficulty": 30,
+  "lore": "The savior who travels through time and space.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_da02742f59013365923b216420bc4082.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4431d3412e6cff8fccc5cdf67454a08b.png"
+ },
+ {
+  "id": 108,
+  "slug": "aulus",
+  "name": "Aulus",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Damage",
+   "Charge"
+  ],
+  "durability": 60,
+  "offense": 60,
+  "control_effect": 10,
+  "difficulty": 20,
+  "lore": "A Leonin warrior who inherited his predecessor's resolve, cleaving his own path with burning ferocity.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1366d775809e52ee6526b5b58d93cdff.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b18a4e09124187587ef09826dee69ec3.png"
+ },
+ {
+  "id": 109,
+  "slug": "aamon",
+  "name": "Aamon",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Magic Damage"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 10,
+  "difficulty": 60,
+  "lore": "The aloof Duke of Castle Aberleen.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_b3a7602fe7ffd1e54bf8ea79ceadfa72.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_e38297f23f285b88272894aa3c797c09.png"
+ },
+ {
+  "id": 110,
+  "slug": "valentina",
+  "name": "Valentina",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Finisher"
+  ],
+  "durability": 50,
+  "offense": 40,
+  "control_effect": 40,
+  "difficulty": 80,
+  "lore": "Former head of House Paxley who'd stop at nothing to revive her lover.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_24837021ec9d7aaf41b13fa55b6d13c9.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_646f22a778efda450ce3470683bd01c2.png"
+ },
+ {
+  "id": 111,
+  "slug": "edith",
+  "name": "Edith",
+  "roles": [
+   "tank",
+   "marksman"
+  ],
+  "lanes": [
+   "exp",
+   "roam"
+  ],
+  "specialties": [
+   "Control",
+   "Burst"
+  ],
+  "durability": 70,
+  "offense": 30,
+  "control_effect": 100,
+  "difficulty": 40,
+  "lore": "Forsaken Warden with sealed memories.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_daab57918de01a6d5bb2ed6f45808a7e.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_098891b01e7093a49228688bbad0cde8.png"
+ },
+ {
+  "id": 112,
+  "slug": "floryn",
+  "name": "Floryn",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Poke",
+   "Guard"
+  ],
+  "durability": 60,
+  "offense": 10,
+  "control_effect": 70,
+  "difficulty": 30,
+  "lore": "A kind-hearted girl who is determined to spread greenery throughout the world.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5a57b91e4914cf071a3849e352e530a5.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_fd49844ff3811155b149ea6bf67be24e.png"
+ },
+ {
+  "id": 113,
+  "slug": "yin",
+  "name": "Yin",
+  "roles": [
+   "fighter",
+   "assassin"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Burst",
+   "Control"
+  ],
+  "durability": 50,
+  "offense": 60,
+  "control_effect": 80,
+  "difficulty": 40,
+  "lore": "A young martial artist on a journey to defeat the Evil God that dwells within him.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_ee1c12c84f49514a30e405fb5c617796.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_c0452c120fee6e5b762d7a2dd1c24cb8.png"
+ },
+ {
+  "id": 114,
+  "slug": "melissa",
+  "name": "Melissa",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 20,
+  "offense": 90,
+  "control_effect": 40,
+  "difficulty": 50,
+  "lore": "A girl with cursed needles who runs a tailor shop and solves problems for clients.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_1fa7436301fea3f13fbcd4772051d22d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_a19559a08211b32279c27d584478a4b2.png"
+ },
+ {
+  "id": 115,
+  "slug": "xavier",
+  "name": "Xavier",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Damage",
+   "Burst"
+  ],
+  "durability": 20,
+  "offense": 100,
+  "control_effect": 80,
+  "difficulty": 50,
+  "lore": "Former member of the Knights of Light who's determined to forge a path of his own.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_df0a8dfc494f85ed9bbc4512cc1e5d3c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_24165af02711d3154a80b97d22042bef.png"
+ },
+ {
+  "id": 116,
+  "slug": "julian",
+  "name": "Julian",
+  "roles": [
+   "assassin",
+   "fighter"
+  ],
+  "lanes": [
+   "jungle",
+   "exp"
+  ],
+  "specialties": [
+   "Chase",
+   "Magic Damage"
+  ],
+  "durability": 60,
+  "offense": 60,
+  "control_effect": 70,
+  "difficulty": 50,
+  "lore": "A Raven assassin of the Church of Light, a young boy who's in search of his home…",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5511ddc0ad2789b525f32ef572b017eb.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_af290850533bcaeaf7630d573969a74c.png"
+ },
+ {
+  "id": 117,
+  "slug": "fredrinn",
+  "name": "Fredrinn",
+  "roles": [
+   "fighter",
+   "tank"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Damage",
+   "Chase"
+  ],
+  "durability": 80,
+  "offense": 50,
+  "control_effect": 60,
+  "difficulty": 60,
+  "lore": "A master treasure appraiser in Los Pecados accumulating wealth and searching for his lost friend.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_dea170bfd5f26c41fb04e5edf72afedb.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_3834313607fefe7bf2c895f042d60f10.png"
+ },
+ {
+  "id": 118,
+  "slug": "joy",
+  "name": "Joy",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Damage"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 10,
+  "difficulty": 90,
+  "lore": "The \"Child of Miracle\" who returned to the Leonins after years of wandering.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_d3a3a55c22000ae78732fed8cba2efef.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/homepage/100_1ecb59cb5508be26cd90ac70d2177b76.png"
+ },
+ {
+  "id": 119,
+  "slug": "novaria",
+  "name": "Novaria",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Burst",
+   "Poke"
+  ],
+  "durability": 30,
+  "offense": 90,
+  "control_effect": 30,
+  "difficulty": 70,
+  "lore": "The young girl who seeks to rebuild the Star Atlas in order to solve the secrets of the Stars.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_57eeea6d5bd8d21229de8df79751db9f.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/homepage/100_9e662ec509bca27d4eeaac6c05d670d1.png"
+ },
+ {
+  "id": 120,
+  "slug": "arlott",
+  "name": "Arlott",
+  "roles": [
+   "fighter",
+   "assassin"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Charge",
+   "Burst"
+  ],
+  "durability": 60,
+  "offense": 60,
+  "control_effect": 50,
+  "difficulty": 70,
+  "lore": "A demon human hybrid wielding two lances with a thirst for vengeance against both the Church and demons.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f666faa5ec6be5353f10dcd1d8997a42.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/homepage/100_177c32c19a2ad87c028fd9a6fcf08cb1.png"
+ },
+ {
+  "id": 121,
+  "slug": "ixia",
+  "name": "Ixia",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 30,
+  "offense": 70,
+  "control_effect": 50,
+  "difficulty": 30,
+  "lore": "The leader of Bad Soul and self-proclaimed inventor, she wields a homemade weapon powered by a stolen Starlium reactor.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_f070d82521ecd2e14d4ef3f25880830a.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/homepage/100_ad36ae3824bc4853dcc2f48fef767be1.png"
+ },
+ {
+  "id": 122,
+  "slug": "nolan",
+  "name": "Nolan",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 30,
+  "offense": 60,
+  "control_effect": 20,
+  "difficulty": 60,
+  "lore": "A scholar that wanders the universe with split souls to save his daughter.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9012ee9f73fbb4db4e1953e5fb5172e1.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/homepage/100_cf1a85704a0636d70f49113b2dd119bd.png"
+ },
+ {
+  "id": 123,
+  "slug": "cici",
+  "name": "Cici",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Damage",
+   "Regen"
+  ],
+  "durability": 50,
+  "offense": 60,
+  "control_effect": 30,
+  "difficulty": 20,
+  "lore": "A cheerful performer who spreads fun and wonderment wherever she goes.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_60e3e11da30f404c77fff9e22d3bdc72.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/mlbb/homepage/100_83e246a50d2a27fe0d18f991dcb1bccb.png"
+ },
+ {
+  "id": 124,
+  "slug": "chip",
+  "name": "Chip",
+  "roles": [
+   "support",
+   "tank"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Support",
+   "Crowd Control"
+  ],
+  "durability": 80,
+  "offense": 20,
+  "control_effect": 60,
+  "difficulty": 50,
+  "lore": "A carefree, genetically enhanced fox that wields advanced portal technology.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_79224d297f14377ad2eda8543432330d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/d57e13a90045a712484d0b2087e506c6.webp"
+ },
+ {
+  "id": 125,
+  "slug": "zhuxin",
+  "name": "Zhuxin",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Damage",
+   "Crowd Control"
+  ],
+  "durability": 40,
+  "offense": 80,
+  "control_effect": 80,
+  "difficulty": 40,
+  "lore": "A mysterious young woman who guides the ember butterflies using her Lantern of Spirits.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_595f85bc90df3889c711c6b1f02dc02d.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/adaf737c13d48204dc39f4b48de91ac8.webp"
+ },
+ {
+  "id": 126,
+  "slug": "suyou",
+  "name": "Suyou",
+  "roles": [
+   "assassin",
+   "fighter"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Burst"
+  ],
+  "durability": 60,
+  "offense": 60,
+  "control_effect": 50,
+  "difficulty": 50,
+  "lore": "An exorcist from Zhu'an who has inherited the power of the Immortal Nuo.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_5e4ca70172332dde18bb1dc158ccc5c8.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/cf569e7a8746535e207d1957ec2d8db9.webp"
+ },
+ {
+  "id": 127,
+  "slug": "lukas",
+  "name": "Lukas",
+  "roles": [
+   "fighter"
+  ],
+  "lanes": [
+   "exp",
+   "jungle"
+  ],
+  "specialties": [
+   "Regen",
+   "Damage"
+  ],
+  "durability": 70,
+  "offense": 50,
+  "control_effect": 60,
+  "difficulty": 30,
+  "lore": "A legendary Sacred Beast that can take the form of a rambunctious young man.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_63040edd0cf15b815fcbbb8b2d08d7f7.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/1bea09e43f6b02845de97af863c53da5.webp"
+ },
+ {
+  "id": 128,
+  "slug": "kalea",
+  "name": "Kalea",
+  "roles": [
+   "support",
+   "fighter"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Control",
+   "Regen"
+  ],
+  "durability": 60,
+  "offense": 20,
+  "control_effect": 90,
+  "difficulty": 40,
+  "lore": "With her serpent tail, this proud descendant of the Great Serpent swims gracefully through the Vonetis Sea, aspiring to one day carry the full power of her heritage.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_4f3d4649e301c76daf20bd8811f3095c.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/3a7693b9a565b4e1d67d57ae73eb5297.webp"
+ },
+ {
+  "id": 129,
+  "slug": "zetian",
+  "name": "Zetian",
+  "roles": [
+   "mage"
+  ],
+  "lanes": [
+   "mid"
+  ],
+  "specialties": [
+   "Damage",
+   "Crowd Control"
+  ],
+  "durability": 40,
+  "offense": 70,
+  "control_effect": 50,
+  "difficulty": 10,
+  "lore": "Recognized by the Heavens and cherished by her people, the Celestial Empress of the Cadia Riverlands ascends to bring peace to the mortal realm.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8d965f05f84621a51f799aeb8fb5f4c4.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/10cf23ade94859fd7f6a877c828c0131.webp"
+ },
+ {
+  "id": 130,
+  "slug": "obsidia",
+  "name": "Obsidia",
+  "roles": [
+   "marksman"
+  ],
+  "lanes": [
+   "gold"
+  ],
+  "specialties": [
+   "Finisher",
+   "Damage"
+  ],
+  "durability": 30,
+  "offense": 80,
+  "control_effect": 10,
+  "difficulty": 30,
+  "lore": "The ancient Sovereign of the Abyss, risen from ruin, now seeks to slay the God of Darkness and hunt down its Spawns of Decay.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_9c3daef5625bfade5c4cb8a219845dd3.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/9ea138369ca4a37b4806ac64998df054.webp"
+ },
+ {
+  "id": 131,
+  "slug": "sora",
+  "name": "Sora",
+  "roles": [
+   "fighter",
+   "assassin"
+  ],
+  "lanes": [
+   "exp"
+  ],
+  "specialties": [
+   "Charge",
+   "Burst"
+  ],
+  "durability": 60,
+  "offense": 60,
+  "control_effect": 50,
+  "difficulty": 50,
+  "lore": "A pure and free-spirited boy with unshakeable resolve, drifting across the golden sands.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_8143d7bbd4318d7c699908e808de885e.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/bc8375c54a43cc02fedcc304033c23bb.webp"
+ },
+ {
+  "id": 132,
+  "slug": "marcel",
+  "name": "Marcel",
+  "roles": [
+   "support"
+  ],
+  "lanes": [
+   "roam"
+  ],
+  "specialties": [
+   "Crowd Control",
+   "Support"
+  ],
+  "durability": 70,
+  "offense": 30,
+  "control_effect": 100,
+  "difficulty": 30,
+  "lore": "Hailing from House Paxley, he is an elegant, mysterious, and bizarre artist whose split soul has fused with his camera.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_df7603c292198bf4aa7b551d401ea5c1.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/24c43180662d27aa5b62106b596fa4f7.webp"
+ },
+ {
+  "id": 133,
+  "slug": "hirara",
+  "name": "Hirara",
+  "roles": [
+   "assassin"
+  ],
+  "lanes": [
+   "jungle"
+  ],
+  "specialties": [
+   "Chase",
+   "Finisher"
+  ],
+  "durability": 40,
+  "offense": 70,
+  "control_effect": 40,
+  "difficulty": 60,
+  "lore": "A geisha ninja from the Scarlet Shadow, armed with dual fans and adorned in crimson maple and the meisen. In her twisted mind, death is the ultimate salvation.",
+  "head_image_url": "https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_2_16_1232_1/100_71224844b111f09367df00e4f9b97753.png",
+  "portrait_image_url": "https://akmweb.youngjoygame.com/web/gms/image/e2c9c365b95a4de69fa98b2ce9712588.webp"
+ }
+]
