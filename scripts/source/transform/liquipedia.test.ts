@@ -45,6 +45,17 @@ describe("parseCatalog: items", () => {
     expect(fury.passives.map((p) => p.name)).toEqual(["Doom"]);
   });
 
+  it("adds the percent sign the wiki leaves out of percentage stats", () => {
+    expect(item("Berserker's Fury").attributes).toContainEqual({
+      label: "Crit Chance",
+      value: "+25%",
+    });
+    expect(item("Winter Crown").attributes).toContainEqual({
+      label: "CD Reduction",
+      value: "+5%",
+    });
+  });
+
   it("takes passives from the Ability section only and marks actives", () => {
     expect(item("Warrior Boots").passives.map((p) => p.name)).toEqual([
       "Valor",

@@ -59,6 +59,15 @@ export const laneLabels: Record<HeroLane, string> = {
   gold: "Gold lane",
 };
 
+export const itemCategoryLabels: Record<ItemCategory, string> = {
+  attack: "Attack",
+  magic: "Magic",
+  defense: "Defense",
+  movement: "Movement",
+  jungle: "Jungle",
+  roam: "Roam",
+};
+
 export const bracketLabels: Record<RankBracket, string> = {
   all: "All ranks",
   epic: "Epic",

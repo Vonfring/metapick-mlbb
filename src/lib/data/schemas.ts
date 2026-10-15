@@ -87,6 +87,13 @@ export const heroTagValuesSchema = z.object({
   notes: z.string().nullable().optional(),
 });
 
+/** A hero_tags row as stored in the database. */
+export const heroTagRowSchema = heroTagValuesSchema.extend({
+  hero_id: z.number().int().positive(),
+  needs_review: z.boolean(),
+  notes: z.string().nullable(),
+});
+
 /** seed/hero-tags.json: hero slug to tag values. Keys starting with "_" are comments. */
 export const heroTagsFileSchema = z
   .record(z.string(), z.unknown())
@@ -176,10 +183,17 @@ export const battleSpellRowSchema = z.object({
   sort_order: z.number().int(),
 });
 
-const pairRowSchema = z.object({
+export const pairRowSchema = z.object({
   hero_id: z.number().int().positive(),
   other_id: z.number().int().positive(),
   win_rate_delta: delta,
+});
+
+export const heroStatRowSchema = z.object({
+  hero_id: z.number().int().positive(),
+  win_rate: rate,
+  pick_rate: rate,
+  ban_rate: rate,
 });
 
 export const statSnapshotRecordSchema = z.object({
@@ -188,14 +202,7 @@ export const statSnapshotRecordSchema = z.object({
   snapshot_date: isoDate,
   fetched_at: isoDateTime,
   content_hash: z.string().min(1),
-  stats: z.array(
-    z.object({
-      hero_id: z.number().int().positive(),
-      win_rate: rate,
-      pick_rate: rate,
-      ban_rate: rate,
-    }),
-  ),
+  stats: z.array(heroStatRowSchema),
   matchups: z.array(pairRowSchema).optional(),
   synergies: z.array(pairRowSchema).optional(),
 });

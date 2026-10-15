@@ -4,8 +4,10 @@ export { ArrowClockwiseIcon } from "@phosphor-icons/react/dist/ssr/ArrowClockwis
 export { ArrowDownIcon } from "@phosphor-icons/react/dist/ssr/ArrowDown";
 export { ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr/ArrowSquareOut";
 export { ArrowUpIcon } from "@phosphor-icons/react/dist/ssr/ArrowUp";
+export { CaretLeftIcon } from "@phosphor-icons/react/dist/ssr/CaretLeft";
 export { CaretRightIcon } from "@phosphor-icons/react/dist/ssr/CaretRight";
 export { ChartBarIcon } from "@phosphor-icons/react/dist/ssr/ChartBar";
+export { CoinsIcon } from "@phosphor-icons/react/dist/ssr/Coins";
 export { CrosshairIcon } from "@phosphor-icons/react/dist/ssr/Crosshair";
 export { DesktopIcon } from "@phosphor-icons/react/dist/ssr/Desktop";
 export { DotsThreeOutlineIcon } from "@phosphor-icons/react/dist/ssr/DotsThreeOutline";

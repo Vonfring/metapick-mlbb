@@ -16,6 +16,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { HeroRelationRow, HeroRow, HeroSkillRow, PairRow, StatSnapshotRecord } from "@/types/data";
+import { MATCHUP_PERIOD } from "@/config/filters";
 import { PERIODS, RANK_BRACKETS, type PeriodDays, type RankBracket } from "@/types/domain";
 import { createSourceClient, SourceBlockedError, type SourceClient } from "../source/client";
 import { HERO_SOURCE_IDS, MATCH_TYPE, RANK_CODES, SOURCE_BASE_URL, STATS_SOURCE_IDS } from "../source/config";
@@ -24,9 +25,6 @@ import { eq, sortBy } from "../source/query";
 import { fetchAllRecords } from "../source/records";
 import { parseHeroRecord } from "../source/transform/heroes";
 import { checkStatsSanity, parseStatsRecords } from "../source/transform/stats";
-
-/** Matchups and synergies are stored for this period only (all ranks). */
-export const MATCHUP_PERIOD = 7;
 
 const OUT_DIR = path.resolve("seed", "official");
 

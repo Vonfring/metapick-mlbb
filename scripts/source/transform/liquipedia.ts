@@ -124,6 +124,16 @@ export const ATTRIBUTE_LABELS: Record<string, string> = {
   slowreduction: "Slow Reduction",
 };
 
+/** Always percentages in game; the wiki stores them as bare numbers. */
+const PERCENT_ATTRIBUTES = new Set([
+  "attackspeed",
+  "critchance",
+  "cdreduction",
+  "lifesteal",
+  "spellvamp",
+  "hybridsteal",
+]);
+
 function signed(text: string) {
   return /^[+-]/.test(text) ? text : `+${text}`;
 }
@@ -176,7 +186,11 @@ function parseItemPage(
     if (INFOBOX_FIELDS.has(key) || !text) continue;
     const label = ATTRIBUTE_LABELS[key];
     if (!label) unknownKeys.add(key);
-    attributes.push({ label: label ?? key, value: signed(text) });
+    const amount =
+      PERCENT_ATTRIBUTES.has(key) && /^[+-]?\d+(?:\.\d+)?$/.test(text)
+        ? `${text}%`
+        : text;
+    attributes.push({ label: label ?? key, value: signed(amount) });
   }
   const unique = named.get("uniqueattr");
   if (unique && plainText(unique)) {

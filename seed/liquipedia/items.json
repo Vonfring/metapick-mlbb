@@ -86,7 +86,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+5"
+    "value": "+5%"
    }
   ],
   "passives": [],
@@ -108,7 +108,7 @@
   "attributes": [
    {
     "label": "Crit Chance",
-    "value": "+8"
+    "value": "+8%"
    }
   ],
   "passives": [],
@@ -130,7 +130,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [],
@@ -155,7 +155,7 @@
   "attributes": [
    {
     "label": "Lifesteal",
-    "value": "+8"
+    "value": "+8%"
    },
    {
     "label": "Physical Attack",
@@ -233,7 +233,7 @@
   "attributes": [
    {
     "label": "Lifesteal",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Physical Attack",
@@ -288,7 +288,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Physical Attack",
@@ -317,11 +317,11 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+15"
+    "value": "+15%"
    },
    {
     "label": "Crit Chance",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [],
@@ -342,7 +342,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    }
   ],
   "passives": [
@@ -376,7 +376,7 @@
    },
    {
     "label": "Crit Chance",
-    "value": "+25"
+    "value": "+25%"
    },
    {
     "label": "Critical Damage (unique)",
@@ -461,7 +461,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+30"
+    "value": "+30%"
    },
    {
     "label": "Physical Attack",
@@ -496,7 +496,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Physical Attack",
@@ -535,7 +535,7 @@
    },
    {
     "label": "Hybrid Lifesteal",
-    "value": "+8"
+    "value": "+8%"
    },
    {
     "label": "Physical Attack",
@@ -543,7 +543,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Movement Speed",
@@ -585,7 +585,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+15"
+    "value": "+15%"
    }
   ],
   "passives": [
@@ -608,7 +608,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+15"
+    "value": "+15%"
    },
    {
     "label": "Physical Attack",
@@ -643,11 +643,11 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Crit Chance",
-    "value": "+20"
+    "value": "+20%"
    }
   ],
   "passives": [
@@ -670,7 +670,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+15"
+    "value": "+15%"
    },
    {
     "label": "Physical Attack",
@@ -678,7 +678,7 @@
    },
    {
     "label": "Crit Chance",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Lifesteal (unique)",
@@ -709,7 +709,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Physical Penetration (unique)",
@@ -736,7 +736,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Physical Attack",
@@ -790,11 +790,11 @@
   "attributes": [
    {
     "label": "Lifesteal",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Physical Attack",
@@ -825,7 +825,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Physical Attack",
@@ -889,7 +889,7 @@
    },
    {
     "label": "Spell Vamp",
-    "value": "+8"
+    "value": "+8%"
    },
    {
     "label": "Physical Attack",
@@ -897,7 +897,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -920,11 +920,11 @@
   "attributes": [
    {
     "label": "Lifesteal",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Physical Attack",
@@ -951,11 +951,11 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+35"
+    "value": "+35%"
    },
    {
     "label": "Crit Chance",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Movement Speed",
@@ -992,7 +992,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+5"
+    "value": "+5%"
    }
   ],
   "passives": [
@@ -1046,7 +1046,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+2"
+    "value": "+2%"
    }
   ],
   "passives": [
@@ -1091,7 +1091,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+5"
+    "value": "+5%"
    }
   ],
   "passives": [],
@@ -1219,7 +1219,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+5"
+    "value": "+5%"
    }
   ],
   "passives": [
@@ -1300,7 +1300,7 @@
   "attributes": [
    {
     "label": "Spell Vamp",
-    "value": "+8"
+    "value": "+8%"
    },
    {
     "label": "Magic Power",
@@ -1334,7 +1334,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+8"
+    "value": "+8%"
    }
   ],
   "passives": [],
@@ -1389,7 +1389,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -1482,7 +1482,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+20"
+    "value": "+20%"
    }
   ],
   "passives": [
@@ -1509,11 +1509,11 @@
   "attributes": [
    {
     "label": "Lifesteal",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Attack Speed",
-    "value": "+20"
+    "value": "+20%"
    },
    {
     "label": "Magic Power",
@@ -1521,7 +1521,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+5"
+    "value": "+5%"
    }
   ],
   "passives": [
@@ -1556,7 +1556,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Healing Effect (unique)",
@@ -1676,7 +1676,7 @@
    },
    {
     "label": "Spell Vamp",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Magic Power",
@@ -1715,7 +1715,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -1742,7 +1742,7 @@
    },
    {
     "label": "Hybrid Lifesteal",
-    "value": "+8"
+    "value": "+8%"
    },
    {
     "label": "Magic Power",
@@ -1750,7 +1750,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -1781,7 +1781,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -1847,7 +1847,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+5"
+    "value": "+5%"
    }
   ],
   "passives": [],
@@ -2202,7 +2202,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -2388,7 +2388,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -2415,7 +2415,7 @@
    },
    {
     "label": "Spell Vamp",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Adaptive Attack",
@@ -2423,7 +2423,7 @@
    },
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    }
   ],
   "passives": [
@@ -2643,7 +2643,7 @@
   "attributes": [
    {
     "label": "CD Reduction",
-    "value": "+10"
+    "value": "+10%"
    },
    {
     "label": "Movement Speed",
@@ -2692,7 +2692,7 @@
   "attributes": [
    {
     "label": "Attack Speed",
-    "value": "+15"
+    "value": "+15%"
    },
    {
     "label": "Movement Speed",

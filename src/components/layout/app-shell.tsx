@@ -1,4 +1,6 @@
 import type * as React from "react";
+import { Suspense } from "react";
+import { UrlParamsSync } from "@/lib/use-url-params";
 import { AppSidebar } from "./app-sidebar";
 import { BottomNav } from "./bottom-nav";
 import { SiteFooter } from "./site-footer";
@@ -25,6 +27,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <SiteFooter />
       </div>
       <BottomNav className="lg:hidden" />
+      <Suspense fallback={null}>
+        <UrlParamsSync />
+      </Suspense>
     </div>
   );
 }

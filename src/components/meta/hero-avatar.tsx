@@ -20,19 +20,28 @@ function initials(name: string) {
  * Square hero portrait with the clipped corner. Falls back to initials when
  * there is no image or the source fails to load. Images are never optimized
  * by Vercel (see next.config.ts).
+ *
+ * - `fluid` fills the parent's width instead of a fixed size.
+ * - `decorative` hides the image from assistive tech when the name is
+ *   already written next to it.
+ * - `preload` for the few portraits above the fold.
  */
 export function HeroAvatar({
   name,
   src,
   size = "md",
+  fluid = false,
+  decorative = false,
+  preload = false,
   className,
-  priority = false,
 }: {
   name: string;
   src?: string | null;
   size?: keyof typeof sizes;
+  fluid?: boolean;
+  decorative?: boolean;
+  preload?: boolean;
   className?: string;
-  priority?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const px = sizes[size];
@@ -42,30 +51,38 @@ export function HeroAvatar({
     <span
       className={cn(
         "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-sm bg-muted clip-corner",
+        fluid && "aspect-square w-full",
         className,
       )}
       style={{
-        width: px,
-        height: px,
+        ...(fluid ? {} : { width: px, height: px }),
         ["--clip-size" as string]: `${Math.round(px / 6)}px`,
       }}
     >
       {showImage ? (
         <Image
           src={src!}
-          alt={name}
+          alt={decorative ? "" : name}
           width={px}
           height={px}
-          priority={priority}
+          preload={preload}
           className="size-full object-cover"
           onError={() => setFailed(true)}
         />
       ) : (
         <span
-          role="img"
-          aria-label={name}
-          className="font-display font-bold text-muted-foreground"
-          style={{ fontSize: Math.max(12, Math.round(px * 0.34)) }}
+          role={decorative ? undefined : "img"}
+          aria-label={decorative ? undefined : name}
+          aria-hidden={decorative || undefined}
+          className={cn(
+            "font-display font-bold text-muted-foreground",
+            fluid && "text-xl",
+          )}
+          style={
+            fluid
+              ? undefined
+              : { fontSize: Math.max(12, Math.round(px * 0.34)) }
+          }
         >
           {initials(name)}
         </span>
