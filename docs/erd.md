@@ -234,7 +234,7 @@ Common columns: catalog tables also have `created_at` and `updated_at` (`timesta
 | is_active | boolean | no | true | false when the source no longer lists the hero |
 | source_updated_at | timestamptz | yes | | Last change seen by the updater |
 
-Indexes: PK (id); unique (slug); GIN (roles); GIN (lanes). RLS: public SELECT.
+Indexes: PK (id); unique (slug). RLS: public SELECT.
 
 **hero_skills**
 
@@ -292,7 +292,7 @@ Indexes: PK (hero_id, relation, target_hero_id); (target_hero_id). RLS: public S
 | icon_url | text | yes | | |
 | is_active | boolean | no | true | |
 
-Indexes: PK (id); unique (slug); (category); GIN (other_categories). RLS: public SELECT.
+Indexes: PK (id); unique (slug); (category). RLS: public SELECT.
 
 **emblems**: emblem sets from the Liquipedia emblem portal.
 
@@ -320,7 +320,7 @@ Indexes: PK (id); unique (slug). RLS: public SELECT.
 | icon_url | text | yes | | |
 | sort_order | smallint | no | 0 | |
 
-Indexes: PK (id); (emblem_id); (tier). RLS: public SELECT.
+Indexes: PK (id); (emblem_id). RLS: public SELECT.
 
 **battle_spells**: the spells in Liquipedia's battle spell navbox, in its order. The description ends with the cooldown.
 
@@ -350,7 +350,7 @@ Indexes: PK (id); unique (slug). RLS: public SELECT.
 | run_id | bigint | yes | | FK → data_update_logs.id, on delete set null |
 | created_at | timestamptz | no | now() | |
 
-Indexes: PK (id); unique (rank_bracket, period_days, snapshot_date); (rank_bracket, period_days, snapshot_date desc) where is_published; (run_id). RLS: public SELECT where `is_published`.
+Indexes: PK (id); unique (rank_bracket, period_days, snapshot_date), which also serves the newest-snapshot lookup; (run_id). RLS: public SELECT where `is_published`.
 
 **hero_stats**: win/pick/ban rate per hero in a snapshot. Tier is not stored; the app computes it from `src/config/tier-scoring.ts`.
 
