@@ -7,7 +7,6 @@ export function Wordmark({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label={`${siteConfig.name} home`}
       className={cn("inline-flex items-center gap-2 rounded-sm", className)}
     >
       <LogoMark className="size-6" />
@@ -17,6 +16,7 @@ export function Wordmark({ className }: { className?: string }) {
       <span className="rounded-[5px] border px-1.5 py-[3px] text-[0.625rem] leading-none font-bold text-muted-foreground">
         {siteConfig.label}
       </span>
+      <span className="sr-only"> home</span>
     </Link>
   );
 }

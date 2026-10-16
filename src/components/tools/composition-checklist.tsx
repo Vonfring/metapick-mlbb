@@ -33,7 +33,7 @@ function detail(check: CheckResult, complete: boolean): string {
     case "lanes":
       return complete && check.open.length > 0
         ? `Open: ${check.open.map((l) => laneLabels[l]).join(", ")}`
-        : `${check.covered} of ${check.needed} heroes get their own lane`;
+        : `${check.covered} of ${check.needed} ${check.needed === 1 ? "hero gets its" : "heroes get their"} own lane`;
     case "damage":
       return `${count(check.physical)} physical, ${count(check.magic)} magic`;
   }
@@ -43,10 +43,13 @@ function detail(check: CheckResult, complete: boolean): string {
 export function CompositionChecklist({
   report,
   nameOf,
+  showHints = false,
   className,
 }: {
   report: CompositionReport;
   nameOf: (heroId: number) => string;
+  /** Explain in plain words what each missing or weak check means. */
+  showHints?: boolean;
   className?: string;
 }) {
   return (
@@ -81,6 +84,15 @@ export function CompositionChecklist({
                 <span className="text-xs text-muted-foreground">
                   {detail(check, report.complete)}
                 </span>
+                {/* A partial team misses most checks; only a lane clash
+                    means something before the team is full. */}
+                {showHints &&
+                check.status !== "ok" &&
+                (report.complete || check.kind === "lanes") ? (
+                  <span className="basis-full pt-0.5 text-xs text-muted-foreground">
+                    {check.hint}
+                  </span>
+                ) : null}
               </span>
             </li>
           );

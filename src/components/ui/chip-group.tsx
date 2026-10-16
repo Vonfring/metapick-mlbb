@@ -52,9 +52,7 @@ export function ChipGroup<T extends string>({
         >
           {option.label}
           {option.count !== undefined ? (
-            <span className="text-xs tabular-nums opacity-70">
-              {option.count}
-            </span>
+            <span className="text-xs tabular-nums">{option.count}</span>
           ) : null}
         </ToggleGroup.Item>
       ))}

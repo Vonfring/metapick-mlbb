@@ -53,6 +53,17 @@ export async function getHeroes(): Promise<HeroRow[]> {
   return provider().listHeroes();
 }
 
+/**
+ * `generateStaticParams` for everything built per hero: the hero pages and
+ * their Open Graph images. Cache Components needs at least one path, so
+ * before any hero data exists a placeholder renders as not found.
+ */
+export async function getHeroSlugParams(): Promise<{ slug: string }[]> {
+  const heroes = await getHeroes();
+  if (heroes.length === 0) return [{ slug: "no-heroes-yet" }];
+  return heroes.map((hero) => ({ slug: hero.slug }));
+}
+
 export async function getHeroDetails(
   slug: string,
 ): Promise<HeroDetails | null> {

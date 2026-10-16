@@ -2,19 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { initials } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const sizes = { xxs: 24, xs: 32, sm: 40, md: 56, lg: 80, xl: 112 } as const;
-
-function initials(name: string) {
-  const parts = name
-    .replace(/[^\p{L}\p{N}\s-]/gu, "")
-    .split(/[\s-]+/)
-    .filter(Boolean);
-  if (parts.length === 0) return "?";
-  if (parts.length === 1) return parts[0]!.slice(0, 2).toUpperCase();
-  return (parts[0]![0]! + parts[1]![0]!).toUpperCase();
-}
 
 /**
  * Square hero portrait with the clipped corner. Falls back to initials when
@@ -70,12 +61,15 @@ export function HeroAvatar({
           onError={() => setFailed(true)}
         />
       ) : (
+        // The initials are drawn by CSS, not written as text, so a button
+        // that holds the avatar keeps the hero's name as its only text.
         <span
           role={decorative ? undefined : "img"}
           aria-label={decorative ? undefined : name}
           aria-hidden={decorative || undefined}
+          data-initials={initials(name)}
           className={cn(
-            "font-display font-bold text-muted-foreground",
+            "font-display font-bold text-muted-foreground before:content-[attr(data-initials)]",
             fluid && "text-xl",
           )}
           style={
@@ -83,9 +77,7 @@ export function HeroAvatar({
               ? undefined
               : { fontSize: Math.max(12, Math.round(px * 0.34)) }
           }
-        >
-          {initials(name)}
-        </span>
+        />
       )}
     </span>
   );

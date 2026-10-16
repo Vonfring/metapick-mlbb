@@ -12,6 +12,7 @@ export type CheckStatus = "ok" | "weak" | "missing";
 export type CheckResult = {
   id: string;
   label: string;
+  hint: string;
   status: CheckStatus;
   weight: number;
 } & (
@@ -82,7 +83,12 @@ export function evaluateComposition(
   });
 
   const checks = config.checks.map((check): CheckResult => {
-    const base = { id: check.id, label: check.label, weight: check.weight };
+    const base = {
+      id: check.id,
+      label: check.label,
+      hint: check.hint,
+      weight: check.weight,
+    };
     switch (check.kind) {
       case "tag": {
         const total = teamTags.reduce((sum, t) => sum + t[check.tag], 0);

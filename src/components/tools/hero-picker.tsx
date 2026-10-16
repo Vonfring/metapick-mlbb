@@ -21,6 +21,7 @@ export function HeroPicker({
   caption,
   actionLabel,
   blocked,
+  gridWhenEmpty = true,
   inputRef,
   className,
 }: {
@@ -35,6 +36,8 @@ export function HeroPicker({
   actionLabel: (name: string) => string;
   /** Why nothing can be picked right now (a full team), or null. */
   blocked?: string | null;
+  /** Show every hero before anything is typed (default), or only matches. */
+  gridWhenEmpty?: boolean;
   inputRef?: React.Ref<HTMLInputElement>;
   className?: string;
 }) {
@@ -96,7 +99,7 @@ export function HeroPicker({
             ? `${shown.length} ${shown.length === 1 ? "match" : "matches"}`
             : caption)}
       </p>
-      {blocked ? null : shown.length > 0 ? (
+      {blocked || (!key && !gridWhenEmpty) ? null : shown.length > 0 ? (
         <ul className="grid max-h-72 grid-cols-[repeat(auto-fill,minmax(4.25rem,1fr))] gap-1 overflow-y-auto overscroll-contain rounded-lg border bg-surface p-1.5">
           {shown.map((hero) => {
             const isTaken = taken.has(hero.id);

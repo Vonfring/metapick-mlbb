@@ -16,6 +16,7 @@ import {
 import {
   getHeroDetails,
   getHeroes,
+  getHeroSlugParams,
   getPairsSnapshot,
   getRankedHeroes,
   type RankedHero,
@@ -28,24 +29,13 @@ import {
   type Pairing,
   strongAgainst,
 } from "@/lib/heroes/pairings";
+import { roleLine, rolesText } from "@/lib/heroes/roles";
 import { displaySkills } from "@/lib/heroes/skills";
 import { damageTypeLabels, RATING_FIELDS, TAG_FIELDS } from "@/lib/heroes/tags";
 import type { HeroRelationKind } from "@/types/data";
-import {
-  bracketLabels,
-  laneLabels,
-  periodLabels,
-  RANK_BRACKETS,
-  roleLabels,
-} from "@/types/domain";
+import { bracketLabels, periodLabels, RANK_BRACKETS } from "@/types/domain";
 
-export async function generateStaticParams() {
-  const heroes = await getHeroes();
-  // Cache Components needs at least one path. Before any hero data exists,
-  // the placeholder prerenders as a not-found page.
-  if (heroes.length === 0) return [{ slug: "no-heroes-yet" }];
-  return heroes.map((hero) => ({ slug: hero.slug }));
-}
+export const generateStaticParams = getHeroSlugParams;
 
 /**
  * Looks the slug up in the cached roster, so an unknown URL never costs a
@@ -67,10 +57,9 @@ export async function generateMetadata({
 }: PageProps<"/heroes/[slug]">): Promise<Metadata> {
   const hero = await findHero((await params).slug);
   if (!hero) return { title: "Hero not found" };
-  const roles = hero.roles.map((role) => roleLabels[role]).join(" and ");
   return {
     title: hero.name,
-    description: `${hero.name} (${roles}) in Mobile Legends: win rate, tier, the heroes ${hero.name} beats and loses to, best teammates and skills.`,
+    description: `${hero.name} (${rolesText(hero.roles)}) in Mobile Legends: win rate, tier, the heroes ${hero.name} beats and loses to, best teammates and skills.`,
   };
 }
 
@@ -229,12 +218,7 @@ async function HeroDetail({
               <h1 className="font-display text-3xl font-bold sm:text-4xl">
                 {hero.name}
               </h1>
-              <p className="text-muted-foreground">
-                {hero.roles.map((role) => roleLabels[role]).join(" and ")}
-                {hero.lanes.length > 0
-                  ? `, ${hero.lanes.map((lane) => laneLabels[lane]).join(" or ")}`
-                  : ""}
-              </p>
+              <p className="text-muted-foreground">{roleLine(hero)}</p>
             </div>
             {hero.specialties.length > 0 ? (
               <ul className="flex flex-wrap gap-1.5" aria-label="Specialties">

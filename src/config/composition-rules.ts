@@ -18,12 +18,14 @@ export const COMPOSITION_RULES = {
       id: "lanes",
       kind: "lanes",
       label: "Every lane covered",
+      hint: "Two or more heroes want the same lane, so one lane has no specialist.",
       weight: 2,
     },
     {
       id: "frontline",
       kind: "tag",
       label: "Frontline",
+      hint: "No one can take hits at the front, so fights start badly.",
       tag: "frontline",
       ok: 3,
       weak: 2,
@@ -33,6 +35,7 @@ export const COMPOSITION_RULES = {
       id: "hard_cc",
       kind: "tag",
       label: "Hard crowd control",
+      hint: "Too little crowd control to start a fight or stop a diving enemy.",
       tag: "hard_cc",
       ok: 5,
       weak: 3,
@@ -42,12 +45,14 @@ export const COMPOSITION_RULES = {
       id: "damage_mix",
       kind: "damage",
       label: "Physical and magic damage",
+      hint: "Nearly all damage is one type, so the enemy can stack one kind of defense.",
       weight: 1.5,
     },
     {
       id: "peel",
       kind: "tag",
       label: "Peel for carries",
+      hint: "Little protection for the damage dealers when enemies dive them.",
       tag: "peel",
       ok: 2,
       weak: 1,
@@ -57,6 +62,7 @@ export const COMPOSITION_RULES = {
       id: "aoe_damage",
       kind: "tag",
       label: "Area damage",
+      hint: "Little damage that hits several enemies, so team fights drag on.",
       tag: "aoe_damage",
       ok: 5,
       weak: 3,
@@ -66,6 +72,7 @@ export const COMPOSITION_RULES = {
       id: "pickoff",
       kind: "tag",
       label: "Pick-off",
+      hint: "Few ways to catch a lone enemy out of position.",
       tag: "pickoff",
       ok: 5,
       weak: 3,
@@ -75,6 +82,7 @@ export const COMPOSITION_RULES = {
       id: "push",
       kind: "tag",
       label: "Turret push",
+      hint: "Slow at taking turrets once a fight is won.",
       tag: "push",
       ok: 3,
       weak: 2,
@@ -84,6 +92,7 @@ export const COMPOSITION_RULES = {
       id: "scaling",
       kind: "tag",
       label: "Late game",
+      hint: "The team falls off late; aim to win the early game.",
       tag: "scaling",
       ok: 7,
       weak: 6,
@@ -95,11 +104,19 @@ export const COMPOSITION_RULES = {
 };
 
 export type CompositionCheck =
-  | { id: string; kind: "lanes" | "damage"; label: string; weight: number }
+  | {
+      id: string;
+      kind: "lanes" | "damage";
+      label: string;
+      /** What a missing or weak check means, in plain words. */
+      hint: string;
+      weight: number;
+    }
   | {
       id: string;
       kind: "tag";
       label: string;
+      hint: string;
       tag: TagLevelKey;
       ok: number;
       weak: number;
