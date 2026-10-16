@@ -33,11 +33,11 @@ export function LockIn({
     const element = ref.current;
     if (!animate || !element) return;
     let cancelled = false;
-    let revert: (() => void) | undefined;
+    let tween: { revert: () => void } | undefined;
     preloadGsap().then(
       ({ gsap }) => {
         if (cancelled) return;
-        const tween = gsap.fromTo(
+        tween = gsap.fromTo(
           element,
           { scale: 1.35, opacity: 0, y: -8 },
           {
@@ -49,7 +49,6 @@ export function LockIn({
             clearProps: "transform,opacity",
           },
         );
-        revert = () => tween.revert();
       },
       // Without GSAP the hero simply appears.
       () => {
@@ -58,7 +57,7 @@ export function LockIn({
     );
     return () => {
       cancelled = true;
-      revert?.();
+      tween?.revert();
     };
   }, [animate]);
 

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { HeroSkillRow, PairRow } from "@/types/data";
 import { bestTeammates, counteredBy, strongAgainst } from "./pairings";
+import { roleLine } from "./roles";
 import { displaySkills } from "./skills";
 
 const pair = (
@@ -74,5 +75,17 @@ describe("displaySkills", () => {
       "2:Tactical Reposition",
       "6:Tactical Reposition",
     ]);
+  });
+});
+
+describe("roleLine", () => {
+  it("joins roles with and, lanes with or", () => {
+    expect(
+      roleLine({ roles: ["fighter", "tank"], lanes: ["exp", "roam"] }),
+    ).toBe("Fighter and Tank, EXP lane or Roam");
+  });
+
+  it("leaves the lanes out when there are none", () => {
+    expect(roleLine({ roles: ["mage"], lanes: [] })).toBe("Mage");
   });
 });

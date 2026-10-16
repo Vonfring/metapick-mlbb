@@ -7,7 +7,6 @@ import { formatDate } from "@/lib/format";
 import { bracketLabels, periodLabels } from "@/types/domain";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/heroes" },
   title: "Heroes",
   description:
     "Every Mobile Legends hero with role, lane, tier and win rate, plus skills, counters and best teammates on each hero's page.",

@@ -11,7 +11,6 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/counter-pick" },
   title: "Counter pick",
   description:
     "Pick up to five enemy heroes and get counters ranked by score, with the reasons behind each one.",

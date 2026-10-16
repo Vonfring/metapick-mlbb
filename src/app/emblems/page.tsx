@@ -11,7 +11,6 @@ import { splitCooldown } from "@/lib/catalog/text";
 import { getEmblemCatalog, getSpells } from "@/lib/data";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/emblems" },
   title: "Emblems",
   description:
     "Mobile Legends emblem sets and talents, the set each role runs, and every battle spell.",

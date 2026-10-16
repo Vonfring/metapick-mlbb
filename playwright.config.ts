@@ -2,8 +2,8 @@ import { defineConfig, devices } from "@playwright/test";
 
 // Smoke tests against a production build that reads the seed files:
 //   DATA_SOURCE=seed pnpm build && pnpm test:e2e
-// Requests to other hosts (hero images on the official CDN) are blocked in
-// the tests, so they never depend on the network.
+// Requests to other hosts never leave the browser (e2e/fixtures.ts), so the
+// tests do not depend on the network.
 
 const PORT = 3100;
 
@@ -12,10 +12,11 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
+  reporter: "list",
   use: {
     baseURL: `http://localhost:${PORT}`,
-    trace: "retain-on-failure",
+    // CI retries a failed test once and keeps that run's trace in test-results/.
+    trace: "on-first-retry",
   },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"] } },

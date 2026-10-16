@@ -47,6 +47,8 @@ for (const theme of ["light", "dark"] as const) {
 }
 
 test("an unknown hero shows the not-found page", async ({ page }) => {
+  // The first visit streams the not-found page with status 200 (the shell
+  // for unknown heroes is sent before the lookup); later visits get a 404.
   await page.goto("/heroes/not-a-hero");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "This page does not exist",

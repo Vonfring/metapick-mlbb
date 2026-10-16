@@ -2,19 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { initials } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const sizes = { xxs: 24, xs: 32, sm: 40, md: 56, lg: 80, xl: 112 } as const;
-
-function initials(name: string) {
-  const parts = name
-    .replace(/[^\p{L}\p{N}\s-]/gu, "")
-    .split(/[\s-]+/)
-    .filter(Boolean);
-  if (parts.length === 0) return "?";
-  if (parts.length === 1) return parts[0]!.slice(0, 2).toUpperCase();
-  return (parts[0]![0]! + parts[1]![0]!).toUpperCase();
-}
 
 /**
  * Square hero portrait with the clipped corner. Falls back to initials when

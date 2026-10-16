@@ -5,11 +5,13 @@ import { PageHeader } from "@/components/meta/page-header";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/about" },
   title: "About the data",
   description:
     "Where Metapick's hero, statistics and item data come from, how often they update, and what is curated by hand.",
 };
+
+// Links inside running text need more than color to stand out (WCAG 1.4.1).
+const link = "text-ally-text underline underline-offset-2 hover:decoration-2";
 
 export default function AboutPage() {
   return (
@@ -71,44 +73,29 @@ export default function AboutPage() {
         </p>
         <ul className="flex list-disc flex-col gap-1 pl-5 text-muted-foreground">
           <li>
-            <Link
-              href="/tier-list"
-              className="text-ally-text underline underline-offset-2 hover:decoration-2"
-            >
+            <Link href="/tier-list" className={link}>
               Tier list
             </Link>
             : win, pick and ban rate compared with every hero in the same rank
             and period.
           </li>
           <li>
-            <Link
-              href="/counter-pick"
-              className="text-ally-text underline underline-offset-2 hover:decoration-2"
-            >
+            <Link href="/counter-pick" className={link}>
               Counter pick
             </Link>{" "}
             and{" "}
-            <Link
-              href="/matchup"
-              className="text-ally-text underline underline-offset-2 hover:decoration-2"
-            >
+            <Link href="/matchup" className={link}>
               Matchup
             </Link>
             : matchup statistics, official hero notes and hero tags, plus a
             little for current form.
           </li>
           <li>
-            <Link
-              href="/team-composition"
-              className="text-ally-text underline underline-offset-2 hover:decoration-2"
-            >
+            <Link href="/team-composition" className={link}>
               Team composition
             </Link>{" "}
             and{" "}
-            <Link
-              href="/draft"
-              className="text-ally-text underline underline-offset-2 hover:decoration-2"
-            >
+            <Link href="/draft" className={link}>
               Draft master
             </Link>
             : the composition checklist, synergy between teammates and the same

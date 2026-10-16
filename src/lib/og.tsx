@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { cacheLife } from "next/cache";
 import type * as React from "react";
+import { LOGO_PATHS } from "@/components/brand/logo-mark";
 import { siteConfig } from "@/config/site";
 import type { Tier } from "@/types/domain";
 
@@ -13,25 +14,29 @@ import type { Tier } from "@/types/domain";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
+/** Dark theme colors from globals.css; the images cannot read CSS variables. */
 export const ogColors = {
-  background: "#0e1a21",
+  background: siteConfig.themeColors.dark,
   text: "#e4ecee",
   muted: "#93a7b0",
   border: "#284150",
+  portrait: "#1f3541",
   ally: "#5287f0",
-  allyText: "#8db0ff",
+  allySoft: "rgba(82,135,240,0.16)",
   enemy: "#e2693d",
+  enemySoft: "rgba(226,105,61,0.16)",
 };
 
-/** The dark theme's tier ramp (globals.css): background and text per tier. */
-export const ogTierColors: Record<Tier, [string, string]> = {
-  SS: ["#ffb49a", "#0e1a21"],
-  S: ["#ff9069", "#0e1a21"],
-  A: ["#f27142", "#0e1a21"],
-  B: ["#db5d2c", "#0e1a21"],
-  C: ["#bd4102", "#ffffff"],
-  D: ["#9c3607", "#ffffff"],
-};
+/** The dark theme's tier ramp (globals.css), ready to spread into a style. */
+export const ogTierColors: Record<Tier, { background: string; color: string }> =
+  {
+    SS: { background: "#ffb49a", color: ogColors.background },
+    S: { background: "#ff9069", color: ogColors.background },
+    A: { background: "#f27142", color: ogColors.background },
+    B: { background: "#db5d2c", color: ogColors.background },
+    C: { background: "#bd4102", color: "#ffffff" },
+    D: { background: "#9c3607", color: "#ffffff" },
+  };
 
 type OgFont = {
   name: string;
@@ -52,16 +57,22 @@ async function readFont(file: string): Promise<ArrayBuffer> {
   );
 }
 
+// Kept once loaded: the renderer caches parsed fonts per buffer object, so
+// handing every image the same buffers saves parsing them again.
+let loadedFonts: OgFont[] | undefined;
+
 /** Chakra Petch from assets/fonts (SIL Open Font License, see OFL-ChakraPetch.txt). */
 export async function ogFonts(): Promise<OgFont[]> {
+  if (loadedFonts) return loadedFonts;
   const [bold, semibold] = await Promise.all([
     readFont("chakra-petch-latin-700-normal.woff"),
     readFont("chakra-petch-latin-600-normal.woff"),
   ]);
-  return [
+  loadedFonts = [
     { name: "Chakra Petch", data: bold, weight: 700, style: "normal" },
     { name: "Chakra Petch", data: semibold, weight: 600, style: "normal" },
   ];
+  return loadedFonts;
 }
 
 /**
@@ -82,15 +93,6 @@ export async function imageDataUrl(url: string | null): Promise<string | null> {
   } catch {
     return null;
   }
-}
-
-export function OgLogoMark({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24">
-      <path d="M4.5 2H22v17.5z" fill={ogColors.enemy} />
-      <path d="M2 4.5 19.5 22H2z" fill={ogColors.ally} />
-    </svg>
-  );
 }
 
 /** The 1200 × 630 frame: diagonal background, wordmark and site address. */
@@ -115,11 +117,11 @@ export function OgFrame({ children }: { children: React.ReactNode }) {
       >
         <polygon
           points={`0,0 0,${height} ${width},${height}`}
-          fill="rgba(82,135,240,0.16)"
+          fill={ogColors.allySoft}
         />
         <polygon
           points={`0,0 ${width},0 ${width},${height}`}
-          fill="rgba(226,105,61,0.16)"
+          fill={ogColors.enemySoft}
         />
         <line
           x1={0}
@@ -141,7 +143,10 @@ export function OgFrame({ children }: { children: React.ReactNode }) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <OgLogoMark size={64} />
+          <svg width={64} height={64} viewBox="0 0 24 24">
+            <path d={LOGO_PATHS.enemy} fill={ogColors.enemy} />
+            <path d={LOGO_PATHS.ally} fill={ogColors.ally} />
+          </svg>
           <span style={{ fontSize: 48, fontWeight: 700 }}>
             {siteConfig.wordmark}
           </span>

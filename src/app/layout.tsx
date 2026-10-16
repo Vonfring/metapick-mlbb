@@ -29,24 +29,23 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  openGraph: {
-    type: "website",
-    siteName: siteConfig.name,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    url: "/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-  },
+  // "./" resolves to each page's own path. Titles and descriptions of the
+  // social cards come from each page's metadata.
+  alternates: { canonical: "./" },
+  openGraph: { type: "website", siteName: siteConfig.name, url: "./" },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eef2f2" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1a21" },
+    {
+      media: "(prefers-color-scheme: light)",
+      color: siteConfig.themeColors.light,
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: siteConfig.themeColors.dark,
+    },
   ],
 };
 

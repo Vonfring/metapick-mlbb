@@ -11,7 +11,6 @@ import {
 } from "@/lib/data";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/team-composition" },
   title: "Team composition",
   description:
     "Pick up to five heroes and see what the lineup has, what it lacks, and which heroes fill the gaps.",

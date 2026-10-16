@@ -42,15 +42,15 @@ Before a commit, lint, typecheck, unit tests and the build must pass; CI (`.gith
 
 **Scoring.** All formulas are pure functions in `src/lib/scoring/` (tier, counter, matchup, composition, draft) and `src/lib/draft/board.ts` (draft order, slot parsing, undo). Every weight, threshold and preset lives in `src/config/*.ts`, and each tool's "how this works" panel renders its text from the same config objects, so changing a number updates the explanation. Points are roughly percentage points of win rate. `hero-index.ts` builds the lookup (stats pairs, official notes, curated tags) every scorer uses. Docs of record: `docs/activity-draft-master.md` for draft order and suggestions.
 
-**Hero tags.** `seed/hero-tags.json` is the hand-curated source of truth for composition tags (0–3 scales plus damage type). Validate with `pnpm seed:check-tags`, then regenerate `supabase/seed.sql` with `pnpm seed:sql`. The updater only inserts tags for heroes that have none.
+**Hero tags.** `seed/hero-tags.json` is the hand-curated source of truth for composition tags; the workflow is in the README ("Editing hero tags").
 
 **Schema changes.** Add a migration in `supabase/migrations/`, update `docs/erd.md` in the same commit, and keep `src/types/data.ts` and the zod schemas in `src/lib/data/schemas.ts` in step. Stats are written through the `write_stat_snapshot(payload jsonb)` function in one transaction.
 
 ## Gotchas
 
-- Next 16 differs from older versions; read the guide in `node_modules/next/dist/docs/` before using an unfamiliar API (see AGENTS.md).
-- OG images (`next/og`) only prerender when their IO is cached: fonts and remote images go through the `'use cache'` helpers in `src/lib/og.tsx`, and the per-hero image has its own `generateStaticParams`.
+- OG images (`next/og`) only prerender when their IO is cached: fonts and remote images go through the `'use cache'` helpers in `src/lib/og.tsx`, and the per-hero image needs its own `generateStaticParams` (shared `getHeroSlugParams`). The images cannot read CSS variables, so `ogColors` mirrors the dark theme in `globals.css`.
+- Canonical and `og:url` come from the root layout (`"./"` resolves to each page's path); pages set only `title` and `description`.
 - The React Compiler lint rule `react-hooks/preserve-manual-memoization` rejects a `useMemo` whose inputs are later passed to other functions. Move the memo into the child that uses it, or compute without one.
 - GSAP is imported on demand (`import("gsap")`) and only on the draft page; keep it out of shared bundles and respect `prefers-reduced-motion`.
-- The e2e fixture (`e2e/fixtures.ts`) blocks every request to other hosts and fails a test on any page error or console error other than failed resource loads.
+- The e2e fixture (`e2e/fixtures.ts`) answers images from other hosts with a blank PNG, blocks every other outside request, and fails a test on any page or console error.
 - UI copy is sentence case with plain verbs; no all-caps labels.

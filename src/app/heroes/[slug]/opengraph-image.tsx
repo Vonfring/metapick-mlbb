@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { DEFAULT_BRACKET, DEFAULT_PERIOD } from "@/config/filters";
-import { getHeroes, getRankedHeroes } from "@/lib/data";
-import { formatPercent } from "@/lib/format";
+import { getHeroSlugParams, getRankedHeroes } from "@/lib/data";
+import { formatPercent, initials } from "@/lib/format";
+import { roleLine } from "@/lib/heroes/roles";
 import {
   imageDataUrl,
   OG_SIZE,
@@ -10,25 +11,14 @@ import {
   ogFonts,
   ogTierColors,
 } from "@/lib/og";
-import { bracketLabels, laneLabels, roleLabels } from "@/types/domain";
+import { bracketLabels } from "@/types/domain";
 
 export const alt = "Hero card with role, lane, tier and win rate";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
 // One image per hero, built with the site like the hero pages.
-export async function generateStaticParams() {
-  const heroes = await getHeroes();
-  if (heroes.length === 0) return [{ slug: "no-heroes-yet" }];
-  return heroes.map((hero) => ({ slug: hero.slug }));
-}
-
-function initials(name: string) {
-  const parts = name.split(/[\s.'-]+/).filter(Boolean);
-  return (
-    parts.length > 1 ? parts[0]![0]! + parts[1]![0]! : name.slice(0, 2)
-  ).toUpperCase();
-}
+export const generateStaticParams = getHeroSlugParams;
 
 export default async function Image({
   params,
@@ -38,22 +28,13 @@ export default async function Image({
   const { slug } = await params;
   const { heroes } = await getRankedHeroes(DEFAULT_BRACKET, DEFAULT_PERIOD);
   const hero = heroes.find((h) => h.slug === slug);
+  // The hero page answers 404 for an unknown slug; so does its image.
+  if (!hero) return new Response(null, { status: 404 });
   const [fonts, portrait] = await Promise.all([
     ogFonts(),
-    imageDataUrl(hero?.head_image_url ?? null),
+    imageDataUrl(hero.head_image_url),
   ]);
 
-  if (!hero) {
-    return new ImageResponse(
-      <OgFrame>
-        <span style={{ fontSize: 72, fontWeight: 700 }}>Hero not found</span>
-      </OgFrame>,
-      { ...size, fonts },
-    );
-  }
-
-  const roles = hero.roles.map((r) => roleLabels[r]).join(" and ");
-  const lanes = hero.lanes.map((l) => laneLabels[l]).join(", ");
   return new ImageResponse(
     <OgFrame>
       <div style={{ display: "flex", alignItems: "center", gap: 56 }}>
@@ -66,7 +47,7 @@ export default async function Image({
             height: 260,
             border: `6px solid ${ogColors.ally}`,
             borderRadius: 14,
-            background: "#1f3541",
+            background: ogColors.portrait,
             overflow: "hidden",
           }}
         >
@@ -87,7 +68,7 @@ export default async function Image({
           <span
             style={{ fontSize: 34, fontWeight: 600, color: ogColors.muted }}
           >
-            {lanes ? `${roles}, ${lanes}` : roles}
+            {roleLine(hero)}
           </span>
           <div
             style={{
@@ -102,8 +83,7 @@ export default async function Image({
                 style={{
                   fontSize: 34,
                   fontWeight: 700,
-                  color: ogTierColors[hero.tier][1],
-                  background: ogTierColors[hero.tier][0],
+                  ...ogTierColors[hero.tier],
                   borderRadius: 8,
                   padding: "4px 16px",
                 }}

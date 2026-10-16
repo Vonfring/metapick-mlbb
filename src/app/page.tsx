@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   CaretRightIcon,
@@ -9,9 +8,6 @@ import {
 } from "@/components/icons";
 import { navGroups } from "@/config/navigation";
 import { cn } from "@/lib/utils";
-
-// The home page keeps the site-wide title and description from the layout.
-export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const browseItems = navGroups
   .filter((group) => group.label !== "Tools")

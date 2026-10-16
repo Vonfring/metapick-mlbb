@@ -7,7 +7,6 @@ import { toItemViews } from "@/lib/catalog/items";
 import { getItems } from "@/lib/data";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/items" },
   title: "Items",
   description:
     "Every Mobile Legends item by shop category, with stats, passives, price and build path.",
