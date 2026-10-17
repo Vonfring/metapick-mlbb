@@ -12,8 +12,8 @@ import {
   RANK_BRACKETS,
 } from "@/types/domain";
 
+// The title is the site's default from the root layout.
 export const metadata: Metadata = {
-  title: "Know the counter before you play",
   description:
     "Counter picks, matchups, team checks and a ranked draft simulator for Mobile Legends. Every suggestion shows the numbers behind it.",
 };
@@ -26,9 +26,9 @@ const PER_TIER_CARD = 8;
 const PER_TIER_CLOUD = 5;
 
 /**
- * The welcome page: what Metapick does, for someone who has not used it
- * yet. It lives outside the (app) group, so it has its own header and
- * footer instead of the app shell.
+ * The home page is the welcome page: what Metapick does, for someone who
+ * has not used it yet. It lives outside the (app) group, so it has its own
+ * header and footer instead of the app shell; "Open the app" leads to /app.
  */
 export default async function WelcomePage() {
   const { heroes, snapshot } = await getRankedHeroes(

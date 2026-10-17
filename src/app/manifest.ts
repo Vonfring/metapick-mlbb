@@ -6,7 +6,8 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name,
     short_name: siteConfig.wordmark,
     description: siteConfig.description,
-    start_url: "/",
+    // Installed on a phone, Metapick opens on the tools, not the welcome page.
+    start_url: "/app",
     display: "standalone",
     background_color: siteConfig.themeColors.dark,
     theme_color: siteConfig.themeColors.dark,

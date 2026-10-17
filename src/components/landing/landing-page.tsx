@@ -172,7 +172,7 @@ export function LandingPage(props: LandingPageProps) {
             <a className="text" href="#tiers">
               Tier list
             </a>
-            <Link className="pill-link" href="/">
+            <Link className="pill-link" href="/app">
               Open the app
             </Link>
           </nav>

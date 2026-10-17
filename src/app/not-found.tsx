@@ -27,7 +27,7 @@ function NotFoundMessage() {
           <Link href="/heroes">Browse heroes</Link>
         </Button>
         <Button asChild variant="outline">
-          <Link href="/">Go home</Link>
+          <Link href="/app">Open the app</Link>
         </Button>
       </div>
     </div>

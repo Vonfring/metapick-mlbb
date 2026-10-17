@@ -2,7 +2,8 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, gotoInTheme, test } from "./fixtures";
 
 const pages = [
-  ["/", "Who are you facing?"],
+  ["/", "Know the counter before you play."],
+  ["/app", "Who are you facing?"],
   ["/tier-list", "Tier list"],
   ["/statistics", "Hero statistics"],
   ["/heroes", "Heroes"],
@@ -17,7 +18,6 @@ const pages = [
   ],
   ["/draft", "Draft master"],
   ["/about", "About the data"],
-  ["/welcome", "Know the counter before you play."],
 ] as const;
 
 for (const theme of ["light", "dark"] as const) {
@@ -52,12 +52,13 @@ test("leaving the welcome page brings back the app's colors", async ({
 }) => {
   // Next.js keeps the welcome page in the document after navigating away,
   // hidden, so its dark page color must not stay behind.
-  await gotoInTheme(page, "/welcome", "light");
+  await gotoInTheme(page, "/", "light");
   await expect(page.locator("body")).toHaveCSS(
     "background-color",
     "rgb(10, 16, 23)",
   );
   await page.getByRole("link", { name: "Open the app" }).click();
+  await expect(page).toHaveURL(/\/app$/);
   await expect(
     page.getByRole("heading", { level: 1, name: "Who are you facing?" }),
   ).toBeVisible();

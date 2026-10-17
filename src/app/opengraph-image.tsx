@@ -18,7 +18,7 @@ export default async function Image() {
             maxWidth: 900,
           }}
         >
-          Who are you facing?
+          Know the counter before you play.
         </span>
         <span
           style={{

@@ -12,7 +12,7 @@ export function SiteFooter() {
           <CatalogCredit />
         </div>
         <nav aria-label="Footer" className="flex gap-4">
-          <Link href="/welcome" className="hover:text-foreground">
+          <Link href="/" className="hover:text-foreground">
             What Metapick does
           </Link>
           <Link href="/about" className="hover:text-foreground">

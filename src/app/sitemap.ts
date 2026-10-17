@@ -4,9 +4,9 @@ import { siteConfig } from "@/config/site";
 import { getHeroes, getLastUpdate } from "@/lib/data";
 
 /**
- * Every page in the navigation plus the home page, one entry per hero, the
- * welcome page (it shows the tier list) and the about page. Built with the
- * site and refreshed with the game data.
+ * The home (welcome) page and the app's start, every page in the navigation,
+ * one entry per hero and the about page. Built with the site and refreshed
+ * with the game data, which the welcome page and hero pages show.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [heroes, lastUpdate] = await Promise.all([
@@ -21,9 +21,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     entry("/"),
+    entry("/app"),
     ...allNavItems.map((item) => entry(item.href)),
     ...heroes.map((hero) => entry(`/heroes/${hero.slug}`)),
-    entry("/welcome"),
     { url: new URL("/about", siteConfig.url).toString() },
   ];
 }

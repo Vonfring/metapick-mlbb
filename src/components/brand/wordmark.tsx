@@ -4,9 +4,10 @@ import { cn } from "@/lib/utils";
 import { LogoMark } from "./logo-mark";
 
 export function Wordmark({ className }: { className?: string }) {
+  // Inside the app the logo leads to the app's start, not the welcome page.
   return (
     <Link
-      href="/"
+      href="/app"
       className={cn("inline-flex items-center gap-2 rounded-sm", className)}
     >
       <LogoMark className="size-6" />

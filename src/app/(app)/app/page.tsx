@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   CaretRightIcon,
@@ -9,11 +10,18 @@ import {
 import { navGroups } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 
+export const metadata: Metadata = {
+  title: "Find counters and plan your draft",
+  description:
+    "Search the enemy heroes to find who beats them, then plan the draft, check a team or compare a matchup.",
+};
+
 const browseItems = navGroups
   .filter((group) => group.label !== "Tools")
   .flatMap((group) => group.items);
 
-export default function HomePage() {
+/** Where "Open the app" leads: the start of the app, inside the shell. */
+export default function AppStartPage() {
   return (
     <div className="flex flex-col gap-12">
       <section className="flex flex-col gap-5 pt-2 lg:pt-6">

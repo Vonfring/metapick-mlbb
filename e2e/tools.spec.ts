@@ -63,7 +63,7 @@ test("a full Mythic draft can be played from the suggestions", async ({
 
 test("mobile navigation reaches every section", async ({ page, isMobile }) => {
   test.skip(!isMobile, "The bottom bar only shows on phones.");
-  await page.goto("/");
+  await page.goto("/app");
   await page
     .getByRole("navigation", { name: "Main" })
     .getByRole("link", { name: "Draft" })

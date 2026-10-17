@@ -10,7 +10,8 @@ Not affiliated with or endorsed by Moonton.
 
 | Page | What it does |
 |---|---|
-| `/` | Search the enemy heroes and jump to counters; strongest heroes right now |
+| `/` | Welcome page for new visitors: the four tools, the tier list and the data, with scroll animations |
+| `/app` | Start of the app: search the enemy heroes and jump to counters, or open a tool |
 | `/tier-list`, `/statistics` | Tier list and sortable win, pick and ban rates by rank and period |
 | `/heroes`, `/heroes/[slug]` | Hero list and detail: skills, ratings, statistics, counters and teammates |
 | `/items`, `/emblems` | Items, emblem sets, talents and battle spells |
@@ -19,7 +20,6 @@ Not affiliated with or endorsed by Moonton.
 | `/team-composition` | Composition checklist for up to five heroes, suggestions and swaps |
 | `/draft` | Ranked and MPL ban and pick practice with suggestions on every turn |
 | `/about` | Where the data comes from and how the tools decide |
-| `/welcome` | An introduction for new visitors: the four tools, the tier list and the data, with scroll animations |
 
 Every page is static and refreshes after each data update. Filters and tools run in the browser on JSON bundles under `/data/v1/`, and their state lives in the URL, so a link shows the same result to anyone.
 
@@ -37,7 +37,7 @@ With `DATA_SOURCE=seed` the app reads the JSON files in `seed/` instead of Supab
 
 | Folder | Contents |
 |---|---|
-| `src/app/` | Pages, the JSON bundles under `data/v1/`, `api/revalidate`, sitemap, robots, manifest and Open Graph images. App pages sit in the `(app)` route group, whose layout adds the sidebar and footer; `/welcome` sits outside it |
+| `src/app/` | Pages, the JSON bundles under `data/v1/`, `api/revalidate`, sitemap, robots, manifest and Open Graph images. App pages sit in the `(app)` route group, whose layout adds the sidebar and footer; the welcome page (`page.tsx`, the home page) sits outside it |
 | `public/art/` | Hero art for the welcome page |
 | `src/components/` | UI by feature; shared tool pieces in `tools/`, shadcn primitives in `ui/` |
 | `src/config/` | Every weight, threshold and preset the scores use |
