@@ -17,6 +17,7 @@ const pages = [
   ],
   ["/draft", "Draft master"],
   ["/about", "About the data"],
+  ["/welcome", "Know the counter before you play."],
 ] as const;
 
 for (const theme of ["light", "dark"] as const) {
@@ -45,6 +46,26 @@ for (const theme of ["light", "dark"] as const) {
     }
   });
 }
+
+test("leaving the welcome page brings back the app's colors", async ({
+  page,
+}) => {
+  // Next.js keeps the welcome page in the document after navigating away,
+  // hidden, so its dark page color must not stay behind.
+  await gotoInTheme(page, "/welcome", "light");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(10, 16, 23)",
+  );
+  await page.getByRole("link", { name: "Open the app" }).click();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Who are you facing?" }),
+  ).toBeVisible();
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(238, 242, 242)",
+  );
+});
 
 test("an unknown hero shows the not-found page", async ({ page }) => {
   // The first visit streams the not-found page with status 200 (the shell

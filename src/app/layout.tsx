@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Atkinson_Hyperlegible_Next, Chakra_Petch } from "next/font/google";
-import { AppShell } from "@/components/layout/app-shell";
 import { ThemeScript } from "@/components/theme/theme-script";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
@@ -49,6 +48,7 @@ export const viewport: Viewport = {
   ],
 };
 
+// The app shell comes from the (app) layout, so the welcome page can go without it.
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -60,9 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <ThemeScript />
       </head>
-      <body>
-        <AppShell>{children}</AppShell>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
